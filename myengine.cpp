@@ -2,6 +2,7 @@
 //
 #pragma comment(lib, "winmm.lib")
 #include "sound.hpp"
+#include "screen.hpp"
 #include "include.hpp"
 #include "log.hpp"
 
@@ -10,11 +11,15 @@ using namespace std;
 int main()
 {
 	
-	Sound mysnd, mysnd2;
-	mysnd.MakeSound(440, 1000);
-	Sleep(300);
-	mysnd2.MakeSound(220, 1000);
+	Sound mysound;
+	mysound.MakeSound(400, 10000);
+	scrolltitle("Title", 500);
+	for (int i = 0; i < 1000; i++) {
 
+		cout << i << "\n";
+		Sleep(50);
+	}
+	
 	_getch();
 }
 

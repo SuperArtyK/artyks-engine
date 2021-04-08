@@ -5,8 +5,8 @@
 #define INCLUDE_H_INCLUDED
 
 
-#include <afx.h>
-#include <afxwin.h>
+// #include <afx.h>
+// #include <afxwin.h>
 #include <direct.h>
 #include "bits/stdc++.h"
 #include <algorithm>

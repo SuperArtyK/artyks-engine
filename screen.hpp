@@ -5,6 +5,17 @@
 #include "include.hpp"
 using namespace std;
 
+//set of funcs(and vars) that work with console window
+
+bool interruptscroll;
+
+void setcursor(int x, int y);
+void setScreenSize(int x, int y);
+void settitle(string title);
+void setFont(int x, int y, bool b_issquare, string fontname);
+void scrolltitle(const string title, int delay = 100, int scrolloffset = 1);
+void tmpfunc(const string title, int delay = 100, int scrolloffset = 1);
+
 void setcursor(int x, int y)
 {//sets the output cursor to x/y pos of the screen
 	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -41,6 +52,38 @@ void settitle(string title) {
 
 }
 
+void scrolltitle(const string title, int delay, int scrolloffset) {
+	//FIXME:Remove thread blocking
+	interruptscroll = false;
+	string temp = title;
+	int i = 0;
+	while (!interruptscroll) {
+		if (i >= temp.length()) {
+			i = 0;
+		}
+		temp.erase(0, 1);
+		temp += title[i];
+		settitle(temp);
+		Sleep(delay);
+		i++;
+	}
+
+
+}
+// void tmpfunc(const string title, int delay, int scrolloffset) {
+// 	string temp = title;
+// 	int i = 0;
+// 	while (!interruptscroll) {
+// 		if (i >= temp.length()) {
+// 			i = 0;
+// 		}
+// 		temp.erase(0, 1);
+// 		temp += title[i];
+// 		settitle(temp);
+// 		Sleep(delay);
+// 		i++;
+//  	}
+// }
 void setFont(int x, int y, bool b_issquare, string fontname) {
 	//
 
