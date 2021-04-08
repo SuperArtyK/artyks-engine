@@ -1,0 +1,3515 @@
+
+
+/*
+    Just more than Scientific Calculator
+    Copyright © (C) 2020 Artemii Kozhemiak (ArtyK/SuperArtyK)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+*/
+
+
+
+
+
+
+
+
+#pragma once
+
+#pragma warning(disable : 4996)
+
+
+#include "bits/algorithmfwd.h"
+#include "bits/allocated_ptr.h"
+#include "bits/allocator.h"
+#include "bits/alloc_traits.h"
+#include "bits/atomic_base.h"
+#include "bits/atomic_futex.h"
+#include "bits/atomic_lockfree_defines.h"
+#include "bits/atomic_word.h"
+#include "bits/basic_file.h"
+#include "bits/basic_ios.h"
+#include "bits/basic_string.h"
+#include "bits/boost_concept_check.h"
+#include "bits/c++0x_warning.h"
+#include "bits/c++allocator.h"
+#include "bits/c++config.h"
+#include "bits/c++io.h"
+#include "bits/c++locale.h"
+#include "bits/char_traits.h"
+#include "bits/codecvt.h"
+#include "bits/concept_check.h"
+#include "bits/cpp_type_traits.h"
+#include "bits/cpu_defines.h"
+#include "bits/ctype_base.h"
+#include "bits/ctype_inline.h"
+#include "bits/cxxabi_forced.h"
+#include "bits/cxxabi_init_exception.h"
+#include "bits/cxxabi_tweaks.h"
+#include "bits/enable_special_members.h"
+#include "bits/error_constants.h"
+#include "bits/exception.h"
+#include "bits/exception_defines.h"
+#include "bits/exception_ptr.h"
+#include "bits/extc++.h"
+#include "bits/forward_list.h"
+#include "bits/fs_dir.h"
+#include "bits/fs_fwd.h"
+#include "bits/fs_ops.h"
+#include "bits/fs_path.h"
+#include "bits/functexcept.h"
+#include "bits/functional_hash.h"
+#include "bits/gslice.h"
+#include "bits/gslice_array.h"
+#include "bits/gthr-default.h"
+#include "bits/gthr-posix.h"
+#include "bits/gthr-single.h"
+#include "bits/gthr.h"
+#include "bits/hashtable.h"
+#include "bits/hashtable_policy.h"
+#include "bits/hash_bytes.h"
+#include "bits/indirect_array.h"
+#include "bits/invoke.h"
+#include "bits/ios_base.h"
+#include "bits/localefwd.h"
+#include "bits/locale_classes.h"
+#include "bits/locale_conv.h"
+#include "bits/locale_facets.h"
+#include "bits/locale_facets_nonio.h"
+#include "bits/mask_array.h"
+#include "bits/memoryfwd.h"
+#include "bits/messages_members.h"
+#include "bits/move.h"
+#include "bits/nested_exception.h"
+#include "bits/node_handle.h"
+#include "bits/opt_random.h"
+#include "bits/ostream_insert.h"
+#include "bits/os_defines.h"
+#include "bits/parse_numbers.h"
+#include "bits/postypes.h"
+#include "bits/predefined_ops.h"
+#include "bits/ptr_traits.h"
+#include "bits/quoted_string.h"
+#include "bits/random.h"
+#include "bits/range_access.h"
+#include "bits/refwrap.h"
+#include "bits/regex.h"
+#include "bits/regex_automaton.h"
+#include "bits/regex_compiler.h"
+#include "bits/regex_constants.h"
+#include "bits/regex_error.h"
+#include "bits/regex_executor.h"
+#include "bits/regex_scanner.h"
+#include "bits/shared_ptr.h"
+#include "bits/shared_ptr_atomic.h"
+#include "bits/shared_ptr_base.h"
+#include "bits/slice_array.h"
+#include "bits/specfun.h"
+#include "bits/stdc++.h"
+#include "bits/stdtr1c++.h"
+#include "bits/std_abs.h"
+#include "bits/std_function.h"
+#include "bits/std_mutex.h"
+#include "bits/stl_algo.h"
+#include "bits/stl_algobase.h"
+#include "bits/stl_bvector.h"
+#include "bits/stl_construct.h"
+#include "bits/stl_deque.h"
+#include "bits/stl_function.h"
+#include "bits/stl_heap.h"
+#include "bits/stl_iterator.h"
+#include "bits/stl_iterator_base_funcs.h"
+#include "bits/stl_iterator_base_types.h"
+#include "bits/stl_list.h"
+#include "bits/stl_map.h"
+#include "bits/stl_multimap.h"
+#include "bits/stl_multiset.h"
+#include "bits/stl_numeric.h"
+#include "bits/stl_pair.h"
+#include "bits/stl_queue.h"
+#include "bits/stl_raw_storage_iter.h"
+#include "bits/stl_relops.h"
+#include "bits/stl_set.h"
+#include "bits/stl_stack.h"
+#include "bits/stl_tempbuf.h"
+#include "bits/stl_tree.h"
+#include "bits/stl_uninitialized.h"
+#include "bits/stl_vector.h"
+#include "bits/streambuf_iterator.h"
+#include "bits/stream_iterator.h"
+#include "bits/stringfwd.h"
+#include "bits/time_members.h"
+#include "bits/uniform_int_dist.h"
+#include "bits/unique_ptr.h"
+#include "bits/unordered_map.h"
+#include "bits/unordered_set.h"
+#include "bits/uses_allocator.h"
+#include "bits/valarray_after.h"
+#include "bits/valarray_array.h"
+#include "bits/valarray_before.h"
+#include <cassert>
+#include <iostream>
+
+
+#include <cstdio>
+#include <cstdlib>
+#include <conio.h>
+#include <thread>
+#include <windows.h>
+#include <math.h>
+#include <stdio.h>
+#include  <cassert>
+#include <cctype>
+
+#include <cerrno>
+
+#include <cfloat>
+
+#include <ciso646>
+
+#include <climits>
+
+#include <clocale>
+
+#include <cmath>
+
+#include <csetjmp>
+
+#include <csignal>
+
+#include <cstdarg>
+
+#include <cstddef>
+
+#include <cstdio>
+
+#include <cstdlib>
+
+#include <cstring>
+
+#include <ctime>
+
+#include <cwchar>
+#include <ccomplex>
+
+#include <cfenv>
+
+#include <cinttypes>
+
+#include <cstdalign>
+
+#include <cstdbool>
+
+#include <cstdint>
+
+#include <ctgmath>
+#include <algorithm>
+
+#include <bitset>
+
+#include <complex>
+
+#include <deque>
+
+#include <exception>
+
+#include <fstream>
+
+#include <functional>
+
+#include <iomanip>
+
+#include <ios>
+
+#include <iosfwd>
+
+#include <iostream>
+
+#include <istream>
+
+#include <iterator>
+
+#include <limits>
+
+#include <list>
+
+#include <locale>
+
+#include <map>
+
+#include <memory>
+
+#include <new>
+
+#include <numeric>
+
+#include <ostream>
+
+#include <queue>
+
+#include <set>
+
+#include <sstream>
+
+#include <stack>
+
+#include <stdexcept>
+
+#include <streambuf>
+#include <array>
+
+#include <atomic>
+
+#include <chrono>
+
+#include <codecvt>
+
+#include <condition_variable>
+
+#include <forward_list>
+
+#include <future>
+
+#include <initializer_list>
+
+#include <mutex>
+
+#include <random>
+
+#include <ratio>
+
+#include <regex>
+
+#include <scoped_allocator>
+
+#include <shared_mutex>
+#include <system_error>
+#include <any>
+
+#include <charconv>
+#include <execution>
+
+#include <filesystem>
+
+#include <optional>
+
+#include <compare>
+
+#include <concepts>
+
+//#include <numbers>
+
+#include <ranges>
+
+//#include <span>
+
+//#include <stop_token>
+
+//#include <syncstream>
+
+#include <version>
+#include <memory_resource>
+
+#include <string_view>
+
+#include <variant>
+#include <thread>
+
+#include <tuple>
+
+#include <typeindex>
+
+#include <type_traits>
+
+#include <unordered_map>
+
+#include <unordered_set>
+#include <string>
+
+#include <typeinfo>
+
+#include <utility>
+
+#include <valarray>
+
+#include <vector>
+#include <cuchar>
+#include <cwctype>
+#include  <ccomplex>
+#include  <cctype>
+#include  <cerrno>
+#include  <cfloat>
+#include  <cinttypes>
+#include  <climits>
+#include  <clocale>
+#include  <cmath>
+
+#include  <cstdarg>
+#include  <cstdbool>
+#include  <cstring>
+#include  <time.h>
+#include  <ctime>
+#include  <array>
+
+
+
+#include <thread>
+#include <fstream>
+#include   <exception>
+#include  <stdexcept>
+#include   <bitset>
+#include <bitset>
+#include <memory>
+
+#include <codecvt>
+#include <cfenv>
+#include <cmath>
+#include <complex>
+#include <limits>
+#include <numeric>
+#include <random>
+#include <ratio>
+#include <iomanip>
+#include <ctgmath>
+#include <string>
+
+#define DTTMFMT "%Y-%m-%d %H:%M:%S "
+
+#define DTTMSZ 21
+
+#if _WIN32 || _WIN64
+#if _WIN64
+#define ENVIRONMENT64
+#else
+#define ENVIRONMENT32
+#endif
+#endif
+
+using namespace std;
+
+fstream filestr;
+
+
+
+
+
+
+
+
+
+//string vars
+string batch = "@echo off\nstart ";
+char* path;
+
+
+
+
+string changelog = "\nChangelog for 1.0.1 release:\n\n+added all math functions from menu(from Addition to Log base X)\n+added restart command\n+added changelog view command\n+fixed logs\n+added more detalied logs\n+added defence against insecure exit\n+added debug var command\n-removed \"History of calculactions\"\n-removed easter egg(temporarily, just for performance)\n";
+
+
+string commandout[128]{
+
+
+
+	"	\nJust more than Scientific Calculator\nCopyright(C) 2020 Artemii Kozhemiak(ArtyK / SuperArtyK)\n\nThis program is free software : you can redistribute it and /or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.If not, see < https://www.gnu.org/licenses/>. \n",
+
+	"",
+
+
+
+	"Returning to menu...",
+
+	"Exiting...",
+
+
+
+};
+
+
+
+
+
+string num1, num2, result_log, resultdeg_log;
+
+
+
+string logtext[65536];
+
+
+
+string textstrings[]{
+
+	"Enter 1st addend: ",//+
+
+	"Enter 2nd addend: ",
+
+	"Enter minuend: ",//-
+
+	"Enter subtrahend: ",
+
+	"Enter 1st factor: ",//*
+
+	"Enter 2nd factor: ",
+
+	"Enter dividend: ",// div
+
+	"Enter divisor: ",
+
+	"Enter base of exponent: ",// pow()
+
+	"Enter exponent: ",
+
+	"Enter number that represents 100%: ",
+
+	"Enter percent given: ",
+
+	"Enter number that represents 100%: ",
+
+	"Enter the number value: ",
+
+	"Enter the number given: ",
+
+	"Enter the value: ",
+
+	"Enter the dividend: ",
+
+	"Enter the divisor: ",
+
+	"Enter the radicand: ",
+
+	"Enter trig function value: ",
+
+	"Enter trig function value: ",
+
+	"Enter trig function value: ",
+
+	"Enter trig function value: ",
+
+	"Enter trig function value: ",
+
+	"Enter trig function value: ",
+
+	"Enter trig function value: ",
+
+	"Enter trig function value: ",
+
+	"Enter the value: ",
+
+	"Enter the value: ",
+
+	"Enter the value: ",
+
+	"Enter the value: ",
+
+	"Enter the value: ",
+
+	"Enter the value: ",
+
+	"Enter the value: ",
+
+	"Enter the value: ",
+
+	"Enter the logarithm argument: ",
+
+	"Enter the logarithm argument: ",
+
+	"Enter the logarithm argument: ",
+
+	"Enter the logarithm argument: ",
+
+	"Enter the logarithm argument: ",
+
+	"Enter the logarithm argument: ",
+
+	"Enter the logarithm argument: ",
+
+	"Enter the logarithm base: ",
+
+	"Enter the logarithm argument: ",
+
+	"this string is not accessible by the program. So will be used as author comments. This program was not esy to make. I had experience with the _getch(); functions and other stuff, but  it's still hard to make",
+
+
+
+};
+
+
+
+string datentime;
+
+
+
+string historyact[65536];
+
+
+
+string arguments[128];
+
+
+
+
+
+
+
+
+
+string commandinput;
+
+
+
+
+
+
+
+
+
+//int
+
+int i = 0;
+
+
+
+int logi = 0;
+
+int commandnum = 127;
+
+int x;
+
+int action;
+
+int mChoice = 1;
+
+
+
+//char
+
+
+
+char buff[DTTMSZ];
+
+
+
+
+
+
+
+
+
+//bool
+
+bool isCorrect;
+
+bool isMenuActive;
+bool isConsoleOpen;
+bool consoleOnStart;
+
+
+//long double
+
+
+
+
+
+long double num[2], result, result_deg;
+
+
+
+//math constants
+
+const long double pi = 3.1415926535897932384626433832795028841971693993751058209749445;
+
+
+
+const long double  e = 2.7182818284590452353602874713526624977572470936999595749669676;
+
+
+
+const long double gold_rat = 1.6180339887498948482045868343656381177203091798057628621354486;
+
+
+
+const long double sqrt2 = 1.4142135623730950488016887242096980785696718753769480731766797;
+
+
+
+const long double eu_y = 0.57721566495328606065120900824024310421593359399235988057672348;
+
+
+
+const long double apery = 1.20205690315959428539973816151144999076498629234049888179227155;
+
+
+
+const long double catalan = 0.91596559417721901505460351493238411077414937428167213426649811;
+
+
+
+const long double kh_lev = 3.27582291872181115978768188245384386360847552598237414940519892;
+
+
+
+const long double feig_bir = 4.66920160910299067185320382046620161725818557747576863274565134;
+
+
+
+const long double mad_crys = 1.74756459463318219063621203554439740348516143662474175815282535;
+
+
+#ifdef _WIN64
+string tab_var = "                ";
+#else
+string tab_var = "        ";
+#endif
+
+
+
+
+
+WSADATA wsa_data;
+#undef max
+
+//main functions
+void welcome(void);
+void keyscan(void);
+void menu(void);
+void createbatch(void) {
+
+	fstream bat;
+	if (!bat.is_open()) {
+		bat.open("restart.bat", std::fstream::out | std::fstream::trunc);
+		bat << batch;
+	}
+	//bat.close();
+
+}
+void gettime(void);
+void writetofile(void);
+int input();
+int startup(void);
+static char* getDtTm(char* buff);
+int console(void);
+void vars();
+int consolecommand(void);
+
+void returntosender(void);
+std::ostream& writeString(std::ostream& out, std::string const& s);
+//math functions
+void addit(void);
+void subtr(void);
+void multi(void);
+void divis(void);
+void expon(void);
+void n_f_p(void);
+void p_f_n(void);
+void abs_v(void);
+void modul(void);
+void sq_rt(void);
+void sin_d(void);
+void cos_d(void);
+void tan_d(void);
+void cot_d(void);
+void sin_i(void);
+void cos_i(void);
+void tan_i(void);
+void cot_i(void);
+void log_e(void);
+void log_2(void);
+void log_t(void);
+void log_x(void);
+void history(void);
+
+
+
+
+/*
+	cout<<"**************************************************************************"<<"\n";
+	cout<<"              Just More Than Scientific Calculator (c) ArtyK              "<<"\n";
+	cout<<"**************************************************************************"<<"\n";
+	cout<<"    1)Addition               11)Sine           21)Log base 10             "<<"\n";
+	cout<<"    2)Subtraction            12)Cosine         22)Log base x              "<<"\n";
+	cout<<"    3)Multiplication         13)Tangent        23)History of calculactions"<<"\n";
+	cout<<"    4)Division               14)Cotangent                                 "<<"\n";
+	cout<<"    5)Exponent               15)Inverse Sin                               "<<"\n";
+	cout<<"    6)Number from percent    16)Inverse Cos                               "<<"\n";
+	cout<<"    7)Percent from number    17)Inverse Tan                                "<<"\n";
+	cout<<"    8)Absolute value         18)Inverse Cot                               "<<"\n";
+	cout<<"    9)Modulo(remainder)      19)Log                                       "<<"\n";
+	cout<<"    10)Square root           20)Log base 2                                "<<"\n";
+*/
+
+
+
+//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138);
+//gray
+//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+//black
+
+void welcome(void) {
+	switch (mChoice) {
+	case 1:
+
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n" << "    ";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138);
+		cout << "1)Addition";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+		cout << "               11)Sine           21)Log base 10              " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x               " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                  " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                                " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                                " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                                " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                        " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                 " << "\n";;
+		break;
+
+	case 2:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "2)Subtraction"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+		break;
+
+
+	case 3:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "3)Multiplication"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 4:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "4)Division"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 5:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "5)Exponent"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 6:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "6)Number from percent"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 7:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "7)Percent from number"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 8:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "8)Absolute value"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 9:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "9)Modulo(remainder)"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 10:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "10)Square root"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 11:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "11)Sine"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 12:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "12)Cosine"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 13:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "13)Tangent"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 14:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "14)Cotangent"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 15:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "15)Inverse Sin"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 16:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "16)Inverse Cos"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 17:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "17)Inverse Tan"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 18:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "18)Inverse Cot"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "                                " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 19:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)     "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << " 19)Log"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "                                       " << "\n";;
+		cout << "    10)Square root           19)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 20:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138);  cout << "20)Log base 2"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "                                " << "\n";;
+
+
+		break;
+
+
+	case 21:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "21)Log base 10"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 22:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "22)Log base x"; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10); cout << "              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	case 23:
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        "; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 138); cout << "23)History of calculactions" << "\n";; SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+
+
+		break;
+
+
+	default:
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+		cout << "\nBe on english keyboard layout to make menu work\nEsc -- exit Just More Than Scientific Calculator(menu only);\nW/S -- navigate menu;\nC   -- open console\n\n";  cout << "**************************************************************************" << "\n";;
+		cout << "              Just More Than Scientific Calculator (c) ArtyK              " << "\n";;
+		cout << "**************************************************************************" << "\n";;
+		cout << "    1)Addition               11)Sine           21)Log base 10             " << "\n";;
+		cout << "    2)Subtraction            12)Cosine         22)Log base x              " << "\n";;
+		cout << "    3)Multiplication         13)Tangent        23)History of calculactions" << "\n";;
+		cout << "    4)Division               14)Cotangent                                 " << "\n";;
+		cout << "    5)Exponent               15)Inverse Sin                               " << "\n";;
+		cout << "    6)Number from percent    16)Inverse Cos                               " << "\n";;
+		cout << "    7)Percent from number    17)Inverse Tan                                " << "\n";;
+		cout << "    8)Absolute value         18)Inverse Cot                               " << "\n";;
+		cout << "    9)Modulo(remainder)      19)Log                                       " << "\n";;
+		cout << "    10)Square root           20)Log base 2                                " << "\n";;
+		break;
+
+
+	}
+
+
+	// +, -, *, /, ^, % fr num, num fr %, |num|, %, sqrt, sin, cos, tan, cot, asin, acos, atan, acot, log(e), log(2), log(10), log(x)
+	//cot() = cos(x)/sin(x)
+	//acot() = atan(1/x)
+}
+
+
+
+
+
+void keyscan(void) {
+
+	x = _getch();
+	system("cls");
+	switch (x) {
+
+	case 87:
+		mChoice--;
+		if (mChoice < 1) {
+			mChoice = 23;
+		}
+		if (mChoice > 23) {
+			mChoice = 1;
+		}
+
+		break;
+
+	case 119:
+
+		mChoice--;
+		if (mChoice < 1) {
+			mChoice = 23;
+		}
+		if (mChoice > 23) {
+			mChoice = 1;
+		}
+		break;
+
+	case 83:
+		mChoice++;
+		if (mChoice < 1) {
+			mChoice = 23;
+		}
+		if (mChoice > 23) {
+			mChoice = 1;
+		}
+		break;
+
+	case 115:
+		mChoice++;
+		if (mChoice < 1) {
+			mChoice = 23;
+		}
+		if (mChoice > 23) {
+			mChoice = 1;
+		}
+		break;
+
+	case 27:
+		if (isMenuActive == 1) {
+			
+
+			exit(0);
+		}
+		else {
+			menu();
+		}
+		break;
+
+	case 13:
+		writetofile();
+		isMenuActive = false;
+		break;
+
+	case 10:
+		writetofile();
+		isMenuActive = false;
+		break;
+
+	case 67:
+		console();
+		break;
+
+	case 99:
+		console();
+		break;
+
+		
+
+
+	default:
+		break;
+	}
+}
+
+void addit(void) {
+
+	system("cls");
+	for (int i = 0; i < 2; i++) {
+		cout << textstrings[mChoice + mChoice - 2 + i];
+		isCorrect = false;
+		while (!isCorrect) {
+
+			cin >> num[i];
+			input();
+
+		}
+
+	}
+	result = num[0] + num[1];
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);
+	num2 = to_string(num[1]); result_log = to_string(result); resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+
+	returntosender();
+
+}
+void subtr(void) {
+
+	system("cls");
+	for (int i = 0; i < 2; i++) {
+		cout << textstrings[mChoice + mChoice - 2 + i];
+		isCorrect = false;
+		while (!isCorrect) {
+
+			cin >> num[i];
+			input();
+
+		}
+
+	}
+	result = num[0] - num[1];
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);
+	num2 = to_string(num[1]); result_log = to_string(result); resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void multi(void) {
+
+	system("cls");
+	for (int i = 0; i < 2; i++) {
+		cout << textstrings[mChoice + mChoice - 2 + i];
+		isCorrect = false;
+		while (!isCorrect) {
+
+			cin >> num[i];
+			input();
+
+		}
+
+	}
+	result = num[0] * num[1];
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);
+	num2 = to_string(num[1]); result_log = to_string(result); resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void divis(void) {
+
+	system("cls");
+	for (int i = 0; i < 2; i++) {
+		cout << textstrings[mChoice + mChoice - 2 + i];
+		isCorrect = false;
+		while (!isCorrect) {
+
+			cin >> num[i];
+			input();
+
+		}
+
+	}
+	result = num[0] / num[1];
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);
+	num2 = to_string(num[1]); result_log = to_string(result); resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void expon(void) {
+
+	system("cls");
+	for (int i = 0; i < 2; i++) {
+		cout << textstrings[mChoice + mChoice - 2 + i];
+		isCorrect = false;
+		while (!isCorrect) {
+
+			cin >> num[i];
+			input();
+
+		}
+
+	}
+	result = pow(num[0], num[1]);
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);
+	num2 = to_string(num[1]); result_log = to_string(result); resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void n_f_p(void) {
+
+	system("cls");
+	for (int i = 0; i < 2; i++) {
+		cout << textstrings[mChoice + mChoice - 2 + i];
+		isCorrect = false;
+		while (!isCorrect) {
+
+			cin >> num[i];
+			input();
+
+		}
+
+	}
+	result = (num[0] / 100) * num[1];
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n(or " << result * 100 << ")\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);
+	num2 = to_string(num[1]); result_log = to_string(result); resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void p_f_n(void) {
+
+	system("cls");
+	for (int i = 0; i < 2; i++) {
+		cout << textstrings[mChoice + mChoice - 2 + i];
+		isCorrect = 0;
+		while (!isCorrect) {
+
+			cin >> num[i];
+			input();
+
+		}
+
+	}
+	result = (num[1] * 100) / num[0];
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);
+	num2 = to_string(num[1]); result_log = to_string(result); resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void abs_v(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = abs(num[0]);
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);
+	writetofile(); _getch();
+	returntosender();
+}
+void modul(void) {
+
+	system("cls");
+	for (int i = 0; i < 2; i++) {
+		cout << textstrings[mChoice + mChoice - 2 + i];
+		isCorrect = 0;
+		while (!isCorrect) {
+
+			cin >> num[i];
+			input();
+
+		}
+
+	}
+	result = fmod((long double)num[0], num[1]);
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);
+	num2 = to_string(num[1]); result_log = to_string(result); resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void sq_rt(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = sqrt((long double)num[0]);
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);
+	writetofile(); _getch();
+	returntosender();
+}
+void sin_d(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = sin((long double)num[0]);
+	result_deg = sin((long double)num[0] * (pi / 180));
+	cout << "The result is: " << setprecision(12) << fixed << result << " as radians of entered, and " << result_deg << " as degrees of entered " << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);  resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void cos_d(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+
+	result = cos((long double)num[0]);
+	result_deg = cos((long double)num[0] * (pi / 180));
+	cout << "The result is: " << setprecision(12) << fixed << result << " as radians of entered, and " << result_deg << " as degrees of entered " << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);  resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void tan_d(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = tan((long double)num[0]);
+	result_deg = tan((long double)(num[0] * (pi / 180)));
+	cout << "The result is: " << setprecision(12) << fixed << result << " as radians of entered, and " << result_deg << " as degrees of entered " << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);  resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void cot_d(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = tan((long double)(pi / 2) - (num[0] * pi / 180));
+	result_deg = tan((long double)(pi / 2) - num[0]);
+	cout << "The result is: " << setprecision(12) << fixed << result << " as radians of entered, and " << result_deg << " as degrees of entered " << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);  resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void sin_i(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = asin((long double)num[0]);
+	result_deg = asin((long double)num[0]) * 180 / pi;
+	cout << "The result is: " << setprecision(12) << fixed << result << " radians, and " << result_deg << " degrees " << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);  resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void cos_i(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = acos((long double)num[0]);
+	result_deg = acos((long double)num[0]) * 180 / pi;
+	cout << "The result is: " << setprecision(12) << fixed << result << " radians, and " << result_deg << " degrees " << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);  resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void tan_i(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = atan((long double)num[0]);
+	result_deg = atan((long double)num[0]) * 180 / pi;
+	cout << "The result is: " << setprecision(12) << fixed << result << " radians, and " << result_deg << " degrees " << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);  resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void cot_i(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = atan((long double)1 / num[0]);
+	result_deg = atan((long double)1 / num[0]) * 180 / pi;
+	cout << "The result is: " << setprecision(12) << fixed << result << " radians, and " << result_deg << " degrees " << "\n\nPress any key to continue . . ."; num1 = to_string(num[0]); result_log = to_string(result);  resultdeg_log = to_string(result_deg);
+	writetofile(); _getch();
+	returntosender();
+}
+void log_e(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = log(num[0]);
+
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; _getch();
+	num1 = to_string(num[0]); result_log = to_string(result); writetofile();
+	returntosender();
+}
+void log_2(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = log2(num[0]);
+
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; _getch();
+	num1 = to_string(num[0]); result_log = to_string(result); writetofile();
+	returntosender();
+}
+void log_t(void) {
+
+	system("cls");
+	cout << textstrings[mChoice + mChoice - 2];
+	isCorrect = 0;
+	while (!isCorrect) {
+
+		cin >> num[0];
+		input();
+
+	}
+
+
+	result = log10(num[0]);
+
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; _getch();
+	num1 = to_string(num[0]); result_log = to_string(result); writetofile();
+	returntosender();
+}
+void log_x(void) {
+
+	system("cls");
+	for (int i = 0; i < 2; i++) {
+		cout << textstrings[mChoice + mChoice - 2 + i];
+		isCorrect = 0;
+		while (!isCorrect) {
+
+			cin >> num[i];
+			input();
+
+		}
+
+	}
+	result = (log(num[1]) / log(num[0]));
+	num1 = to_string(num[0]); result_log = to_string(result); writetofile();
+	cout << "The result is: " << setprecision(12) << fixed << result << "\n\nPress any key to continue . . ."; _getch();
+	returntosender();
+
+
+}
+
+
+void history(void) {
+
+	cout << "Sorry, mate, the thing is not implemented yet :/" << "\n\nPress any key to continue"; writetofile(); _getch();
+	returntosender();
+
+}
+
+
+
+void menu() {
+	system("cls");
+	gettime();
+	isMenuActive = 1;
+	if (isConsoleOpen == 1) {
+		datentime = getDtTm(buff);
+		filestr << "	[ " << datentime << " ] console:> $  User turned console on" << "\n";
+	}
+	isConsoleOpen = 0;
+	while (isMenuActive) {
+
+		welcome();
+		keyscan();
+
+	}
+	switch (mChoice) {
+	case 1:
+		addit();
+		break;
+
+	case 2:
+		subtr();
+		break;
+
+	case 3:
+		multi();
+		break;
+
+	case 4:
+		divis();
+		break;
+
+	case 5:
+		expon();
+		break;
+
+	case 6:
+		n_f_p();
+		break;
+
+	case 7:
+		p_f_n();
+		break;
+
+	case 8:
+		abs_v();
+		break;
+
+	case 9:
+		modul();
+		break;
+
+	case 10:
+		sq_rt();
+		break;
+
+	case 11:
+		sin_d();
+		break;
+
+	case 12:
+		cos_d();
+		break;
+
+	case 13:
+		tan_d();
+		break;
+
+	case 14:
+		cot_d();
+		break;
+
+	case 15:
+		sin_i();
+		break;
+
+	case 16:
+		cos_i();
+		break;
+
+	case 17:
+		tan_i();
+		break;
+
+	case 18:
+		cot_i();
+		break;
+
+
+	case 19:
+		log_e();
+		break;
+
+	case 20:
+		log_2();
+		break;
+
+	case 21:
+		log_t();
+		break;
+
+	case 22:
+		log_x();
+		break;
+
+
+
+
+
+
+	case 23:
+		history();
+		break;
+
+
+
+	default:
+		break;
+	}
+	menu();
+}
+
+
+int input() {
+	if (cin.fail() == false) {
+		isCorrect = true;
+	}
+	else {
+		while (std::cin.fail() == true)
+		{
+			filestr << "	[ " << datentime << " ] input:> $  User entered invalid character(s) in needed input" << "\n";
+			std::cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			std::cout << "Bad entry.  Enter a NUMBER: ";
+
+		}
+	}
+	return 0;
+}
+
+static char* getDtTm(char* buff) {
+	time_t t = time(0);
+	strftime(buff, DTTMSZ, DTTMFMT, localtime(&t));
+	return buff;
+}
+
+
+
+int startup(void) {
+	
+	fstream filestr;
+	//filestr.open("logs.txt", fstream::out | fstream::app);
+	filestr << "\n\nGenerated by Just More Than Scientific Calculator(JMTSC). Copyright © (C) 2020 Artemii Kozhemiak\n\nDo NOT modify.\nIf your program behaves unordinary, send a mail to <artyks.coding@gmail.com>\nand attach log file(logs.txt) and executable of that calculator, BUT if the \ncode is modified by you or other people(not me), i will NOT review that \nbehavior, its fully on your behalf.\n";
+	gettime();
+	Sleep(100);
+	filestr << logtext[0] << "\n";
+
+	
+
+
+		//make a batch file for restart
+		createbatch();
+
+
+
+
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+		//cout<<setprecision(14)<<fixed<<356%3;
+		menu();
+	
+		return 0;
+}
+
+
+
+void writetofile(void) {
+	gettime();
+	if (isMenuActive == 1) {
+		logi = mChoice;
+		i++;
+		historyact[i] = logtext[logi];
+		filestr << logtext[logi] << "\n";;
+	}
+	else
+	{
+		switch (mChoice)
+		{
+
+		case 1:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Addition : " + num1 + " and " + num2 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 2:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Subtraction : " + num1 + " and " + num2 + " = " + result_log + " ; \n";
+
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 3:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Multiplication : " + num1 + " and " + num2 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 4:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Division : " + num1 + " and " + num2 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 5:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Exponent : " + num1 + " in power of " + num2 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 6:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Number from percent : " + num1 + " as 100% and " + num2 + "% as " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 7:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Percent from number : " + num1 + " and " + num2 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 8:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Absolute value : " + num1 + " and " + num2 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 9:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Modulo(remainder) : " + num1 + " and " + num2 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 10:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Square root : " + num1 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 11:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Sine : " + num1 + " as radians" + " = " + result_log + " ; \n " + "	[ " + datentime + " ] calculations:> $  Sine: " + num1 + " as degrees" + " = " + resultdeg_log + " ; \n ";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 12:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Cosine : " + num1 + " as radians" + " = " + result_log + " ; \n " + "	[ " + datentime + " ] calculations:> $  Sine: " + num1 + " as degrees" + " = " + resultdeg_log + " ; \n ";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 13:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Tangent : " + num1 + " as radians" + " = " + result_log + " ; \n " + "	[ " + datentime + " ] calculations:> $  Sine: " + num1 + " as degrees" + " = " + resultdeg_log + " ; \n ";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 14:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Cotangent : " + num1 + " as radians" + " = " + result_log + " ; \n " + "	[ " + datentime + " ] calculations:> $  Sine: " + num1 + " as degrees" + " = " + resultdeg_log + " ; \n ";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 15:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Inverse Sine : " + num1 + " = " + result_log + " radians or " + resultdeg_log + "degrees ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 16:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Inverse Cosine : " + num1 + " = " + result_log + " radians or " + resultdeg_log + "degrees ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 17:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Inverse Tangent : " + num1 + " = " + result_log + " radians or " + resultdeg_log + "degrees ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 18:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Inverse Cotangent : " + num1 + " = " + result_log + " radians or " + resultdeg_log + "degrees ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 19:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Log base e : " + num1 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 20:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Log base 2 : " + num1 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 21:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Log base 10 : " + num1 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+		case 22:
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] calculations:> $  Log base x : " + num1 + " = " + result_log + " ; \n";
+			filestr << historyact[i] << "\n";;
+			break;
+
+
+		default:
+			break;
+		}
+	}
+}
+
+
+void gettime(void) {
+
+	logi = 0;
+
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] flow:> $  Program started ; \n";
+	datentime = getDtTm(buff);
+	logtext[logi] = logtext[logi] + "	[ " + datentime + " ] flow:> $  Loading variables and it's valus ; \n";
+	datentime = getDtTm(buff);
+	logtext[logi] = logtext[logi] + "	[ " + datentime + " ] flow:> $  Lodaded variables. ; \n";
+	datentime = getDtTm(buff);
+	logtext[logi] = logtext[logi] + "	[ " + datentime + " ] flow:> $  Program started Succesfully! ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Addition' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Subtraction' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Mulitiplication' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Division' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Exponent' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Number from percent' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Percent from number' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Absolute value' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Modulo(remainder)' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Square root' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Sine' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Cosine' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Tangent' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Cotangent' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Inverse Sin' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Inverse Cos' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Inverse Tan' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'HInverse Cot' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Log' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Log base 2' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Log base 10' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'Log base x' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Selected 'History of calculactions' ; \n";
+	logi++;
+
+	datentime = getDtTm(buff);
+	logtext[logi] = "	[ " + datentime + " ] menu:> $  User Pressed 'Esc' Exiting... ; \n";
+	logi++;
+
+
+}
+int console(void) {
+	createbatch();
+	isConsoleOpen = true;
+	isMenuActive = false;
+	system("cls");
+	cout << "\n\nJMTSC Console, version 1.0.0-release (i686-pc-jmstc)\nThese console commands are defined internally.  Type `help' to see command list.\nUse `info' to find out more about the calculator in general.\nUse `math' to find out more about commands not in 'help' list.\n";
+	datentime = getDtTm(buff);
+	filestr << "	[ " << datentime << " ] console:> $  User turned console on" << "\n";
+	for (;;) {
+		char acUserName[100];
+		DWORD nUserName = sizeof(acUserName);
+		GetUserNameA(acUserName, &nUserName);
+		char szBuffer[256];
+		DWORD dwSize = 256;
+		GetComputerNameA(szBuffer, &dwSize);
+
+		cout << endl << acUserName << "@" << szBuffer << ":~# ";
+		getline(cin, commandinput);
+		datentime = getDtTm(buff);
+		filestr << "	[ " << datentime << " ] console:> $  User entered: " << commandinput << "\n";
+
+		commandnum = consolecommand();
+
+
+
+		switch (commandnum)
+		{
+
+
+
+
+
+		case 1:
+			datentime = getDtTm(buff);
+			cout << "\nJust More Than Scientific Calculator\nCopyright(C) 2020 Artemii Kozhemiak(ArtyK / SuperArtyK)\n\nThis program is free software : you can redistribute it and /or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.If not, see < https://www.gnu.org/licenses/>. \n";
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Displaying application license..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Displaying application license...\n";
+			break;
+
+
+		case 2:
+			datentime = getDtTm(buff);
+			cout << "\nYes, i finally got an idea to make that! And it's hard to pull of, i say, as i need to implement\nall most used mathematical functions, and it's becoming slower to progress it, as i finished\neverything except that console and \"equation maker\" and solver, which again will be hard \nto do, as this is my first time doing that, but who cares, we need to start from something.\n\nThank you, for appreciation of my work, and i hope you will have a great day\nBy the way, this calculator works currently only for Windows. And i know that's the .exe file\nyou're using right now, but i mean the code. It compiles only for Windows in Visual Studio\n(yes i have tried Code::Blocks with it's GCC, don't hit mee)\nYou can track progress of this calculator at <https://github.com/SuperArtyK/scientific_calc>\n\nAgain thank you for using \"Just More Than Scientific Calculator\"\n";
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Displaying application info..." << "\n";
+
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Displaying application info...\n";
+			break;
+
+		case 3:
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			cout << "\nReturning to menu...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $ Returning to menu..." << "\n";
+
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Returning to menu....\n";
+			Sleep(500);
+
+			menu();
+			break;
+
+
+		case 4:
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			cout << "\nExiting...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Exiting..." << "\n";
+
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Exiting...\n";
+			Sleep(500);
+			remove("restart.bat");
+			exit(0);
+			break;
+
+
+
+
+		case 5:
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			cout << "\nClearing...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Clearing Console..." << "\n";
+
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Clearing Console...\n";
+			Sleep(200);
+
+			system("cls");
+			break;
+
+		case 6:
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			cout << "\nCan't \"bash\"\nPermission denied...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Can't \"bash\". Permission denied..." << "\n";
+
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Can't \"bash\". Permission denied...\n";
+			break;
+
+		case 7:
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			cout << "\nCan't \"sh\"\nPermission denied...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Can't \"sh\". Permission denied..." << "\n";
+
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Can't \"sh\". Permission denied...\n";
+			break;
+
+		case 8:
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			cout << "\nconsole: su: user root does not exist";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $ su: user root does not exist." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  su: user root does not exist.\n";
+			break;
+
+		case 9:
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $ Logging in as: user " << acUserName << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Logging in as: user " + acUserName + "...\n";
+			break;
+
+		case 34:
+			datentime = getDtTm(buff);
+			cout << changelog;
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Displaying JMTSC change log..." << "\n";
+
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Displaying JMTSC change log...\n";
+			break;
+
+
+
+		case 35:
+			datentime = getDtTm(buff);
+			cout << "\n\nJMTSC Console, version 1.0.0-release (i686-pc-jmstc)\nThese console commands are defined internally.  Type `help' to see command list.\nUse `info' to find out more about the calculator in general.\nUse `math' to find out more about commands not in 'help' list.\n";
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Displaying JMTSC console version..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Displaying JMTSC console version...\n";
+
+			break;
+
+		case 36:
+			vars();
+			break;
+
+
+			//math
+
+		case 11:
+			mChoice = 1;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			addit();
+			break;
+
+		case 12:
+			mChoice = 2;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			subtr();
+			break;
+
+		case 13:
+			mChoice = 3;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			multi();
+			break;
+
+		case 14:
+			mChoice = 4;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			divis();
+			break;
+
+		case 15:
+			mChoice = 5;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			expon();
+			break;
+
+		case 16:
+			mChoice = 6;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			n_f_p();
+			break;
+
+		case 17:
+			mChoice = 7;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			p_f_n();
+			break;
+
+		case 18:
+			mChoice = 8;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			abs_v();
+			break;
+
+		case 19:
+			mChoice = 9;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			modul();
+			break;
+
+		case 20:
+			mChoice = 10;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			sq_rt();
+			break;
+
+		case 21:
+			mChoice = 11;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			sin_d();
+			break;
+
+		case 22:
+			mChoice = 12;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			cos_d();
+			break;
+
+		case 23:
+			mChoice = 13;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			tan_d();
+			break;
+
+		case 24:
+			mChoice = 14;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			cot_d();
+			break;
+
+		case 25:
+			mChoice = 15;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			sin_i();
+			break;
+
+		case 26:
+			mChoice = 16;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			cos_i();
+			break;
+
+		case 27:
+			mChoice = 17;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			tan_i();
+			break;
+
+		case 28:
+			mChoice = 18;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			cot_i();
+			break;
+
+		case 29:
+			mChoice = 19;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			log_e();
+			break;
+
+		case 30:
+			mChoice = 20;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			log_2();
+			break;
+
+		case 31:
+			mChoice = 21;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			log_t();
+			break;
+
+		case 32:
+			mChoice = 22;
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as math function." << "\n";
+			cout << "\nLoading called math function...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Loading called math fucntuon..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( " + commandinput + " ) ...\n";
+			Sleep(500);
+
+			log_x();
+			break;
+
+
+		case 33:
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  User asked for restart. Restarting..." << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Clearing memory...DONE" << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Exiting loops...DONE" << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Exiting..." << "\n";
+
+
+
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  User asked for restart. Restarting...\n";
+			createbatch();
+			system("restart.bat");
+
+			Sleep(500);
+			cout << "\nExiting...";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Exiting..." << "\n";
+
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Exiting...\n";
+			Sleep(500);
+
+			//filestr.close();
+
+			exit(0);
+			break;
+
+
+
+
+			//help
+		case 0:
+			datentime = getDtTm(buff);
+			cout << "	\nCommand list:\nhelp     -- displaying this menu\nlicense  -- show program's license\ninfo     -- showing info about this program\nclear    -- clear screen\nmenu     -- return to the menu\nexit     -- exit Just More Than Scientific Calculator\nmath     -- show help menu with math functions(\"debug mode\" of menu)\nrestart  -- restart Just More Than Scientific Calculator ";
+			cout << "\nand some other linux commands that maybe will not work...\n(who knows?)";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Displaying help menu..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Displaying help menu...\n";
+			break;
+
+		case 10:
+			datentime = getDtTm(buff);
+			cout << "	\nMath(or menu) command list(some of them might not work yet):\naddit -- Addition\nsubtr -- Subtraction\nmult  -- Multiplication\ndiv   -- Division\nexp   -- Exponent\nnfp   -- Number from Percent\npfn   -- Percent from Number\nabs   -- Absolute Value\nmodul -- Modulo(remainder)\nsqrt  -- Square root\nsin   -- Sine\ncos   -- Cosine\ntan   -- Tangent\ncot   -- Cotangent\nasin  -- Inverse Sin\nacos  -- Inverse Cos\natan  -- Inverse Tan\nacot  -- Inverse Cot\nloge  -- Log base Euler\nlog2  -- Log base 2\nlog10 -- Log base 10\nlogx  -- Log base x\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Displaying \"math\" help menu..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Displaying \"math\" help menu...\n";
+			break;
+
+
+			//special cases
+
+			/*
+
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Loading called math fucntuon ( "+commandinput+" ) ...\n";
+			*/
+
+
+		case 127:
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << R"( " not found. type "help" for command list.)" << "\n";
+			cout << "\n\nconsole: " << commandinput << ": command not found \n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Command: \" " + commandinput + R"( " not found. type "help" for command list.)" + "\n";
+			break;
+
+		case 128:
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized as bash linux command." << "\n";
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Can't use bash linux in this console. Run bash first with \"bash\" command." << "\n";
+			cout << "\n\nconsole: " << commandinput << ": Can't use bash linux console in this console. Run bash first with \"bash\" command. \n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Command: \" " + commandinput + " \" recognized as bash linux command\n";
+			break;
+
+		case 129:
+			datentime = getDtTm(buff);
+			filestr << "	[ " << datentime << " ] console:> $  Command entered is empty. Skipping..." << "\n";
+			i++;
+			datentime = getDtTm(buff);
+			historyact[i] = "	[ " + datentime + " ] console:> $  Command entered is empty. Skipping...\n";
+			break;
+
+
+
+
+
+
+		default:
+			cout << "\n Unexpected fatal exception occurred\nSys_crash at address: " << &commandnum << "\nSys_crash at address: " << &commandinput;
+			Sleep(1500);
+			datentime = getDtTm(buff);
+
+			filestr << "\n	[ " << datentime << " ] console:> $  Unexpected fatal exception occurred\nSys_crash at address: " << &commandnum << "\nSys_crash at address: " << &commandinput << "\n";;
+
+
+
+			//filestr.close();
+
+			exit(0);
+			break;
+		}
+
+
+
+
+
+
+
+
+
+
+
+	}
+}
+
+
+
+
+int consolecommand(void) {
+
+
+
+
+
+
+	//help
+	if (commandinput == "help" || commandinput == "HELP") {
+
+		return 0;
+
+	}
+	if (commandinput == "math" || commandinput == "MATH") {
+
+		return 10;
+	}
+
+
+
+
+	//commands
+
+	if (commandinput == "license" || commandinput == "LICENSE") {
+
+		return 1;
+
+	}
+
+	if (commandinput == "info" || commandinput == "INFO") {
+
+		return 2;
+
+	}
+	else
+
+		if (commandinput == "menu" || commandinput == "MENU") {
+
+			return 3;
+
+		}
+
+	if (commandinput == "exit" || commandinput == "EXIT") {
+
+		return 4;
+
+	}
+	if (commandinput == "clear" || commandinput == "CLEAR") {
+
+		return 5;
+
+	}
+	if (commandinput == "restart" || commandinput == "RESTART") {
+
+		return 33;
+	}
+	if (commandinput == "changelog" || commandinput == "CHANGELOG") {
+
+		return 34;
+	}
+
+
+	if (commandinput == "version" || commandinput == "VERSION") {
+
+		return 35;
+	}
+	if (commandinput == "variables" || commandinput == "VARIABLES" || commandinput == "var" || commandinput == "VAR" || commandinput == "vars" || commandinput == "VARS") {
+
+		return 36;
+
+	}
+
+	//math functions
+	{
+		if (commandinput == "addit" || commandinput == "ADDIT") {
+
+			return 11;
+		}
+		if (commandinput == "subtr" || commandinput == "SUBTR") {
+
+			return 12;
+		}
+		if (commandinput == "mult" || commandinput == "MULT") {
+
+			return 13;
+		}
+		if (commandinput == "div" || commandinput == "DIV") {
+
+			return 14;
+		}
+		if (commandinput == "exp" || commandinput == "EXP") {
+
+			return 15;
+		}
+		if (commandinput == "nfp" || commandinput == "NFP") {
+
+			return 16;
+		}
+		if (commandinput == "pfn" || commandinput == "PFN") {
+
+			return 17;
+		}
+		if (commandinput == "abs" || commandinput == "ABS") {
+
+			return 18;
+		}
+		if (commandinput == "modul" || commandinput == "MODUL") {
+
+			return 19;
+		}
+		if (commandinput == "sqrt" || commandinput == "SQRT") {
+
+			return 20;
+		}
+		if (commandinput == "sin" || commandinput == "SIN") {
+
+			return 21;
+		}
+		if (commandinput == "cos" || commandinput == "COS") {
+
+			return 22;
+		}
+		if (commandinput == "tan" || commandinput == "TAN") {
+
+			return 23;
+		}
+		if (commandinput == "cot" || commandinput == "COT") {
+
+			return 24;
+		}
+		if (commandinput == "asin" || commandinput == "ASIN") {
+
+			return 25;
+		}
+		if (commandinput == "acos" || commandinput == "ACOS") {
+
+			return 26;
+		}
+		if (commandinput == "atan" || commandinput == "ATAN") {
+
+			return 27;
+		}
+		if (commandinput == "acot" || commandinput == "ACOR") {
+
+			return 28;
+		}
+		if (commandinput == "loge" || commandinput == "LOGE") {
+
+			return 29;
+		}
+		if (commandinput == "log2" || commandinput == "LOG2") {
+
+			return 30;
+		}
+		if (commandinput == "log10" || commandinput == "LOG10") {
+
+			return 31;
+		}
+		if (commandinput == "logx" || commandinput == "LOGX") {
+
+			return 32;
+		}
+	}
+
+	/*
+	if (commandinput == "" || commandinput == "") {
+
+		return 6;
+	}
+	if (commandinput == "" || commandinput == "") {
+
+		return 6;
+	}
+	if (commandinput == "" || commandinput == "") {
+
+		return 6;
+	}
+	if (commandinput == "" || commandinput == "") {
+
+		return 6;
+	}
+
+	*/
+
+
+
+
+
+
+	//special cases
+	//fake linux commands
+
+	{
+		if (commandinput == "bash" || commandinput == "BASH") {
+
+			return 6;
+		}
+		if (commandinput == "sh" || commandinput == "SH") {
+
+			return 7;
+		}
+		if (commandinput == "su" || commandinput == "SU") {
+
+			return 8;
+		}
+
+		if (commandinput == "user" || commandinput == "USER") {
+
+			return 9;
+		}
+		if (commandinput == "alias" || commandinput == "ALIAS") {
+
+			return 128;
+
+		}
+		if (commandinput == "bg" || commandinput == "BG") {
+
+			return 128;
+
+		}
+		if (commandinput == "bind" || commandinput == "BIND") {
+
+			return 128;
+
+		}
+		if (commandinput == "builtin" || commandinput == "BUILTIN") {
+
+			return 128;
+
+		}
+		if (commandinput == "caller" || commandinput == "CALLER") {
+
+			return 128;
+
+		}
+		if (commandinput == "command" || commandinput == "COMMAND") {
+
+			return 128;
+
+		}
+		if (commandinput == "compgen" || commandinput == "COMPGEN") {
+
+			return 128;
+
+		}
+		if (commandinput == "complete" || commandinput == "COMPLETE") {
+
+			return 128;
+
+		}
+		if (commandinput == "declare" || commandinput == "DECLARE") {
+
+			return 128;
+
+		}
+		if (commandinput == "dirs" || commandinput == "DIRS") {
+
+			return 128;
+
+		}
+		if (commandinput == "disown" || commandinput == "DISOWN") {
+
+			return 128;
+
+		}
+		if (commandinput == "echo" || commandinput == "ECHO") {
+
+			return 128;
+
+		}
+		if (commandinput == "enable" || commandinput == "ENABLE") {
+
+			return 128;
+
+		}
+		if (commandinput == "eval" || commandinput == "EVAL") {
+
+			return 128;
+
+		}
+		if (commandinput == "exec" || commandinput == "EXEC") {
+
+			return 128;
+
+		}
+		if (commandinput == "export" || commandinput == "EXPORT") {
+
+			return 128;
+
+		}
+		if (commandinput == "fc" || commandinput == "FC") {
+
+			return 128;
+
+		}
+		if (commandinput == "for" || commandinput == "FOR") {
+
+			return 128;
+
+		}
+		if (commandinput == "do" || commandinput == "DO") {
+
+			return 128;
+
+		}
+		if (commandinput == "function" || commandinput == "FUNCTION") {
+
+			return 128;
+
+		}
+		if (commandinput == "hash" || commandinput == "HASH") {
+
+			return 128;
+
+		}
+		if (commandinput == "history" || commandinput == "HISTORY") {
+
+			return 128;
+
+		}
+		if (commandinput == "jobs" || commandinput == "JOBS") {
+
+			return 128;
+
+		}
+		if (commandinput == "kill" || commandinput == "KILL") {
+
+			return 128;
+
+		}
+		if (commandinput == "let" || commandinput == "LET") {
+
+			return 128;
+
+		}
+		if (commandinput == "local" || commandinput == "LOCAL") {
+
+			return 128;
+
+		}
+		if (commandinput == "logout" || commandinput == "LOGOUT") {
+
+			return 128;
+
+		}
+		if (commandinput == "popd" || commandinput == "POPD") {
+
+			return 128;
+
+		}
+		if (commandinput == "printf" || commandinput == "PRINTF") {
+
+			return 128;
+
+		}
+		if (commandinput == "pushd" || commandinput == "PUSHD") {
+
+			return 128;
+
+		}
+		if (commandinput == "pwd" || commandinput == "PWD") {
+
+			return 128;
+
+		}
+		if (commandinput == "read" || commandinput == "READ") {
+
+			return 128;
+
+		}
+		if (commandinput == "readonly" || commandinput == "READONLY") {
+
+			return 128;
+
+		}
+		if (commandinput == "select" || commandinput == "SELECT") {
+
+			return 128;
+
+		}
+		if (commandinput == "shift" || commandinput == "SHIFT") {
+
+			return 128;
+
+		}
+		if (commandinput == "shopt" || commandinput == "SHOPT") {
+
+			return 128;
+
+		}
+		if (commandinput == "suspend" || commandinput == "SUSPEND") {
+
+			return 128;
+
+		}
+		if (commandinput == "test" || commandinput == "TEST") {
+
+			return 128;
+
+		}
+		if (commandinput == "time" || commandinput == "TIME") {
+
+			return 128;
+
+		}
+		if (commandinput == "times" || commandinput == "TIMES") {
+
+			return 128;
+
+		}
+		if (commandinput == "trap" || commandinput == "TRAP") {
+
+			return 128;
+
+		}
+		if (commandinput == "type" || commandinput == "TYPE") {
+
+			return 128;
+
+		}
+		if (commandinput == "typeset" || commandinput == "TYPESET") {
+
+			return 128;
+
+		}
+		if (commandinput == "ulimit" || commandinput == "ULIMIT") {
+
+			return 128;
+
+		}
+		if (commandinput == "umask" || commandinput == "UMASK") {
+
+			return 128;
+
+		}
+		if (commandinput == "unalias" || commandinput == "UNALIAS") {
+
+			return 128;
+
+		}
+		if (commandinput == "unset" || commandinput == "UNSET") {
+
+			return 128;
+
+		}
+		
+
+	}
+
+
+	if (commandinput == "" || commandinput == "") {
+
+		return 129;
+	}
+
+	else
+	{
+
+		return 127;
+	}
+
+
+}
+
+void returntosender() {
+
+	if (isConsoleOpen == true) {
+		console();
+	}
+	else
+	{
+		menu();
+	}
+
+}
+
+
+std::ostream& writeString(std::ostream& out, std::string const& s)
+{
+	for (auto ch : s)
+	{
+		switch (ch)
+		{
+		case '\'':
+			out << "\\'";
+			break;
+
+		case '\"':
+			out << "\\\"";
+			break;
+
+		case '\?':
+			out << "\\?";
+			break;
+
+		case '\\':
+			out << "\\\\";
+			break;
+
+		case '\a':
+			out << "\\a";
+			break;
+
+		case '\b':
+			out << "\\b";
+			break;
+
+		case '\f':
+			out << "\\f";
+			break;
+
+		case '\n':
+			out << "\\n";
+			break;
+
+		case '\r':
+			out << "\\r";
+			break;
+
+		case '\t':
+			out << "\\t";
+			break;
+
+		case '\v':
+			out << "\\v";
+			break;
+
+		default:
+			out << ch;
+		}
+	}
+
+	return out;
+}
+
+void vars() {
+	datentime = getDtTm(buff);
+	cout << "\n  Name         |    Type                               |    Size                  |   Memory address|    Value\n               |                                       |(only for arrays)         |                 |(only for variables)\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nDTTMFMT        |macro                                  |    --                    |        --" << tab_var << "| " << DTTMFMT << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nDTTMSZ         |macro                                  |    --                    |        --" << tab_var << "| " << DTTMSZ << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nfilestr        |class object of \"fstream\"              |    --                    |        0x" << &filestr << "|    --\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nbatch          |string                                 |    --                    |        0x" << &batch << "| "; writeString(cout, batch); cout << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \npath           |char array                             |depends on .exe path      |        0x" << &path << "| " << path << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nchangelog      |string                                 |    --                    |        0x" << &changelog << "| "; writeString(cout, changelog);
+
+	cout << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ncommandout     |string array                           |    128                   |        0x" << &commandout << "| "; writeString(cout, changelog);
+
+	cout << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nnum1           |string                                 |    --                    |        0x" << &num1 << "| "; writeString(cout, num1);
+
+	cout << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nnum2           |string                                 |    --                    |        0x" << &num2 << "| "; writeString(cout, num2);
+
+	cout << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nresult_log     |string                                 |    --                    |        0x" << &result_log << "| "; writeString(cout, result_log);
+
+	cout << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nresultdeg_log  |string                                 |    --                    |        0x" << &resultdeg_log << "| "; writeString(cout, resultdeg_log);
+
+	cout << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nlogtext        |string array                           |    65536                 |        0x" << &logtext << "| " << logtext << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ntextstrings    |string array                           |    45                    |        0x" << &textstrings << "| " << textstrings << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ndatentime      |string                                 |    --                    |        0x" << &datentime << "| ";  writeString(cout, datentime);
+
+	cout << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nhistoryact     |string array                           |    65536                 |        0x" << &historyact << "| " << historyact << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \narguments      |string array                           |    128                   |        0x" << &arguments << "| " << arguments << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ncommandinput   |string                                 |    --                    |        0x" << &commandinput << "| ";  writeString(cout, commandinput);
+
+	cout << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ni              |int                                    |    --                    |        0x" << &i << "| " << i << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nlogi           |int                                    |    --                    |        0x" << &logi << "| " << logi << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ncommandnum     |int                                    |    --                    |        0x" << &commandnum << "| " << commandnum << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nx              |int                                    |    --                    |        0x" << &x << "| " << x << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \naction         |int                                    |    --                    |        0x" << &action << "| " << action << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nmChoice        |int                                    |    --                    |        0x" << &mChoice << "| " << mChoice << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nbuff           |char array                             |  DTTMSZ marco(21)        |        0x" << &buff << "| " << buff << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nisCorrect      |bool                                   |    --                    |        0x" << &isCorrect << "| " << isCorrect << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nisMenuActive   |bool                                   |    --                    |        0x" << &isMenuActive << "| " << isMenuActive << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nisConsoleOpen  |bool                                   |    --                    |        0x" << &isConsoleOpen << "| " << isConsoleOpen << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nconsoleOnStart |bool                                   |    --                    |        0x" << &consoleOnStart << "| " << consoleOnStart << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nnum            |long double array                      |    2                     |        0x" << &num << "| " << num << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nresult         |long double                            |    --                    |        0x" << &result << "| " << result << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nresult_deg     |long double                            |    --                    |        0x" << &result_deg << "| " << result_deg << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \npi             |contstant long double                  |    --                    |        0x" << &pi << "| " << pi << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ne              |contstant long double                  |    --                    |        0x" << &e << "| " << e << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ngold_rat       |contstant long double                  |    --                    |        0x" << &gold_rat << "| " << gold_rat << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nsqrt2          |contstant long double                  |    --                    |        0x" << &sqrt2 << "| " << sqrt2 << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \neu_y           |contstant long double                  |    --                    |        0x" << &eu_y << "| " << eu_y << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \napery          |contstant long double                  |    --                    |        0x" << &apery << "| " << apery << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ncatalan        |contstant long double                  |    --                    |        0x" << &catalan << "| " << catalan << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nkh_lev         |contstant long double                  |    --                    |        0x" << &kh_lev << "| " << kh_lev << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nfeig_bir       |contstant long double                  |    --                    |        0x" << &feig_bir << "| " << feig_bir << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nmad_crys       |contstant long double                  |    --                    |        0x" << &mad_crys << "| " << mad_crys << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nwsa_data       |typedef struct object of \"WSADATA\"     |    --                    |        0x" << &wsa_data << "|  --\n---------------|---------------------------------------|--------------------------|          " << tab_var << "|\ntab_var        |string                                 |depends on system capacity|        0x" << &tab_var << "| " << tab_var;
+
+	filestr << "	[ " << datentime << " ] console:> $  Command: \" " << commandinput << " \" recognized." << "\n";
+	datentime = getDtTm(buff);
+	filestr << "	[ " << datentime << " ] console:> $  Displaying JMTSC console Variable list..." << "\n";
+	i++;
+	datentime = getDtTm(buff);
+	historyact[i] = "	[ " + datentime + " ] console:> $  Displaying JMTSC Variable list...\n";
+	filestr << "\n  Name         |    Type                               |    Size                  |   Memory address|    Value\n               |                                       |(only for arrays)         |                 |(only for variables)\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nDTTMFMT        |macro                                  |    --                    |        -- " << tab_var << "| " << DTTMFMT << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nDTTMSZ         |macro                                  |    --                    |        -- " << tab_var << "| " << DTTMSZ << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nfilestr        |class object of \"fstream\"              |    --                    |        0x" << &filestr << "|    --\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nbatch          |string                                 |    --                    |        0x" << &batch << "| "; writeString(filestr, batch); filestr << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \npath           |char array                             |depends on .exe path      |        0x" << &path << "| " << path << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nchangelog      |string                                 |    --                    |        0x" << &changelog << "| "; writeString(filestr, changelog);
+
+	filestr << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ncommandout     |string array                           |    128                   |        0x" << &commandout << "| "; writeString(filestr, changelog);
+
+	filestr << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nnum1           |string                                 |    --                    |        0x" << &num1 << "| "; writeString(filestr, num1);
+
+	filestr << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nnum2           |string                                 |    --                    |        0x" << &num2 << "| "; writeString(filestr, num2);
+
+	filestr << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nresult_log     |string                                 |    --                    |        0x" << &result_log << "| "; writeString(filestr, result_log);
+
+	filestr << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nresultdeg_log  |string                                 |    --                    |        0x" << &resultdeg_log << "| "; writeString(filestr, resultdeg_log);
+
+	filestr << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nlogtext        |string array                           |    65536                 |        0x" << &logtext << "| " << logtext << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ntextstrings    |string array                           |    45                    |        0x" << &textstrings << "| " << textstrings << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ndatentime      |string                                 |    --                    |        0x" << &datentime << "| ";  writeString(filestr, datentime);
+
+	filestr << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nhistoryact     |string array                           |    65536                 |        0x" << &historyact << "| " << historyact << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \narguments      |string array                           |    128                   |        0x" << &arguments << "| " << arguments << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ncommandinput   |string                                 |    --                    |        0x" << &commandinput << "| ";  writeString(filestr, commandinput);
+
+	filestr << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ni              |int                                    |    --                    |        0x" << &i << "| " << i << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nlogi           |int                                    |    --                    |        0x" << &logi << "| " << logi << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ncommandnum     |int                                    |    --                    |        0x" << &commandnum << "| " << commandnum << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nx              |int                                    |    --                    |        0x" << &x << "| " << x << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \naction         |int                                    |    --                    |        0x" << &action << "| " << action << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nmChoice        |int                                    |    --                    |        0x" << &mChoice << "| " << mChoice << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nbuff           |char array                             |  DTTMSZ marco(21)        |        0x" << &buff << "| " << buff << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nisCorrect      |bool                                   |    --                    |        0x" << &isCorrect << "| " << isCorrect << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nisMenuActive   |bool                                   |    --                    |        0x" << &isMenuActive << "| " << isMenuActive << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nisConsoleOpen  |bool                                   |    --                    |        0x" << &isConsoleOpen << "| " << isConsoleOpen << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nconsoleOnStart |bool                                   |    --                    |        0x" << &consoleOnStart << "| " << consoleOnStart << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nnum            |long double array                      |    2                     |        0x" << &num << "| " << num << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nresult         |long double                            |    --                    |        0x" << &result << "| " << result << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nresult_deg     |long double                            |    --                    |        0x" << &result_deg << "| " << result_deg << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \npi             |contstant long double                  |    --                    |        0x" << &pi << "| " << pi << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ne              |contstant long double                  |    --                    |        0x" << &e << "| " << e << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ngold_rat       |contstant long double                  |    --                    |        0x" << &gold_rat << "| " << gold_rat << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nsqrt2          |contstant long double                  |    --                    |        0x" << &sqrt2 << "| " << sqrt2 << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \neu_y           |contstant long double                  |    --                    |        0x" << &eu_y << "| " << eu_y << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \napery          |contstant long double                  |    --                    |        0x" << &apery << "| " << apery << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \ncatalan        |contstant long double                  |    --                    |        0x" << &catalan << "| " << catalan << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nkh_lev         |contstant long double                  |    --                    |        0x" << &kh_lev << "| " << kh_lev << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nfeig_bir       |contstant long double                  |    --                    |        0x" << &feig_bir << "| " << feig_bir << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nmad_crys       |contstant long double                  |    --                    |        0x" << &mad_crys << "| " << mad_crys << "\n---------------|---------------------------------------|--------------------------|          " << tab_var << "| \nwsa_data       |typedef struct object of \"WSADATA\"     |    --                    |        0x" << &wsa_data << "|  --\n---------------|---------------------------------------|--------------------------|          " << tab_var << "|\ntab_var        |string                                 |depends on system capacity|        0x" << &tab_var << "| " << tab_var << endl;
+
+
+
+}
+
+
+long double some = 10;
+
+
+
+int main(int argc, char** argv) {
+    srand(time(NULL));
+
+    if (argc > 1) {
+        string args = argv[1];
+        for (int i = 0; i < argc; ++i) {
+            if (args == "-console") {
+                consoleOnStart = true;
+            }
+
+        }
+    }
+    std::string str = argv[0];
+
+    //char* c = strcpy(new char[str.length() + 1], str.c_str());
+    cout << argv[0];
+    _getch();
+    path = argv[0];
+    batch = batch + string(path);
+    int random = rand() % 5;
+    HWND console = GetConsoleWindow();
+    RECT r;
+    GetWindowRect(console, &r); //stores the console's current dimensions
+
+    MoveWindow(console, r.left, r.top, 1440, 720, TRUE);
+    if (random < 2) {
+        SetConsoleTitle(TEXT("caclulaotr release v0..11"));
+        Sleep(1000);
+        SetConsoleTitle(TEXT("I'm sorry for misspelling"));
+        Sleep(1000);
+        SetConsoleTitle(TEXT("I meant saying:... "));
+        Sleep(500);
+    }
+    Sleep(500);
+    SetConsoleTitle(TEXT("Just, More than Scientific Calculator. Version release v1.0.1"));
+    //cout << "\254";
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    //system("start logoutput.exe");
+    filestr.open("logs.txt", fstream::out | fstream::app);
+    startup();
+
+   
+    return 0;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{6d1e84a7-aa03-4b25-8e29-07ab9d772e9b}</ProjectGuid>
+    <RootNamespace>myengine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>consoleprog</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <StackReserveSize>8388608</StackReserveSize>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <StackReserveSize>8388608</StackReserveSize>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <StackReserveSize>8388608</StackReserveSize>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <StackReserveSize>8388608</StackReserveSize>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="myengine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bits\algorithmfwd.h" />
+    <ClInclude Include="bits\allocated_ptr.h" />
+    <ClInclude Include="bits\allocator.h" />
+    <ClInclude Include="bits\alloc_traits.h" />
+    <ClInclude Include="bits\atomic_base.h" />
+    <ClInclude Include="bits\atomic_futex.h" />
+    <ClInclude Include="bits\atomic_lockfree_defines.h" />
+    <ClInclude Include="bits\atomic_word.h" />
+    <ClInclude Include="bits\basic_file.h" />
+    <ClInclude Include="bits\basic_ios.h" />
+    <ClInclude Include="bits\basic_string.h" />
+    <ClInclude Include="bits\boost_concept_check.h" />
+    <ClInclude Include="bits\c++0x_warning.h" />
+    <ClInclude Include="bits\c++allocator.h" />
+    <ClInclude Include="bits\c++config.h" />
+    <ClInclude Include="bits\c++io.h" />
+    <ClInclude Include="bits\c++locale.h" />
+    <ClInclude Include="bits\char_traits.h" />
+    <ClInclude Include="bits\codecvt.h" />
+    <ClInclude Include="bits\concept_check.h" />
+    <ClInclude Include="bits\cpp_type_traits.h" />
+    <ClInclude Include="bits\cpu_defines.h" />
+    <ClInclude Include="bits\ctype_base.h" />
+    <ClInclude Include="bits\ctype_inline.h" />
+    <ClInclude Include="bits\cxxabi_forced.h" />
+    <ClInclude Include="bits\cxxabi_init_exception.h" />
+    <ClInclude Include="bits\cxxabi_tweaks.h" />
+    <ClInclude Include="bits\enable_special_members.h" />
+    <ClInclude Include="bits\error_constants.h" />
+    <ClInclude Include="bits\exception.h" />
+    <ClInclude Include="bits\exception_defines.h" />
+    <ClInclude Include="bits\exception_ptr.h" />
+    <ClInclude Include="bits\extc++.h" />
+    <ClInclude Include="bits\forward_list.h" />
+    <ClInclude Include="bits\fs_dir.h" />
+    <ClInclude Include="bits\fs_fwd.h" />
+    <ClInclude Include="bits\fs_ops.h" />
+    <ClInclude Include="bits\fs_path.h" />
+    <ClInclude Include="bits\functexcept.h" />
+    <ClInclude Include="bits\functional_hash.h" />
+    <ClInclude Include="bits\gslice.h" />
+    <ClInclude Include="bits\gslice_array.h" />
+    <ClInclude Include="bits\gthr-default.h" />
+    <ClInclude Include="bits\gthr-posix.h" />
+    <ClInclude Include="bits\gthr-single.h" />
+    <ClInclude Include="bits\gthr.h" />
+    <ClInclude Include="bits\hashtable.h" />
+    <ClInclude Include="bits\hashtable_policy.h" />
+    <ClInclude Include="bits\hash_bytes.h" />
+    <ClInclude Include="bits\indirect_array.h" />
+    <ClInclude Include="bits\invoke.h" />
+    <ClInclude Include="bits\ios_base.h" />
+    <ClInclude Include="bits\localefwd.h" />
+    <ClInclude Include="bits\locale_classes.h" />
+    <ClInclude Include="bits\locale_conv.h" />
+    <ClInclude Include="bits\locale_facets.h" />
+    <ClInclude Include="bits\locale_facets_nonio.h" />
+    <ClInclude Include="bits\mask_array.h" />
+    <ClInclude Include="bits\memoryfwd.h" />
+    <ClInclude Include="bits\messages_members.h" />
+    <ClInclude Include="bits\move.h" />
+    <ClInclude Include="bits\nested_exception.h" />
+    <ClInclude Include="bits\node_handle.h" />
+    <ClInclude Include="bits\opt_random.h" />
+    <ClInclude Include="bits\ostream_insert.h" />
+    <ClInclude Include="bits\os_defines.h" />
+    <ClInclude Include="bits\parse_numbers.h" />
+    <ClInclude Include="bits\postypes.h" />
+    <ClInclude Include="bits\predefined_ops.h" />
+    <ClInclude Include="bits\ptr_traits.h" />
+    <ClInclude Include="bits\quoted_string.h" />
+    <ClInclude Include="bits\random.h" />
+    <ClInclude Include="bits\range_access.h" />
+    <ClInclude Include="bits\refwrap.h" />
+    <ClInclude Include="bits\regex.h" />
+    <ClInclude Include="bits\regex_automaton.h" />
+    <ClInclude Include="bits\regex_compiler.h" />
+    <ClInclude Include="bits\regex_constants.h" />
+    <ClInclude Include="bits\regex_error.h" />
+    <ClInclude Include="bits\regex_executor.h" />
+    <ClInclude Include="bits\regex_scanner.h" />
+    <ClInclude Include="bits\shared_ptr.h" />
+    <ClInclude Include="bits\shared_ptr_atomic.h" />
+    <ClInclude Include="bits\shared_ptr_base.h" />
+    <ClInclude Include="bits\slice_array.h" />
+    <ClInclude Include="bits\specfun.h" />
+    <ClInclude Include="bits\stdc++.h" />
+    <ClInclude Include="bits\stdtr1c++.h" />
+    <ClInclude Include="bits\std_abs.h" />
+    <ClInclude Include="bits\std_function.h" />
+    <ClInclude Include="bits\std_mutex.h" />
+    <ClInclude Include="bits\stl_algo.h" />
+    <ClInclude Include="bits\stl_algobase.h" />
+    <ClInclude Include="bits\stl_bvector.h" />
+    <ClInclude Include="bits\stl_construct.h" />
+    <ClInclude Include="bits\stl_deque.h" />
+    <ClInclude Include="bits\stl_function.h" />
+    <ClInclude Include="bits\stl_heap.h" />
+    <ClInclude Include="bits\stl_iterator.h" />
+    <ClInclude Include="bits\stl_iterator_base_funcs.h" />
+    <ClInclude Include="bits\stl_iterator_base_types.h" />
+    <ClInclude Include="bits\stl_list.h" />
+    <ClInclude Include="bits\stl_map.h" />
+    <ClInclude Include="bits\stl_multimap.h" />
+    <ClInclude Include="bits\stl_multiset.h" />
+    <ClInclude Include="bits\stl_numeric.h" />
+    <ClInclude Include="bits\stl_pair.h" />
+    <ClInclude Include="bits\stl_queue.h" />
+    <ClInclude Include="bits\stl_raw_storage_iter.h" />
+    <ClInclude Include="bits\stl_relops.h" />
+    <ClInclude Include="bits\stl_set.h" />
+    <ClInclude Include="bits\stl_stack.h" />
+    <ClInclude Include="bits\stl_tempbuf.h" />
+    <ClInclude Include="bits\stl_tree.h" />
+    <ClInclude Include="bits\stl_uninitialized.h" />
+    <ClInclude Include="bits\stl_vector.h" />
+    <ClInclude Include="bits\streambuf_iterator.h" />
+    <ClInclude Include="bits\stream_iterator.h" />
+    <ClInclude Include="bits\stringfwd.h" />
+    <ClInclude Include="bits\time_members.h" />
+    <ClInclude Include="bits\uniform_int_dist.h" />
+    <ClInclude Include="bits\unique_ptr.h" />
+    <ClInclude Include="bits\unordered_map.h" />
+    <ClInclude Include="bits\unordered_set.h" />
+    <ClInclude Include="bits\uses_allocator.h" />
+    <ClInclude Include="bits\valarray_after.h" />
+    <ClInclude Include="bits\valarray_array.h" />
+    <ClInclude Include="bits\valarray_before.h" />
+    <ClInclude Include="include.hpp" />
+    <ClInclude Include="log.hpp" />
+    <ClInclude Include="screen.hpp" />
+    <ClInclude Include="sound.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bits\basic_ios.tcc" />
+    <None Include="bits\basic_string.tcc" />
+    <None Include="bits\deque.tcc" />
+    <None Include="bits\forward_list.tcc" />
+    <None Include="bits\fstream.tcc" />
+    <None Include="bits\istream.tcc" />
+    <None Include="bits\list.tcc" />
+    <None Include="bits\locale_classes.tcc" />
+    <None Include="bits\locale_facets.tcc" />
+    <None Include="bits\locale_facets_nonio.tcc" />
+    <None Include="bits\ostream.tcc" />
+    <None Include="bits\random.tcc" />
+    <None Include="bits\regex.tcc" />
+    <None Include="bits\regex_automaton.tcc" />
+    <None Include="bits\regex_compiler.tcc" />
+    <None Include="bits\regex_executor.tcc" />
+    <None Include="bits\regex_scanner.tcc" />
+    <None Include="bits\sstream.tcc" />
+    <None Include="bits\streambuf.tcc" />
+    <None Include="bits\string_view.tcc" />
+    <None Include="bits\valarray_array.tcc" />
+    <None Include="bits\vector.tcc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
