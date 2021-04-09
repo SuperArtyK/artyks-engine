@@ -1,0 +1,2 @@
+D:\CODING\myengine\Debug\consoleprog.exe
+D:\CODING\myengine\Debug\consoleprog.pdb
