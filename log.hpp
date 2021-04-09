@@ -10,7 +10,7 @@
 //     //even on windows, use forward slash for the subdirectory dividing
 //     
 //     filelog mylog2;
-//     //without any string value("string"), it will default to log path ./logs/
+//     //without any std::string value("std::string"), it will default to log path ./logs/
 //     //in the same directory as executable
 //     //again it will type in log what you feed it
 //     
@@ -49,150 +49,124 @@
 
 //#include "include.hpp"//includes EVERYTHING that I need
 #include <iostream>
-#include <string>
+#include <thread>
 #include <fstream>
-#include <filesystem>
-#include <chrono>
-using namespace std;
+//using namespace std;
 
-const int maxtries = 10000;
+//const int maxtries = 10000;
 
 class filelog {
 
 public:
+	bool dev;//for debug information
+	filelog();
 
-	filelog() : datentime(""), logpath("logs/") {
-		createdir(logpath);
-		filenam = logpath + "LOG_" + logdate() + ".log";
-	}
+	filelog(std::string pathtolog);
+	//int changelogpath(std::string newlogpath);
+	//filelog& operator=(std::string differentpath);
 
-
-	filelog(string pathtolog) : datentime(""), logpath(pathtolog) {
-		if (logpath[logpath.length() - 1] != '/' || logpath[logpath.length() - 1] != '\\') {
-			logpath += '/';
-		}
-		createdir(logpath);
-		filenam = logpath + "LOG_" + logdate() + ".log";
-
-
-	}
 	~filelog() {
-
+		if(threadstarted)
+		stoplogging();
 
 	}
 	//auto asyncbeep = std::async(std::launch::async, [] { Beep(1000, 5000); });
 
 
-	int writetolog(string messg, int type = 0, string prog_module = "main") {//writes directly to log file
-		//auto start = chrono::high_resolution_clock::now();
-		//type 0 - info, 1-warn, 2-err, 3-fatal err
-		//prog_module - module of the program that message is being sent from
-		if (openfile()) {
-			MessageBoxA(0, "FATAL ERROR:Could not open file for logging!\nThe program will now exit.", "FATAL ERROR:Filelog", MB_OK | MB_ICONERROR);
-			exit(1);
-
-		}
-		
-		string write;
-		write = "[ " + currentDateTime() + " ] [";
-		//vector<char> vchar;
-		filestr.write(write.c_str(), write.length());
-		switch (type)
-		{
-
-
-		case 1:
-			write = "WARN";
-			break;
-
-		case 2:
-			write = "ERROR";
-			break;
-
-		case 3:
-			write = "FATAL ERROR";
-			break;
-
-		default:
-			write = "INFO";
-			break;
-		}
-		write += "] [" + prog_module + "]: " + messg + "\n";
-		filestr.write(write.c_str(), write.length());
-		if (closefile()) {
-			MessageBoxA(0, "WARN:Trying to close not opened file", "WARN:Filelog", MB_OK | MB_ICONWARNING);
-		}
-// 		auto end = chrono::high_resolution_clock::now();
-// 		double time_taken =
-// 			chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+// 	int writetolog(std::string messg, int type = 0, std::string prog_module = "main") {//writes directly to log file
+// 		//auto start = chrono::high_resolution_clock::now();
+// 		//type 0 - info, 1-warn, 2-err, 3-fatal err
+// 		//prog_module - module of the program that message is being sent from
+// 		
+// 		std::string write;
+// 		write = "[ " + currentDateTime() + " ] [";
+// 		//vector<char> vchar;
+// 		filestr.write(write.c_str(), write.length());
+// 		switch (type)
+// 		{
 // 
-// 		time_taken *= 1e-9;
-// 		cout << "Time taken by program is : " << fixed
-// 			<< time_taken << setprecision(9);
-// 		cout << " sec" << endl;
-		
-		return 0;
+// 		case 0:
+// 			write = "INFO";
+// 			break;
+// 
+// 
+// 		case 1:
+// 			write = "WARN";
+// 			break;
+// 
+// 		case 2:
+// 			write = "ERROR";
+// 			break;
+// 
+// 		case 3:
+// 			write = "FATAL ERROR";
+// 			break;
+// 
+// 		default:
+// 			
+// 			break;
+// 		}
+// 		write += "] [" + prog_module + "]: " + messg + "\n";
+// 		filestr.write(write.c_str(), write.length());
+// 		
+// // 		auto end = chrono::high_resolution_clock::now();
+// // 		double time_taken =
+// // 			chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+// // 
+// // 		time_taken *= 1e-9;
+// // 		cout << "Time taken by program is : " << fixed
+// // 			<< time_taken << setprecision(9);
+// // 		cout << " sec" << endl;
+// 		
+// 		return 0;
+// 
+// 	}
 
-	}
-
+	int writetolog(std::string messg, int type = 0, std::string prog_module = "main");
+	int stoplogging();
+	int startlogging();
 	
 	
-	
-
 private:
-	
+	//functions
+	bool stoplog;//flag that for stopping/opening logging session
+	int mainthread();
+	int movetoendSTR(std::string arr[], int n, int pos);
+	int movetoendINT(int arr[], int n, int pos);
+
 	//date/time
-	const std::string currentDateTime() {
-		time_t now = time(0);
-		struct tm tstruct;
-		char buff[80];
-		//tstruct = *localtime(&now);
-		localtime_s(&tstruct, &now);
-		strftime(buff, sizeof(buff), "%Y-%m-%d.%X", &tstruct);
+	const std::string currentDateTime();
 
-		return buff;
-	}
-	string datentime;//stores date/time data
-	string logdate() {
-		string temp = currentDateTime(); 
-		string temp2;
-		short i = 0;
-		while (temp[i] != '.') {
-			temp2 += temp[i];
-			i++;
-		}
-		return temp2;
-	}// date of the log file creation, so we have one log file per execution
+	std::string logdate();
 
-	string filenam;
 
-	fstream filestr;//file "editor"
-	string logpath;//log path variable
-	int createdir(string pathtofile) {//creates directories of the path if they dont exist
-		std::filesystem::create_directories(pathtofile);
-		return 0;
-	}
-	int openfile() {
-		//a crutch to showing the data in file instantly, as fstream has some kind of buffer
-		//so you need to close file after writing to it, so the data will update
-		//cout << filenam << endl;
-		filestr.open(filenam.c_str(), fstream::out | fstream::app);
-		if (filestr.is_open()) {
-			return 0;
-		}
-		return 1;
-	}
-	int closefile() {
-		if (filestr.is_open()) {
-			filestr.close();
-			return 0;
-		}
-		return 1;
-	}
+	int createdir(std::string pathtofile);
+	int openfile();
+	int closefile();
+
+
+	//vars
+	std::string datentime;//stores date/time data
+	std::string filenam;
+	std::fstream filestr;//file "editor"
+	std::string logpath;//log path variable
+	bool threadstarted;
+	std::thread logthread;
+	
+
+	//logging vars
+	const int maxmessgcount = 100;
+	std::string messg[100];
+	int messgcount;
+	int type[100];
+	std::string prog_module[100];
+
+
+	
 
 
 };
-filelog deflogger;//default logger
+inline  filelog deflogger;//default logger
 
 
 

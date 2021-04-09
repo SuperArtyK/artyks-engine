@@ -14,6 +14,7 @@
 #include <afx.h>
 #include <afxwin.h>
 #include "log.hpp"
+#include <string>
 int frequency, dur;
 class Sound
 {
@@ -64,7 +65,7 @@ Sound::Sound(filelog& logarg)
 
 void Sound::MakeSound(int freq, int time)
 {
-	logptr->writetolog("Making sound " + to_string(freq) + " " + to_string(time), 0, "Sound System");
+	logptr->writetolog("Making sound " + std::to_string(freq) + " " + std::to_string(time), 0, "Sound System");
 	mkSound = true;
 	frequency = freq;
 	dur = time;

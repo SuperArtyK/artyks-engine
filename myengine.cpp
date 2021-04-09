@@ -10,16 +10,36 @@ using namespace std;
 
 int main()
 {
-	
-	Sound mysound;
-	mysound.MakeSound(400, 10000);
-	scrolltitle("Title", 500);
-	for (int i = 0; i < 1000; i++) {
+// 	_getch();
+// 	Sound mysound;
+// 	
+// 	setFont(10, 14);
+// 	setScreenSize(12, 10);
+// 	for (int i = 0; i < 1000; i++) {
+// 
+// 		cout << i << "\n";
+// 		Sleep(50);
+// 	}
 
-		cout << i << "\n";
-		Sleep(50);
-	}
-	
+	filelog mylog("logs1/");
+	mylog.dev = true;
+	mylog.writetolog("log1 is working");
+	mylog.writetolog("log2 is working");
+	mylog.writetolog("log3 is working");
+	mylog.writetolog("log4 is working");
+	mylog.writetolog("log5 is working");
+	mylog.writetolog("log6 is working");
+	mylog.writetolog("log7 is working");
+	mylog.writetolog("log8 is working");
+	mylog.writetolog("log9 is working");
+	mylog.writetolog("log10 is working");
+	mylog.writetolog("log11 is working");
+
+// 	for (int i = 0; i < 10000; i++) {
+// 
+// 		cout << i << endl;
+// 		Sleep(100);
+// 	}
 	_getch();
 }
 
