@@ -3,6 +3,125 @@
 #ifndef FILELOG
 #define FILELOG
 
+//var name cheatsheet
+/*
+<scope/type>_<const/array, if it is>_<datatype><Name>
+
+EX:
+mpb_bDev					 | gi_flgDeflogger	  | mpr_vec_strMessg	   | ml_strPathtolog
+m:member; pb:public; b:bool; | g:global; i:inline | pr:private; vec:vector | l:local
+
+b bool
+i int
+c char
+ll long long (int)
+ull unsigned long long (int)/uint64_t
+ld long double
+trd thread
+fst fstream
+cst const
+flg filelog
+arr array
+vec vector
+ptr pointer
+
+etc..
+*/
+
+//#include "include.hpp"//includes EVERYTHING that I need
+#include <iostream>
+#include <thread>
+#include <fstream>
+#include <vector>
+#include <string>
+
+using std::vector;
+
+class filelog {
+
+public:
+	bool mpb_bDev;//for debug information
+	filelog();
+
+	filelog(std::string ml_strPathtolog);
+	//int changelogpath(std::string newlogpath);
+	//filelog& operator=(std::string differentpath);
+
+	~filelog() {
+		if(mpr_bThreadstarted)
+		stoplogging();
+
+	}
+	
+
+
+
+
+	int writetolog(std::string messg = "", int type = 0, std::string prog_module = "main");
+	int stoplogging();
+	int startlogging();
+	int mainthread();
+	
+private:
+	//functions
+	bool mpr_bStoplog;//flag that for stopping/opening logging session
+	
+	int movetoendSTR(std::string arr[], int n, int pos);
+	int movetoendINT(int arr[], int n, int pos);
+
+			//date/time
+	const std::string currentDateTime();
+	std::string logdate();
+	int createdir(std::string pathtofile);
+	int openfile();
+	int closefile();
+	
+	//misc
+	size_t objsize() {
+		size_t temp = sizeof(*this) + mpr_vec_strMessg.capacity() + mpr_vec_iLogtype.capacity() + mpr_vec_strProg_module.capacity();
+		return temp;
+	}
+	bool vectorcheck() {
+
+		return (!mpr_vec_strMessg.empty() && !mpr_vec_iLogtype.empty() && !mpr_vec_strProg_module.empty());
+	}
+
+	//vars
+	std::string mpr_strDatentime;//stores date/time data
+	std::string mpr_strFilename;
+	std::fstream mpr_fstFilestr;//file "editor"
+	std::string mpr_strLogpath;//log path variable
+	bool mpr_bThreadstarted;
+	std::thread mpr_trdLogthread;
+	
+
+			
+	//const int mpr_cst_iMaxmessgcount = 256;
+// 	std::string mpr_arr_strMessg[256];
+
+	//logging vars
+	vector<std::string> mpr_vec_strMessg;// = vector<std::string>(1, "Starting new logging session");
+// 	int mpr_arr_iLogtype[256];
+//  	std::string mpr_arr_strProg_module[256];
+	uint64_t mpr_ullMessgcount;
+	vector<int> mpr_vec_iLogtype;// = vector<int>(1, 0);
+ 	vector <std::string> mpr_vec_strProg_module;// = vector<std::string>(1, "main");
+	
+	
+
+	//misc
+	long double mpr_ldEntrycount;
+	//long double mpr_ldWriteiterat = 0;
+};
+inline  filelog gi_flgDeflogger;//default logger
+
+
+
+
+
+#endif
+
+
 //     example how to use :
 //     
 //     filelog mylog("path/to/log");//this creates an obj from log class
@@ -42,135 +161,4 @@
 //     [2021 - 04 - 07.09:55 : 32][FATAL ERROR][Game engine] : This is fatal error
 // 
 
-
-
-
-
-
-//#include "include.hpp"//includes EVERYTHING that I need
-#include <iostream>
-#include <thread>
-#include <fstream>
-//using namespace std;
-
-//const int maxtries = 10000;
-
-class filelog {
-
-public:
-	bool dev;//for debug information
-	filelog();
-
-	filelog(std::string pathtolog);
-	//int changelogpath(std::string newlogpath);
-	//filelog& operator=(std::string differentpath);
-
-	~filelog() {
-		if(threadstarted)
-		stoplogging();
-
-	}
-	//auto asyncbeep = std::async(std::launch::async, [] { Beep(1000, 5000); });
-
-
-// 	int writetolog(std::string messg, int type = 0, std::string prog_module = "main") {//writes directly to log file
-// 		//auto start = chrono::high_resolution_clock::now();
-// 		//type 0 - info, 1-warn, 2-err, 3-fatal err
-// 		//prog_module - module of the program that message is being sent from
-// 		
-// 		std::string write;
-// 		write = "[ " + currentDateTime() + " ] [";
-// 		//vector<char> vchar;
-// 		filestr.write(write.c_str(), write.length());
-// 		switch (type)
-// 		{
-// 
-// 		case 0:
-// 			write = "INFO";
-// 			break;
-// 
-// 
-// 		case 1:
-// 			write = "WARN";
-// 			break;
-// 
-// 		case 2:
-// 			write = "ERROR";
-// 			break;
-// 
-// 		case 3:
-// 			write = "FATAL ERROR";
-// 			break;
-// 
-// 		default:
-// 			
-// 			break;
-// 		}
-// 		write += "] [" + prog_module + "]: " + messg + "\n";
-// 		filestr.write(write.c_str(), write.length());
-// 		
-// // 		auto end = chrono::high_resolution_clock::now();
-// // 		double time_taken =
-// // 			chrono::duration_cast<chrono::nanoseconds>(end - start).count();
-// // 
-// // 		time_taken *= 1e-9;
-// // 		cout << "Time taken by program is : " << fixed
-// // 			<< time_taken << setprecision(9);
-// // 		cout << " sec" << endl;
-// 		
-// 		return 0;
-// 
-// 	}
-
-	int writetolog(std::string messg, int type = 0, std::string prog_module = "main");
-	int stoplogging();
-	int startlogging();
-	
-	
-private:
-	//functions
-	bool stoplog;//flag that for stopping/opening logging session
-	int mainthread();
-	int movetoendSTR(std::string arr[], int n, int pos);
-	int movetoendINT(int arr[], int n, int pos);
-
-	//date/time
-	const std::string currentDateTime();
-
-	std::string logdate();
-
-
-	int createdir(std::string pathtofile);
-	int openfile();
-	int closefile();
-
-
-	//vars
-	std::string datentime;//stores date/time data
-	std::string filenam;
-	std::fstream filestr;//file "editor"
-	std::string logpath;//log path variable
-	bool threadstarted;
-	std::thread logthread;
-	
-
-	//logging vars
-	const int maxmessgcount = 100;
-	std::string messg[100];
-	int messgcount;
-	int type[100];
-	std::string prog_module[100];
-
-
-	
-
-
-};
-inline  filelog deflogger;//default logger
-
-
-
-
-
-#endif
 
