@@ -5,6 +5,7 @@
 #if not defined _DEBUG
 #define _SECURE_SCL 0
 #define _HAS_ITERATOR_DEBUGGING 0
+
 #endif
 //#include "sound.hpp"
 #include "screen.hpp"
@@ -45,7 +46,7 @@ int main()
 // 	}
 
 	filelog mylog("logs1/");
-	mylog.mpb_bDev = true;
+	//mylog.m_bDev_cout = true;
 	mylog.writetolog("log1 is working");
 	mylog.writetolog("log2 is working");
 	mylog.writetolog("log3 is working");

@@ -5,11 +5,11 @@
 
 //var name cheatsheet
 /*
-<scope/type>_<const/array, if it is>_<datatype><Name>
+<scope>_<datatype><Name>
 
 EX:
-mpb_bDev					 | gi_flgDeflogger	  | mpr_vec_strMessg	   | ml_strPathtolog
-m:member; pb:public; b:bool; | g:global; i:inline | pr:private; vec:vector | l:local
+m_bDev          |g_flgDeflogger|m_strMessg|l_strPathtolog
+m:member;b:bool;|g:global;     |vec:vector|l:local
 
 b bool
 i int
@@ -24,6 +24,8 @@ flg filelog
 arr array
 vec vector
 ptr pointer
+lpvd lpvoid
+
 
 etc..
 */
@@ -34,65 +36,73 @@ etc..
 #include <fstream>
 #include <vector>
 #include <string>
+#include "screen.hpp"
+
 
 using std::vector;
+using std::string;
+using std::atomic;
+
 
 class filelog {
 
 public:
-	bool mpb_bDev;//for debug information
+	atomic<bool> m_bDev_cout;//for debug information; outputs the info to main console
+	//WARN: MAY CAUSE MEMORY LEAK IF MORE THAN 1 THREADS ARE OUTPUTTING!
+	atomic<bool> m_bDev_log;//for debug information; outputs debug filelog info to current log
+
 	filelog();
 
-	filelog(std::string ml_strPathtolog);
+	filelog(std::string l_strPathtolog);
 	//int changelogpath(std::string newlogpath);
 	//filelog& operator=(std::string differentpath);
 
 	~filelog() {
-		if(mpr_bThreadstarted)
+		if(m_bThreadstarted)
 		stoplogging();
 
 	}
-	
+	void debugConOut();//outputs debug messages to console
 
 
 
 
-	int writetolog(std::string messg = "", int type = 0, std::string prog_module = "main");
+
+	int writetolog(std::string l_strMessg = "", int l_iType = 0, std::string l_strProg_module = "main");
 	int stoplogging();
 	int startlogging();
 	int mainthread();
 	
 private:
 	//functions
-	bool mpr_bStoplog;//flag that for stopping/opening logging session
+	atomic<bool> m_bStoplog;//flag that for stopping/opening logging session
 	
-	int movetoendSTR(std::string arr[], int n, int pos);
-	int movetoendINT(int arr[], int n, int pos);
+	
 
 			//date/time
 	const std::string currentDateTime();
 	std::string logdate();
-	int createdir(std::string pathtofile);
+	int createdir(const char *pathtofile);
 	int openfile();
 	int closefile();
 	
 	//misc
 	size_t objsize() {
-		size_t temp = sizeof(*this) + mpr_vec_strMessg.capacity() + mpr_vec_iLogtype.capacity() + mpr_vec_strProg_module.capacity();
+		size_t temp = sizeof(*this) + m_strMessg.capacity() + m_iLogtype.capacity() + m_strProg_module.capacity();
 		return temp;
 	}
 	bool vectorcheck() {
 
-		return (!mpr_vec_strMessg.empty() && !mpr_vec_iLogtype.empty() && !mpr_vec_strProg_module.empty());
+		return (!m_strMessg.empty() && !m_iLogtype.empty() && !m_strProg_module.empty());
 	}
 
 	//vars
-	std::string mpr_strDatentime;//stores date/time data
-	std::string mpr_strFilename;
-	std::fstream mpr_fstFilestr;//file "editor"
-	std::string mpr_strLogpath;//log path variable
-	bool mpr_bThreadstarted;
-	std::thread mpr_trdLogthread;
+	std::string m_strDatentime;//stores date/time data
+	std::string m_strFilename;
+	std::fstream m_fstFilestr;//file "editor"
+	std::string m_strLogpath;//log path variable
+	bool m_bThreadstarted;
+	std::thread m_trdLogthread;
 	
 
 			
@@ -100,20 +110,20 @@ private:
 // 	std::string mpr_arr_strMessg[256];
 
 	//logging vars
-	vector<std::string> mpr_vec_strMessg;// = vector<std::string>(1, "Starting new logging session");
+	vector<std::string> m_strMessg;// = vector<std::string>(1, "Starting new logging session");
 // 	int mpr_arr_iLogtype[256];
 //  	std::string mpr_arr_strProg_module[256];
-	uint64_t mpr_ullMessgcount;
-	vector<int> mpr_vec_iLogtype;// = vector<int>(1, 0);
- 	vector <std::string> mpr_vec_strProg_module;// = vector<std::string>(1, "main");
+	uint64_t m_ullMessgcount;
+	vector<int> m_iLogtype;// = vector<int>(1, 0);
+ 	vector <std::string> m_strProg_module;// = vector<std::string>(1, "main");
 	
 	
 
 	//misc
-	long double mpr_ldEntrycount;
+	long double m_ldEntrycount;
 	//long double mpr_ldWriteiterat = 0;
 };
-inline  filelog gi_flgDeflogger;//default logger
+inline  filelog g_flgDeflogger;//default logger
 
 
 

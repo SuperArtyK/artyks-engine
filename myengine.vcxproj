@@ -287,7 +287,7 @@
     <ClInclude Include="include.hpp" />
     <ClInclude Include="log.hpp" />
     <ClInclude Include="screen.hpp" />
-    <ClInclude Include="sound.hpp" />
+    <ClInclude Include="oldsound.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bits\basic_ios.tcc" />

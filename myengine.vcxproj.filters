@@ -419,7 +419,7 @@
     <ClInclude Include="screen.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sound.hpp">
+    <ClInclude Include="oldsound.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

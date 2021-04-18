@@ -5,8 +5,38 @@
 #include "include.hpp"
 using namespace std;
 
-//set of funcs(and vars) that work with console window
+//var name cheatsheet
+/*
+<scope>_<datatype><Name>
 
+EX:
+m_bDev          |g_flgDeflogger|m_strMessg|l_strPathtolog
+m:member;b:bool;|g:global;     |vec:vector|l:local
+
+b bool
+i int
+c char
+ll long long (int)
+ull unsigned long long (int)/uint64_t
+ld long double
+trd thread
+fst fstream
+cst const
+flg filelog
+arr array
+vec vector
+ptr pointer
+lpvd lpvoid
+
+
+etc..
+*/
+
+
+//set of funcs(and vars) that work with console window
+//will not be really used here
+//for backwards compatibility
+//and easy window control(aka, I just need to set the window to this size/title)
 bool interruptscroll;
 CONSOLE_FONT_INFOEX cfi;
 CONSOLE_CURSOR_INFO ci;

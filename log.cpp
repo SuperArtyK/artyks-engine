@@ -13,11 +13,11 @@ using std::endl;
 
 //var name cheatsheet
 /*
-<scope/type>_<const/array, if it is>_<datatype><Name>
+<scope>_<datatype><Name>
 
 EX:
-mpb_bDev					 | gi_flgDeflogger	  | mpr_vec_strMessg	   | ml_strPathtolog
-m:member; pb:public; b:bool; | g:global; i:inline | pr:private; vec:vector | l:local
+m_bDev          |g_flgDeflogger|m_strMessg|l_strPathtolog
+m:member;b:bool;|g:global;     |vec:vector|l:local
 
 b bool
 i int
@@ -29,27 +29,40 @@ trd thread
 fst fstream
 cst const
 flg filelog
+arr array
+vec vector
+ptr pointer
+lpvd lpvoid
+
 
 etc..
 */
 
 
-//important stuff
-filelog::filelog() : mpr_strDatentime(""), mpr_strLogpath("logs/"), mpr_bThreadstarted(false), mpr_bStoplog(false), mpr_ullMessgcount(0), mpr_ldEntrycount(0.0) {
-	createdir(mpr_strLogpath);
-	mpr_strFilename = mpr_strLogpath + "LOG_" + logdate() + ".log";
+//functions for global usage
+//will move to separate file
+const char* BoolToString(bool b);
+int movetoendSTR(std::string l_strArr[], int l_iN, int l_iPos);
+int movetoendINT(int l_iArr[], int l_iN, int l_iPos);
 
-	if (mpb_bDev)std::cout << "___copyconstruct1" << std::endl;
+
+
+//important stuff
+filelog::filelog() : m_strDatentime(""), m_strLogpath("logs/"), m_bThreadstarted(false), m_bStoplog(false), m_ullMessgcount(0), m_ldEntrycount(0.0), m_bDev_log(false) {
+	createdir(m_strLogpath.c_str());
+	m_strFilename = m_strLogpath + "LOG_" + logdate() + ".log";
+
+	if (m_bDev_cout)std::cout << "LOGGER_MAIN:copyconstruct1" << std::endl;
 	
 }
-filelog::filelog(std::string pathtolog) : mpr_strDatentime(""), mpr_strLogpath(pathtolog), mpr_bThreadstarted(false), mpr_bStoplog(false), mpr_ullMessgcount(0) {
-	if (mpr_strLogpath[mpr_strLogpath.length() - 2] != '/' || mpr_strLogpath[mpr_strLogpath.length() - 2] != '\\') {
-		mpr_strLogpath += '/';
+filelog::filelog(std::string l_strPathtolog) : m_strDatentime(""), m_strLogpath(l_strPathtolog), m_bThreadstarted(false), m_bStoplog(false), m_ullMessgcount(0), m_bDev_log(false) {
+	if (m_strLogpath[m_strLogpath.length() - 2] != '/' || m_strLogpath[m_strLogpath.length() - 2] != '\\') {
+		m_strLogpath += '/';
 	}
-	createdir(mpr_strLogpath);
-	mpr_strFilename = mpr_strLogpath + "LOG_" + logdate() + ".log";
+	createdir(m_strLogpath.c_str());
+	m_strFilename = m_strLogpath + "LOG_" + logdate() + ".log";
 
-	if (mpb_bDev)std::cout << "___copyconstruct2" << std::endl;
+	if (m_bDev_cout)std::cout << "LOGGER_MAIN:copyconstruct2" << std::endl;
 	
 
 }
@@ -58,27 +71,27 @@ filelog::filelog(std::string pathtolog) : mpr_strDatentime(""), mpr_strLogpath(p
 
 
 //logging itself
-int filelog::writetolog(std::string messg, int type, std::string prog_module) {
+int filelog::writetolog(std::string l_strMessg, int l_iType, std::string l_strProg_module) {
 
-	if (messg == "Opening new logging session...") {
-		mpr_vec_strMessg.insert(mpr_vec_strMessg.begin(), "Opening new logging session...");
-		mpr_vec_iLogtype.insert(mpr_vec_iLogtype.begin(), 1);
-		mpr_vec_strProg_module.insert(mpr_vec_strProg_module.begin(), "Logger");
-		mpr_ullMessgcount++;
+	if (l_strMessg == "Opening new logging session...") {
+		m_strMessg.insert(m_strMessg.begin(), "Opening new logging session...");
+		m_iLogtype.insert(m_iLogtype.begin(), 1);
+		m_strProg_module.insert(m_strProg_module.begin(), "Logger");
+		m_ullMessgcount++;
 	}
 	else {
-		if (messg.empty()) {
-			mpr_vec_strMessg.push_back("Sample entry. This logger object uses " + std::to_string(objsize()) + " bytes and has made " + std::to_string(mpr_ldEntrycount) + " log entries");
-			mpr_vec_iLogtype.push_back(0);
-			mpr_vec_strProg_module.push_back("Logger");
-			mpr_ullMessgcount++;
+		if (l_strMessg.empty()) {
+			m_strMessg.push_back("Sample entry. This logger object uses " + std::to_string(objsize()) + " bytes and has made " + std::to_string(m_ldEntrycount) + " log entries");
+			m_iLogtype.push_back(0);
+			m_strProg_module.push_back("Logger");
+			m_ullMessgcount++;
 		}
 		else
 		{
-			mpr_vec_strMessg.push_back(messg);
-			mpr_vec_iLogtype.push_back(type);
-			mpr_vec_strProg_module.push_back(prog_module);
-			mpr_ullMessgcount++;
+			m_strMessg.push_back(l_strMessg);
+			m_iLogtype.push_back(l_iType);
+			m_strProg_module.push_back(l_strProg_module);
+			m_ullMessgcount++;
 		}
 	}
 
@@ -86,8 +99,8 @@ int filelog::writetolog(std::string messg, int type, std::string prog_module) {
 
 
 	
-	if (mpb_bDev)std::cout << "___gonna write to log \"" <<messg<<"\""<< std::endl;
-	if (!mpr_bThreadstarted) {
+	if (m_bDev_cout)std::cout << "LOGGER_MAIN:gonna write to log \"" << l_strMessg <<"\""<< std::endl;
+	if (!m_bThreadstarted) {
 		startlogging();
 
 	}
@@ -96,28 +109,28 @@ int filelog::writetolog(std::string messg, int type, std::string prog_module) {
 	return 0;
 }
 int filelog::stoplogging() {
-	//if (mpb_bDev)std::cout << "___stopping thread" << std::endl;
+	if (m_bDev_cout)std::cout << "LOGGER_MAIN:stopping writing thread" << std::endl;
 	writetolog("Closing current logging session...", 1, "Logger");
-	if (mpr_bThreadstarted) {
-		mpr_bStoplog = true;
-		mpr_bThreadstarted = false;
-		mpr_trdLogthread.join();
+	if (m_bThreadstarted) {
+		m_bStoplog = true;
+		m_bThreadstarted = false;
+		m_trdLogthread.join();
 		return 0;
 	}
 	
 	return 1;
 }
 int filelog::startlogging() {
-	if (mpb_bDev)std::cout << "___creating thread again" << std::endl;
-	mpr_bStoplog = false;
-	mpr_bThreadstarted = true;
-	mpr_trdLogthread = std::thread(&filelog::mainthread, this);
+	if (m_bDev_cout)std::cout << "LOGGER_MAIN:creating thread (again?)" << std::endl;
+	m_bStoplog = false;
+	m_bThreadstarted = true;
+	m_trdLogthread = std::thread(&filelog::mainthread, this);
 	writetolog("Opening new logging session...", 1, "Logger");
 	return 0;
 }
 int filelog::mainthread() {
-	std::string write;
-	while (!mpr_bStoplog || mpr_ullMessgcount > 0)
+	std::string writestr;
+	while (!m_bStoplog || m_ullMessgcount > 0)
 	//while (mpr_ullMessgcount > 0) //for single thread debugging
 	{
 		//mpr_iWriteiterat++;
@@ -128,53 +141,53 @@ int filelog::mainthread() {
 			
 
 			openfile();
-			if (mpb_bDev)std::cout << "	writing to log \"" << mpr_vec_strMessg[0]<<"\" with "<< mpr_ullMessgcount <<" remaining"<< std::endl;
-			write.clear();
-			write = "[ " + currentDateTime() + " ] [";
+			if (m_bDev_cout)std::cout << "LOGGER_TRD:writing to log \"" << m_strMessg[0]<<"\" with "<< m_ullMessgcount <<" remaining"<< std::endl;
+			writestr.clear();
+			writestr = "[ " + currentDateTime() + " ] [";
 			//vector<char> vchar;
 			//mpr_fstFilestr.write(write.c_str(), write.length());
 			//write.clear();
-			switch (mpr_vec_iLogtype[0])
+			switch (m_iLogtype[0])
 			{
 
 			case 0:
-				write += "INFO";
+				writestr += "INFO";
 				break;
 
 
 			case 1:
-				write += "WARN";
+				writestr += "WARN";
 				break;
 
 			case 2:
-				write += "ERROR";
+				writestr += "ERROR";
 				break;
 
 			case 3:
-				write += "FATAL ERROR";
+				writestr += "FATAL ERROR";
 				break;
 
 			default:
 
 				break;
 			}
-			write += "] [" + mpr_vec_strProg_module[0] + "]: " + mpr_vec_strMessg[0] + "\n";
-			mpr_fstFilestr.write(write.c_str(), write.length());
+			writestr += "] [" + m_strProg_module[0] + "]: " + m_strMessg[0] + "\n";
+			m_fstFilestr.write(writestr.c_str(), writestr.length());
 			closefile();
-			mpr_ldEntrycount++;
-			if (mpb_bDev)std::cout << "	cleaning up with " << mpr_ldEntrycount << " entries ";
-			mpr_vec_strMessg.erase(mpr_vec_strMessg.begin());
-			mpr_vec_iLogtype.erase(mpr_vec_iLogtype.begin());
-			mpr_vec_strProg_module.erase(mpr_vec_strProg_module.begin());
-			if(mpr_ullMessgcount > 0){ this->mpr_ullMessgcount--; }
-			if (mpb_bDev)cout << "and " << mpr_ullMessgcount << " remaining" << std::endl;
+			m_ldEntrycount++;
+			if (m_bDev_cout)std::cout << "	cleaning up with " << m_ldEntrycount << " entries ";
+			m_strMessg.erase(m_strMessg.begin());
+			m_iLogtype.erase(m_iLogtype.begin());
+			m_strProg_module.erase(m_strProg_module.begin());
+			if(m_ullMessgcount > 0){ this->m_ullMessgcount--; }
+			if (m_bDev_cout)cout << "and " << m_ullMessgcount << " remaining" << std::endl;
 		
 			
 		}
 		else
 		{
 			
-			if(mpb_bDev)std::cout << "	something is wrong with data; " << mpr_ullMessgcount << " remaining and mpr_bStoplog " << mpr_bStoplog<<std::endl;
+			if(m_bDev_cout)std::cout << "LOGGER_TRD:something is wrong with data or the message is empty/nonexistent;\n" << m_ullMessgcount << " remaining and mpr_bStoplog " << m_bStoplog<<std::endl;
 			
 
 
@@ -201,6 +214,7 @@ const std::string filelog::currentDateTime() {
 }
 
 std::string filelog::logdate() {
+	if (m_bDev_log)writetolog("Getting Date and Time for the Log file...", 0, "Logger");
 	std::string temp = currentDateTime();
 	std::string temp2;
 	short i = 0;
@@ -208,11 +222,23 @@ std::string filelog::logdate() {
 		temp2 += temp[i];
 		i++;
 	}
+	
+	if (m_bDev_cout)writetolog("OK! Got the log file date: "+temp2, 0, "Logger");
 	return temp2;
 }
 
-int filelog::createdir(std::string pathtofile) {//creates directories of the path if they dont exist
-	std::filesystem::create_directories(pathtofile);
+int filelog::createdir(const char* pathtofile) {//creates directories of the path if they dont exist
+	if (m_bDev_log)writetolog("Creating directory for log file "+*pathtofile, 0, "Logger");
+	bool result;
+	result = std::filesystem::create_directories(pathtofile);
+	if (result) {
+		if (m_bDev_log)writetolog("OK! Successfully created directory for log file" +*pathtofile, 0, "Logger");
+	}
+	else
+	{
+		if (m_bDev_log)writetolog("ERROR! Could not create directory for log file" + *pathtofile, 2, "Logger");
+	}
+
 	return 0;
 }
 
@@ -220,50 +246,76 @@ int filelog::openfile() {
 	//a crutch to show the data in file instantly, as std::fstream has some kind of buffer
 	//so you need to close file after writing to it, so the data will update
 	//cout << filenam << endl;
-	if (mpb_bDev)std::cout << "	opening file "+ *mpr_strFilename.c_str() << std::endl;
-	mpr_fstFilestr.open(mpr_strFilename.c_str(), std::fstream::out | std::fstream::app);
-	if (mpr_fstFilestr.is_open()) {
+	if (m_bDev_cout)std::cout << "opening file "+ *m_strFilename.c_str() << std::endl;
+	if (m_bDev_log)writetolog("Opening log file \"" + m_strFilename + "\n...", 0, "Logger");
+	m_fstFilestr.open(m_strFilename.c_str(), std::fstream::out | std::fstream::app);
+	if (m_fstFilestr.is_open()) {
+		if (m_bDev_log)writetolog("OK! Opened file \"" + m_strFilename + "\n for logging", 0, "Logger");
 		return 0;
+
 	}
-	if (mpb_bDev) {
+	
 		MessageBoxA(0, "FATAL ERROR:Could not open file for logging!\nThe program will now exit.", "FATAL ERROR:Filelog", MB_OK | MB_ICONERROR);
+		if (m_bDev_log)writetolog("ERROR! Could not create log file" + m_strFilename, 2, "Logger");//wont be written, but 
 		//exit(1);
-	}
+	
 	return 1;
 }
 int filelog::closefile() {
-	if (mpb_bDev)std::cout << "	closing file" << std::endl;
-	if (mpr_fstFilestr.is_open()) {
-		mpr_fstFilestr.close();
+	if (m_bDev_cout)std::cout << "	closing file" << std::endl;
+	if (m_fstFilestr.is_open()) {
+		m_fstFilestr.close();
 		return 0;
 	}
-	if (mpb_bDev) {
+	if (m_bDev_cout) {
 		MessageBoxA(0, "WARN:Trying to close not opened file", "WARN:Logger(filelog)", MB_OK | MB_ICONWARNING);
 	}
 	return 1;
 }
 
-int filelog::movetoendSTR(std::string arr[], int n, int pos) {
-	std::string save = arr[pos];
 
-	for (int i = pos; i < n - 1; i++)
-		arr[i] = arr[i + 1];
 
-	arr[n - 1] = save;
+
+
+
+
+
+
+
+
+
+
+
+
+
+//definitions of global functions
+//will be moved to separate files later
+int movetoendSTR(std::string l_strarr[], int l_in, int l_ipos) {
+	std::string save = l_strarr[l_in];
+
+	for (int i = l_ipos; i < l_in - 1; i++)
+		l_strarr[i] = l_strarr[i + 1];
+
+	l_strarr[l_in - 1] = save;
 	return 0;
 }
 
-int filelog::movetoendINT(int arr[], int n, int pos) {
+int movetoendINT(int l_iArr[], int l_iN, int l_iPos) {
 
-	int save = arr[pos];
+	int save = l_iArr[l_iPos];
 
-	for (int i = pos; i < n - 1; i++)
-		arr[i] = arr[i + 1];
+	for (int i = l_iPos; i < l_iN - 1; i++)
+		l_iArr[i] = l_iArr[i + 1];
 
-	arr[n - 1] = save;
+	l_iArr[l_iN - 1] = save;
 	return 0;
 }
 
+
+const char* BoolToString(bool b)
+{
+	return b ? "OK!" : "ERROR!";
+}
 
 
 ///////////////////////////////////////////////////////////////
