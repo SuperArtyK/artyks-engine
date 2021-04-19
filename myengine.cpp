@@ -8,6 +8,7 @@
 
 #endif
 //#include "sound.hpp"
+#include "keyboard.hpp"
 #include "screen.hpp"
 #include "include.hpp"
 #include "log.hpp"
@@ -45,19 +46,19 @@ int main()
 // 		Sleep(50);
 // 	}
 
-	filelog mylog("logs1/");
-	//mylog.m_bDev_cout = true;
-	mylog.writetolog("log1 is working");
-	mylog.writetolog("log2 is working");
-	mylog.writetolog("log3 is working");
-	mylog.writetolog("log4 is working");
-	mylog.writetolog("log5 is working");
-	mylog.writetolog("log6 is working");
-	mylog.writetolog("log7 is working");
-	mylog.writetolog("log8 is working");
-	mylog.writetolog("log9 is working");
-	mylog.writetolog("log10 is working");
-	mylog.writetolog("log11 is working");
+// 	filelog mylog("logs1/");
+// 	//mylog.m_bDev_cout = true;
+// 	mylog.writetolog("log1 is working");
+// 	mylog.writetolog("log2 is working");
+// 	mylog.writetolog("log3 is working");
+// 	mylog.writetolog("log4 is working");
+// 	mylog.writetolog("log5 is working");
+// 	mylog.writetolog("log6 is working");
+// 	mylog.writetolog("log7 is working");
+// 	mylog.writetolog("log8 is working");
+// 	mylog.writetolog("log9 is working");
+// 	mylog.writetolog("log10 is working");
+// 	mylog.writetolog("log11 is working");
 	//vector<vector<string>> tempn;
 
 // 	for (int i = 0; i < 10000; i++) {
@@ -66,6 +67,19 @@ int main()
 // 		Sleep(100);
 // 	}
 	//mylog.mainthread();
+	thread t2;
+	t2 = thread(checkkeystates);
+	for (;;) {
+
+
+		cout << g_kstKeys[40].m_bHeld <<endl;
+		if(g_kstKeys[26].m_bPressed) break;
+
+
+	}
+	stoptrd = true;
+	t2.join();
+
 	_getch();
 }
 

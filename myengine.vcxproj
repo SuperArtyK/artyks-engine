@@ -284,7 +284,11 @@
     <ClInclude Include="bits\valarray_after.h" />
     <ClInclude Include="bits\valarray_array.h" />
     <ClInclude Include="bits\valarray_before.h" />
+    <ClInclude Include="global_functions.hpp" />
+    <ClInclude Include="global_vars.hpp" />
     <ClInclude Include="include.hpp" />
+    <ClInclude Include="kbcodes.hpp" />
+    <ClInclude Include="keyboard.hpp" />
     <ClInclude Include="log.hpp" />
     <ClInclude Include="screen.hpp" />
     <ClInclude Include="oldsound.hpp" />

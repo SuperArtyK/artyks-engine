@@ -40,10 +40,10 @@ etc..
 
 
 //functions for global usage
-//will move to separate file
-const char* BoolToString(bool b);
-int movetoendSTR(std::string l_strArr[], int l_iN, int l_iPos);
-int movetoendINT(int l_iArr[], int l_iN, int l_iPos);
+//moved to global_functions.hpp file
+// const char* BoolToString(bool b);
+// int movetoendSTR(std::string l_strArr[], int l_iN, int l_iPos);
+// int movetoendINT(int l_iArr[], int l_iN, int l_iPos);
 
 
 
@@ -289,33 +289,10 @@ int filelog::closefile() {
 
 
 //definitions of global functions
-//will be moved to separate files later
-int movetoendSTR(std::string l_strarr[], int l_in, int l_ipos) {
-	std::string save = l_strarr[l_in];
-
-	for (int i = l_ipos; i < l_in - 1; i++)
-		l_strarr[i] = l_strarr[i + 1];
-
-	l_strarr[l_in - 1] = save;
-	return 0;
-}
-
-int movetoendINT(int l_iArr[], int l_iN, int l_iPos) {
-
-	int save = l_iArr[l_iPos];
-
-	for (int i = l_iPos; i < l_iN - 1; i++)
-		l_iArr[i] = l_iArr[i + 1];
-
-	l_iArr[l_iN - 1] = save;
-	return 0;
-}
-
-
-const char* BoolToString(bool b)
-{
-	return b ? "OK!" : "ERROR!";
-}
+//moved to global_functions.hpp
+//int movetoendSTR(std::string l_strarr[], int l_in, int l_ipos);
+//int movetoendINT(int l_iArr[], int l_iN, int l_iPos);
+//const char* BoolToString(bool b);
 
 
 ///////////////////////////////////////////////////////////////

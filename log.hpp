@@ -36,7 +36,7 @@ etc..
 #include <fstream>
 #include <vector>
 #include <string>
-#include "screen.hpp"
+//#include "screen.hpp"
 
 
 using std::vector;
@@ -124,6 +124,9 @@ private:
 	//long double mpr_ldWriteiterat = 0;
 };
 inline  filelog g_flgDeflogger;//default logger
+//wont be moved to global_vars.hpp
+//will probably cause infinite recursion for compiler
+//I dont want that
 
 
 

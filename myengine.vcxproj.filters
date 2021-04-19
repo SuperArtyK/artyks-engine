@@ -422,6 +422,18 @@
     <ClInclude Include="oldsound.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="keyboard.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="kbcodes.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="global_vars.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="global_functions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="bits\basic_ios.tcc">
