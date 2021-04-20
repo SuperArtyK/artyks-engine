@@ -241,34 +241,20 @@ inline string keynames[173][2]{//for GetKeyID
 
 inline string log_keywords[100][2]{
 //  {"name",	"<should be the only word colored> y/n"},
-	{"error",	   "n"},
-	{"fatal_error","n"},
-	{"ok!",		   "y"},
-	{"success!",   "n"},
-	{"warn",	   "n"},
-	{"info",	   "n"},
-	{"main",	   ""},
-	{"sound",""},
-	{"logger",	   ""},
-	{"keyboard",""},
-	{"error",	   ""},
-	{"fatal_error",""},
-	{"error",	   ""},
-	{"fatal_error",""},
-	{"error",	   ""},
-	{"fatal_error",""},
-	{"error",	   ""},
-	{"fatal_error",""},
-	{"error",	   ""},
-	{"fatal_error",""},
-	{"error",	   ""},
-	{"fatal_error",""},
-	{"error",	   ""},
-	{"fatal_error",""},
-	{"error",	   ""},
-	{"fatal_error",""},
-	{"error",	   ""},
-	{"fatal_error",""},
+	{"error",        "n"},
+	{"fatal_error",  "n"},
+	{"ok!",          "n"},
+	{"success!",     "n"},
+	{"warn",         "n"},
+	{"severe_warn",  "n"},
+	{"info",         "n"},
+	{"main",         "y"},
+	{"sound",        "y"},
+	{"logger",       "y"},
+	{"keyboard",     "y"},
+	{"graphics",     "y"},
+	{"bad",          "y"},
+	{"good",         "y"},
 
 
 
@@ -277,29 +263,25 @@ inline string log_keywords[100][2]{
 
 };
 inline int log_kwcolor[sizeof(log_keywords) / sizeof(log_keywords[0])][2]{
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
-	{BLACK, BLACK},
+
+//  backgr, foregr
+	{NOCOLOR, RED},//error
+	{DRED, BLACK},//fatal_error
+	{NOCOLOR, GREEN},//ok!
+	{GREEN, BLACK},//success!
+	{BLACK, YELLOW},//warn
+	{YELLOW, BLACK},//severe_warn
+	{NOCOLOR, CYAN},//info
+	{NOCOLOR, PURPLE},//main
+	{NOCOLOR, DCYAN},//sound
+	{NOCOLOR, WHITE},//logger
+	{NOCOLOR, GRAY},//keyboard
+	{NOCOLOR, DPURPLE},//graphics
+	{NOCOLOR, DRED},//bad
+	{NOCOLOR, DGREEN},//good
+	{DWHITE, DWHITE},
+
+
 
 
 };

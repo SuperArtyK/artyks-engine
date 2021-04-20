@@ -183,6 +183,12 @@ int filelog::mainthread() {
 				writestr += "FATAL_ERROR";
 				break;
 
+			case 4:
+				writestr += "SEVERE_WARN";
+				break;
+
+
+
 			default:
 
 				break;

@@ -78,15 +78,7 @@ int main()
 // 
 // 
 // 	}
-	auto start = chrono::high_resolution_clock::now();
-		auto end = chrono::high_resolution_clock::now();
- 		double time_taken =chrono::duration_cast<chrono::nanoseconds>(end - start).count();
- 
 
-	Screen myscr;
-	srand(time(NULL));
-	HWND consoleWindow = GetConsoleWindow();
-	HDC consoleDC = GetDC(consoleWindow);        // Get a handle to device context
 	
 // 	
 // 	while (true) {
