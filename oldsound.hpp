@@ -1,35 +1,26 @@
-////////////Sound.cpp
-//#include "include.hpp"
-
-
-//var name cheatsheet
 /*
-<scope>_<datatype><Name>
+	ArtyK's Console (Game) Engine. Console engine for apps and games
+	Copyright (C) 2021  Artemii Kozhemiak
 
-EX:
-m_bDev          |g_flgDeflogger|m_strMessg|l_strPathtolog
-m:member;b:bool;|g:global;     |vec:vector|l:local
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
 
-b bool
-i int
-c char
-ll long long (int)
-ull unsigned long long (int)/uint64_t
-ld long double
-trd thread
-fst fstream
-cst const
-flg filelog
-arr array
-vec vector
-ptr pointer
-lpvd lpvoid
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
 
-
-etc..
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-
+//////////////////////////////////////////////////////////////////////////
+// this file contains the old sound system code.
+// useful if you just need the simple beeping
+// should not cause everything to break
+//////////////////////////////////////////////////////////////////////////
 
 ////////////////////Sound.h
 #pragma once

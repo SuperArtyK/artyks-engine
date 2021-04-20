@@ -1,62 +1,62 @@
+/*
+	ArtyK's Console (Game) Engine. Console engine for apps and games
+	Copyright (C) 2021  Artemii Kozhemiak
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+//////////////////////////////////////////////////////////////////////////
+// this file contains the set of funcs(and vars) that work with console window
+// will not be used here much
+// for backwards compatibility and not complicated tasks
+// which dont require much of complexity and speed
+// like ''realtime'' console logging(we can skip one or two log entries)
+// should not cause everything to break
+//////////////////////////////////////////////////////////////////////////
+
 #pragma once
 
 #ifndef SCREEN
 #define SCREEN
 #include "include.hpp"
 #include "global_vars.hpp"
+#include "global_functions.hpp"
 using namespace std;
 
-//var name cheatsheet
-/*
-<scope>_<datatype><Name>
-
-EX:
-m_bDev          |g_flgDeflogger|m_strMessg|l_strPathtolog
-m:member;b:bool;|g:global;     |vec:vector|l:local
-
-b bool
-i int
-c char
-ll long long (int)
-ull unsigned long long (int)/uint64_t
-ld long double
-trd thread
-fst fstream
-cst const
-flg filelog
-arr array
-vec vector
-ptr pointer
-lpvd lpvoid
 
 
-etc..
-*/
-
-
-//set of funcs(and vars) that work with console window
-//will not be really used here
-//for backwards compatibility and not complicated tasks
-//which dont require much of complexity and speed
-//like ''realtime'' console logging(we can skip one or two log entries)
-
-//global variables for screen:
-//	alpha v.0.0.1: global vars and handles moved to global_vars.hpp
-// 
+ 
 
 class Screen {//screen class for comfortability
 public:
 	//constructors
-	Screen() : m_hStdOut(GetStdHandle(STD_OUTPUT_HANDLE)), m_hStdIn(GetStdHandle(STD_OUTPUT_HANDLE)), m_console(GetConsoleWindow()), interruptscroll(false){ };
+	Screen() { 
+		m_hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+		m_hStdIn = GetStdHandle(STD_INPUT_HANDLE);
+		m_console = GetConsoleWindow();
+		interruptscroll = false;
+		m_cfi.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
+		m_rgb_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
+		m_normal_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
+		GetConsoleScreenBufferInfoEx(m_hStdOut, &m_normal_color);
+		GetCurrentConsoleFontEx(m_hStdOut, FALSE, &m_cfi);
+		GetConsoleScreenBufferInfoEx(m_hStdOut, &m_rgb_color);
+		GetConsoleScreenBufferInfoEx(m_hStdOut, &m_normal_color);
+
+	
+	};
 	~Screen() { };
-	//prototypes
-// 	void setcursor(int x, int y);
-// 	void setScreenSize(int x, int y);
-// 	void settitle(string title);
-// 	void setFont(int x, int y, bool b_issquare, string fontname);
-// 	void scrolltitle(const string title, int delay = 50, int scrolloffset = 1);
-// 	void clear(void);
-// 	void setcolor(int back, int fore);
 
 	//definitions
 	void setcursor(int x, int y)
@@ -83,13 +83,13 @@ public:
 		HANDLE Handle = GetStdHandle(STD_OUTPUT_HANDLE);
 		SetConsoleScreenBufferSize(Handle, coord);
 		SetConsoleWindowInfo(Handle, TRUE, &Rect);
-
+		ZeroMemory(&m_cfi, sizeof(m_cfi));
 
 	}
 
 
-	void settitle(string title) {
-
+	void settitle(string title) {//speaks for itself
+		//sets app title
 		string name = title;
 		LPCSTR lname = name.c_str();
 		SetConsoleTitleA(lname);
@@ -97,6 +97,7 @@ public:
 	}
 
 	void scrolltitle(const string title, int delay, int scrolloffset) {
+		//scrolls title, doesnt really work, so dont use it
 		//FIXME:Remove thread blocking
 		interruptscroll = false;
 		string temp = title;
@@ -116,7 +117,7 @@ public:
 	}
 
 
-	void setFont(int x, int y, bool b_issquare = false, string fontname = "") {
+	void setFont(int x, int y, bool b_issquare = false, string fontname = "Lucida Console") {//sets font size
 		ZeroMemory(&m_cfi, sizeof(m_cfi));
 		m_cfi.cbSize = sizeof(m_cfi);
 		m_cfi.nFont = 0;
@@ -127,7 +128,7 @@ public:
 		}
 		m_cfi.FontFamily = FF_DONTCARE;
 		m_cfi.FontWeight = FW_NORMAL;
-		std::wcscpy(m_cfi.FaceName, L"Lucida Console"); // Choose your font
+		std::wcscpy(m_cfi.FaceName, widen(fontname).c_str()); // Choose your font
 		SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &m_cfi);
 	}
 	void clear(void) {
@@ -148,16 +149,45 @@ public:
 	}
 
 
-	void setcolor(int back, int fore) {
+	void setcolor_con(int back, int fore) {
+
+		SetConsoleScreenBufferInfoEx(m_hStdOut, &m_normal_color);
+
+
+		if (back < 1) {
+			back = 0;
+		}
+		if (fore < 1) {
+			fore = 0;
+		}
 		int tcolor = 0;
 		tcolor = back * 16;
 		tcolor += fore;
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), tcolor);
 
 	}
+	void setcolor_rgb(uint_fast8_t fred, uint_fast8_t fgreen, uint_fast8_t fblue) {//doesnt really work, if you'll fork this engine, plz find a way to fix this
+		
+//  fred, foreground red
+//  fgreen, foreground green
+//  fblue, foreground blue
+//  bred = 0, backgound red
+//  bgreen = 0, backgound green
+//  bblue = 0 backgound blue
+		
+		m_rgb_color.ColorTable[1] = RGB(fred, fgreen, fblue);
+
+		SetConsoleScreenBufferInfoEx(m_hStdOut, &m_rgb_color);
+		SetConsoleTextAttribute(m_hStdOut, 1);
+	}
+	
 
 private:
+	
 	bool interruptscroll;
+	CONSOLE_SCREEN_BUFFER_INFOEX m_rgb_color;
+	CONSOLE_SCREEN_BUFFER_INFOEX m_normal_color;
+
 	CONSOLE_FONT_INFOEX m_cfi;
 	CONSOLE_CURSOR_INFO m_ci;
 	CONSOLE_SCREEN_BUFFER_INFO m_csbi;

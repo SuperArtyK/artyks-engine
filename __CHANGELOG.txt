@@ -1,0 +1,21 @@
+v0.0.2
+Engine:
++Fixed keyboard
++fixed tolower() bug
++moved keyboard and screen functions to classes
++added GetKeyID (returns key id, refer to kbcodes.txt
++added GetKeyName
++fixed keynames[][] member amount
+-removed "screen"s global variables
+?added setcolor_rgb, doesnt really work, need help with that
+Readability:
++added help.txt
+-changed kbcodes.hpp to kbcodes.txt to avoid confusion with code files
++added file explanations
++added changelog file
+
+Other:
++Added license
+
+
+

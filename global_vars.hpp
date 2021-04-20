@@ -1,9 +1,29 @@
-#pragma once
+/*
+	ArtyK's Console (Game) Engine. Console engine for apps and games
+	Copyright (C) 2021  Artemii Kozhemiak
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
 
 //////////////////////////////////////////////////////////////////////////
 // this file contains the global variables that can be used everywhere
 // should not cause everything to redefine
 //////////////////////////////////////////////////////////////////////////
+
+#pragma once
+
+
 #ifndef GLOB_VARS
 #define GLOB_VARS
 
@@ -11,19 +31,38 @@
 //#include "keyboard.hpp"
 using namespace std;
 
-//moved from screen.hpp
-//inline bool interruptscroll;
-// inline CONSOLE_FONT_INFOEX cfi;
-// inline CONSOLE_CURSOR_INFO ci;
-// inline CONSOLE_SCREEN_BUFFER_INFO csbi;
-// inline HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
-// inline HWND console = GetConsoleWindow();
+//color codes
+#define BLACK	 0 
+#define DBLUE	 1
+#define DGREEN	 2
+#define DCYAN	 3
+#define DRED	 4
+#define DPURPLE	 5
+#define DYELLOW	 6
+#define DWHITE	 7
+#define GRAY	 8
+#define BLUE	 9
+#define GREEN	 10
+#define CYAN	 11
+#define RED		 12
+#define PURPLE	 13
+#define YELLOW	 14
+#define WHITE	 15
 
-string app_name = "ArtyK's Engine Test";
-int app_build = 1;//how do you autoincrement these?
-string app_version = "pre-alpha v.0.1";
 
-string keynames[256][2]{//for GetKeyID
+inline const int def_bgr_color = BLACK;
+inline const int def_fgr_color = GREEN;
+#define NOCOLOR def_bgr_color
+
+
+
+
+inline string app_name = "ArtyK's Engine Test";
+inline int app_build = 32;//how do you autoincrement these?
+inline string app_version = "v.0.0.1";
+
+inline string keynames[173][2]{//for GetKeyID
+	//DO NOT TOUCH! unless you know what you're doing
 	{"lbutton",                      "1"  },
 {"rbutton",                      "2"  },
 {"cancel",                       "3"  },
@@ -197,14 +236,73 @@ string keynames[256][2]{//for GetKeyID
 {"noname",                       "252"},
 {"pa1",                          "253"},
 {"oemclear",                     "254"},
+};
+
+
+inline string log_keywords[100][2]{
+//  {"name",	"<should be the only word colored> y/n"},
+	{"error",	   "n"},
+	{"fatal_error","n"},
+	{"ok!",		   "y"},
+	{"success!",   "n"},
+	{"warn",	   "n"},
+	{"info",	   "n"},
+	{"main",	   ""},
+	{"sound",""},
+	{"logger",	   ""},
+	{"keyboard",""},
+	{"error",	   ""},
+	{"fatal_error",""},
+	{"error",	   ""},
+	{"fatal_error",""},
+	{"error",	   ""},
+	{"fatal_error",""},
+	{"error",	   ""},
+	{"fatal_error",""},
+	{"error",	   ""},
+	{"fatal_error",""},
+	{"error",	   ""},
+	{"fatal_error",""},
+	{"error",	   ""},
+	{"fatal_error",""},
+	{"error",	   ""},
+	{"fatal_error",""},
+	{"error",	   ""},
+	{"fatal_error",""},
+
+
+
 
 
 
 };
+inline int log_kwcolor[sizeof(log_keywords) / sizeof(log_keywords[0])][2]{
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
+	{BLACK, BLACK},
 
 
-
-
+};
 
 
 

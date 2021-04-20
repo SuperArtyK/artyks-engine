@@ -425,7 +425,7 @@
     <ClInclude Include="keyboard.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="kbcodes.hpp">
+    <ClInclude Include="kbcodes.txt">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="global_vars.hpp">
@@ -502,5 +502,10 @@
     <None Include="bits\vector.tcc">
       <Filter>Header Files\bits</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="help.txt">
+      <Filter>Header Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

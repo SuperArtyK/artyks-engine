@@ -287,7 +287,7 @@
     <ClInclude Include="global_functions.hpp" />
     <ClInclude Include="global_vars.hpp" />
     <ClInclude Include="include.hpp" />
-    <ClInclude Include="kbcodes.hpp" />
+    <ClInclude Include="kbcodes.txt" />
     <ClInclude Include="keyboard.hpp" />
     <ClInclude Include="log.hpp" />
     <ClInclude Include="screen.hpp" />
@@ -316,6 +316,9 @@
     <None Include="bits\string_view.tcc" />
     <None Include="bits\valarray_array.tcc" />
     <None Include="bits\vector.tcc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="help.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
