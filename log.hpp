@@ -39,37 +39,52 @@ using std::vector;
 using std::string;
 using std::atomic;
 
+//logger types
+#define LOG_INFO 0 
+#define LOG_WARN 1
+#define LOG_ERROR 2
+#define LOG_FERROR 3
+#define LOG_SWARN 4
+#define LOG_OK 5
+#define LOG_SUCCESS 6
+//or
+#define LOG_FATAL_ERROR 3
+#define LOG_SEVERE_WARNING 4
 
 
 
 class filelog {
 public:
 	atomic<bool> m_bDev_cout;//for debug information; outputs the info to main console
-	//WARN: MAY CAUSE MEMORY LEAK IF MORE THAN 1 THREADS ARE OUTPUTTING!
+	//WARN: MAY CAUSE MEMORY LEAK IF MORE THAN 1 THREADS ARE OUTPUTTING TO CONSOLE!!
 	atomic<bool> m_bDev_log;//for debug information; outputs debug filelog info to current log
 
 	filelog();
 
 	filelog(std::string l_strPathtolog);
+//	this just breaks logging for no reason
+// 	filelog(int devenable);
+// 	filelog(std::string l_strPathtolog, int devenable);
+
+
 	//int changelogpath(std::string newlogpath);
 	//filelog& operator=(std::string differentpath);
 
-	~filelog() {
-		if (m_bThreadstarted)
-			stoplogging();
-	}
-	void debugConOut(std::string, int, std::string, int x = -1, int y = -1);//outputs debug messages to console
+	~filelog();
+	
 
-	int writetolog(std::string l_strMessg = "", int l_iType = 0, std::string l_strProg_module = "main", bool debuglog = false);
+	int writetolog(std::string l_strMessg = "", int l_iType = 0, std::string l_strProg_module = "Logger", bool debuglog = false);
+	int addtologqueue(std::string l_strMessg = "", int l_iType = 0, std::string l_strProg_module = "Logger", bool debuglog = false);//this is for safe logging, during important part of log itself(to avoid inf recursion)
 	int stoplogging();
 	int startlogging();
-	void setwritecoords(int x, int y) {	m_x = x; m_y = y;}
+	int mainthread();
+	std::string getmodulename() { return modulename; }
 private:
-	int m_x, m_y;
+	
 
 	//functions
 	atomic<bool> m_bStoplog;//flag that for stopping/opening logging session
-	int mainthread();
+	
 
 	//date/time
 	const std::string currentDateTime();
@@ -77,6 +92,8 @@ private:
 	int createdir(const char* pathtofile);
 	int openfile();
 	int closefile();
+	
+
 
 	//misc
 	size_t objsize() {
@@ -84,8 +101,10 @@ private:
 		return temp;
 	}
 	bool vectorcheck() {
-		return (!m_strMessg.empty() && !m_iLogtype.empty() && !m_strProg_module.empty());
+		return (!m_strMessg.empty() && !m_iLogtype.empty() && !m_strProg_module.empty());//checks if 3 main vectors are empty
 	}
+
+	const char* checktype(int l_type);//checks for message type and returns word representation that corresponds to type
 
 	//vars
 	std::string m_strDatentime;//stores date/time data
@@ -105,6 +124,10 @@ private:
 	uint64_t m_ullMessgcount;
 	vector<int> m_iLogtype;// = vector<int>(1, 0);
 	vector <std::string> m_strProg_module;// = vector<std::string>(1, "main");
+
+	std::string modulename = "Logger";
+
+
 
 	//misc
 	long double m_ldEntrycount;

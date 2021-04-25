@@ -27,70 +27,27 @@
 
 #endif
 //#include "sound.hpp"
+#include "timer.hpp"
 #include "keyboard.hpp"
 #include "screen.hpp"
 #include "include.hpp"
 #include "log.hpp"
 
+
 using namespace std;
 
-void scolor(uint_fast8_t r, uint_fast8_t g, uint_fast8_t b) {
-	CONSOLE_SCREEN_BUFFER_INFOEX info;
-	info.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
 
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	GetConsoleScreenBufferInfoEx(hConsole, &info);
 
-	info.ColorTable[0] = RGB(255, 100, 0);
-	
-		info.ColorTable[3] = RGB(135, 206, 235);
-	
-		info.ColorTable[15] = RGB(25, 0, 255);
-
-	SetConsoleScreenBufferInfoEx(hConsole, &info);
-	SetConsoleTextAttribute(hConsole, 15);
-	std::cout << "Hello World!" << std::endl;
-}
+long double tmp = 0, tmp2 = 0;
 
 
 int main()
 {
-// 	_getch();
-// 	Keyboard mykb;
-// 	vector<sKeyState> temp;
-// 	for(;;) {
-// 
-// 		temp = mykb.GetPressedKeys();
-// 		if (temp.size() < 1) {
-// 			cout << "No keys pressed\n";
-// 			 
-// 		}
-// 		else
-// 		{
-// 			cout << "keys pressed: ";
-// 			for (int a = 0; a < temp.size(); a++) {
-// 
-// 				cout << temp[a].name << ", ";
-// 
-// 			}
-// 			cout << "\n";
-// 		}
-// 
-// 
-// 	}
-
-	
-// 	
-// 	while (true) {
-// 		start = chrono::high_resolution_clock::now();
-// 
-// 		ab++;
-// 		//SetPixelV(consoleDC, i, i2, RGB(rand() % 255, rand() % 255, rand() % 255));
-// 		SetPixel(consoleDC, i, i2, RGB(rand() % 255, rand() % 255, rand() % 255));
-// 		end = chrono::high_resolution_clock::now();
-// 		time_taken = chrono::duration_cast<chrono::nanoseconds>(end - start).count() * 1e-9;
-// 		myscr.settitle(to_string(time_taken));
-// 	}
+	filelog mylog;
+	for (int i = 0; i < 1000; i++) {
+		mylog.writetolog("");
+		cout <<i<< "done\n";
+	}
 	
 	_getch();
 }

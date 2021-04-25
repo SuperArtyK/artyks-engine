@@ -1,0 +1,5 @@
+Contains list of things to fix later
+
+to fix in engine:
+Keyboard::GetPressedKeys() -- very bad and slow implementation in my opinion
+Keyboard::checkkeystates() -- review it, looks too complex

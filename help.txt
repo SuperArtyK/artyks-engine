@@ -64,6 +64,13 @@ mylog.writetolog("Log is working!");//0 or any other number(or it's absense will
 mylog.writetolog("This is warning", 1);
 mylog.writetolog("This is error", 2);
 mylog.writetolog("This is fatal error", 3);
+mylog.writetolog("This is ok statement", 4);
+mylog.writetolog("This is success statement", 5);
+5
+
+
+
+
 
 mylog2.writetolog("Log is working!", 0, "Logger");//3rd argument is optional, module of the program that message is being sent from
 //but 2nd argument is required to be passed
@@ -79,6 +86,12 @@ will result to this in the 1st log file in "/path/to/log" subdirectory
 [2021 - 04 - 07.09:55 : 32][WARN][main] : This is warning
 [2021 - 04 - 07.09:55 : 32][ERROR][main] : This is error
 [2021 - 04 - 07.09:55 : 32][FATAL ERROR][main] : This is fatal error
+[2021 - 04 - 07.09:55 : 32][OK][main] : This is ok statement
+[2021 - 04 - 07.09:55 : 32][SUCCESS][main] : This is success statement
+
+
+
+
 
 Will result to this in the 2nd log file in "/logs/" subdirectory
 

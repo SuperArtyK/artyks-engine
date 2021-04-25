@@ -24,6 +24,9 @@
     <ClCompile Include="log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="keyboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bits\algorithmfwd.h">
@@ -432,6 +435,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="global_functions.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

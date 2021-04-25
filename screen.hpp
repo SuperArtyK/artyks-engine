@@ -128,7 +128,7 @@ public:
 		}
 		m_cfi.FontFamily = FF_DONTCARE;
 		m_cfi.FontWeight = FW_NORMAL;
-		std::wcscpy(m_cfi.FaceName, widen(fontname).c_str()); // Choose your font
+		std::wcscpy(m_cfi.FaceName, artyk::widen(fontname).c_str()); // Choose your font
 		SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &m_cfi);
 	}
 	void clear(void) {
@@ -181,9 +181,9 @@ public:
 		SetConsoleTextAttribute(m_hStdOut, 1);
 	}
 	
-
+	std::string getmodulename() { return modulename; }
 private:
-	
+	std::string modulename = "Screen(OLD)";
 	bool interruptscroll;
 	CONSOLE_SCREEN_BUFFER_INFOEX m_rgb_color;
 	CONSOLE_SCREEN_BUFFER_INFOEX m_normal_color;

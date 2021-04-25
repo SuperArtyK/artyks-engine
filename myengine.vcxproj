@@ -152,6 +152,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="myengine.cpp" />
   </ItemGroup>
@@ -292,6 +293,7 @@
     <ClInclude Include="log.hpp" />
     <ClInclude Include="screen.hpp" />
     <ClInclude Include="oldsound.hpp" />
+    <ClInclude Include="timer.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bits\basic_ios.tcc" />

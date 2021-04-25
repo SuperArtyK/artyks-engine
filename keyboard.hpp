@@ -44,77 +44,37 @@ struct sKeyState
 class Keyboard {
 public:
 
-	Keyboard() : stoptrd(false), trdstarted(false) {
-		std::memset(m_keyOldState, 0, 256 * sizeof(short));
-		std::memset(m_keyNewState, 0, 256 * sizeof(short));
-		std::memset(m_kstKeys, 0, 256 * sizeof(sKeyState));
-		std::memset(m_mouseOldState, 0, 5 * sizeof(bool));
-		std::memset(m_mouseNewState, 0, 5 * sizeof(bool));
-		g_iMousePosX = 0;
-		g_iMousePosY = 0;
-		startrd();
-	}
-	~Keyboard() { closetrd(); }
+	Keyboard();
+	~Keyboard();
 
-	void startrd() {
-		kbtrd = thread(&Keyboard::checkkeystates, this);
-		trdstarted = true;
-	}
-	void closetrd() {
-		if (trdstarted) {
-			stoptrd = true;
-			kbtrd.join();
-			trdstarted = false;
-		}
-	}
+	void startrd();
+	void closetrd();
 
 	sKeyState GetKey(int nKeyID) { return m_kstKeys[nKeyID]; }
 	int GetMouseX() { return g_iMousePosX; }
 	int GetMouseY() { return g_iMousePosY; }
-	sKeyState GetMouse(int nMouseButtonID) { if (inrange(1, 6, nMouseButtonID)) { return g_kstMouse[nMouseButtonID]; }  return g_kstMouse[1]; }
-	int GetKeyID(std::string keyname) {
-		strtolower(keyname);
-		///
-		for (int i = 0; i < (sizeof keynames / sizeof keynames[0]); i++) {
-			if (keyname == keynames[i][0]) {
-				return stoi(keynames[i][1]);
-			}
-		}
+	sKeyState GetMouse(int nMouseButtonID) { if (artyk::inrange(1, 6, nMouseButtonID)) { return g_kstMouse[nMouseButtonID]; }  return g_kstMouse[1]; }
+	int GetKeyID(std::string keyname);
 
-		return 0;
-	}
-
-	const char* GetKeyName(int keyid) {
-		for (int i = 0; i < (sizeof keynames / sizeof keynames[0]); i++) {
-			if (keyid == stoi(keynames[i][1])) {
-				return keynames[i][0].c_str();
-			}
-		}
-
-		return 0;
-	}
+	const char* GetKeyName(int keyid);
 	bool IsFocused() { return m_bConsoleInFocus; }//are we in focus right now?
 												  //will be updated by graphics engine
 
-	vector<sKeyState> GetPressedKeys() {
-		int presskeys = 0;
-		vector<sKeyState> keystat;
-		pausetrd = 1;
-		// 		while (pausetrd != 2) {
-		//
-		// 		}
-		for (int i = 0; i < (sizeof(m_kstKeys) / sizeof(m_kstKeys[0])); i++) {
-			if (m_kstKeys[i].m_bHeld || m_kstKeys[i].m_bPressed) {
-				keystat.push_back(m_kstKeys[i]);
-			}
-		}
-		pausetrd = 0;
-
-		return keystat;
+	vector<sKeyState> GetPressedKeys();
+	std::string getmodulename() { return modulename; }
+	bool IsKeyPressed(string keyname);//looks at the keynames[][] and checks if given key is pressed; if not found returns 0;
+	bool IsKeyPressed(int keyid);//looks at the m_kstKeys[] directly and checks if given key is pressed; if not found returns 0;
+	//bool IsKeyPressed(char keyname);//checks 
+	void setdelay(int milis) {
+		processdelay = milis;
 	}
+
 
 private:
 
+
+	int processdelay;
+	std::string modulename = "Keyboard";
 	sKeyState m_kstKeys[256], g_kstMouse[5];
 	bool m_bConsoleInFocus = true;//first frame we will be always in focus
 //idk how you can use mouse in console, but should be handy sometime
@@ -134,49 +94,7 @@ private:
 	bool stoptrd;//debug
 	bool trdstarted;
 
-	void checkkeystates() {
-		//keyboard
-
-		while (!stoptrd) {//for stopping the thread
-			//another while for pausing
-			//while (pausetrd == 0)
-			{
-				for (int i = 0; i < 256; i++)
-				{
-					if (stoptrd) {
-						pausetrd = true;//so we wont get inf loop when stoptrd is active
-					}
-
-					m_keyNewState[i] = GetAsyncKeyState(i);
-
-					m_kstKeys[i].m_bPressed = false;
-					m_kstKeys[i].m_bReleased = false;
-					m_kstKeys[i].id = i;
-					m_kstKeys[i].name = GetKeyName(i);
-					if (m_keyNewState[i] != m_keyOldState[i])
-					{
-						if (m_keyNewState[i] & 0x8000)
-						{
-							m_kstKeys[i].m_bPressed = !m_kstKeys[i].m_bHeld;
-							m_kstKeys[i].m_bHeld = true;
-						}
-						else
-						{
-							m_kstKeys[i].m_bReleased = true;
-							m_kstKeys[i].m_bHeld = false;
-						}
-					}
-
-					m_keyOldState[i] = m_keyNewState[i];
-				}
-			}
-		}
-		if (pausetrd == 1) {
-			pausetrd = 2;
-		}
-	}
+	void checkkeystates();
 };
-
-//'Get' functions
 
 #endif // !KEYBOARD
