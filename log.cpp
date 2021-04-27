@@ -49,6 +49,7 @@ filelog::filelog(){
 
 	m_strDatentime.clear();
 	m_strLogpath = "logs/";
+	m_strTmpLogpath = m_strLogpath + "tmp/";
 	m_bThreadstarted = false;
 	m_bStoplog = false;
 	m_ullMessgcount = 0;
@@ -58,8 +59,10 @@ filelog::filelog(){
 
 	
 	createdir(m_strLogpath.c_str());
-	m_strFilename = m_strLogpath + "LOG_" + logdate() + ".log";
+	createdir(m_strTmpLogpath.c_str());
 
+	m_strFilename = m_strLogpath + "LOG_" + logdate() + ".log";
+	m_strTmpFilename = m_strTmpLogpath + "LOG_" + logdate() + ".tmp";
 	//if (m_bDev_cout)std::cout << "LOGGER_MAIN:copyconstruct1" << std::endl;
 	
 }
@@ -78,8 +81,11 @@ filelog::filelog(std::string l_strPathtolog){
 	if (m_strLogpath[m_strLogpath.length() - 2] != '/' || m_strLogpath[m_strLogpath.length() - 2] != '\\') {
 		m_strLogpath += '/';
 	}
+	m_strTmpLogpath = m_strLogpath + "tmp/";
 	createdir(m_strLogpath.c_str());
+	createdir(m_strTmpLogpath.c_str());
 	m_strFilename = m_strLogpath + "LOG_" + logdate() + ".log";
+	m_strFilename = m_strTmpLogpath + "LOG_" + logdate() + ".tmp";
 
 	//if (m_bDev_cout)std::cout << "LOGGER_MAIN:copyconstruct2" << std::endl;
 	
@@ -158,38 +164,46 @@ filelog::filelog(std::string l_strPathtolog){
 filelog::~filelog() {
 	if (m_bThreadstarted)
 		stoplogging();
+
+	//cout << "Breaking file logger\n";
 }
 
 
 //logging itself
 int filelog::writetolog(std::string l_strMessg, int l_iType, std::string l_strProg_module, bool debuglog) {
-	m_ldEntrycount += 1;
+	if (!m_bThreadstarted) {
+		startlogging();
+
+	}
+	
+	m_ldEntrycount++;
+	
+	
+	
 	if (l_strMessg == "Opening new logging session...") {
 		m_strMessg.insert(m_strMessg.begin(), "Opening new logging session...");
 		m_iLogtype.insert(m_iLogtype.begin(), LOG_WARN);
-		m_strProg_module.insert(m_strProg_module.begin(), modulename);
+		m_strProg_module.insert(m_strProg_module.begin(), m_modulename);
 		m_ullMessgcount++;
+		return 0;
 	}
 	else {
 		if (l_strMessg.empty()) {
 			l_strMessg = "Sample entry. This logger object uses " + std::to_string(GetObjSize()) + " bytes and has made " + std::to_string(m_ldEntrycount) + " log entries";
 			l_iType = LOG_INFO;
-			l_strProg_module = modulename;
+			l_strProg_module = m_modulename;
 		}
 	}
 	
-
+	mylock.lock();
 	m_strMessg.push_back(l_strMessg);
 	m_iLogtype.push_back(l_iType);
 	m_strProg_module.push_back(l_strProg_module);
 	m_ullMessgcount++;
-	
+	mylock.unlock();
 	
 	//if (m_bDev_cout)std::cout << "LOGGER_MAIN:gonna write to log \"" << l_strMessg <<"\""<< std::endl;
-	if (!m_bThreadstarted) {
-		startlogging();
-
-	}
+	
 // 	//if (m_bDev_cout) {
 // 		debugConOut(l_strMessg, l_iType, l_strProg_module);
 // 
@@ -198,35 +212,53 @@ int filelog::writetolog(std::string l_strMessg, int l_iType, std::string l_strPr
 	return 0;
 }
 int filelog::addtologqueue(std::string l_strMessg, int l_iType, std::string l_strProg_module, bool debuglog){
-	m_ldEntrycount += 1;
-	if (l_strMessg == "Opening new logging session...") {
-		m_strMessg.insert(m_strMessg.begin(), "Opening new logging session...");
-		m_iLogtype.insert(m_iLogtype.begin(), LOG_WARN);
-		m_strProg_module.insert(m_strProg_module.begin(), modulename);
+	m_ldEntrycount++;
+	
+	int logoffset = 0;
+	if (!log_started) {
+		m_iLogtype.insert(m_iLogtype.begin() + logoffset, LOG_SUCCESS);
+		m_strProg_module.insert(m_strProg_module.begin() + logoffset, "Engine");
+		m_strMessg.insert(m_strMessg.begin() + logoffset, "Started \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build));
 		m_ullMessgcount++;
+		log_started = true;
+		logoffset++;
+		
+	}
+	
+	if (l_strMessg == "Opening new logging session...") {
+		
+		m_iLogtype.insert(m_iLogtype.begin() + logoffset, LOG_WARN);
+		m_strProg_module.insert(m_strProg_module.begin(), m_modulename);
+		m_strMessg.insert(m_strMessg.begin() + logoffset, "Opening new logging session...");
+		m_ullMessgcount++;
+		logoffset++;
+		return 0;
 	}
 	else {
 		if (l_strMessg.empty()) {
 			l_strMessg = "Sample entry. This logger object uses " + std::to_string(GetObjSize()) + " bytes and has made " + std::to_string(m_ldEntrycount) + " log entries";
 			l_iType = LOG_INFO;
-			l_strProg_module = modulename;
+			l_strProg_module = m_modulename;
 		}
 	}
 
 
-	m_strMessg.push_back(l_strMessg);
+	
 	m_iLogtype.push_back(l_iType);
 	m_strProg_module.push_back(l_strProg_module);
+	m_strMessg.push_back(l_strMessg);
 	m_ullMessgcount++;
 	return 0;
 }
-int filelog::stoplogging() {
+int filelog::stoplogging(bool closeprog) {
 	//if (m_bDev_cout)std::cout << "LOGGER_MAIN:stopping writing thread" << std::endl;
-	addtologqueue("Closing current logging session...", LOG_WARN, modulename);
+	addtologqueue("Closing current logging session...", LOG_WARN, m_modulename);
+
 	if (m_bThreadstarted) {
 		m_bStoplog = true;
 		m_bThreadstarted = false;
 		m_trdLogthread.join();
+
 		return 0;
 	}
 	
@@ -237,22 +269,33 @@ int filelog::startlogging() {
 	m_bStoplog = false;
 	m_bThreadstarted = true;
 	m_trdLogthread = std::thread(&filelog::mainthread, this);
-	addtologqueue("Opening new logging session...", LOG_WARN, modulename);
+// 	if (!log_started) {
+// 		addtologqueue("Started \"" + artyk::app_name+ "\". Version: "+artyk::app_version+" Build: "+to_string(artyk::app_build), LOG_SUCCESS, "Engine");
+// 	}
+	addtologqueue("Opening new logging session...", LOG_WARN, m_modulename);
 	return 0;
 }
 int filelog::mainthread() {
 	std::string writestr;
+	//static bool closing = false;
 	while (!m_bStoplog || m_ullMessgcount > 0)
 	//while (m_ullMessgcount > 0) //for single thread debugging
 	{
 		//mpr_iWriteiterat++;
-		
+// 		if (!closing && artyk::closing_app > 0) {
+// 			selfdestruct();
+// 			closing = true;
+// 		}
 
 		if (vectorcheck()) {
 			
 			
-
+			//cout << m_ullMessgcount<< " ";
 			openfile();
+			openfile_tmp();
+// 			if (m_strProg_module[0].empty()) {
+// 				m_fr.sleep();
+// 			}
 			//if (m_bDev_cout)std::cout << "LOGGER_TRD:writing to log \"" << m_strMessg[0]<<"\" with "<< m_ullMessgcount <<" remaining"<< std::endl;
 			writestr.clear();
 			writestr = "[ " + currentDateTime() + " ] [";
@@ -263,21 +306,25 @@ int filelog::mainthread() {
 			
 			writestr += "] [" + m_strProg_module[0] + "]: " + m_strMessg[0] + "\n";
 			m_fstFilestr.write(writestr.c_str(), writestr.length());
+			m_fstTmpFilestr.write(writestr.c_str(), writestr.length());
 			closefile();
+			closefile_tmp();
 			
 			//if (m_bDev_cout)std::cout << "	cleaning up with " << m_ldEntrycount << " entries ";
+			mylock.lock();
 			m_strMessg.erase(m_strMessg.begin());
 			m_iLogtype.erase(m_iLogtype.begin());
 			m_strProg_module.erase(m_strProg_module.begin());
+			mylock.unlock();
 			if(m_ullMessgcount > 0){ this->m_ullMessgcount--; }
 			//if (m_bDev_cout)cout << "and " << m_ullMessgcount << " remaining" << std::endl;
-		
+			//m_fr2.sleep();
 			
 		}
 		else
 		{
 			
-			if(m_bDev_cout)std::cout << "LOGGER_TRD:something is wrong with data or the message is empty/nonexistent;\n" << m_ullMessgcount << " remaining and mpr_bStoplog " << m_bStoplog<<std::endl;
+			//if(m_bDev_cout)std::cout << "LOGGER_TRD:something is wrong with data or the message is empty/nonexistent;\n" << m_ullMessgcount << " remaining and mpr_bStoplog " << m_bStoplog<<std::endl;
 			m_fr.sleep();
 			continue;
    
@@ -305,7 +352,7 @@ const std::string filelog::currentDateTime() {
 }
 
 std::string filelog::logdate() {
-	if (m_bDev_log)addtologqueue("Getting Date and Time for the Log file...", LOG_INFO, modulename);
+	if (m_bDev_log)addtologqueue("Getting Date and Time for the Log file...", LOG_INFO, m_modulename);
 	std::string temp = currentDateTime();
 	std::string temp2;
 	short i = 0;
@@ -314,12 +361,12 @@ std::string filelog::logdate() {
 		i++;
 	}
 	
-	if (m_bDev_log)addtologqueue("OK! Got the log file date: "+temp2, LOG_OK, modulename);
+	if (m_bDev_log)addtologqueue("OK! Got the log file date: "+temp2, LOG_OK, m_modulename);
 	return temp2;
 }
 
 int filelog::createdir(const char* pathtofile) {//creates directories of the path if they dont exist
-	if (m_bDev_log)addtologqueue("Creating directory for log file "+*pathtofile, LOG_INFO, modulename);
+	if (m_bDev_log)addtologqueue("Creating directory for log file "+*pathtofile, LOG_INFO, m_modulename);
 	bool result;
 	result = std::filesystem::create_directories(pathtofile);
 // 	if (result) {
@@ -356,6 +403,39 @@ int filelog::closefile() {
 	//if (m_bDev_cout)std::cout << "	closing file" << std::endl;
 	if (m_fstFilestr.is_open()) {
 		m_fstFilestr.close();
+		return 0;
+	}
+	//if (m_bDev_cout) {MessageBoxA(0, "WARN:Trying to close not opened file", "WARN:Logger(filelog)", MB_OK | MB_ICONWARNING);}
+	return 1;
+}
+
+int filelog::openfile_tmp()
+{//a crutch to show the data in file instantly, as std::fstream has some kind of buffer
+	//so you need to close file after writing to it, so the data will update
+	//cout << filenam << endl;
+	//if (m_bDev_cout)std::cout << "opening file "+ *m_strFilename.c_str() << std::endl;
+	//if (m_bDev_log)addtologqueue("Opening log file \"" + m_strFilename + "\n...", LOG_INFO, modulename);
+	//cout << m_strTmpFilename << endl;
+	m_fstTmpFilestr.open(m_strTmpFilename.c_str(), std::fstream::out | std::fstream::trunc);
+	if (m_fstTmpFilestr.is_open()) {
+		//if (m_bDev_log)addtologqueue("SUCCESS! Opened file \"" + m_strFilename + "\n for logging", LOG_SUCCESS, modulename);
+		return 0;
+
+	}
+
+	//MessageBoxA(0, "FATAL ERROR:Could not open file for logging!\nThe program will now exit.", "FATAL ERROR:Filelog", MB_OK | MB_ICONERROR);
+	//if (m_bDev_log)addtologqueue("FATAL ERROR! Could not create log file" + m_strFilename, LOG_FERROR, modulename);//wont be written, but 
+	//exit(1);
+
+	return 1;
+	
+}
+
+int filelog::closefile_tmp()
+{
+	//if (m_bDev_cout)std::cout << "	closing file" << std::endl;
+	if (m_fstTmpFilestr.is_open()) {
+		m_fstTmpFilestr.close();
 		return 0;
 	}
 	//if (m_bDev_cout) {MessageBoxA(0, "WARN:Trying to close not opened file", "WARN:Logger(filelog)", MB_OK | MB_ICONWARNING);}

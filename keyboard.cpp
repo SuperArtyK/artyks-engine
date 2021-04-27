@@ -153,12 +153,12 @@ void Keyboard::checkkeystates() {
 				m_kstKeys[i].m_bPressed = false;
 				m_kstKeys[i].m_bReleased = false;
 				m_kstKeys[i].id = i;
-				m_kstKeys[i].name = GetKeyName(i);
+				m_kstKeys[i].m_name = GetKeyName(i);
 				if (m_keyNewState[i] != m_keyOldState[i])
 				{
 					if (m_keyNewState[i] & 0x8000)
 					{
-						m_kstKeys[i].m_bPressed = !m_kstKeys[i].m_bHeld;
+						m_kstKeys[i].m_bPressed = false;
 						m_kstKeys[i].m_bHeld = true;
 					}
 					else

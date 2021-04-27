@@ -78,6 +78,7 @@ public:
 
 
 private:
+	std::string m_modulename = "Timer";
 	frame_rater<TIMER_FPS> m_fr;
 	long long m_delay;
 	std::atomic<long double> m_time;

@@ -36,10 +36,11 @@ using namespace std;
 struct sKeyState
 {
 	int id;
-	const char* name;
+	const char* m_name;
 	bool m_bPressed;
 	bool m_bReleased;
 	bool m_bHeld;
+	short m_state;//the state itself
 };
 
 class Keyboard {
@@ -62,7 +63,7 @@ public:
 												  //will be updated by graphics engine
 
 	vector<sKeyState> GetPressedKeys();
-	std::string getmodulename() { return modulename; }
+	std::string getmodulename() { return m_modulename; }
 	bool IsKeyPressed(string keyname);//looks at the keynames[][] and checks if given key is pressed; if not found returns 0;
 	bool IsKeyPressed(int keyid);//looks at the m_kstKeys[] directly and checks if given key is pressed; if not found returns 0;
 	bool IsKeyHeld(string keyname);//looks at the keynames[][] and checks if given key is held; if not found returns 0;
@@ -75,17 +76,17 @@ public:
 
 
 	//bool IsKeyPressed(char keyname);//checks 
-	void setdelay(int milis) {
-		processdelay = milis;
-		
-	}
+// 	void setdelay(int milis) {
+// 		processdelay = milis;
+// 		
+// 	}
 
 
 private:
 	frame_rater<GAME_FPS> m_fr;
 
 	int processdelay;
-	std::string modulename = "Keyboard";
+	std::string m_modulename = "Keyboard";
 	sKeyState m_kstKeys[256], g_kstMouse[5];
 	bool m_bConsoleInFocus = true;//first frame we will be always in focus
 //idk how you can use mouse in console, but should be handy sometime

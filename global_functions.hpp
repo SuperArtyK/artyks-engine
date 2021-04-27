@@ -61,7 +61,7 @@ namespace artyk {
 	//but is very precise
 	//(not on linux though, usleep still wins)
 
-	
+
 
 
 

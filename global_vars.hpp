@@ -62,9 +62,10 @@ inline const int def_color[2] = { BLACK, GREEN };
 //im making this, so I can differentiate between std, mine, and others
 namespace artyk {
 	
+	inline int closing_app = 0;//flag if app is being closed, 1 if it user closes app, more -- modules are turning off
 	const string app_name = "ArtyK's Engine Test";
-	const int app_build = 32;//how do you autoincrement these?
-	const string app_version = "v.0.0.1";
+	const int app_build = 162;//how do you autoincrement these?
+	const string app_version = "v.0.0.3";
 	
 	const string keynames[173][2]{//for GetKeyID
 		//DO NOT TOUCH! unless you know what you're doing

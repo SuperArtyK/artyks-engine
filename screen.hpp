@@ -181,9 +181,12 @@ public:
 		SetConsoleTextAttribute(m_hStdOut, 1);
 	}
 	
-	std::string getmodulename() { return modulename; }
+	std::string getmodulename() { return m_modulename; }
 private:
-	std::string modulename = "Screen(OLD)";
+
+
+	
+	std::string m_modulename = "Screen";
 	bool interruptscroll;
 	CONSOLE_SCREEN_BUFFER_INFOEX m_rgb_color;
 	CONSOLE_SCREEN_BUFFER_INFOEX m_normal_color;

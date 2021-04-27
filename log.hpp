@@ -53,6 +53,7 @@ using std::atomic;
 
 #define LOG_FRAMERATE GAME_FPS/4 //4x slower than game framerate
 
+inline bool log_started = false;//for marking the exe start in logs, inside filelog
 
 class filelog {
 public:
@@ -76,13 +77,15 @@ public:
 
 	int writetolog(std::string l_strMessg = "", int l_iType = 0, std::string l_strProg_module = "Logger", bool debuglog = false);
 	int addtologqueue(std::string l_strMessg = "", int l_iType = 0, std::string l_strProg_module = "Logger", bool debuglog = false);//this is for safe logging, during important part of log itself(to avoid inf recursion)
-	int stoplogging();
+	int stoplogging(bool closeprog = false);//flag is if we are closing the program.
 	int startlogging();
 	int mainthread();
-	std::string getmodulename() { return modulename; }
+	std::string getmodulename() { return m_modulename; }
 private:
 	
-	frame_rater<LOG_FRAMERATE> m_fr;
+	frame_rater<LOG_FRAMERATE> m_fr;//for out empty delay
+	frame_rater<GAME_FPS> m_fr2;//for out filling delay
+
 	//functions
 	atomic<bool> m_bStoplog;//flag that for stopping/opening logging session
 	
@@ -93,19 +96,34 @@ private:
 	int createdir(const char* pathtofile);
 	int openfile();
 	int closefile();
-	
+	int openfile_tmp();//this is for the real-time log reading in future
+	int closefile_tmp();//this is for the real-time log reading in future
+// 	void selfdestruct() {
+// 
+// 
+// 
+// 		cout << "\nclosing.....";
+// 		writetolog("Stopping modules...", LOG_INFO, m_modulename);
+// 		//code here
+// 		writetolog("Cleaning up...", LOG_INFO, m_modulename);
+// 		//code here
+// 		writetolog("Closed \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build), LOG_SUCCESS, "Engine");
+// 		this->~filelog();
+// 		artyk::closing_app++;
+// 	}
 
 
 	//misc
 	inline size_t GetObjSize() {
 		size_t temp = getVectorSize(m_strMessg) + getVectorSize(m_iLogtype) + getVectorSize(m_strProg_module) +//vectors
 			sizeof(bool)* 4 +//bools
-			sizeof(std::string)*(m_strDatentime.length() + m_strFilename.length() + m_strLogpath.length())+//strings
-			sizeof(m_fstFilestr)+sizeof(m_trdLogthread)+sizeof(m_ldEntrycount);//misc
+			sizeof(std::string)*(m_strDatentime.length() + m_strFilename.length() + m_strLogpath.length()+m_strTmpFilename.length()+m_strTmpLogpath.length())+//strings
+			sizeof(m_fstFilestr)+sizeof(m_fstTmpFilestr)+sizeof(m_trdLogthread)+sizeof(m_ldEntrycount);//misc
 		return temp;
 	}
 	inline bool vectorcheck() {
-		return (!m_strMessg.empty() && !m_iLogtype.empty() && !m_strProg_module.empty());//checks if 3 main vectors are empty
+		//bool temp = ((!m_strMessg.empty() && !m_iLogtype.empty()) && !m_strProg_module.empty()) && ;
+		return ((!m_strMessg.empty() && !m_iLogtype.empty()) && !m_strProg_module.empty());//checks if 3 main vectors are empty
 	}
 	inline size_t getVectorSize(vector<short>& vec) {
 		size_t temp = sizeof(std::vector<short>) + (sizeof(short) * vec.size());
@@ -123,11 +141,18 @@ private:
 	//vars
 	std::string m_strDatentime;//stores date/time data
 	std::string m_strFilename;
-	std::fstream m_fstFilestr;//file "editor"
 	std::string m_strLogpath;//log path variable
+	std::string m_strTmpFilename;
+	std::string m_strTmpLogpath;//temp log path variable
+
+	std::fstream m_fstFilestr;//file "editor"
+	std::fstream m_fstTmpFilestr;//temp file "editor"
 	bool m_bThreadstarted;
 	std::thread m_trdLogthread;
 
+
+	std::mutex mylock;
+	
 	//const int mpr_cst_iMaxmessgcount = 256;
 // 	std::string mpr_arr_strMessg[256];
 
@@ -139,12 +164,12 @@ private:
 	vector<short> m_iLogtype;// = vector<int>(1, 0);
 	vector <std::string> m_strProg_module;// = vector<std::string>(1, "main");
 
-	std::string modulename = "Logger";
+	std::string m_modulename = "Logger";
 
 
 
 	//misc
-	long double m_ldEntrycount;
+	uint64_t m_ldEntrycount;
 	//long double mpr_ldWriteiterat = 0;
 };
 inline  filelog g_flgDeflogger;//default logger

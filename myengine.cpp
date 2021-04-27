@@ -26,7 +26,7 @@
 #define _HAS_ITERATOR_DEBUGGING 0
 
 #endif
-//#include "sound.hpp"
+#include "oldsound.hpp"
 #include "timer.hpp"
 #include "keyboard.hpp"
 #include "screen.hpp"
@@ -58,20 +58,28 @@ void makelog(string keyname) {
 
 int main()
 {
+
+	filelog mylog;
+	srand(time(NULL));
 	Keyboard mykb;
+	Screen myscr;
 // 	filelog mylog;
 // 	for (int i = 0; i < 1000; i++) {
 // 		mylog.writetolog("");
 // 		cout <<i<< "done\n";
 // 	}
 	//vector<sKeyState> vec1;
-	filelog mylog;
+	int i = 0;
 	frame_rater<60> fr;
 	for (;;) {
-		if (mykb.IsKeyUsed("escape")) { cout << "pressed\n"; mylog.writetolog(""); }
-		fr.sleep();
+		myscr.setcolor_con(0, rand() % 16);
+		cout << i<<endl;
+		i++;
+		mylog.writetolog(to_string(i), LOG_INFO, "logger");
+		//fr.sleep();
 	}
 	_getch();
+
 }
 
 // Run program: Ctrl + F5 or Debug >s Start Without Debugging menu
