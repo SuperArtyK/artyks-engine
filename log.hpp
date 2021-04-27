@@ -32,7 +32,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
-
+#include "timer.hpp"
 //#include "screen.hpp"
 
 using std::vector;
@@ -51,6 +51,7 @@ using std::atomic;
 #define LOG_FATAL_ERROR 3
 #define LOG_SEVERE_WARNING 4
 
+#define LOG_FRAMERATE GAME_FPS/4 //4x slower than game framerate
 
 
 class filelog {
@@ -81,7 +82,7 @@ public:
 	std::string getmodulename() { return modulename; }
 private:
 	
-
+	frame_rater<LOG_FRAMERATE> m_fr;
 	//functions
 	atomic<bool> m_bStoplog;//flag that for stopping/opening logging session
 	
@@ -96,14 +97,27 @@ private:
 
 
 	//misc
-	size_t objsize() {
-		size_t temp = sizeof(*this) + m_strMessg.capacity() + m_iLogtype.capacity() + m_strProg_module.capacity();
+	inline size_t GetObjSize() {
+		size_t temp = getVectorSize(m_strMessg) + getVectorSize(m_iLogtype) + getVectorSize(m_strProg_module) +//vectors
+			sizeof(bool)* 4 +//bools
+			sizeof(std::string)*(m_strDatentime.length() + m_strFilename.length() + m_strLogpath.length())+//strings
+			sizeof(m_fstFilestr)+sizeof(m_trdLogthread)+sizeof(m_ldEntrycount);//misc
 		return temp;
 	}
-	bool vectorcheck() {
+	inline bool vectorcheck() {
 		return (!m_strMessg.empty() && !m_iLogtype.empty() && !m_strProg_module.empty());//checks if 3 main vectors are empty
 	}
-
+	inline size_t getVectorSize(vector<short>& vec) {
+		size_t temp = sizeof(std::vector<short>) + (sizeof(short) * vec.size());
+		return temp;
+	}
+	inline size_t getVectorSize(vector<std::string>& vec) {
+		size_t temp = sizeof(std::vector<std::string>) + (sizeof(std::string) * vec.size());
+		for (uint64_t i = 0; i < vec.size(); i++) {
+			temp += vec[i].length();
+		}
+		return temp;
+	}
 	const char* checktype(int l_type);//checks for message type and returns word representation that corresponds to type
 
 	//vars
@@ -122,7 +136,7 @@ private:
 // 	int mpr_arr_iLogtype[256];
 //  	std::string mpr_arr_strProg_module[256];
 	uint64_t m_ullMessgcount;
-	vector<int> m_iLogtype;// = vector<int>(1, 0);
+	vector<short> m_iLogtype;// = vector<int>(1, 0);
 	vector <std::string> m_strProg_module;// = vector<std::string>(1, "main");
 
 	std::string modulename = "Logger";

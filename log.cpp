@@ -21,6 +21,7 @@
 // should not cause everything to break
 //////////////////////////////////////////////////////////////////////////
 
+#include "timer.hpp"
 #include "log.hpp"
 #include <string>
 #include <fstream>
@@ -28,7 +29,7 @@
 #include <chrono>
 #include <thread>
 #include <windows.h>
-#include "screen.hpp"
+//#include "screen.hpp"
 //using namespace std;
 using std::vector;
 using std::cout;
@@ -171,7 +172,7 @@ int filelog::writetolog(std::string l_strMessg, int l_iType, std::string l_strPr
 	}
 	else {
 		if (l_strMessg.empty()) {
-			l_strMessg = "Sample entry. This logger object uses " + std::to_string(objsize()) + " bytes and has made " + std::to_string(m_ldEntrycount) + " log entries";
+			l_strMessg = "Sample entry. This logger object uses " + std::to_string(GetObjSize()) + " bytes and has made " + std::to_string(m_ldEntrycount) + " log entries";
 			l_iType = LOG_INFO;
 			l_strProg_module = modulename;
 		}
@@ -206,7 +207,7 @@ int filelog::addtologqueue(std::string l_strMessg, int l_iType, std::string l_st
 	}
 	else {
 		if (l_strMessg.empty()) {
-			l_strMessg = "Sample entry. This logger object uses " + std::to_string(objsize()) + " bytes and has made " + std::to_string(m_ldEntrycount) + " log entries";
+			l_strMessg = "Sample entry. This logger object uses " + std::to_string(GetObjSize()) + " bytes and has made " + std::to_string(m_ldEntrycount) + " log entries";
 			l_iType = LOG_INFO;
 			l_strProg_module = modulename;
 		}
@@ -277,8 +278,9 @@ int filelog::mainthread() {
 		{
 			
 			if(m_bDev_cout)std::cout << "LOGGER_TRD:something is wrong with data or the message is empty/nonexistent;\n" << m_ullMessgcount << " remaining and mpr_bStoplog " << m_bStoplog<<std::endl;
-			
-
+			m_fr.sleep();
+			continue;
+   
 
 
 

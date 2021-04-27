@@ -3,6 +3,7 @@
 #define TIMER
 
 #include "include.hpp"
+#include "global_vars.hpp"
 //thanks stackoverflow!
 
 //usage:
@@ -22,7 +23,7 @@
 //someone, who understands this code I stole, please re-do this to dynamicly assigning fps
 //so I can change fps delays on the fly
 
-#define TIMER_FPS 10
+#define TIMER_FPS GAME_FPS/6 // by default is 10
 
 template<long long FPS>
 class frame_rater {
@@ -77,7 +78,7 @@ public:
 
 
 private:
-	frame_rater<TIMER_FPS> frt;
+	frame_rater<TIMER_FPS> m_fr;
 	long long m_delay;
 	std::atomic<long double> m_time;
 	std::thread t1;
@@ -85,11 +86,11 @@ private:
 	void incrtimer() {
 		while(!stopthread){
 			m_time = m_time + 1;
-			frt.sleep();
+			m_fr.sleep();
 		}
 
 	}
 };
-timer global_timer;
+inline timer global_timer;
 
 #endif // !TIMER

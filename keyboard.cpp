@@ -80,7 +80,7 @@ const char* Keyboard::GetKeyName(int keyid) {
 vector<sKeyState> Keyboard::GetPressedKeys() {
 	int presskeys = 0;
 	vector<sKeyState> keystat;
-	pausetrd = 1;
+	//pausetrd = 1;
 	// 		while (pausetrd != 2) {
 	//
 	// 		}
@@ -95,22 +95,44 @@ vector<sKeyState> Keyboard::GetPressedKeys() {
 }
 
 bool Keyboard::IsKeyPressed(string keyname)
-{
-
-
-
-
-
-
-	return false;
+{//looks at the keynames[][] and checks if given key is pressed; if not found returns 0;
+	return m_kstKeys[GetKeyID(keyname)].m_bPressed;
 }
 
 bool Keyboard::IsKeyPressed(int keyid)
-{
-	return false;
+{//looks at the m_kstKeys[] directly and checks if given key is pressed; if not found returns 0;
+	return m_kstKeys[keyid].m_bPressed;
 }
 
+bool Keyboard::IsKeyHeld(string keyname)
+{//looks at the keynames[][] and checks if given key is held; if not found returns 0;
+	return m_kstKeys[GetKeyID(keyname)].m_bHeld;
+}
 
+bool Keyboard::IsKeyHeld(int keyid)
+{//looks at the m_kstKeys[] directly and checks if given key is held; if not found returns 0;
+	return m_kstKeys[keyid].m_bHeld;
+}
+
+bool Keyboard::IsKeyReleased(string keyname)
+{//looks at the keynames[][] directly and checks if given key is released; if not found returns 0;
+	return m_kstKeys[GetKeyID(keyname)].m_bReleased;
+}
+
+bool Keyboard::IsKeyReleased(int keyid)
+{//looks at the m_kstKeys[] directly and checks if given key is released; if not found returns 0;
+	return m_kstKeys[keyid].m_bReleased;
+}
+
+bool Keyboard::IsKeyUsed(string keyname)
+{//looks at the keynames[][] directly and checks if given key is used(pressed/held); if not found returns 0;
+	return (m_kstKeys[GetKeyID(keyname)].m_bHeld|| m_kstKeys[GetKeyID(keyname)].m_bPressed);
+}
+
+bool Keyboard::IsKeyUsed(int keyid)
+{//looks at the m_kstKeys[] directly and checks if given key is used(pressed/held); if not found returns 0;
+	return (m_kstKeys[keyid].m_bHeld || m_kstKeys[keyid].m_bPressed);
+}
 
 void Keyboard::checkkeystates() {
 	//keyboard
@@ -119,6 +141,7 @@ void Keyboard::checkkeystates() {
 		//another while for pausing
 		//while (pausetrd == 0)
 		{
+			
 			for (int i = 0; i < 256; i++)
 			{
 				if (stoptrd) {
@@ -147,7 +170,10 @@ void Keyboard::checkkeystates() {
 
 				m_keyOldState[i] = m_keyNewState[i];
 			}
+			m_fr.sleep();//not collect the keystrokes, while game is on pause for next frame
 		}
+
+
 	}
 	if (pausetrd == 1) {
 		pausetrd = 2;

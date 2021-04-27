@@ -51,6 +51,9 @@ using namespace std;
 #define YELLOW	 14 //BRIGHT
 #define WHITE	 15 //BRIGHT
 
+#define GAME_FPS 60
+
+
 inline const int def_color[2] = { BLACK, GREEN };
 #define NOCOLOR -1
 #define DEFCLR_BGR def_color[0]
@@ -59,11 +62,11 @@ inline const int def_color[2] = { BLACK, GREEN };
 //im making this, so I can differentiate between std, mine, and others
 namespace artyk {
 	
-	inline const string app_name = "ArtyK's Engine Test";
-	inline const int app_build = 32;//how do you autoincrement these?
-	inline const string app_version = "v.0.0.1";
-
-	inline const string keynames[173][2]{//for GetKeyID
+	const string app_name = "ArtyK's Engine Test";
+	const int app_build = 32;//how do you autoincrement these?
+	const string app_version = "v.0.0.1";
+	
+	const string keynames[173][2]{//for GetKeyID
 		//DO NOT TOUCH! unless you know what you're doing
 		{"lbutton",                      "1"  },
 	{"rbutton",                      "2"  },
@@ -240,7 +243,7 @@ namespace artyk {
 	{"oemclear",                     "254"},
 	};
 
-	inline const string log_typekw[8]{//message type, for m_iLogtype
+	const string log_typekw[8]{//message type, for m_iLogtype
 
 		"info",
 		"warn",
@@ -252,7 +255,7 @@ namespace artyk {
 
 	};
 
-	inline const string log_modkw[6]{
+	const string log_modkw[6]{
 		"main",
 		"sound",
 		"logger",
@@ -269,7 +272,7 @@ namespace artyk {
 	// };
 
 
-	inline const int log_kwcolor[15][2]{
+	const int log_kwcolor[15][2]{
 
 		//type
 		{DEFCLR_BGR, CYAN},//info

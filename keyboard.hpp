@@ -29,6 +29,7 @@
 #include "include.hpp"
 #include "global_functions.hpp"
 #include "global_vars.hpp"
+#include "timer.hpp"
 using namespace std;
 
 //kst -- keystate
@@ -64,14 +65,24 @@ public:
 	std::string getmodulename() { return modulename; }
 	bool IsKeyPressed(string keyname);//looks at the keynames[][] and checks if given key is pressed; if not found returns 0;
 	bool IsKeyPressed(int keyid);//looks at the m_kstKeys[] directly and checks if given key is pressed; if not found returns 0;
+	bool IsKeyHeld(string keyname);//looks at the keynames[][] and checks if given key is held; if not found returns 0;
+	bool IsKeyHeld(int keyid);//looks at the m_kstKeys[] directly and checks if given key is held; if not found returns 0;
+	bool IsKeyReleased(string keyname);//looks at the keynames[][] directly and checks if given key is released; if not found returns 0;
+	bool IsKeyReleased(int keyid);//looks at the m_kstKeys[] directly and checks if given key is released; if not found returns 0;
+	bool IsKeyUsed(string keyname);//looks at the keynames[][] directly and checks if given key is used(pressed/held); if not found returns 0;
+	bool IsKeyUsed(int keyid);//looks at the m_kstKeys[] directly and checks if given key is used(pressed/held); if not found returns 0;
+
+
+
 	//bool IsKeyPressed(char keyname);//checks 
 	void setdelay(int milis) {
 		processdelay = milis;
+		
 	}
 
 
 private:
-
+	frame_rater<GAME_FPS> m_fr;
 
 	int processdelay;
 	std::string modulename = "Keyboard";

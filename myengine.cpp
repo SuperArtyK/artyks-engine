@@ -40,15 +40,37 @@ using namespace std;
 
 long double tmp = 0, tmp2 = 0;
 
+void makelog(string keyname) {
+	filelog mylog;
+	Keyboard mykb;
+	
+	switch (mykb.GetKeyID(keyname))
+	{
+	default:
+		break;
+	}
+
+
+
+}
+
+
 
 int main()
 {
+	Keyboard mykb;
+// 	filelog mylog;
+// 	for (int i = 0; i < 1000; i++) {
+// 		mylog.writetolog("");
+// 		cout <<i<< "done\n";
+// 	}
+	//vector<sKeyState> vec1;
 	filelog mylog;
-	for (int i = 0; i < 1000; i++) {
-		mylog.writetolog("");
-		cout <<i<< "done\n";
+	frame_rater<60> fr;
+	for (;;) {
+		if (mykb.IsKeyUsed("escape")) { cout << "pressed\n"; mylog.writetolog(""); }
+		fr.sleep();
 	}
-	
 	_getch();
 }
 
