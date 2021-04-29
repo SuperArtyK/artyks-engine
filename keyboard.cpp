@@ -41,7 +41,7 @@ Keyboard::~Keyboard() { closetrd(); }
 
 //control functions
 void Keyboard::startrd() {
-	kbtrd = thread(&Keyboard::checkkeystates, this);
+	kbtrd = std::thread(&Keyboard::checkkeystates, this);
 	trdstarted = true;
 }
 void Keyboard::closetrd() {
@@ -65,7 +65,7 @@ int Keyboard::GetKeyID(std::string keyname) {
 	return 0;
 }
 
-const char* Keyboard::GetKeyName(int keyid) {
+const char* Keyboard::GetKeyName(uint8_t keyid) {
 	for (int i = 0; i < (sizeof artyk::keynames / sizeof artyk::keynames[0]); i++) {
 		if (keyid == stoi(artyk::keynames[i][1])) {
 			return artyk::keynames[i][0].c_str();
@@ -78,7 +78,7 @@ const char* Keyboard::GetKeyName(int keyid) {
 //very bad implementation in my opinion
 //but it will work for now
 vector<sKeyState> Keyboard::GetPressedKeys() {
-	int presskeys = 0;
+	//int presskeys = 0;
 	vector<sKeyState> keystat;
 	//pausetrd = 1;
 	// 		while (pausetrd != 2) {
@@ -94,42 +94,42 @@ vector<sKeyState> Keyboard::GetPressedKeys() {
 	return keystat;
 }
 
-bool Keyboard::IsKeyPressed(string keyname)
+bool Keyboard::IsKeyPressed(const string keyname)
 {//looks at the keynames[][] and checks if given key is pressed; if not found returns 0;
 	return m_kstKeys[GetKeyID(keyname)].m_bPressed;
 }
 
-bool Keyboard::IsKeyPressed(int keyid)
+bool Keyboard::IsKeyPressed(uint8_t keyid)
 {//looks at the m_kstKeys[] directly and checks if given key is pressed; if not found returns 0;
 	return m_kstKeys[keyid].m_bPressed;
 }
 
-bool Keyboard::IsKeyHeld(string keyname)
+bool Keyboard::IsKeyHeld(const string keyname)
 {//looks at the keynames[][] and checks if given key is held; if not found returns 0;
 	return m_kstKeys[GetKeyID(keyname)].m_bHeld;
 }
 
-bool Keyboard::IsKeyHeld(int keyid)
+bool Keyboard::IsKeyHeld(uint8_t keyid)
 {//looks at the m_kstKeys[] directly and checks if given key is held; if not found returns 0;
 	return m_kstKeys[keyid].m_bHeld;
 }
 
-bool Keyboard::IsKeyReleased(string keyname)
+bool Keyboard::IsKeyReleased(const string keyname)
 {//looks at the keynames[][] directly and checks if given key is released; if not found returns 0;
 	return m_kstKeys[GetKeyID(keyname)].m_bReleased;
 }
 
-bool Keyboard::IsKeyReleased(int keyid)
+bool Keyboard::IsKeyReleased(uint8_t keyid)
 {//looks at the m_kstKeys[] directly and checks if given key is released; if not found returns 0;
 	return m_kstKeys[keyid].m_bReleased;
 }
 
-bool Keyboard::IsKeyUsed(string keyname)
+bool Keyboard::IsKeyUsed(const string keyname)
 {//looks at the keynames[][] directly and checks if given key is used(pressed/held); if not found returns 0;
 	return (m_kstKeys[GetKeyID(keyname)].m_bHeld|| m_kstKeys[GetKeyID(keyname)].m_bPressed);
 }
 
-bool Keyboard::IsKeyUsed(int keyid)
+bool Keyboard::IsKeyUsed(uint8_t keyid)
 {//looks at the m_kstKeys[] directly and checks if given key is used(pressed/held); if not found returns 0;
 	return (m_kstKeys[keyid].m_bHeld || m_kstKeys[keyid].m_bPressed);
 }

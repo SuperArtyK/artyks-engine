@@ -155,6 +155,7 @@
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="myengine.cpp" />
+    <ClCompile Include="screen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bits\algorithmfwd.h" />

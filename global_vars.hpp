@@ -31,7 +31,14 @@
 
 #include "include.hpp"
 //#include "keyboard.hpp"
-using namespace std;
+using std::vector;
+using std::string;
+using std::atomic;
+using std::wstring;
+using std::to_string;
+
+
+
 
 //color codes
 #define BLACK	 0 
@@ -59,13 +66,14 @@ inline const int def_color[2] = { BLACK, GREEN };
 #define DEFCLR_BGR def_color[0]
 #define DEFCLR_FGR def_color[1]
 
-//im making this, so I can differentiate between std, mine, and others
+//im making this, so I can differentiate between std, mine, and other namespaces
 namespace artyk {
 	
 	inline int closing_app = 0;//flag if app is being closed, 1 if it user closes app, more -- modules are turning off
 	const string app_name = "ArtyK's Engine Test";
 	const int app_build = 162;//how do you autoincrement these?
 	const string app_version = "v.0.0.3";
+	const string app_name_full = app_name + " " + app_version + ":"+to_string(app_build);
 	
 	const string keynames[173][2]{//for GetKeyID
 		//DO NOT TOUCH! unless you know what you're doing

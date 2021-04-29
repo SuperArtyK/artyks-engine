@@ -40,22 +40,13 @@ using namespace std;
 
 long double tmp = 0, tmp2 = 0;
 
-void makelog(string keyname) {
-	filelog mylog;
-	Keyboard mykb;
-	
-	switch (mykb.GetKeyID(keyname))
-	{
-	default:
-		break;
-	}
 
 
 
-}
-
-
-
+struct conscoord {
+	unsigned short x = 0;
+	unsigned short y = 0;
+};
 int main()
 {
 
@@ -69,15 +60,51 @@ int main()
 // 		cout <<i<< "done\n";
 // 	}
 	//vector<sKeyState> vec1;
-	int i = 0;
-	frame_rater<60> fr;
-	for (;;) {
-		myscr.setcolor_con(0, rand() % 16);
-		cout << i<<endl;
+	//int i = 0;
+	//frame_rater<10> fr;
+	auto start = chrono::high_resolution_clock::now();
+	auto end = chrono::high_resolution_clock::now();
+	double time_taken =
+		chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+
+// 	time_taken *= 1e-9;
+// 	cout << "Time taken by program is : " << fixed
+// 		<< time_taken << setprecision(9);
+// 	cout << " sec" << endl;
+	start = chrono::high_resolution_clock::now();
+	for (int i = 0; i < 10000; i++) {
+		
+		mylog.writetolog(to_string(i));
+
+		
 		i++;
-		mylog.writetolog(to_string(i), LOG_INFO, "logger");
-		//fr.sleep();
 	}
+	end = chrono::high_resolution_clock::now();
+	time_taken =
+		chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+
+	time_taken *= 1e-9;
+	cout << "Time taken by program is : " << fixed
+		<< time_taken << setprecision(9);
+	cout << " sec" << endl;
+
+	start = chrono::high_resolution_clock::now();
+	for (int i = 0; i < 10000; i++) {
+
+		mylog.w2logtest(to_string(i));
+
+
+		i++;
+	}
+	end = chrono::high_resolution_clock::now();
+	time_taken =
+		chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+
+	time_taken *= 1e-9;
+	cout << "Time taken by program is : " << fixed
+		<< time_taken << setprecision(9);
+	cout << " sec" << endl;
+
 	_getch();
 
 }

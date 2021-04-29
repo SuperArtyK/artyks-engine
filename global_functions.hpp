@@ -31,12 +31,16 @@
 #include "global_vars.hpp"
 //prototypes
 //moved from log.cpp
-using namespace std;
+using std::vector;
+using std::string;
+using std::atomic;
+using std::wstring;
+using std::to_string;
 
 
 
 
-//im making this, so I can differentiate between std, mine, and others
+//im making this, so I can differentiate between std, mine, and other namespaces
 namespace artyk {
 
 	//prototypes
@@ -72,26 +76,6 @@ namespace artyk {
 		while (it != s.end() && std::isdigit(*it)) ++it;
 		return !s.empty() && it == s.end();
 	}
-	inline BOOLEAN nanosleep(LONGLONG ns) {//best sleep function I found. 
-		/* Declarations */
-		HANDLE timer;   /* Timer handle */
-		LARGE_INTEGER li;   /* Time defintion */
-		/* Create timer */
-		if (!(timer = CreateWaitableTimer(NULL, TRUE, NULL)))
-			return FALSE;
-		/* Set timer properties */
-		li.QuadPart = -ns;
-		if (!SetWaitableTimer(timer, &li, 0, NULL, NULL, FALSE)) {
-			CloseHandle(timer);
-			return FALSE;
-		}
-		/* Start & wait for timer */
-		WaitForSingleObject(timer, INFINITE);
-		/* Clean resources */
-		CloseHandle(timer);
-		/* Slept without problems */
-		return TRUE;
-	}
 
 	inline void Sleep_SPIN(double seconds) {//has Spin-lock, which completely obliterates cpu performance, if runs on mult threads
 		//but is very precise
@@ -108,7 +92,7 @@ namespace artyk {
 		//normal sleep
 		while (seconds > estimate) {
 			auto start = std::chrono::high_resolution_clock::now();
-			this_thread::sleep_for(std::chrono::milliseconds(1));
+			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 			auto end = std::chrono::high_resolution_clock::now();
 
 			double observed = (end - start).count() / 1e9;
@@ -221,3 +205,28 @@ namespace artyk {
 
 
 #endif // !GLOB_FUNCS
+
+
+//commented out/deprecated code
+
+//deprecated
+// 	inline BOOLEAN nanosleep(LONGLONG ns) {//best sleep function I found. 
+// 		/* Declarations */
+// 		HANDLE timer;   /* Timer handle */
+// 		LARGE_INTEGER li;   /* Time defintion */
+// 		/* Create timer */
+// 		if (!(timer = CreateWaitableTimer(NULL, TRUE, NULL)))
+// 			return FALSE;
+// 		/* Set timer properties */
+// 		li.QuadPart = -ns;
+// 		if (!SetWaitableTimer(timer, &li, 0, NULL, NULL, FALSE)) {
+// 			CloseHandle(timer);
+// 			return FALSE;
+// 		}
+// 		/* Start & wait for timer */
+// 		WaitForSingleObject(timer, INFINITE);
+// 		/* Clean resources */
+// 		CloseHandle(timer);
+// 		/* Slept without problems */
+// 		return TRUE;
+// 	}

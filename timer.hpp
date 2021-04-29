@@ -4,6 +4,11 @@
 
 #include "include.hpp"
 #include "global_vars.hpp"
+using std::vector;
+using std::string;
+using std::atomic;
+using std::wstring;
+using std::to_string;
 //thanks stackoverflow!
 
 //usage:
@@ -54,15 +59,15 @@ private:
 //now this is a global timer, will be useful for engine related delays, instead of framerate ones
 class timer {
 public:
-	timer() {
-		m_time = 0;
+	timer() : m_time(0){
+		//m_time = 0;
 		m_delay = 10000;
 		stopthread = false;
 		t1 = std::thread(&timer::incrtimer, this);
 	}
 
-	timer(long long delay) {
-		m_time = 0;
+	timer(long long delay) : m_time(0) {
+		//m_time = 0;
 		m_delay = delay;
 		stopthread = false;
 		t1 = std::thread(&timer::incrtimer, this);

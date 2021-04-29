@@ -23,6 +23,7 @@
 
 #include "timer.hpp"
 #include "log.hpp"
+#include "screen.hpp"
 #include <string>
 #include <fstream>
 #include <filesystem>
@@ -66,7 +67,7 @@ filelog::filelog(){
 	//if (m_bDev_cout)std::cout << "LOGGER_MAIN:copyconstruct1" << std::endl;
 	
 }
-filelog::filelog(std::string l_strPathtolog){
+filelog::filelog(std::string l_strPathtolog = "logs/"){
 	
 	m_strDatentime.clear();
 	m_strLogpath = l_strPathtolog;
@@ -184,6 +185,7 @@ int filelog::writetolog(std::string l_strMessg, int l_iType, std::string l_strPr
 		m_strMessg.insert(m_strMessg.begin(), "Opening new logging session...");
 		m_iLogtype.insert(m_iLogtype.begin(), LOG_WARN);
 		m_strProg_module.insert(m_strProg_module.begin(), m_modulename);
+		m_bCleanUp.insert(m_bCleanUp.begin(), false);
 		m_ullMessgcount++;
 		return 0;
 	}
@@ -199,6 +201,7 @@ int filelog::writetolog(std::string l_strMessg, int l_iType, std::string l_strPr
 	m_strMessg.push_back(l_strMessg);
 	m_iLogtype.push_back(l_iType);
 	m_strProg_module.push_back(l_strProg_module);
+	m_bCleanUp.push_back(false);
 	m_ullMessgcount++;
 	mylock.unlock();
 	
@@ -211,6 +214,49 @@ int filelog::writetolog(std::string l_strMessg, int l_iType, std::string l_strPr
 	//mainthread();//for single thread debugging
 	return 0;
 }
+
+int filelog::w2logtest(std::string l_strMessg, int l_iType, std::string l_strProg_module, bool debuglog)
+{
+	static std::string temp;
+	if (!m_bThreadstarted) {
+		startlogging();
+
+	}
+
+	m_ldEntrycount++;
+
+	
+
+	if (l_strMessg == "Opening new logging session...") {
+		temp = "[ " + currentDateTime() + " ] [" + checktype(l_iType) + "] [" + l_strProg_module + "]: " + l_strMessg + "\n";
+		strvec1.insert(strvec1.begin(), temp);
+		m_ullMessgcount++;
+		return 0;
+	}
+	else {
+		if (l_strMessg.empty()) {
+			temp = "[ " + currentDateTime() + " ] [" + checktype(LOG_INFO) + "] [" + m_modulename + "]: " + "Sample entry. This logger object uses " + std::to_string(GetObjSize()) + " bytes and has made " + std::to_string(m_ldEntrycount) + " log entries" + "\n";
+			//mylock.lock();
+			strvec1.push_back(temp);
+			//mylock.unlock();
+			return 0;
+		}
+	}
+	temp = "[ " + currentDateTime() + " ] [" + checktype(l_iType) + "] [" + l_strProg_module + "]: " + l_strMessg + "\n";
+	//mylock.lock();
+	strvec1.push_back( temp);
+	//mylock.unlock();
+
+	//if (m_bDev_cout)std::cout << "LOGGER_MAIN:gonna write to log \"" << l_strMessg <<"\""<< std::endl;
+
+// 	//if (m_bDev_cout) {
+// 		debugConOut(l_strMessg, l_iType, l_strProg_module);
+// 
+// 	}
+	//mainthread();//for single thread debugging
+	return 0;
+}
+
 int filelog::addtologqueue(std::string l_strMessg, int l_iType, std::string l_strProg_module, bool debuglog){
 	m_ldEntrycount++;
 	
@@ -220,6 +266,8 @@ int filelog::addtologqueue(std::string l_strMessg, int l_iType, std::string l_st
 		m_strProg_module.insert(m_strProg_module.begin() + logoffset, "Engine");
 		m_strMessg.insert(m_strMessg.begin() + logoffset, "Started \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build));
 		m_ullMessgcount++;
+		//m_bCleanUp.push_back(false);
+		m_bCleanUp.insert(m_bCleanUp.begin() + logoffset, false);
 		log_started = true;
 		logoffset++;
 		
@@ -231,6 +279,7 @@ int filelog::addtologqueue(std::string l_strMessg, int l_iType, std::string l_st
 		m_strProg_module.insert(m_strProg_module.begin(), m_modulename);
 		m_strMessg.insert(m_strMessg.begin() + logoffset, "Opening new logging session...");
 		m_ullMessgcount++;
+		m_bCleanUp.insert(m_bCleanUp.begin() + logoffset, false);
 		logoffset++;
 		return 0;
 	}
@@ -247,6 +296,8 @@ int filelog::addtologqueue(std::string l_strMessg, int l_iType, std::string l_st
 	m_iLogtype.push_back(l_iType);
 	m_strProg_module.push_back(l_strProg_module);
 	m_strMessg.push_back(l_strMessg);
+	m_bCleanUp.push_back(false);
+
 	m_ullMessgcount++;
 	return 0;
 }
@@ -278,6 +329,7 @@ int filelog::startlogging() {
 int filelog::mainthread() {
 	std::string writestr;
 	//static bool closing = false;
+	Screen myscr;
 	while (!m_bStoplog || m_ullMessgcount > 0)
 	//while (m_ullMessgcount > 0) //for single thread debugging
 	{
@@ -298,23 +350,26 @@ int filelog::mainthread() {
 // 			}
 			//if (m_bDev_cout)std::cout << "LOGGER_TRD:writing to log \"" << m_strMessg[0]<<"\" with "<< m_ullMessgcount <<" remaining"<< std::endl;
 			writestr.clear();
-			writestr = "[ " + currentDateTime() + " ] [";
+			writestr = "[ " + currentDateTime() + " ] [" + checktype(m_iLogtype[0]) + "] [" + m_strProg_module[0] + "]: " + m_strMessg[0] + "\n";;
 			//vector<char> vchar;
 			//mpr_fstFilestr.write(write.c_str(), write.length());
 			//write.clear();
-			writestr += checktype(m_iLogtype[0]);
+			//writestr += checktype(m_iLogtype[0]);
 			
-			writestr += "] [" + m_strProg_module[0] + "]: " + m_strMessg[0] + "\n";
+			//writestr += "] [" + m_strProg_module[0] + "]: " + m_strMessg[0] + "\n";
 			m_fstFilestr.write(writestr.c_str(), writestr.length());
 			m_fstTmpFilestr.write(writestr.c_str(), writestr.length());
+			myscr.settitle_ref(writestr);
 			closefile();
 			closefile_tmp();
 			
+			//m_bCleanUp[0] = true;
 			//if (m_bDev_cout)std::cout << "	cleaning up with " << m_ldEntrycount << " entries ";
 			mylock.lock();
 			m_strMessg.erase(m_strMessg.begin());
 			m_iLogtype.erase(m_iLogtype.begin());
 			m_strProg_module.erase(m_strProg_module.begin());
+			
 			mylock.unlock();
 			if(m_ullMessgcount > 0){ this->m_ullMessgcount--; }
 			//if (m_bDev_cout)cout << "and " << m_ullMessgcount << " remaining" << std::endl;
@@ -440,6 +495,10 @@ int filelog::closefile_tmp()
 	}
 	//if (m_bDev_cout) {MessageBoxA(0, "WARN:Trying to close not opened file", "WARN:Logger(filelog)", MB_OK | MB_ICONWARNING);}
 	return 1;
+}
+
+void filelog::cleanup_vectors()
+{
 }
 
 

@@ -38,6 +38,8 @@
 using std::vector;
 using std::string;
 using std::atomic;
+using std::wstring;
+using std::to_string;
 
 //logger types
 #define LOG_INFO 0 
@@ -75,16 +77,21 @@ public:
 	~filelog();
 	
 
-	int writetolog(std::string l_strMessg = "", int l_iType = 0, std::string l_strProg_module = "Logger", bool debuglog = false);
+	int writetolog(std::string l_strMessg = "", int l_iType = LOG_INFO, std::string l_strProg_module = "Logger", bool debuglog = false);
+	int w2logtest(std::string l_strMessg = "", int l_iType = 0, std::string l_strProg_module = "Logger", bool debuglog = false);
 	int addtologqueue(std::string l_strMessg = "", int l_iType = 0, std::string l_strProg_module = "Logger", bool debuglog = false);//this is for safe logging, during important part of log itself(to avoid inf recursion)
 	int stoplogging(bool closeprog = false);//flag is if we are closing the program.
 	int startlogging();
 	int mainthread();
+	
+	vector<std::string> strvec1;
+	
 	std::string getmodulename() { return m_modulename; }
 private:
 	
-	frame_rater<LOG_FRAMERATE> m_fr;//for out empty delay
-	frame_rater<GAME_FPS> m_fr2;//for out filling delay
+	frame_rater<LOG_FRAMERATE> m_fr;//for our empty delay
+	frame_rater<GAME_FPS> m_fr2;//for our filling delay
+	frame_rater<LOG_FRAMERATE/2> m_fr3;//for our cleaning delay(we dont want our cleaner to be another performance killer
 
 	//functions
 	atomic<bool> m_bStoplog;//flag that for stopping/opening logging session
@@ -96,8 +103,12 @@ private:
 	int createdir(const char* pathtofile);
 	int openfile();
 	int closefile();
-	int openfile_tmp();//this is for the real-time log reading in future
-	int closefile_tmp();//this is for the real-time log reading in future
+	int openfile_tmp();//this is for the real-time log reading in future(normal english future, not std::)
+	int closefile_tmp();//this is for the real-time log reading in future(normal english future, not std::)
+
+	void cleanup_vectors();//to clean our log vectors
+
+	
 // 	void selfdestruct() {
 // 
 // 
@@ -137,7 +148,7 @@ private:
 		return temp;
 	}
 	const char* checktype(int l_type);//checks for message type and returns word representation that corresponds to type
-
+	
 	//vars
 	std::string m_strDatentime;//stores date/time data
 	std::string m_strFilename;
@@ -149,6 +160,7 @@ private:
 	std::fstream m_fstTmpFilestr;//temp file "editor"
 	bool m_bThreadstarted;
 	std::thread m_trdLogthread;
+	std::thread m_trdCleanLogthread;
 
 
 	std::mutex mylock;
@@ -163,10 +175,13 @@ private:
 	uint64_t m_ullMessgcount;
 	vector<short> m_iLogtype;// = vector<int>(1, 0);
 	vector <std::string> m_strProg_module;// = vector<std::string>(1, "main");
+	vector<bool> m_bCleanUp;//if we need to cleanup the vectors
 
-	std::string m_modulename = "Logger";
 
+	const std::string m_modulename = "Logger";
 
+	std::mutex donelock;
+	std::condition_variable donecond;
 
 	//misc
 	uint64_t m_ldEntrycount;

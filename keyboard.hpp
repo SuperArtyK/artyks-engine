@@ -30,7 +30,12 @@
 #include "global_functions.hpp"
 #include "global_vars.hpp"
 #include "timer.hpp"
-using namespace std;
+using std::vector;
+using std::string;
+using std::atomic;
+using std::wstring;
+using std::to_string;
+
 
 //kst -- keystate
 struct sKeyState
@@ -52,26 +57,26 @@ public:
 	void startrd();
 	void closetrd();
 
-	sKeyState GetKey(int nKeyID) { return m_kstKeys[nKeyID]; }
+	sKeyState GetKey(uint8_t nKeyID) { return m_kstKeys[nKeyID]; }
 	int GetMouseX() { return g_iMousePosX; }
 	int GetMouseY() { return g_iMousePosY; }
-	sKeyState GetMouse(int nMouseButtonID) { if (artyk::inrange(1, 6, nMouseButtonID)) { return g_kstMouse[nMouseButtonID]; }  return g_kstMouse[1]; }
+	sKeyState GetMouse(uint8_t nMouseButtonID) { if (artyk::inrange(1, 6, nMouseButtonID)) { return g_kstMouse[nMouseButtonID]; }  return g_kstMouse[1]; }
 	int GetKeyID(std::string keyname);
 
-	const char* GetKeyName(int keyid);
+	const char* GetKeyName(uint8_t keyid);
 	bool IsFocused() { return m_bConsoleInFocus; }//are we in focus right now?
 												  //will be updated by graphics engine
 
 	vector<sKeyState> GetPressedKeys();
 	std::string getmodulename() { return m_modulename; }
 	bool IsKeyPressed(string keyname);//looks at the keynames[][] and checks if given key is pressed; if not found returns 0;
-	bool IsKeyPressed(int keyid);//looks at the m_kstKeys[] directly and checks if given key is pressed; if not found returns 0;
+	bool IsKeyPressed(uint8_t keyid);//looks at the m_kstKeys[] directly and checks if given key is pressed; if not found returns 0;
 	bool IsKeyHeld(string keyname);//looks at the keynames[][] and checks if given key is held; if not found returns 0;
-	bool IsKeyHeld(int keyid);//looks at the m_kstKeys[] directly and checks if given key is held; if not found returns 0;
+	bool IsKeyHeld(uint8_t keyid);//looks at the m_kstKeys[] directly and checks if given key is held; if not found returns 0;
 	bool IsKeyReleased(string keyname);//looks at the keynames[][] directly and checks if given key is released; if not found returns 0;
-	bool IsKeyReleased(int keyid);//looks at the m_kstKeys[] directly and checks if given key is released; if not found returns 0;
+	bool IsKeyReleased(uint8_t keyid);//looks at the m_kstKeys[] directly and checks if given key is released; if not found returns 0;
 	bool IsKeyUsed(string keyname);//looks at the keynames[][] directly and checks if given key is used(pressed/held); if not found returns 0;
-	bool IsKeyUsed(int keyid);//looks at the m_kstKeys[] directly and checks if given key is used(pressed/held); if not found returns 0;
+	bool IsKeyUsed(uint8_t keyid);//looks at the m_kstKeys[] directly and checks if given key is used(pressed/held); if not found returns 0;
 
 
 
@@ -101,7 +106,7 @@ private:
 	short m_keyNewState[256] = { 0 };
 
 	//thread
-	thread kbtrd;
+	std::thread kbtrd;
 	int pausetrd;
 	bool stoptrd;//debug
 	bool trdstarted;
