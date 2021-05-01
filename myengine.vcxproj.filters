@@ -516,5 +516,8 @@
     <Text Include="help.txt">
       <Filter>Header Files</Filter>
     </Text>
+    <Text Include="logger_old_code.txt">
+      <Filter>Header Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

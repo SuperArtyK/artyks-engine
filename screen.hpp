@@ -29,9 +29,9 @@
 
 #ifndef SCREEN
 #define SCREEN
-#include "include.hpp"
 #include "global_vars.hpp"
 #include "global_functions.hpp"
+#include <windows.h>
 using std::vector;
 using std::string;
 using std::atomic;
@@ -47,7 +47,10 @@ public:
 	//definitions
 	void setcursor(short x, short y);//sets the output cursor to x/y pos of the screen
 
-	void setScreenSize(unsigned short y, unsigned short x);//sets console size
+	void setConsoleBufferSize(unsigned short y, unsigned short x);//sets console size
+
+	void setScreenSize(unsigned short x, unsigned short y);//sets console size
+
 
 
 	void settitle_val(const string title);	//speaks for itself
@@ -81,6 +84,7 @@ private:
 	HANDLE m_hStdIn;
 	HWND m_console;
 	COORD concoord;
+	RECT m_r;
 	const COORD topLeft = { 0, 0 };
 
 };

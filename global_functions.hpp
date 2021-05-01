@@ -27,8 +27,14 @@
 
 #ifndef GLOB_FUNCS
 #define GLOB_FUNCS
-#include "include.hpp"
-#include "global_vars.hpp"
+#include <atomic>
+#include <iostream>
+#include <thread>
+#include <fstream>
+#include <any>
+#include <vector>
+#include <algorithm>
+#include <string>
 //prototypes
 //moved from log.cpp
 using std::vector;
@@ -64,9 +70,9 @@ namespace artyk {
 	inline void Sleep_SPIN(double seconds);//has Spin-lock, which completely obliterates cpu, if runs on mult threads
 	//but is very precise
 	//(not on linux though, usleep still wins)
+	inline double timecounter(bool fps = false);
 
-
-
+	
 
 
 	//definitions
@@ -199,6 +205,41 @@ namespace artyk {
 
 	}
 
+	inline double timecounter(bool fps) {
+		/////////////////
+		// returns time elapsed since last function call
+		// optional:turning on fps flag it will return the possible fps between the time periods
+		// usage: surround code you need to measure with this function
+		// also the 2nd call returns ~~correct time between first and second calls;
+		// like so:
+		// fpscounter();
+		// for(int i = 0; i < 100; i++){
+		//     cout<<"Hello World! "<<i<<endl;
+		// }
+		// double result = fpscounter(); // calls 2nd time and gets time passed in seconds, also sets new time point
+		// cout<<result<<endl; outputs the result
+		/////////////////
+		
+
+		//create vars
+		static auto start = std::chrono::high_resolution_clock::now();
+		static auto end = std::chrono::high_resolution_clock::now();
+		
+		//set var value
+		end = std::chrono::high_resolution_clock::now();
+		double time_taken = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+
+		double fps_val = 1 / time_taken;
+		time_taken *= 1e-9;
+
+		if (fps) {
+			start = std::chrono::high_resolution_clock::now();
+			return fps_val;
+		}
+		start = std::chrono::high_resolution_clock::now();
+		return time_taken;
+
+	}
 }
 
 

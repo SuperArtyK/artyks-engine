@@ -57,7 +57,7 @@ void Screen::setcursor(short x, short y)
 	SetConsoleCursorPosition(m_hStdOut, concoord);
 }
 
-void Screen::setScreenSize(unsigned short y, unsigned short x) {//sets console size
+void Screen::setConsoleBufferSize(unsigned short x, unsigned short y) {//sets console size
 	//units are character cells
 
 	COORD coord;
@@ -72,10 +72,20 @@ void Screen::setScreenSize(unsigned short y, unsigned short x) {//sets console s
 
 	//HANDLE Handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleScreenBufferSize(m_hStdOut, coord);
-	SetConsoleWindowInfo(m_hStdOut, TRUE, &Rect);
-	ZeroMemory(&m_cfi, sizeof(m_cfi));
+	//SetConsoleWindowInfo(m_hStdOut, TRUE, &Rect);
 
 }
+
+void Screen::setScreenSize(unsigned short x, unsigned short y)
+{
+	GetWindowRect(m_console, &m_r);
+	MoveWindow(m_console, m_r.left, m_r.top, x, y, TRUE);
+
+}
+
+
+
+
 
 void Screen::settitle_val(const string title) {//speaks for itself
 		//sets app title
@@ -124,7 +134,7 @@ void Screen::setFont(int x, int y, bool b_issquare, string fontname) {//sets fon
 	}
 	m_cfi.FontFamily = FF_DONTCARE;
 	m_cfi.FontWeight = FW_NORMAL;
-	std::wcscpy(m_cfi.FaceName, artyk::widen(fontname).c_str()); // Choose your font
+	wcscpy_s(m_cfi.FaceName, artyk::widen(fontname).c_str()); // Choose your font
 	SetCurrentConsoleFontEx(m_hStdOut, FALSE, &m_cfi);
 }
 

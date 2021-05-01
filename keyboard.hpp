@@ -26,10 +26,10 @@
 #ifndef KEYBOARD
 #define KEYBOARD
 
-#include "include.hpp"
 #include "global_functions.hpp"
 #include "global_vars.hpp"
 #include "timer.hpp"
+#include <windows.h>
 using std::vector;
 using std::string;
 using std::atomic;
@@ -40,8 +40,8 @@ using std::to_string;
 //kst -- keystate
 struct sKeyState
 {
-	int id;
-	const char* m_name;
+	int m_keyid;
+	//const char* m_name;
 	bool m_bPressed;
 	bool m_bReleased;
 	bool m_bHeld;

@@ -29,7 +29,12 @@
 #ifndef GLOB_VARS
 #define GLOB_VARS
 
-#include "include.hpp"
+#include <atomic>
+#include <iostream>
+#include <thread>
+#include <fstream>
+#include <vector>
+#include <string>
 //#include "keyboard.hpp"
 using std::vector;
 using std::string;

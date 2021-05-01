@@ -26,12 +26,21 @@
 #define _HAS_ITERATOR_DEBUGGING 0
 
 #endif
-#include "oldsound.hpp"
-#include "timer.hpp"
+
+//modules
+#include "oldsound.hpp"//ALWAYS! include it first
+#include "log.hpp"
 #include "keyboard.hpp"
 #include "screen.hpp"
+
+#include "timer.hpp"
+
+//global stuff
 #include "include.hpp"
-#include "log.hpp"
+#include "global_vars.hpp"
+#include "global_functions.hpp"
+
+
 
 
 using namespace std;
@@ -40,71 +49,83 @@ using namespace std;
 
 long double tmp = 0, tmp2 = 0;
 
+class Logarray {
+public:
+	Logarray() {
+		m_strArr = nullptr;
+		m_ullLength = 0;
+		m_ullCapacity = 0;
+	}
+	Logarray(uint64_t initlength) {
+		m_strArr = new std::string[initlength];
+		m_ullLength = 0;
+		m_ullCapacity = initlength;// we don't store any value in strings, so length is 0, but we allocated them
+		m_allocmem = true;
+	}
+
+	int pushback(std::string pushstr) {
+
+		string* tempptr = nullptr;
+		if (m_ullLength+1 >= m_ullCapacity) {
+			//we need to reallocate and copy
+			tempptr = new string[m_ullCapacity*8];
+			for (uint64_t i = 0; i < m_ullLength;i++) {
+				tempptr[i].append(m_strArr[i]);
+			}
+
+		}
+
+	}
+
+
+	~Logarray() {
+		if (m_allocmem) {
+			delete[] m_strArr;
+		}
+	}
 
 
 
-struct conscoord {
-	unsigned short x = 0;
-	unsigned short y = 0;
+
+private:
+	
+	short step;//the steps we are taking when allocating
+	bool m_allocmem; //if we allocated the memory
+	std::string* m_strArr;
+	uint64_t m_ullLength, m_ullCapacity;
+	std::string temp;
+
+
+
 };
+
 int main()
 {
 
-	filelog mylog;
+	Filelog mylog;
 	srand(time(NULL));
 	Keyboard mykb;
 	Screen myscr;
-// 	filelog mylog;
-// 	for (int i = 0; i < 1000; i++) {
-// 		mylog.writetolog("");
-// 		cout <<i<< "done\n";
-// 	}
+	//myscr.setFont(2, 2, true, "Consolas");
+	myscr.setScreenSize(1280, 720);
+	//filelog mylog;
+	artyk::timecounter();
+	string temp;
+
+	for (int i = 0;i<512; i++) {
+		temp.push_back('a');
+	}
+
+	for (int i = 0;; i++) {
+		mylog.writetolog("");
+		cout <<i<< " done\n";
+
+	}
+	double res = artyk::timecounter();
+	cout << res;
 	//vector<sKeyState> vec1;
 	//int i = 0;
-	//frame_rater<10> fr;
-	auto start = chrono::high_resolution_clock::now();
-	auto end = chrono::high_resolution_clock::now();
-	double time_taken =
-		chrono::duration_cast<chrono::nanoseconds>(end - start).count();
-
-// 	time_taken *= 1e-9;
-// 	cout << "Time taken by program is : " << fixed
-// 		<< time_taken << setprecision(9);
-// 	cout << " sec" << endl;
-	start = chrono::high_resolution_clock::now();
-	for (int i = 0; i < 10000; i++) {
-		
-		mylog.writetolog(to_string(i));
-
-		
-		i++;
-	}
-	end = chrono::high_resolution_clock::now();
-	time_taken =
-		chrono::duration_cast<chrono::nanoseconds>(end - start).count();
-
-	time_taken *= 1e-9;
-	cout << "Time taken by program is : " << fixed
-		<< time_taken << setprecision(9);
-	cout << " sec" << endl;
-
-	start = chrono::high_resolution_clock::now();
-	for (int i = 0; i < 10000; i++) {
-
-		mylog.w2logtest(to_string(i));
-
-
-		i++;
-	}
-	end = chrono::high_resolution_clock::now();
-	time_taken =
-		chrono::duration_cast<chrono::nanoseconds>(end - start).count();
-
-	time_taken *= 1e-9;
-	cout << "Time taken by program is : " << fixed
-		<< time_taken << setprecision(9);
-	cout << " sec" << endl;
-
+	
 	_getch();
 
 }

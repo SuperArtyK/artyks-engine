@@ -1,0 +1,299 @@
+/*
+	ArtyK's Console (Game) Engine. Console engine for apps and games
+	Copyright (C) 2021  Artemii Kozhemiak
+
+	https://github.com/SuperArtyK/myengine
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+//////////////////////////////////////////////////////////////////////////
+// this file contains the old logger code, that maybe will be useful
+// in future or if everything breaks
+// should not cause everything to redefine
+//////////////////////////////////////////////////////////////////////////
+
+
+//change log path function, it doesnt work, WHY?!
+
+// int filelog::changelogpath(std::string newlogpath) {
+// 	logpath = newlogpath;
+// 	if (logpath[logpath.length() - 1] != '/' || logpath[logpath.length() - 1] != '\\') {
+// 		logpath += '/';
+// 	}
+// 	createdir(logpath);
+// 	filenam = logpath + "LOG_" + logdate() + ".log";
+// 	return 0;
+// }
+
+//writetolog 1.0
+
+/*
+int filelog::writetolog(std::string messg, int type = 0, std::string prog_module = "main") {//writes directly to log file
+	//auto start = chrono::high_resolution_clock::now();
+	//type 0 - info, 1-warn, 2-err, 3-fatal err
+	//prog_module - module of the program that message is being sent from
+
+	std::string write;
+	write = "[ " + currentDateTime() + " ] [";
+	//vector<char> vchar;
+	filestr.write(write.c_str(), write.length());
+	switch (type)
+	{
+
+	case 0:
+		write = "INFO";
+		break;
+
+
+	case 1:
+		write = "WARN";
+		break;
+
+	case 2:
+		write = "ERROR";
+		break;
+
+	case 3:
+		write = "FATAL ERROR";
+		break;
+
+	default:
+
+		break;
+	}
+	write += "] [" + prog_module + "]: " + messg + "\n";
+	filestr.write(write.c_str(), write.length());
+
+	// 		auto end = chrono::high_resolution_clock::now();
+	// 		double time_taken =
+	// 			chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+	// 
+	// 		time_taken *= 1e-9;
+	// 		cout << "Time taken by program is : " << fixed
+	// 			<< time_taken << setprecision(9);
+	// 		cout << " sec" << endl;
+
+	return 0;
+
+ 	}
+*/
+
+//writetolog 2.0
+
+/*
+int filelog::writetolog(std::string l_strMessg, int l_iType, std::string l_strProg_module, bool debuglog) {
+	if (!m_bThreadstarted) {
+		startlogging();
+
+	}
+
+	m_ldEntrycount++;
+
+
+
+	if (l_strMessg == "Opening new logging session...") {
+		m_strMessg.insert(m_strMessg.begin(), "Opening new logging session...");
+		m_iLogtype.insert(m_iLogtype.begin(), LOG_WARN);
+		m_strProg_module.insert(m_strProg_module.begin(), m_modulename);
+		m_bCleanUp.insert(m_bCleanUp.begin(), false);
+		m_ullMessgcount++;
+		return 0;
+	}
+	else {
+		if (l_strMessg.empty()) {
+			l_strMessg = "Sample entry. This logger object uses " + std::to_string(GetObjSize()) + " bytes and has made " + std::to_string(m_ldEntrycount) + " log entries";
+			l_iType = LOG_INFO;
+			l_strProg_module = m_modulename;
+		}
+	}
+
+	mylock.lock();
+	m_strMessg.push_back(l_strMessg);
+	m_iLogtype.push_back(l_iType);
+	m_strProg_module.push_back(l_strProg_module);
+	m_bCleanUp.push_back(false);
+	m_ullMessgcount++;
+	mylock.unlock();
+
+	//if (m_bDev_cout)std::cout << "LOGGER_MAIN:gonna write to log \"" << l_strMessg <<"\""<< std::endl;
+
+// 	//if (m_bDev_cout) {
+// 		debugConOut(l_strMessg, l_iType, l_strProg_module);
+// 
+// 	}
+	//mainthread();//for single thread debugging
+	return 0;
+}
+
+*/
+
+//mainthread of the writetolog 2.0
+/*
+int filelog::mainthread() {
+	std::string writestr;
+	//static bool closing = false;
+	Screen myscr;
+	while (!m_bStoplog || m_ullMessgcount > 0)
+	//while (m_ullMessgcount > 0) //for single thread debugging
+	{
+		//mpr_iWriteiterat++;
+// 		if (!closing && artyk::closing_app > 0) {
+// 			selfdestruct();
+// 			closing = true;
+// 		}
+
+		if (vectorcheck()) {
+			
+			
+			//cout << m_ullMessgcount<< " ";
+			openfile();
+			openfile_tmp();
+// 			if (m_strProg_module[0].empty()) {
+// 				m_fr.sleep();
+// 			}
+			//if (m_bDev_cout)std::cout << "LOGGER_TRD:writing to log \"" << m_strMessg[0]<<"\" with "<< m_ullMessgcount <<" remaining"<< std::endl;
+			writestr.clear();
+			writestr = "[ " + currentDateTime() + " ] [" + checktype(m_iLogtype[0]) + "] [" + m_strProg_module[0] + "]: " + m_strMessg[0] + "\n";;
+			//vector<char> vchar;
+			//mpr_fstFilestr.write(write.c_str(), write.length());
+			//write.clear();
+			//writestr += checktype(m_iLogtype[0]);
+			
+			//writestr += "] [" + m_strProg_module[0] + "]: " + m_strMessg[0] + "\n";
+			m_fstFilestr.write(writestr.c_str(), writestr.length());
+			m_fstTmpFilestr.write(writestr.c_str(), writestr.length());
+			myscr.settitle_ref(writestr);
+			closefile();
+			closefile_tmp();
+			
+			//m_bCleanUp[0] = true;
+			//if (m_bDev_cout)std::cout << "	cleaning up with " << m_ldEntrycount << " entries ";
+			mylock.lock();
+			m_strMessg.erase(m_strMessg.begin());
+			m_iLogtype.erase(m_iLogtype.begin());
+			m_strProg_module.erase(m_strProg_module.begin());
+			
+			mylock.unlock();
+			if(m_ullMessgcount > 0){ this->m_ullMessgcount--; }
+			//if (m_bDev_cout)cout << "and " << m_ullMessgcount << " remaining" << std::endl;
+			//m_fr2.sleep();
+			
+		}
+		else
+		{
+			
+			//if(m_bDev_cout)std::cout << "LOGGER_TRD:something is wrong with data or the message is empty/nonexistent;\n" << m_ullMessgcount << " remaining and mpr_bStoplog " << m_bStoplog<<std::endl;
+			m_fr.sleep();
+			continue;
+   
+
+
+
+		}
+	}
+
+
+
+	return 0;
+}
+*/
+
+//self destruct function, would be used on application closing to finish all logs and exit
+
+void selfdestruct() {
+
+
+
+	cout << "\nclosing.....";
+	writetolog("Stopping modules...", LOG_INFO, m_modulename);
+	//code here
+	writetolog("Cleaning up...", LOG_INFO, m_modulename);
+	//code here
+	writetolog("Closed \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build), LOG_SUCCESS, "Engine");
+	this->~filelog();
+	artyk::closing_app++;
+}
+
+
+//this just breaks logging for no reason
+//dev constructor, that enables logs from starting modules, so we have more info to deal with
+// filelog::filelog(int devenable)//>=0 is off, 1 is m_bDev_log, 2+ is m_bDev_log and m_bDev_cout
+// {
+// 	m_strDatentime.clear();
+// 	m_strLogpath = "logs/";
+// 	m_bThreadstarted = false;
+// 	m_bStoplog = false;
+// 	m_ullMessgcount = 0;
+// 	m_ldEntrycount = 0;
+// 	if (devenable == 1) {
+// 
+// 		m_bDev_log = true;
+// 	}
+// 	else
+// 	{
+// 		if (devenable>=2)
+// 		{
+// 			m_bDev_log = true;
+// 			m_bDev_cout = true;//WARNING, WILL CAUSE MEM LEAK IF USED CONCURRENTLY!
+// 		}
+// 		else {
+// 			m_bDev_log = false;
+// 			m_bDev_cout = false;
+// 		}
+// 	}
+// 
+// 
+// 	
+// 	createdir(m_strLogpath.c_str());
+// 	m_strFilename = m_strLogpath + "LOG_" + logdate() + ".log";
+// 
+// 
+// }
+// 
+// filelog::filelog(std::string l_strPathtolog, int devenable)
+// {
+// 	m_strDatentime.clear();
+// 	m_strLogpath = l_strPathtolog;
+// 	m_bThreadstarted = false;
+// 	m_bStoplog = false;
+// 	m_ullMessgcount = 0;
+// 	m_ldEntrycount = 0;
+// 	if (devenable == 1) {
+// 
+// 		m_bDev_log = true;
+// 	}
+// 	else
+// 	{
+// 		if (devenable >= 2)
+// 		{
+// 			m_bDev_log = true;
+// 			m_bDev_cout = true;//WARNING, WILL CAUSE MEM LEAK IF USED CONCURRENTLY!
+// 		}
+// 		else {
+// 			m_bDev_log = false;
+// 			m_bDev_cout = false;
+// 		}
+// 	}
+// 
+// 	
+// 
+// 	if (m_strLogpath[m_strLogpath.length() - 2] != '/' || m_strLogpath[m_strLogpath.length() - 2] != '\\') {
+// 		m_strLogpath += '/';
+// 	}
+// 	createdir(m_strLogpath.c_str());
+// 	m_strFilename = m_strLogpath + "LOG_" + logdate() + ".log";
+// 
+// 
+// }

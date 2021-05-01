@@ -38,10 +38,10 @@ int g_iFrequency, g_iDur;
 class Sound
 {
 public:
-	filelog* m_flgLogptr = NULL;
+	Filelog* m_flgLogptr = NULL;
 	bool m_bDev = 0;
 	Sound();
-	Sound(filelog& logarg);
+	Sound(Filelog& logarg);
 	~Sound();
 	void MakeSound(int freq, int time);
 	bool m_bQuit = false;
@@ -75,7 +75,7 @@ Sound::Sound()
 	
 }
 
-Sound::Sound(filelog& l_flgLogarg)
+Sound::Sound(Filelog& l_flgLogarg)
 {
 	m_flgLogptr = &l_flgLogarg;
 	m_flgLogptr->writetolog("Creating different thread", 0, "Sound System");
