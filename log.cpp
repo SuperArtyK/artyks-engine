@@ -214,7 +214,7 @@ int Filelog::mainthread() {
 		if (vectorcheck()) {
 
 			
-			openfile_tmp();
+			//openfile_tmp();
 			m_fstFilestr.write(m_strLogEntry[0].c_str(), m_strLogEntry[0].length());
 			//m_fstTmpFilestr.write(m_strLogEntry[0].c_str(), m_strLogEntry[0].length());
 			
@@ -230,8 +230,7 @@ int Filelog::mainthread() {
 		}
 		else
 		{
-			closefile();
-			openfile();
+			m_fstFilestr.flush();
 			//to update the file, if we're sleeping
 			fr.sleep();
 
