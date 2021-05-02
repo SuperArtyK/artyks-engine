@@ -33,6 +33,12 @@ Keyboard::Keyboard() : stoptrd(false), trdstarted(false) {
 	g_iMousePosX = 0;
 	g_iMousePosY = 0;
 	processdelay = 0;
+
+	for (int i = 0; i < 256; i++) {
+		m_kstKeys[i].m_name = GetKeyName(i);
+	}
+
+
 	startrd();
 }
 Keyboard::~Keyboard() { closetrd(); }
@@ -56,9 +62,9 @@ void Keyboard::closetrd() {
 
 int Keyboard::GetKeyID(std::string keyname) {
 	artyk::tolower_ref(keyname);
-	for (int i = 0; i < (sizeof artyk::keynames / sizeof artyk::keynames[0]); i++) {
-		if (keyname == artyk::keynames[i][0]) {
-			return stoi(artyk::keynames[i][1]);
+	for (int i = 0; i < (sizeof(artyk::key_names) / sizeof(artyk::key_names[0])); i++) {
+		if (keyname == artyk::key_names[i]) {
+			return artyk::key_ids[i];
 		}
 	}
 
@@ -66,9 +72,9 @@ int Keyboard::GetKeyID(std::string keyname) {
 }
 
 const char* Keyboard::GetKeyName(uint8_t keyid) {
-	for (int i = 0; i < (sizeof artyk::keynames / sizeof artyk::keynames[0]); i++) {
-		if (keyid == stoi(artyk::keynames[i][1])) {
-			return artyk::keynames[i][0].c_str();
+	for (int i = 0; i < (sizeof artyk::key_names / sizeof artyk::key_names[0]); i++) {
+		if (keyid == artyk::key_ids[i]) {
+			return artyk::key_names[i].c_str();
 		}
 	}
 
@@ -87,6 +93,7 @@ vector<sKeyState> Keyboard::GetPressedKeys() {
 	for (int i = 0; i < (sizeof(m_kstKeys) / sizeof(m_kstKeys[0])); i++) {
 		if (m_kstKeys[i].m_bHeld || m_kstKeys[i].m_bPressed) {
 			keystat.push_back(m_kstKeys[i]);
+
 		}
 	}
 	pausetrd = 0;

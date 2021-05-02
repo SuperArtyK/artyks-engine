@@ -158,7 +158,6 @@ private:
 
 
 	//date/time
-	const std::string currentDateTime();
 	std::string logdate();
 	int createdir(const char* pathtofile);
 	int openfile();

@@ -41,7 +41,7 @@ using std::to_string;
 struct sKeyState
 {
 	int m_keyid;
-	//const char* m_name;
+	const char* m_name;
 	bool m_bPressed;
 	bool m_bReleased;
 	bool m_bHeld;

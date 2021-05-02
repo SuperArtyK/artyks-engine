@@ -72,8 +72,9 @@ namespace artyk {
 	//(not on linux though, usleep still wins)
 	inline double timecounter(bool fps = false);
 
-	
+	inline const std::string currentDateTime();//returns current date in YYYY-MM-DD.HH:mm:SS format
 
+	inline int input();//fixes std::cin input if its bad(entering char when asking for numeric)
 
 	//definitions
 	inline bool isnum(const std::string& s)
@@ -240,7 +241,36 @@ namespace artyk {
 		return time_taken;
 
 	}
+
+	inline int input() {//fixes std::cin input if its bad(entering char when asking for numeric)
+#undef max
+
+		while (std::cin.fail() == true)
+		{
+			//filestr << "	[ " << datentime << " ] input:> $  User entered invalid character(s) in needed input" << "\n";
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			//std::cout << "Bad entry.  Enter a NUMBER: ";
+			//writestring(BLACK, GREEN, DPOS, DPOS, "Bad entry.  Enter a NUMBER: ");
+
+		}
+
+		return 0;
+	}
+
+	inline const std::string currentDateTime() {//returns current date in YYYY-MM-DD.HH:mm:SS format
+		time_t now = time(0);
+		struct tm tstruct;
+		char buff[80];
+		//tstruct = *localtime(&now);
+		localtime_s(&tstruct, &now);
+		strftime(buff, sizeof(buff), "%Y-%m-%d.%X", &tstruct);
+
+		return buff;
+	}
+
 }
+
 
 
 

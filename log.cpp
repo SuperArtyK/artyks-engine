@@ -115,14 +115,14 @@ int Filelog::writetolog(std::string l_strMessg, int l_iType, std::string l_strPr
 	
 	if (l_strMessg.empty()) {
 		mylock.lock();
-		m_strLogEntry.push_back("[ " + currentDateTime() + " ] [" + checktype(LOG_INFO) + "] [" + m_modulename + "]: Sample entry. This logger object uses " + std::to_string(objsize) + " bytes and has made " + std::to_string(m_ullEntrycount) + " log entries\n");
+		m_strLogEntry.push_back("[ " + artyk::currentDateTime() + " ] [" + checktype(LOG_INFO) + "] [" + m_modulename + "]: Sample entry. This logger object uses " + std::to_string(objsize) + " bytes and has made " + std::to_string(m_ullEntrycount) + " log entries\n");
 		m_ullMessgcount++;
 		mylock.unlock();
 		return 0;
 	}
 	
 	mylock.lock();
-	m_strLogEntry.push_back("[ " + currentDateTime() + " ] [" + checktype(l_iType) + "] [" + l_strProg_module + "]: " + l_strMessg + "\n");
+	m_strLogEntry.push_back("[ " + artyk::currentDateTime() + " ] [" + checktype(l_iType) + "] [" + l_strProg_module + "]: " + l_strMessg + "\n");
 	m_ullMessgcount++;
 	mylock.unlock();
 	
@@ -142,7 +142,7 @@ int Filelog::addtologqueue(std::string l_strMessg, int l_iType, std::string l_st
 	int logoffset = 0;
 	std::string temp;
 	if (!log_started) {
-		m_strLogEntry.insert(m_strLogEntry.begin(), "[ " + currentDateTime() + " ] [" + checktype(LOG_SUCCESS) + "] [Engine]: Started \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build) + "\n");
+		m_strLogEntry.insert(m_strLogEntry.begin(), "[ " + artyk::currentDateTime() + " ] [" + checktype(LOG_SUCCESS) + "] [Engine]: Started \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build) + "\n");
 
 		m_ullMessgcount++;
 		//m_bCleanUp.push_back(false);
@@ -153,7 +153,7 @@ int Filelog::addtologqueue(std::string l_strMessg, int l_iType, std::string l_st
 	}
 	
 	if (l_strMessg == "Opening new logging session...") {
-		m_strLogEntry.insert(m_strLogEntry.begin()+logoffset, "[ " + currentDateTime() + " ] [" + checktype(l_iType) + "] [" + m_modulename + "]: " + l_strMessg + "\n");
+		m_strLogEntry.insert(m_strLogEntry.begin()+logoffset, "[ " + artyk::currentDateTime() + " ] [" + checktype(l_iType) + "] [" + m_modulename + "]: " + l_strMessg + "\n");
 
 		m_ullMessgcount++;
 		//m_bCleanUp.insert(m_bCleanUp.begin() + logoffset, false);
@@ -162,14 +162,14 @@ int Filelog::addtologqueue(std::string l_strMessg, int l_iType, std::string l_st
 	}
 	else {
 		if (l_strMessg.empty()) {
-			temp = "[ " + currentDateTime() + " ] [" + checktype(LOG_INFO) + "] [" + m_modulename + "]: Sample entry. This logger object uses " + std::to_string(objsize) + " bytes and has made " + std::to_string(m_ullEntrycount) + " log entries\n";
+			temp = "[ " + artyk::currentDateTime() + " ] [" + checktype(LOG_INFO) + "] [" + m_modulename + "]: Sample entry. This logger object uses " + std::to_string(objsize) + " bytes and has made " + std::to_string(m_ullEntrycount) + " log entries\n";
 			m_strLogEntry.push_back(temp);
 			return 0;
 		}
 	}
 
 
-	m_strLogEntry.push_back("[ " + currentDateTime() + " ] [" + checktype(l_iType) + "] [" + l_strProg_module + "]: " + l_strMessg + "\n");
+	m_strLogEntry.push_back("[ " + artyk::currentDateTime() + " ] [" + checktype(l_iType) + "] [" + l_strProg_module + "]: " + l_strMessg + "\n");
 	//m_bCleanUp.push_back(false);
 	m_ullMessgcount++;
 	return 0;
@@ -243,20 +243,10 @@ int Filelog::mainthread() {
 }
 
 //utils
-const std::string Filelog::currentDateTime() {
-	time_t now = time(0);
-	struct tm tstruct;
-	char buff[80];
-	//tstruct = *localtime(&now);
-	localtime_s(&tstruct, &now);
-	strftime(buff, sizeof(buff), "%Y-%m-%d.%X", &tstruct);
-
-	return buff;
-}
 
 std::string Filelog::logdate() {
 	if (m_bDev_log)addtologqueue("Getting Date and Time for the Log file...", LOG_INFO, m_modulename);
-	std::string temp = currentDateTime();
+	std::string temp = artyk::currentDateTime();
 	std::string temp2;
 	short i = 0;
 	while (temp[i] != '.') {

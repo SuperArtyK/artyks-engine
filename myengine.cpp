@@ -116,11 +116,11 @@ int main()
 		temp.push_back('a');
 	}
 
-	for (int i = 0;; i++) {
-		mylog.writetolog("");
-		cout <<i<< " done\n";
-
-	}
+// 	for (int i = 0;; i++) {
+// 		mylog.writetolog("");
+// 		cout <<i<< " done\n";
+// 
+// 	}
 	double res = artyk::timecounter();
 	cout << res;
 	//vector<sKeyState> vec1;
