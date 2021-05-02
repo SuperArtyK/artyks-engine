@@ -2,5 +2,5 @@
 Engine for my console games and apps
 
 
-Currently will work for windows, but I'll try to port it to linux later. 
+Currently will work for windows, but I'll try to port it to linux later(probably after release 1.0). 
 
