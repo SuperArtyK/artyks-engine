@@ -13,25 +13,25 @@ Currently will work for windows, but I'll try to port it to linux later.
 @section ae_license ArtyK's Console Engine License
 This engine is licensed under GNU GPL3.  
 You will find a copy of it:
--# in the same directory as this README
--# in the documentation
--# at <a href="https://www.gnu.org/licenses/gpl-3.0.md">this link</a>.
+1. in the same directory as this README
+2. in the documentation
+3. at <a href="https://www.gnu.org/licenses/gpl-3.0.md">this link</a>.
 
 @section ar_install Installation
 To install the engine code and be able to use it:
 
 **Template method:**
 
--# download the template given in the release
--# extract it
--# open the .sln
--# ???
--# profit
+1. download the template given in the release
+2. extract it
+3. open the .sln
+4. ???
+5. profit
 
 **Code copy-paste method:**
--# download code
--# add "include" directory to additional include dirs
--# add source files from "src" directory. Or if you are on linux, type out the/whole/path to all src files
--# profit
+1. download code
+2. add "include" directory to additional include dirs
+3. add source files from "src" directory. Or if you are on linux, type out the/whole/path to all src files
+4. profit
 
 @copyright Copyright (C) 2021  Artemii Kozhemiak
