@@ -362,3 +362,4 @@ healthchecksdb
 /Debug/consoleprog1.res
 *.exe
 *.dll
+.replit
