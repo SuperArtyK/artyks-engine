@@ -35,4 +35,4 @@ To install the engine code and be able to use it:
 4. profit  
 
 ### Documentation
-For engine documentation, visit <a href="https://artyksengine.artyk.repl.co/doc/html_doc/index.html" target="_blank">this link</a>.  
+For engine documentation, visit <a href="https://consoleengine.artyk.repl.co/doc/html_doc/" target="_blank">this link</a>.  
