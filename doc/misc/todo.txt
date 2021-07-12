@@ -1,0 +1,15 @@
+Contains list of things to do later
+
+
+
+
+to fix in engine:
+AEKeyboard::GetPressedKeys() -- very bad and slow implementation in my opinion
+
+
+to implement:
+some kind of exit procedure to kill all modules, without the separate scanning thread for each of them.
+exit codes on closing applications
+graphics engine, to write to screen fast;
+sound player, to play audio, probably ogg
+sound synthesizer, to generate oldschool sound

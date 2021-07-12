@@ -1,21 +1,92 @@
-v0.0.2
-Engine:
-+Fixed keyboard
-+fixed tolower() bug
-+moved keyboard and screen functions to classes
-+added GetKeyID (returns key id, refer to kbcodes.txt
-+added GetKeyName
-+fixed keynames[][] member amount
--removed "screen"s global variables
-?added setcolor_rgb, doesnt really work, need help with that
-Readability:
-+added help.txt
--changed kbcodes.hpp to kbcodes.txt to avoid confusion with code files
-+added file explanations
-+added changelog file
+v0.0.6
 
-Other:
-+Added license
+Global stuff:
+
+AEKeyboard:
+Added "m_keyid" (smalluint) and "m_name" (const char*) to sKeyState(struct)
+Added new flags to consturctor, Refer to docs.
+Added separate functions to get state of the key
+Changed all keyid related functions to "smalluint" to be in always bounds and fast
+Added delay between keyscans
+Sleeps for frame if we window is not active
+Now inherits from __AEBaseClass, Refer to docs
+Added mouse scanning support
 
 
+AELog:
+Moved LOG_ defines to log.hpp
+No more changing paths during object runtime :/
+Fixed bug that crashes the program if use Filelog::writetolog() (which made it practically useless)
+Added addtologqueue() which behaves exactly like writetolog() but doesn't call "startthread". Good for entries before logger starts
+Added new flags to consturctor, Refer to docs.
+Changed m_ldEntrycount (double) to m_ullEntrycount (uint64_t)
+Added support for temp files, but they affect performance a lot
+Balanced writing to log, now writetolog pregenerates string, and mainthread just writes and erases string
+Removed vectorcheck()
+Fixed bug that results in empty/corrupted module and/or message in log
+Moved checking log type (eg. LOG_INFO) to separate function
+Added engine start log entry
+Removed getVectorSize()
+Removed openfile_tmp()
+Removed closefile_tmp()
+Removed cleanup_vectors()
+Removed the mainthread() completely, as it adds unnesesary overhead
+
+Removed addtologqueue()
+Changed access of stoplogging() and startlogging() to private
+Moved logdate() to artyk:: namespace in func_utils.hpp
+
+
+
+
+AEScreen:
+Reworked class
+Added proper constructors and destructors
+Optimized stuff, and made boundaries
+Fixed setScreenSize to correctly set screen size
+Renamed setScreenSize to setScreen
+Added new flags to consturctor, Refer to docs.
+Now inherits from __AEBaseClass, Refer to docs
+
+
+
+AESound:
+Removed global variables
+Added new flags to consturctor, Refer to docs.
+Now inherits from __AEBaseClass, Refer to docs.
+Rewrote so it doesnt use AFX
+
+
+Global stuff:
+Renamed to AE[name] so user can differentiate ArtyK's engine and other modules
+Made all global variables(global_vars.hpp) constant or inlined
+Added "artyk" namespace for global variables and functions
+Added color codes(artyk::color::) for Screen module
+Added license and github info to files
+Removed "moved from" comments
+Changed "include.hpp" to needed header files in all header/source files(except main file, myengine.cpp)
+Changed "using namespace std" to needed "using"s
+Added cpu-friendly delay AEFrame
+Added generated-on-startup full app name (app_name_full)
+Added key names and id's to the map, and made id's numerical
+Removed "log_keywords[100][2]"
+Added global timer
+Moved currentDateTime() to func_utils.hpp
+Added timecounter(bool) as experimental
+Added fixCinInput()
+Added isnum(const std::string&)
+Splitted findinstr to findinstr_pos() and findinstr_text()
+Splitted strtolower() to tolower_ref() and tolower_val()
+Added module name and "serial number" for each of modules. Now you can identify them during runtime.
+Added debug log entries for modules that use filelog
+Made code a little faster
+Moved files to appropriate folders and filters(in vs)
+AEScreen, Beep, and Keyboard are now inherited from __AEBaseClass, which has built-in logger support
+Added syncronization functions, depends on timer(global timer by default) time (TIMER_WAIT macro)
+GAME_FPS is now 66 instead of 60
+Removed logger's thread after testing it, gives unnesesary overhead
+Removed AEScreen's focus scan thread and moved to "main" function, don't touch code surrounded with "don't touch" comments
+Added documentation
+
+Cutted unnesesary stuff out and changed stuff, still don't remember everything, see this update as full engine refactoring.
 

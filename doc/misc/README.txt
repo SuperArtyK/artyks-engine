@@ -1,0 +1,1 @@
+This folder contains miscellaneous files, stuff that I probably won't need but want to keep

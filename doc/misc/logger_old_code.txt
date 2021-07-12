@@ -1,0 +1,371 @@
+
+//////////////////////////////////////////////////////////////////////////
+// this file contains the old logger code, that maybe will be useful
+// in future or if everything breaks
+// should not cause everything to redefine
+//////////////////////////////////////////////////////////////////////////
+
+
+//change log path function, it doesnt work, WHY?!
+
+// int filelog::changelogpath(std::string newlogpath) {
+// 	logpath = newlogpath;
+// 	if (logpath[logpath.length() - 1] != '/' || logpath[logpath.length() - 1] != '\\') {
+// 		logpath += '/';
+// 	}
+// 	createdir(logpath);
+// 	filenam = logpath + "LOG_" + logdate() + ".log";
+// 	return 0;
+// }
+
+//writetolog 1.0
+
+/*
+int filelog::writetolog(std::string messg, int type = 0, std::string prog_module = "main") {//writes directly to log file
+	//auto start = chrono::high_resolution_clock::now();
+	//type 0 - info, 1-warn, 2-err, 3-fatal err
+	//prog_module - module of the program that message is being sent from
+
+	std::string write;
+	write = "[ " + currentDateTime() + " ] [";
+	//vector<char> vchar;
+	filestr.write(write.c_str(), write.length());
+	switch (type)
+	{
+
+	case 0:
+		write = "INFO";
+		break;
+
+
+	case 1:
+		write = "WARN";
+		break;
+
+	case 2:
+		write = "ERROR";
+		break;
+
+	case 3:
+		write = "FATAL ERROR";
+		break;
+
+	default:
+
+		break;
+	}
+	write += "] [" + prog_module + "]: " + messg + "\n";
+	filestr.write(write.c_str(), write.length());
+
+	// 		auto end = chrono::high_resolution_clock::now();
+	// 		double time_taken =
+	// 			chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+	// 
+	// 		time_taken *= 1e-9;
+	// 		cout << "Time taken by program is : " << fixed
+	// 			<< time_taken << setprecision(9);
+	// 		cout << " sec" << endl;
+
+	return 0;
+
+ 	}
+*/
+
+//writetolog 2.0
+
+/*
+int filelog::writetolog(std::string l_strMessg, int l_iType, std::string l_strProg_module, bool debuglog) {
+	if (!m_bThreadstarted) {
+		startlogging();
+
+	}
+
+	m_ldEntrycount++;
+
+
+
+	if (l_strMessg == "Opening new logging session...") {
+		m_strMessg.insert(m_strMessg.begin(), "Opening new logging session...");
+		m_iLogtype.insert(m_iLogtype.begin(), LOG_WARN);
+		m_strProg_module.insert(m_strProg_module.begin(), m_modulename);
+		m_bCleanUp.insert(m_bCleanUp.begin(), false);
+		m_ullMessgcount++;
+		return 0;
+	}
+	else {
+		if (l_strMessg.empty()) {
+			l_strMessg = "Sample entry. This logger object uses " + std::to_string(GetObjSize()) + " bytes and has made " + std::to_string(m_ldEntrycount) + " log entries";
+			l_iType = LOG_INFO;
+			l_strProg_module = m_modulename;
+		}
+	}
+
+	mylock.lock();
+	m_strMessg.push_back(l_strMessg);
+	m_iLogtype.push_back(l_iType);
+	m_strProg_module.push_back(l_strProg_module);
+	m_bCleanUp.push_back(false);
+	m_ullMessgcount++;
+	mylock.unlock();
+
+	//if (m_bDev_cout)std::cout << "LOGGER_MAIN:gonna write to log \"" << l_strMessg <<"\""<< std::endl;
+
+// 	//if (m_bDev_cout) {
+// 		debugConOut(l_strMessg, l_iType, l_strProg_module);
+// 
+// 	}
+	//mainthread();//for single thread debugging
+	return 0;
+}
+
+*/
+
+//mainthread of the writetolog 2.0
+/*
+int filelog::mainthread() {
+	std::string writestr;
+	//static bool closing = false;
+	Screen myscr;
+	while (!m_bStoplog || m_ullMessgcount > 0)
+	//while (m_ullMessgcount > 0) //for single thread debugging
+	{
+		//mpr_iWriteiterat++;
+// 		if (!closing && artyk::closing_app > 0) {
+// 			selfdestruct();
+// 			closing = true;
+// 		}
+
+		if (vectorcheck()) {
+			
+			
+			//cout << m_ullMessgcount<< " ";
+			openfile();
+			openfile_tmp();
+// 			if (m_strProg_module[0].empty()) {
+// 				m_fr.sleep();
+// 			}
+			//if (m_bDev_cout)std::cout << "LOGGER_TRD:writing to log \"" << m_strMessg[0]<<"\" with "<< m_ullMessgcount <<" remaining"<< std::endl;
+			writestr.clear();
+			writestr = "[ " + currentDateTime() + " ] [" + checktype(m_iLogtype[0]) + "] [" + m_strProg_module[0] + "]: " + m_strMessg[0] + "\n";;
+			//vector<char> vchar;
+			//mpr_fstFilestr.write(write.c_str(), write.length());
+			//write.clear();
+			//writestr += checktype(m_iLogtype[0]);
+			
+			//writestr += "] [" + m_strProg_module[0] + "]: " + m_strMessg[0] + "\n";
+			m_fstFilestr.write(writestr.c_str(), writestr.length());
+			m_fstTmpFilestr.write(writestr.c_str(), writestr.length());
+			myscr.settitle_ref(writestr);
+			closefile();
+			closefile_tmp();
+			
+			//m_bCleanUp[0] = true;
+			//if (m_bDev_cout)std::cout << "	cleaning up with " << m_ldEntrycount << " entries ";
+			mylock.lock();
+			m_strMessg.erase(m_strMessg.begin());
+			m_iLogtype.erase(m_iLogtype.begin());
+			m_strProg_module.erase(m_strProg_module.begin());
+			
+			mylock.unlock();
+			if(m_ullMessgcount > 0){ this->m_ullMessgcount--; }
+			//if (m_bDev_cout)cout << "and " << m_ullMessgcount << " remaining" << std::endl;
+			//m_fr2.sleep();
+			
+		}
+		else
+		{
+			
+			//if(m_bDev_cout)std::cout << "LOGGER_TRD:something is wrong with data or the message is empty/nonexistent;\n" << m_ullMessgcount << " remaining and mpr_bStoplog " << m_bStoplog<<std::endl;
+			m_fr.sleep();
+			continue;
+   
+
+
+
+		}
+	}
+
+
+
+	return 0;
+}
+*/
+
+//self destruct function, would be used on application closing to finish all logs and exit
+
+void selfdestruct() {
+
+
+
+	cout << "\nclosing.....";
+	writetolog("Stopping modules...", LOG_INFO, m_modulename);
+	//code here
+	writetolog("Cleaning up...", LOG_INFO, m_modulename);
+	//code here
+	writetolog("Closed \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build), LOG_SUCCESS, "Engine");
+	this->~filelog();
+	artyk::closing_app++;
+}
+
+
+//this just breaks logging for no reason
+//dev constructor, that enables logs from starting modules, so we have more info to deal with
+// filelog::filelog(int devenable)//>=0 is off, 1 is m_bDev_log, 2+ is m_bDev_log and m_bDev_cout
+// {
+// 	m_strDatentime.clear();
+// 	m_strLogpath = DEF_LOG_PATH;
+// 	m_bThreadstarted = false;
+// 	m_bStoplog = false;
+// 	m_ullMessgcount = 0;
+// 	m_ldEntrycount = 0;
+// 	if (devenable == 1) {
+// 
+// 		m_bDev_log = true;
+// 	}
+// 	else
+// 	{
+// 		if (devenable>=2)
+// 		{
+// 			m_bDev_log = true;
+// 			m_bDev_cout = true;//WARNING, WILL CAUSE MEM LEAK IF USED CONCURRENTLY!
+// 		}
+// 		else {
+// 			m_bDev_log = false;
+// 			m_bDev_cout = false;
+// 		}
+// 	}
+// 
+// 
+// 	
+// 	createdir(m_strLogpath.c_str());
+// 	m_strFilename = m_strLogpath + "LOG_" + logdate() + ".log";
+// 
+// 
+// }
+// 
+// filelog::filelog(std::string l_strPathtolog, int devenable)
+// {
+// 	m_strDatentime.clear();
+// 	m_strLogpath = l_strPathtolog;
+// 	m_bThreadstarted = false;
+// 	m_bStoplog = false;
+// 	m_ullMessgcount = 0;
+// 	m_ldEntrycount = 0;
+// 	if (devenable == 1) {
+// 
+// 		m_bDev_log = true;
+// 	}
+// 	else
+// 	{
+// 		if (devenable >= 2)
+// 		{
+// 			m_bDev_log = true;
+// 			m_bDev_cout = true;//WARNING, WILL CAUSE MEM LEAK IF USED CONCURRENTLY!
+// 		}
+// 		else {
+// 			m_bDev_log = false;
+// 			m_bDev_cout = false;
+// 		}
+// 	}
+// 
+// 	
+// 
+// 	if (m_strLogpath[m_strLogpath.length() - 2] != '/' || m_strLogpath[m_strLogpath.length() - 2] != '\\') {
+// 		m_strLogpath += '/';
+// 	}
+// 	createdir(m_strLogpath.c_str());
+// 	m_strFilename = m_strLogpath + "LOG_" + logdate() + ".log";
+// 
+// 
+// }
+
+
+//old logger constructor
+// Filelog::Filelog(){
+// 
+// 	m_strDatentime.clear();
+// 	m_strLogpath = DEF_LOG_PATH;
+// 	m_strTmpLogpath = m_strLogpath + "tmp/";
+// 	m_bThreadstarted = false;
+// 	m_bStoplog = false;
+// 	m_ullMessgcount = 0;
+// 	m_ullEntrycount = 0;
+// 	//m_bDev_log = true;
+// 
+// 
+// 	
+// 	createdir(m_strLogpath.c_str());
+// 	//createdir(m_strTmpLogpath.c_str());
+// 
+// 	m_strFilename = m_strLogpath + "LOG_" + logdate() + ".log";
+// 	//m_strTmpFilename = m_strTmpLogpath + "LOG_" + logdate() + ".tmp";
+// 	//if (m_bDev_cout)std::cout << "LOGGER_MAIN:copyconstruct1" << std::endl;
+// 	m_strLogEntry.reserve(1024);
+// 	objsize =
+// 		(sizeof(bool) * 2) +//bools
+// 
+// 		(sizeof(std::atomic<bool>) * 2) +//atomic bools, standard doesn't guarantee that they will be equal
+// 
+// 		(sizeof(uint64_t) * 2) +//our uint64_t's
+// 		(sizeof(std::fstream) * 2) +//filestreams
+// 		(sizeof(std::thread) * 3) +//threads
+// 		(sizeof(std::mutex)) +//mutexes
+// 		(sizeof(std::atomic<size_t>)) +//atomic size_t, same reason as atomic bools
+// 		(sizeof(Framert) * 2) +//frameraters
+// 		(strlen(m_modulename)) +//const char* 
+// 		(sizeof(std::string) * 5) +//strings
+// 		(m_strDatentime.capacity() + m_strFilename.capacity() + m_strLogpath.capacity() + m_strTmpFilename.capacity() + m_strTmpLogpath.capacity()) +//and their capacity
+// 		(sizeof(std::vector<std::string>) + (sizeof(std::string) * m_strLogEntry.capacity())) + m_strLogEntry.size()*1188+//vector and its capacity. 
+// 		//I approximate the string size, as 1024 chars is ~~max logger can process if requested constantly
+// 		//consider a while loop with only "writetolog()" in it
+// 
+// 		0;
+// }
+
+//deprecated addtologqueue
+
+int addtologqueue(const std::string& l_strMessg, const uint_fast8_t l_iType = 0, const std::string& l_strProg_module = "Logger");//this is for safe logging, during important part of log itself(to avoid inf recursion)
+
+
+int AELog::addtologqueue(const std::string& l_strMessg, const uint_fast8_t l_iType, const std::string& l_strProg_module){
+
+	std::string m_message;
+	if (artyk::g_disablelog) {
+		return -1;
+	}
+	m_ullEntrycount++;
+
+	//static std::string tempstr;
+	//tempstr.clear();
+	if (!log_started && !artyk::app_name.empty()) {
+		log_started = true;
+		string temp = m_strLogpath + "LOG_" + logdate()+".log";
+		std::fstream engstarted(temp.c_str(), std::fstream::out | std::fstream::app);
+		temp = "[ " + artyk::utils::currentDateTime() + " ] [" + checktype(LOG_SUCCESS) + "] [Engine]: " + "Started \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build) + "\n";
+		engstarted.write(temp.c_str(),temp.size());
+		//addtologqueue("Started \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build), LOG_SUCCESS, "Engine");
+		engstarted.close();
+		return 0;
+	}
+
+	if (l_strMessg.empty()) {
+		///m_strLogEntry.push_back("[ " + artyk::currentDateTime() + " ] [" + checktype(LOG_INFO) + "] [" + m_modulename + "]: Sample entry. This logger object uses approx. " + std::to_string(objsize) + " bytes and has made " + std::to_string(m_ullEntrycount) + " log entries\n");
+		addtologqueue("Sample entry. This logger object uses approx. " + std::to_string(m_staticObjSize+m_message.capacity()) + " bytes and has made " + std::to_string(m_ullEntrycount) + " log entries", LOG_INFO, m_modulename);
+		return 0;
+	}
+	else {
+		m_message = "[ " + artyk::utils::currentDateTime() + " ] [" + checktype(l_iType) + "] [" + l_strProg_module + "]: " + l_strMessg + "\n";
+
+	}
+	m_fstFilestr.write(m_message.c_str(), m_message.length());
+	//if (m_bDev_cout)std::cout << "LOGGER_MAIN:gonna write to log \"" << l_strMessg <<"\""<< std::endl;
+
+// 	//if (m_bDev_cout) {
+// 		debugConOut(l_strMessg, l_iType, l_strProg_module);
+// 
+// 	}
+	//mainthread();//for single thread debugging
+	return 0;
+}
+
+

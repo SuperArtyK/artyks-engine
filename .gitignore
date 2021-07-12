@@ -341,3 +341,22 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+*.editorconfig
+/vctmp11336_156510.global_vars.19cf073e.hpp
+*.dll
+/x64/Debug/consoleprog.ClangTidy
+/x64/Debug/screen.nativecodeanalysis.sarif
+/x64/Debug/RCa08980
+/x64/Debug/log.nativecodeanalysis.sarif
+/x64/Debug/keyboard.nativecodeanalysis.sarif
+/x64/Debug/consoleprog1.res
+/x64/Debug/consoleprog.exe.lastcodeanalysissucceeded
+/x64/Debug/CodeAnalysisResultManifest.txt
+/x64/Release/vc142.ib_pdb_index
+/x64/Release/myengine.vcxproj.CopyComplete
+/x64/Release/consoleprog1.res
+/Release/vc142.ib_pdb_index
+/Release/myengine.vcxproj.CopyComplete
+/Release/consoleprog1.res
+/Debug/vc142.ib_pdb_index
+/Debug/consoleprog1.res

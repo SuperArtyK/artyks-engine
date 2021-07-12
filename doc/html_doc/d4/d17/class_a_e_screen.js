@@ -1,0 +1,26 @@
+var class_a_e_screen =
+[
+    [ "AEScreen", "d4/d17/class_a_e_screen.html#aa2a96bd136edd51bef90a84d16f566e1", null ],
+    [ "~AEScreen", "d4/d17/class_a_e_screen.html#a6991d1f66c51062ce208685893c9a1a5", null ],
+    [ "setcursor", "d4/d17/class_a_e_screen.html#a180b31de81302e7c9bfe55133fcc8060", null ],
+    [ "setScreen", "d4/d17/class_a_e_screen.html#a6f95e84dc89144bb3c380751ef8043f4", null ],
+    [ "setConsoleBufferSize", "d4/d17/class_a_e_screen.html#a4947214b8bc4c4614e3b0c60343aa0b0", null ],
+    [ "settitle", "d4/d17/class_a_e_screen.html#ad382c845d1cae2271f86d7818f942b8a", null ],
+    [ "setFont", "d4/d17/class_a_e_screen.html#af208ca986095eb651062bc1f718f5eb2", null ],
+    [ "clear", "d4/d17/class_a_e_screen.html#a9e1485bd1f563decf4d1595d8faac869", null ],
+    [ "setcolor_con", "d4/d17/class_a_e_screen.html#a20d1e8adfea89ad38a98b4540b61f7e5", null ],
+    [ "GetAppTitle", "d4/d17/class_a_e_screen.html#ab94eaa62fd7706902042785d708bb550", null ],
+    [ "scrolltitle", "d4/d17/class_a_e_screen.html#a5b607c2bbfddcc468b3e0adf203c8162", null ],
+    [ "setcolor_rgb", "d4/d17/class_a_e_screen.html#ab47284531622f1b8779a6acd542e1dd5", null ],
+    [ "benchmark", "d4/d17/class_a_e_screen.html#a8f10d0db9b0841c89cade8e8052dd28d", null ],
+    [ "GetScreenRes", "d4/d17/class_a_e_screen.html#a16552b4ec9eaaddfa1ca49d6a92e09e7", null ],
+    [ "checkhandles", "d4/d17/class_a_e_screen.html#afe1f600552e2ffe35aad71f282144d2a", null ],
+    [ "initenginestuff", "d4/d17/class_a_e_screen.html#ada1b149ae56ace56bbd92e0847c082a7", null ],
+    [ "g_rgb_color", "d4/d17/class_a_e_screen.html#aa72ad0103d3697f3f1485c3a3cc72efa", null ],
+    [ "g_normal_color", "d4/d17/class_a_e_screen.html#a3246180466372b7431d332ba2fcf1cc2", null ],
+    [ "g_cfi", "d4/d17/class_a_e_screen.html#ad0805c4b9c3385add6df2a75876b7ffd", null ],
+    [ "g_csbi", "d4/d17/class_a_e_screen.html#adffc18b6cc60f2014914987394461890", null ],
+    [ "g_rectWindow", "d4/d17/class_a_e_screen.html#a71acfdf2df8a33eb75d33f1d16afbda8", null ],
+    [ "m_globalmodulenum", "d4/d17/class_a_e_screen.html#a658ca1e21cbf5e57ff5caadb73567d80", null ],
+    [ "m_screenres", "d4/d17/class_a_e_screen.html#acf772d41cb9d38dbe99d48477ddcdc54", null ]
+];
