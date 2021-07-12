@@ -22,16 +22,16 @@ To install the engine code and be able to use it:
 
 ##### Template method:
 
--# download the template given in the release
--# extract it
--# open the .sln
--# ???
--# profit
+-# download the template given in the release  
+-# extract it  
+-# open the .sln  
+-# ???  
+-# profit  
 
 ##### Code copy-paste method:
--# download code
--# add "include" directory to additional include dirs
--# add source files from "src" directory. Or if you are on linux, type out the/whole/path to all src files
--# profit
+-# download code  
+-# add "include" directory to additional include dirs  
+-# add source files from "src" directory. Or if you are on linux, type out the/whole/path to all src files  
+-# profit  
 
-@copyright Copyright (C) 2021  Artemii Kozhemiak
+Copyright (C) 2021  Artemii Kozhemiak
