@@ -11,5 +11,6 @@ var searchData=
   ['def_5fbgr_83',['DEF_BGR',['../da/d11/namespaceartyk_1_1color.html#af531bab77bf1bc264bc7b5719a94dc13',1,'artyk::color']]],
   ['def_5ffgr_84',['DEF_FGR',['../da/d11/namespaceartyk_1_1color.html#a0aa0392371b0f7f7ddba5fbc3860b176',1,'artyk::color']]],
   ['def_5flog_5fpath_85',['DEF_LOG_PATH',['../d8/de5/_a_e_log_8hpp.html#a392e1e486f42cf841e982a90bfd04ebd',1,'AELog.hpp']]],
-  ['def_5fmname_86',['DEF_MNAME',['../d3/d97/global__vars_8hpp.html#a74f2022a88a3778b0c2f6ebd0e134adb',1,'global_vars.hpp']]]
+  ['def_5fmname_86',['DEF_MNAME',['../d3/d97/global__vars_8hpp.html#a74f2022a88a3778b0c2f6ebd0e134adb',1,'global_vars.hpp']]],
+  ['dox_5flicense_2emd_87',['dox_license.md',['../df/dc0/dox__license_8md.html',1,'']]]
 ];
