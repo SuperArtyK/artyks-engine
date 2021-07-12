@@ -36,5 +36,3 @@ To install the engine code and be able to use it:
 
 ### Documentation
 For engine documentation, visit <a href="https://artyksengine.artyk.repl.co/doc/html_doc/index.html" target="_blank">this link</a>.  
-
-Copyright (C) 2021  Artemii Kozhemiak
