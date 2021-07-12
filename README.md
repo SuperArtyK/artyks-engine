@@ -15,7 +15,7 @@ This engine is licensed under GNU GPL3.
 You will find a copy of it:
 1. in the same directory as this README
 2. in the documentation
-3. at <a href="https://www.gnu.org/licenses/gpl-3.0.md">this link</a>.
+3. at <a href="https://www.gnu.org/licenses/gpl-3.0.md" target="_blank">this link</a>.
 
 #### Installation
 To install the engine code and be able to use it:
@@ -33,5 +33,8 @@ To install the engine code and be able to use it:
 2. add "include" directory to additional include dirs  
 3. add source files from "src" directory. Or if you are on linux, type out the/whole/path to all src files  
 4. profit  
+
+### Documentation
+For engine documentation, visit <a href="https://artyksengine.artyk.repl.co/doc/html_doc/index.html" target="_blank">this link</a>.  
 
 Copyright (C) 2021  Artemii Kozhemiak
