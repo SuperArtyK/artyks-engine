@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/engine/include_all.hpp
+/** @file include/engine/include_engine.hpp
  *  This file includes everything this engine has, for less typing.
  *  Don't include this file in the engine header files!
  *
@@ -26,7 +26,10 @@
 
 #pragma once
 
-//from least to biggest dependencies
+#ifndef INCLUDE_ENGINE_HPP
+#define INCLUDE_ENGINE_HPP
+
+ //from least to biggest dependencies
 #include "engine_flags.hpp"
 #include "typedefs.hpp"
 #include "trig_lookup.hpp"
@@ -41,3 +44,8 @@
 #include "AEScreen.hpp"
 #include "AEKeyboard.hpp"
 #include "allheaders.hpp"
+
+#endif // !INCLUDE_ENGINE_HPP
+
+
+

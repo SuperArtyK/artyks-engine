@@ -222,6 +222,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\engine\AEBeep.cpp" />
+    <ClCompile Include="src\engine\AEGraphic.cpp" />
     <ClCompile Include="src\engine\AEKeyboard.cpp" />
     <ClCompile Include="src\engine\AELog.cpp" />
     <ClCompile Include="src\engine\AEScreen.cpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="include\engine\AEBaseClass.hpp" />
     <ClInclude Include="include\engine\AEBeep.hpp" />
     <ClInclude Include="include\engine\AEFrame.hpp" />
+    <ClInclude Include="include\engine\AEGraphic.hpp" />
     <ClInclude Include="include\engine\AEKeyboard.hpp" />
     <ClInclude Include="include\engine\AELog.hpp" />
     <ClInclude Include="include\engine\AEScreen.hpp" />

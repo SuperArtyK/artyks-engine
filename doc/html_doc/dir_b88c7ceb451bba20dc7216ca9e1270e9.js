@@ -9,6 +9,9 @@ var dir_b88c7ceb451bba20dc7216ca9e1270e9 =
     [ "AEFrame.hpp", "de/d72/_a_e_frame_8hpp.html", [
       [ "AEFrame", "df/dd7/class_a_e_frame.html", "df/dd7/class_a_e_frame" ]
     ] ],
+    [ "AEGraphic.hpp", "d2/dd2/_a_e_graphic_8hpp.html", [
+      [ "AEGraphic", "dc/d7e/class_a_e_graphic.html", null ]
+    ] ],
     [ "AEKeyboard.hpp", "d4/d86/_a_e_keyboard_8hpp.html", "d4/d86/_a_e_keyboard_8hpp" ],
     [ "AELog.hpp", "d8/de5/_a_e_log_8hpp.html", "d8/de5/_a_e_log_8hpp" ],
     [ "AEScreen.hpp", "d1/d57/_a_e_screen_8hpp.html", "d1/d57/_a_e_screen_8hpp" ],

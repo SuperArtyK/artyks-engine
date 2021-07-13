@@ -45,6 +45,9 @@
     <ClCompile Include="src\engine\AEScreen.cpp">
       <Filter>Source Files\src\engine</Filter>
     </ClCompile>
+    <ClCompile Include="src\engine\AEGraphic.cpp">
+      <Filter>Source Files\src\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resources\consoleprog1.rc">
@@ -484,6 +487,9 @@
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
     <ClInclude Include="include\engine\typedefs.hpp">
+      <Filter>Header Files\include\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\engine\AEGraphic.hpp">
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
   </ItemGroup>

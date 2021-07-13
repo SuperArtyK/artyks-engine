@@ -25,9 +25,12 @@
 
 #pragma once
 
+#ifndef ENGINE_FLAGS_HPP
+#define ENGINE_FLAGS_HPP
+
  //engine flags
 
- ///enables the debug features
+  ///enables the debug features
 #define AE_DEBUG
 
 ///enables global modules
@@ -83,3 +86,9 @@
 #undef AE_DEBUG
 
 #endif // NDEBUG
+
+#endif // !ENGINE_FLAGS_HPP
+
+
+
+ 
