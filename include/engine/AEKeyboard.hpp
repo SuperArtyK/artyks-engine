@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/AEKeyboard.hpp
+/** @file include/engine/AEKeyboard.hpp
  *  This file contains the keyboard scanning code and struct for the keys.  
  *  I would like to thank the David "JavidX9" Barr for giving the idea
  *  of how it should be done.  
@@ -30,17 +30,14 @@
 #ifndef KEYBOARD_HPP
 #define KEYBOARD_HPP
 
-#include "func_utils.hpp"
-#include "global_vars.hpp"
-#include "AELog.hpp"
-#include "AETimer.hpp"
+#include <array>
+#include <vector>
 #include "AEBaseClass.hpp"
-#include <Windows.h>
-
+#include "AETimer.hpp"
+#include "func_utils.hpp"
 using std::vector;
 using std::string;
 using std::atomic;
-using std::wstring;
 using std::to_string;
 
 ///data type to store keys and their data  
@@ -72,7 +69,7 @@ class AEKeyboard: public __AEBaseClass {
 public:
 	///this function initialises all stuff the engine needs, before it starts.
 	///marked as friend function, so it can init stuff from this class
-	friend int initenginestuff();
+	friend int __initengine_keyboard();
 	/// <summary>
 	/// Class constructor
 	/// </summary>
@@ -178,6 +175,29 @@ private:
 	
 
 };
+///initialises keyboard module
+inline int __initengine_keyboard() {
+	artyk::app_startstatus = 0;
+	std::memset(AEKeyboard::m_keyOld, 0, 256 * sizeof(short));
+	std::memset(AEKeyboard::m_keys, 0, 256 * sizeof(AEKBKey));
+
+	for (short i = 0; i < 256; i++) {
+		AEKeyboard::m_keys[i].m_keyid = i;
+		for (short a = 0; a < (sizeof(AEKeyboard::m_keycodes) / sizeof(AEKeyboard::m_keycodes[0])); a++) {
+			if (i == AEKeyboard::m_keycodes[a].second) {
+				AEKeyboard::m_keys[i].m_name = AEKeyboard::m_keycodes[a].first;
+			}
+		}
+		if (AEKeyboard::m_keys[i].m_name == nullptr) {
+			AEKeyboard::m_keys[i].m_name = "---";
+	}
+}
+	//done with keyboard
+	artyk::app_startstatus = 1;
+	return 0;
+}
+
+const int __dummy_keyboard_initialisation = __initengine_keyboard();
 
 #ifdef AE_GLOBALMODULE
 ///global keyboard module

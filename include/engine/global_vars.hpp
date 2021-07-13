@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/global_vars.hpp
+/** @file include/engine/global_vars.hpp
  *  This file contains the global variables that can be used everywhere.  
  * 
  *  Should not cause everything to break.  
@@ -29,18 +29,10 @@
 #ifndef GLOB_VARS_HPP
 #define GLOB_VARS_HPP
 
-#include <atomic>
-#include <iostream>
-#include <thread>
-#include <fstream>
-#include <vector>
 #include <string>
-#include <windows.h>
+#include <Windows.h>
 #include "engine_flags.hpp"
-using std::vector;
 using std::string;
-using std::atomic;
-using std::wstring;
 using std::to_string;
 
 #ifndef _DEBUG
@@ -52,6 +44,8 @@ using std::to_string;
 
 
 //engine stuff, DO NOT TOUCH
+
+//START OF ENGINE DEFINES
 
 ///the inner game maximum fps, won't be related to graphics fps.
 ///Limits the amount of cycles per second of the game loops and game-related stuff(like keyboard scanning).
@@ -77,17 +71,17 @@ using std::to_string;
 ///default modulename for engine
 #define DEF_MNAME "Engine"
 
-
-//I know this is a crutch, but I don't want to add AE_DEBUG to the compiler settings, might break all of it
-#ifdef NDEBUG
-//remove if you want to test debug features in Release mode
-#undef AE_DEBUG
-
-#endif // NDEBUG
+//END OF ENGINE DEFINES
 
 
-
-
+///converts the "string literal" to u8"utf-8/unicode string literal"
+#define UTF8(x) u8 ## x //converts the "string" to the u8"string"
+///converts the "string literal" to L"wide string literal"
+#define WSTR(x) L ## x //converts the "string" to the L"string"
+///macro for newline char
+#define NLC '\n'
+///macro for newline string
+#define NLS "\n"
 
 
 
@@ -110,7 +104,7 @@ namespace artyk {
 		"ArtyK's Console Engine Test";
 
 	///build of app, how do you autoincrement these?
-	constexpr int app_build = 3624;
+	constexpr int app_build = 3635;
 	///version
 	const string app_version = "v.0.0.6";
 	///full name of the app
@@ -173,6 +167,8 @@ namespace artyk {
 	}
 
 }
+
+
 
 #endif // !GLOB_VARS_HPP
 

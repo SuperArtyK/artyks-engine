@@ -21,7 +21,7 @@ var class_a_e_keyboard =
     [ "mainthread_keys", "de/d92/class_a_e_keyboard.html#ac5e9483491090d067f556588f366c31c", null ],
     [ "startrd", "de/d92/class_a_e_keyboard.html#a2e9fd021e7143335a7a549644bed018d", null ],
     [ "closetrd", "de/d92/class_a_e_keyboard.html#aa1f035116c72c6184098bd58daca57c3", null ],
-    [ "initenginestuff", "de/d92/class_a_e_keyboard.html#ada1b149ae56ace56bbd92e0847c082a7", null ],
+    [ "__initengine_keyboard", "de/d92/class_a_e_keyboard.html#adf2bc48bce9d38a95e4d6b5640070544", null ],
     [ "m_keys", "de/d92/class_a_e_keyboard.html#aaea00d69f97e8aebd1c4a99e97c88410", null ],
     [ "m_keycodes", "de/d92/class_a_e_keyboard.html#ac94ac4b18797eb03c9408146997fbe21", null ],
     [ "m_keyOld", "de/d92/class_a_e_keyboard.html#ae72b0c4b131ded5ec61645fb42814f85", null ],

@@ -97,7 +97,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)src\;$(SolutionDir)include\engine;$(SolutionDir)src\engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>true</MinimalRebuild>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
@@ -126,7 +126,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)src\;$(SolutionDir)include\engine;$(SolutionDir)src\engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <StringPooling>true</StringPooling>
       <AssemblerOutput>NoListing</AssemblerOutput>
@@ -161,7 +161,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)src\;$(SolutionDir)include\engine;$(SolutionDir)src\engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MinimalRebuild>true</MinimalRebuild>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
@@ -170,6 +170,7 @@
       <AssemblerOutput>NoListing</AssemblerOutput>
       <ExpandAttributedSource>false</ExpandAttributedSource>
       <OmitFramePointers>false</OmitFramePointers>
+      <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -191,7 +192,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)src\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)src\;$(SolutionDir)include\engine;$(SolutionDir)src\engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <StringPooling>true</StringPooling>
       <AssemblerOutput>NoListing</AssemblerOutput>
@@ -220,184 +221,185 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\AEBeep.cpp" />
-    <ClCompile Include="src\AEKeyboard.cpp" />
-    <ClCompile Include="src\AELog.cpp" />
-    <ClCompile Include="src\AEScreen.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\AEBaseClass.hpp" />
-    <ClInclude Include="include\AEFrame.hpp" />
-    <ClInclude Include="include\bits\algorithmfwd.h" />
-    <ClInclude Include="include\bits\allocated_ptr.h" />
-    <ClInclude Include="include\bits\allocator.h" />
-    <ClInclude Include="include\bits\alloc_traits.h" />
-    <ClInclude Include="include\bits\atomic_base.h" />
-    <ClInclude Include="include\bits\atomic_futex.h" />
-    <ClInclude Include="include\bits\atomic_lockfree_defines.h" />
-    <ClInclude Include="include\bits\atomic_word.h" />
-    <ClInclude Include="include\bits\basic_file.h" />
-    <ClInclude Include="include\bits\basic_ios.h" />
-    <ClInclude Include="include\bits\basic_string.h" />
-    <ClInclude Include="include\bits\boost_concept_check.h" />
-    <ClInclude Include="include\bits\c++0x_warning.h" />
-    <ClInclude Include="include\bits\c++allocator.h" />
-    <ClInclude Include="include\bits\c++config.h" />
-    <ClInclude Include="include\bits\c++io.h" />
-    <ClInclude Include="include\bits\c++locale.h" />
-    <ClInclude Include="include\bits\char_traits.h" />
-    <ClInclude Include="include\bits\codecvt.h" />
-    <ClInclude Include="include\bits\concept_check.h" />
-    <ClInclude Include="include\bits\cpp_type_traits.h" />
-    <ClInclude Include="include\bits\cpu_defines.h" />
-    <ClInclude Include="include\bits\ctype_base.h" />
-    <ClInclude Include="include\bits\ctype_inline.h" />
-    <ClInclude Include="include\bits\cxxabi_forced.h" />
-    <ClInclude Include="include\bits\cxxabi_init_exception.h" />
-    <ClInclude Include="include\bits\cxxabi_tweaks.h" />
-    <ClInclude Include="include\bits\enable_special_members.h" />
-    <ClInclude Include="include\bits\error_constants.h" />
-    <ClInclude Include="include\bits\exception.h" />
-    <ClInclude Include="include\bits\exception_defines.h" />
-    <ClInclude Include="include\bits\exception_ptr.h" />
-    <ClInclude Include="include\bits\extc++.h" />
-    <ClInclude Include="include\bits\forward_list.h" />
-    <ClInclude Include="include\bits\fs_dir.h" />
-    <ClInclude Include="include\bits\fs_fwd.h" />
-    <ClInclude Include="include\bits\fs_ops.h" />
-    <ClInclude Include="include\bits\fs_path.h" />
-    <ClInclude Include="include\bits\functexcept.h" />
-    <ClInclude Include="include\bits\functional_hash.h" />
-    <ClInclude Include="include\bits\gslice.h" />
-    <ClInclude Include="include\bits\gslice_array.h" />
-    <ClInclude Include="include\bits\gthr-default.h" />
-    <ClInclude Include="include\bits\gthr-posix.h" />
-    <ClInclude Include="include\bits\gthr-single.h" />
-    <ClInclude Include="include\bits\gthr.h" />
-    <ClInclude Include="include\bits\hashtable.h" />
-    <ClInclude Include="include\bits\hashtable_policy.h" />
-    <ClInclude Include="include\bits\hash_bytes.h" />
-    <ClInclude Include="include\bits\indirect_array.h" />
-    <ClInclude Include="include\bits\invoke.h" />
-    <ClInclude Include="include\bits\ios_base.h" />
-    <ClInclude Include="include\bits\localefwd.h" />
-    <ClInclude Include="include\bits\locale_classes.h" />
-    <ClInclude Include="include\bits\locale_conv.h" />
-    <ClInclude Include="include\bits\locale_facets.h" />
-    <ClInclude Include="include\bits\locale_facets_nonio.h" />
-    <ClInclude Include="include\bits\mask_array.h" />
-    <ClInclude Include="include\bits\memoryfwd.h" />
-    <ClInclude Include="include\bits\messages_members.h" />
-    <ClInclude Include="include\bits\move.h" />
-    <ClInclude Include="include\bits\nested_exception.h" />
-    <ClInclude Include="include\bits\node_handle.h" />
-    <ClInclude Include="include\bits\opt_random.h" />
-    <ClInclude Include="include\bits\ostream_insert.h" />
-    <ClInclude Include="include\bits\os_defines.h" />
-    <ClInclude Include="include\bits\parse_numbers.h" />
-    <ClInclude Include="include\bits\postypes.h" />
-    <ClInclude Include="include\bits\predefined_ops.h" />
-    <ClInclude Include="include\bits\ptr_traits.h" />
-    <ClInclude Include="include\bits\quoted_string.h" />
-    <ClInclude Include="include\bits\random.h" />
-    <ClInclude Include="include\bits\range_access.h" />
-    <ClInclude Include="include\bits\refwrap.h" />
-    <ClInclude Include="include\bits\regex.h" />
-    <ClInclude Include="include\bits\regex_automaton.h" />
-    <ClInclude Include="include\bits\regex_compiler.h" />
-    <ClInclude Include="include\bits\regex_constants.h" />
-    <ClInclude Include="include\bits\regex_error.h" />
-    <ClInclude Include="include\bits\regex_executor.h" />
-    <ClInclude Include="include\bits\regex_scanner.h" />
-    <ClInclude Include="include\bits\shared_ptr.h" />
-    <ClInclude Include="include\bits\shared_ptr_atomic.h" />
-    <ClInclude Include="include\bits\shared_ptr_base.h" />
-    <ClInclude Include="include\bits\slice_array.h" />
-    <ClInclude Include="include\bits\specfun.h" />
-    <ClInclude Include="include\bits\stdc++.h" />
-    <ClInclude Include="include\bits\stdtr1c++.h" />
-    <ClInclude Include="include\bits\std_abs.h" />
-    <ClInclude Include="include\bits\std_function.h" />
-    <ClInclude Include="include\bits\std_mutex.h" />
-    <ClInclude Include="include\bits\stl_algo.h" />
-    <ClInclude Include="include\bits\stl_algobase.h" />
-    <ClInclude Include="include\bits\stl_bvector.h" />
-    <ClInclude Include="include\bits\stl_construct.h" />
-    <ClInclude Include="include\bits\stl_deque.h" />
-    <ClInclude Include="include\bits\stl_function.h" />
-    <ClInclude Include="include\bits\stl_heap.h" />
-    <ClInclude Include="include\bits\stl_iterator.h" />
-    <ClInclude Include="include\bits\stl_iterator_base_funcs.h" />
-    <ClInclude Include="include\bits\stl_iterator_base_types.h" />
-    <ClInclude Include="include\bits\stl_list.h" />
-    <ClInclude Include="include\bits\stl_map.h" />
-    <ClInclude Include="include\bits\stl_multimap.h" />
-    <ClInclude Include="include\bits\stl_multiset.h" />
-    <ClInclude Include="include\bits\stl_numeric.h" />
-    <ClInclude Include="include\bits\stl_pair.h" />
-    <ClInclude Include="include\bits\stl_queue.h" />
-    <ClInclude Include="include\bits\stl_raw_storage_iter.h" />
-    <ClInclude Include="include\bits\stl_relops.h" />
-    <ClInclude Include="include\bits\stl_set.h" />
-    <ClInclude Include="include\bits\stl_stack.h" />
-    <ClInclude Include="include\bits\stl_tempbuf.h" />
-    <ClInclude Include="include\bits\stl_tree.h" />
-    <ClInclude Include="include\bits\stl_uninitialized.h" />
-    <ClInclude Include="include\bits\stl_vector.h" />
-    <ClInclude Include="include\bits\streambuf_iterator.h" />
-    <ClInclude Include="include\bits\stream_iterator.h" />
-    <ClInclude Include="include\bits\stringfwd.h" />
-    <ClInclude Include="include\bits\time_members.h" />
-    <ClInclude Include="include\bits\uniform_int_dist.h" />
-    <ClInclude Include="include\bits\unique_ptr.h" />
-    <ClInclude Include="include\bits\unordered_map.h" />
-    <ClInclude Include="include\bits\unordered_set.h" />
-    <ClInclude Include="include\bits\uses_allocator.h" />
-    <ClInclude Include="include\bits\valarray_after.h" />
-    <ClInclude Include="include\bits\valarray_array.h" />
-    <ClInclude Include="include\bits\valarray_before.h" />
-    <ClInclude Include="include\engine_flags.hpp" />
-    <ClInclude Include="include\func_system.hpp" />
-    <ClInclude Include="include\func_utils.hpp" />
-    <ClInclude Include="include\global_vars.hpp" />
-    <ClInclude Include="include\include.hpp" />
-    <ClInclude Include="include\AEKeyboard.hpp" />
-    <ClInclude Include="include\AELog.hpp" />
-    <ClInclude Include="include\AEBeep.hpp" />
-    <ClInclude Include="include\AEScreen.hpp" />
-    <ClInclude Include="include\AETimer.hpp" />
-    <ClInclude Include="include\trig_lookup.hpp" />
-    <ClInclude Include="include\typedefs.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="include\bits\basic_ios.tcc" />
-    <None Include="include\bits\basic_string.tcc" />
-    <None Include="include\bits\deque.tcc" />
-    <None Include="include\bits\forward_list.tcc" />
-    <None Include="include\bits\fstream.tcc" />
-    <None Include="include\bits\istream.tcc" />
-    <None Include="include\bits\list.tcc" />
-    <None Include="include\bits\locale_classes.tcc" />
-    <None Include="include\bits\locale_facets.tcc" />
-    <None Include="include\bits\locale_facets_nonio.tcc" />
-    <None Include="include\bits\ostream.tcc" />
-    <None Include="include\bits\random.tcc" />
-    <None Include="include\bits\regex.tcc" />
-    <None Include="include\bits\regex_automaton.tcc" />
-    <None Include="include\bits\regex_compiler.tcc" />
-    <None Include="include\bits\regex_executor.tcc" />
-    <None Include="include\bits\regex_scanner.tcc" />
-    <None Include="include\bits\sstream.tcc" />
-    <None Include="include\bits\streambuf.tcc" />
-    <None Include="include\bits\string_view.tcc" />
-    <None Include="include\bits\valarray_array.tcc" />
-    <None Include="include\bits\vector.tcc" />
+    <ClCompile Include="src\engine\AEBeep.cpp" />
+    <ClCompile Include="src\engine\AEKeyboard.cpp" />
+    <ClCompile Include="src\engine\AELog.cpp" />
+    <ClCompile Include="src\engine\AEScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resources\consoleprog1.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="resources\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\engine\AEBaseClass.hpp" />
+    <ClInclude Include="include\engine\AEBeep.hpp" />
+    <ClInclude Include="include\engine\AEFrame.hpp" />
+    <ClInclude Include="include\engine\AEKeyboard.hpp" />
+    <ClInclude Include="include\engine\AELog.hpp" />
+    <ClInclude Include="include\engine\AEScreen.hpp" />
+    <ClInclude Include="include\engine\AETimer.hpp" />
+    <ClInclude Include="include\engine\allheaders.hpp" />
+    <ClInclude Include="include\engine\bits\algorithmfwd.h" />
+    <ClInclude Include="include\engine\bits\allocated_ptr.h" />
+    <ClInclude Include="include\engine\bits\allocator.h" />
+    <ClInclude Include="include\engine\bits\alloc_traits.h" />
+    <ClInclude Include="include\engine\bits\atomic_base.h" />
+    <ClInclude Include="include\engine\bits\atomic_futex.h" />
+    <ClInclude Include="include\engine\bits\atomic_lockfree_defines.h" />
+    <ClInclude Include="include\engine\bits\atomic_word.h" />
+    <ClInclude Include="include\engine\bits\basic_file.h" />
+    <ClInclude Include="include\engine\bits\basic_ios.h" />
+    <ClInclude Include="include\engine\bits\basic_string.h" />
+    <ClInclude Include="include\engine\bits\boost_concept_check.h" />
+    <ClInclude Include="include\engine\bits\c++0x_warning.h" />
+    <ClInclude Include="include\engine\bits\c++allocator.h" />
+    <ClInclude Include="include\engine\bits\c++config.h" />
+    <ClInclude Include="include\engine\bits\c++io.h" />
+    <ClInclude Include="include\engine\bits\c++locale.h" />
+    <ClInclude Include="include\engine\bits\char_traits.h" />
+    <ClInclude Include="include\engine\bits\codecvt.h" />
+    <ClInclude Include="include\engine\bits\concept_check.h" />
+    <ClInclude Include="include\engine\bits\cpp_type_traits.h" />
+    <ClInclude Include="include\engine\bits\cpu_defines.h" />
+    <ClInclude Include="include\engine\bits\ctype_base.h" />
+    <ClInclude Include="include\engine\bits\ctype_inline.h" />
+    <ClInclude Include="include\engine\bits\cxxabi_forced.h" />
+    <ClInclude Include="include\engine\bits\cxxabi_init_exception.h" />
+    <ClInclude Include="include\engine\bits\cxxabi_tweaks.h" />
+    <ClInclude Include="include\engine\bits\enable_special_members.h" />
+    <ClInclude Include="include\engine\bits\error_constants.h" />
+    <ClInclude Include="include\engine\bits\exception.h" />
+    <ClInclude Include="include\engine\bits\exception_defines.h" />
+    <ClInclude Include="include\engine\bits\exception_ptr.h" />
+    <ClInclude Include="include\engine\bits\extc++.h" />
+    <ClInclude Include="include\engine\bits\forward_list.h" />
+    <ClInclude Include="include\engine\bits\fs_dir.h" />
+    <ClInclude Include="include\engine\bits\fs_fwd.h" />
+    <ClInclude Include="include\engine\bits\fs_ops.h" />
+    <ClInclude Include="include\engine\bits\fs_path.h" />
+    <ClInclude Include="include\engine\bits\functexcept.h" />
+    <ClInclude Include="include\engine\bits\functional_hash.h" />
+    <ClInclude Include="include\engine\bits\gslice.h" />
+    <ClInclude Include="include\engine\bits\gslice_array.h" />
+    <ClInclude Include="include\engine\bits\gthr-default.h" />
+    <ClInclude Include="include\engine\bits\gthr-posix.h" />
+    <ClInclude Include="include\engine\bits\gthr-single.h" />
+    <ClInclude Include="include\engine\bits\gthr.h" />
+    <ClInclude Include="include\engine\bits\hashtable.h" />
+    <ClInclude Include="include\engine\bits\hashtable_policy.h" />
+    <ClInclude Include="include\engine\bits\hash_bytes.h" />
+    <ClInclude Include="include\engine\bits\indirect_array.h" />
+    <ClInclude Include="include\engine\bits\invoke.h" />
+    <ClInclude Include="include\engine\bits\ios_base.h" />
+    <ClInclude Include="include\engine\bits\localefwd.h" />
+    <ClInclude Include="include\engine\bits\locale_classes.h" />
+    <ClInclude Include="include\engine\bits\locale_conv.h" />
+    <ClInclude Include="include\engine\bits\locale_facets.h" />
+    <ClInclude Include="include\engine\bits\locale_facets_nonio.h" />
+    <ClInclude Include="include\engine\bits\mask_array.h" />
+    <ClInclude Include="include\engine\bits\memoryfwd.h" />
+    <ClInclude Include="include\engine\bits\messages_members.h" />
+    <ClInclude Include="include\engine\bits\move.h" />
+    <ClInclude Include="include\engine\bits\nested_exception.h" />
+    <ClInclude Include="include\engine\bits\node_handle.h" />
+    <ClInclude Include="include\engine\bits\opt_random.h" />
+    <ClInclude Include="include\engine\bits\ostream_insert.h" />
+    <ClInclude Include="include\engine\bits\os_defines.h" />
+    <ClInclude Include="include\engine\bits\parse_numbers.h" />
+    <ClInclude Include="include\engine\bits\postypes.h" />
+    <ClInclude Include="include\engine\bits\predefined_ops.h" />
+    <ClInclude Include="include\engine\bits\ptr_traits.h" />
+    <ClInclude Include="include\engine\bits\quoted_string.h" />
+    <ClInclude Include="include\engine\bits\random.h" />
+    <ClInclude Include="include\engine\bits\range_access.h" />
+    <ClInclude Include="include\engine\bits\refwrap.h" />
+    <ClInclude Include="include\engine\bits\regex.h" />
+    <ClInclude Include="include\engine\bits\regex_automaton.h" />
+    <ClInclude Include="include\engine\bits\regex_compiler.h" />
+    <ClInclude Include="include\engine\bits\regex_constants.h" />
+    <ClInclude Include="include\engine\bits\regex_error.h" />
+    <ClInclude Include="include\engine\bits\regex_executor.h" />
+    <ClInclude Include="include\engine\bits\regex_scanner.h" />
+    <ClInclude Include="include\engine\bits\shared_ptr.h" />
+    <ClInclude Include="include\engine\bits\shared_ptr_atomic.h" />
+    <ClInclude Include="include\engine\bits\shared_ptr_base.h" />
+    <ClInclude Include="include\engine\bits\slice_array.h" />
+    <ClInclude Include="include\engine\bits\specfun.h" />
+    <ClInclude Include="include\engine\bits\stdc++.h" />
+    <ClInclude Include="include\engine\bits\stdtr1c++.h" />
+    <ClInclude Include="include\engine\bits\std_abs.h" />
+    <ClInclude Include="include\engine\bits\std_function.h" />
+    <ClInclude Include="include\engine\bits\std_mutex.h" />
+    <ClInclude Include="include\engine\bits\stl_algo.h" />
+    <ClInclude Include="include\engine\bits\stl_algobase.h" />
+    <ClInclude Include="include\engine\bits\stl_bvector.h" />
+    <ClInclude Include="include\engine\bits\stl_construct.h" />
+    <ClInclude Include="include\engine\bits\stl_deque.h" />
+    <ClInclude Include="include\engine\bits\stl_function.h" />
+    <ClInclude Include="include\engine\bits\stl_heap.h" />
+    <ClInclude Include="include\engine\bits\stl_iterator.h" />
+    <ClInclude Include="include\engine\bits\stl_iterator_base_funcs.h" />
+    <ClInclude Include="include\engine\bits\stl_iterator_base_types.h" />
+    <ClInclude Include="include\engine\bits\stl_list.h" />
+    <ClInclude Include="include\engine\bits\stl_map.h" />
+    <ClInclude Include="include\engine\bits\stl_multimap.h" />
+    <ClInclude Include="include\engine\bits\stl_multiset.h" />
+    <ClInclude Include="include\engine\bits\stl_numeric.h" />
+    <ClInclude Include="include\engine\bits\stl_pair.h" />
+    <ClInclude Include="include\engine\bits\stl_queue.h" />
+    <ClInclude Include="include\engine\bits\stl_raw_storage_iter.h" />
+    <ClInclude Include="include\engine\bits\stl_relops.h" />
+    <ClInclude Include="include\engine\bits\stl_set.h" />
+    <ClInclude Include="include\engine\bits\stl_stack.h" />
+    <ClInclude Include="include\engine\bits\stl_tempbuf.h" />
+    <ClInclude Include="include\engine\bits\stl_tree.h" />
+    <ClInclude Include="include\engine\bits\stl_uninitialized.h" />
+    <ClInclude Include="include\engine\bits\stl_vector.h" />
+    <ClInclude Include="include\engine\bits\streambuf_iterator.h" />
+    <ClInclude Include="include\engine\bits\stream_iterator.h" />
+    <ClInclude Include="include\engine\bits\stringfwd.h" />
+    <ClInclude Include="include\engine\bits\time_members.h" />
+    <ClInclude Include="include\engine\bits\uniform_int_dist.h" />
+    <ClInclude Include="include\engine\bits\unique_ptr.h" />
+    <ClInclude Include="include\engine\bits\unordered_map.h" />
+    <ClInclude Include="include\engine\bits\unordered_set.h" />
+    <ClInclude Include="include\engine\bits\uses_allocator.h" />
+    <ClInclude Include="include\engine\bits\valarray_after.h" />
+    <ClInclude Include="include\engine\bits\valarray_array.h" />
+    <ClInclude Include="include\engine\bits\valarray_before.h" />
+    <ClInclude Include="include\engine\engine_flags.hpp" />
+    <ClInclude Include="include\engine\func_system.hpp" />
+    <ClInclude Include="include\engine\func_utils.hpp" />
+    <ClInclude Include="include\engine\global_vars.hpp" />
+    <ClInclude Include="include\engine\include_engine.hpp" />
+    <ClInclude Include="include\engine\trig_lookup.hpp" />
+    <ClInclude Include="include\engine\typedefs.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\engine\bits\basic_ios.tcc" />
+    <None Include="include\engine\bits\basic_string.tcc" />
+    <None Include="include\engine\bits\deque.tcc" />
+    <None Include="include\engine\bits\forward_list.tcc" />
+    <None Include="include\engine\bits\fstream.tcc" />
+    <None Include="include\engine\bits\istream.tcc" />
+    <None Include="include\engine\bits\list.tcc" />
+    <None Include="include\engine\bits\locale_classes.tcc" />
+    <None Include="include\engine\bits\locale_facets.tcc" />
+    <None Include="include\engine\bits\locale_facets_nonio.tcc" />
+    <None Include="include\engine\bits\ostream.tcc" />
+    <None Include="include\engine\bits\random.tcc" />
+    <None Include="include\engine\bits\regex.tcc" />
+    <None Include="include\engine\bits\regex_automaton.tcc" />
+    <None Include="include\engine\bits\regex_compiler.tcc" />
+    <None Include="include\engine\bits\regex_executor.tcc" />
+    <None Include="include\engine\bits\regex_scanner.tcc" />
+    <None Include="include\engine\bits\sstream.tcc" />
+    <None Include="include\engine\bits\streambuf.tcc" />
+    <None Include="include\engine\bits\string_view.tcc" />
+    <None Include="include\engine\bits\valarray_array.tcc" />
+    <None Include="include\engine\bits\vector.tcc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

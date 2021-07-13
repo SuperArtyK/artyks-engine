@@ -1,7 +1,5 @@
 var func__utils_8hpp =
 [
-    [ "UTF8", "d5/d91/func__utils_8hpp.html#a84e0a3e6c7c2b7be64ecc2591eb613d8", null ],
-    [ "WSTR", "d5/d91/func__utils_8hpp.html#aa5ef465b3cfb7b096648181199e8029c", null ],
     [ "BoolToString", "d5/d91/func__utils_8hpp.html#a1de3462f6a168ff0f236936902f1524a", null ],
     [ "inrange", "d5/d91/func__utils_8hpp.html#a217788088a1532b36b7882fb7bd09456", null ],
     [ "tolower_ref", "d5/d91/func__utils_8hpp.html#ac0438f67714e3bc96891ce9494ff1018", null ],
@@ -22,5 +20,6 @@ var func__utils_8hpp =
     [ "cotdeg", "d5/d91/func__utils_8hpp.html#a4747cf13dc186cd67acb404bc3b7052a", null ],
     [ "cscdeg", "d5/d91/func__utils_8hpp.html#a04a55a7f608f8c2c813f81c542fee1ad", null ],
     [ "secdeg", "d5/d91/func__utils_8hpp.html#a0938b3d8bd0baa551d52c6325ee51d11", null ],
+    [ "init_main", "d5/d91/func__utils_8hpp.html#a4c27bca181870a4181439d74a8ca4ec5", null ],
     [ "PI", "d5/d91/func__utils_8hpp.html#a1f9a9c45f48040f14b980699e45d8d05", null ]
 ];

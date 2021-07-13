@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ArtyK&#39;s Console Engine: artyks_engine/include/func_utils.hpp File Reference</title>
+<title>ArtyK&#39;s Console Engine: artyks_engine/include/engine/func_utils.hpp File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -96,7 +96,6 @@ $(document).ready(function(){initNavTree('d5/d91/func__utils_8hpp.html','../../'
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -106,14 +105,9 @@ $(document).ready(function(){initNavTree('d5/d91/func__utils_8hpp.html','../../'
 
 <p>This file contains the global functions that can be used everywhere.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;atomic&gt;</code><br />
+<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;thread&gt;</code><br />
-<code>#include &lt;fstream&gt;</code><br />
-<code>#include &lt;any&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;algorithm&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d4/d95/trig__lookup_8hpp_source.html">trig_lookup.hpp</a>&quot;</code><br />
@@ -131,15 +125,6 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d7/d6a/namespaceartyk_1_1math"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d6a/namespaceartyk_1_1math.html">artyk::math</a></td></tr>
 <tr class="memdesc:d7/d6a/namespaceartyk_1_1math"><td class="mdescLeft">&#160;</td><td class="mdescRight">contains mathematical functions <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a84e0a3e6c7c2b7be64ecc2591eb613d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d91/func__utils_8hpp.html#a84e0a3e6c7c2b7be64ecc2591eb613d8">UTF8</a>(x)&#160;&#160;&#160;u8 ## x</td></tr>
-<tr class="memdesc:a84e0a3e6c7c2b7be64ecc2591eb613d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts the "string literal" to u8"utf-8/unicode string literal"  <a href="../../d5/d91/func__utils_8hpp.html#a84e0a3e6c7c2b7be64ecc2591eb613d8">More...</a><br /></td></tr>
-<tr class="separator:a84e0a3e6c7c2b7be64ecc2591eb613d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5ef465b3cfb7b096648181199e8029c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d91/func__utils_8hpp.html#aa5ef465b3cfb7b096648181199e8029c">WSTR</a>(x)&#160;&#160;&#160;L ## x</td></tr>
-<tr class="memdesc:aa5ef465b3cfb7b096648181199e8029c"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts the "string literal" to L"wide string literal"  <a href="../../d5/d91/func__utils_8hpp.html#aa5ef465b3cfb7b096648181199e8029c">More...</a><br /></td></tr>
-<tr class="separator:aa5ef465b3cfb7b096648181199e8029c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -196,6 +181,9 @@ Functions</h2></td></tr>
 <tr class="separator:a04a55a7f608f8c2c813f81c542fee1ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0938b3d8bd0baa551d52c6325ee51d11"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d6a/namespaceartyk_1_1math.html#a0938b3d8bd0baa551d52c6325ee51d11">artyk::math::secdeg</a> (float degrees)</td></tr>
 <tr class="separator:a0938b3d8bd0baa551d52c6325ee51d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c27bca181870a4181439d74a8ca4ec5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a4c27bca181870a4181439d74a8ca4ec5">artyk::init_main</a> (bool high_priority=true, bool noscrollbar=false, bool noresize=false)</td></tr>
+<tr class="memdesc:a4c27bca181870a4181439d74a8ca4ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function initialises all stuff the engine needs, before it starts.  <a href="../../d9/d53/namespaceartyk.html#a4c27bca181870a4181439d74a8ca4ec5">More...</a><br /></td></tr>
+<tr class="separator:a4c27bca181870a4181439d74a8ca4ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -205,53 +193,12 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file contains the global functions that can be used everywhere. </p>
 <p>Should not cause everything to break. </p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a84e0a3e6c7c2b7be64ecc2591eb613d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84e0a3e6c7c2b7be64ecc2591eb613d8">&#9670;&nbsp;</a></span>UTF8</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define UTF8</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;u8 ## x</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>converts the "string literal" to u8"utf-8/unicode string literal" </p>
-
-</div>
-</div>
-<a id="aa5ef465b3cfb7b096648181199e8029c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5ef465b3cfb7b096648181199e8029c">&#9670;&nbsp;</a></span>WSTR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define WSTR</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">x</td><td>)</td>
-          <td>&#160;&#160;&#160;L ## x</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>converts the "string literal" to L"wide string literal" </p>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_199a0f6872fbcf95977fb13aa6bd319f.html">artyks_engine</a></li><li class="navelem"><a class="el" href="../../dir_197f3e410f817234c342e78215e0decc.html">include</a></li><li class="navelem"><a class="el" href="../../d5/d91/func__utils_8hpp.html">func_utils.hpp</a></li>
+    <li class="navelem"><a class="el" href="../../dir_199a0f6872fbcf95977fb13aa6bd319f.html">artyks_engine</a></li><li class="navelem"><a class="el" href="../../dir_197f3e410f817234c342e78215e0decc.html">include</a></li><li class="navelem"><a class="el" href="../../dir_b88c7ceb451bba20dc7216ca9e1270e9.html">engine</a></li><li class="navelem"><a class="el" href="../../d5/d91/func__utils_8hpp.html">func_utils.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/trig_lookup.hpp
+/** @file include/engine/trig_lookup.hpp
  *  This file contains the results for the trig func lookup tables.
  *  These will be insanely fast, as memory, but won't offer much of precision.
  *  Use flag to enable/disable them.
@@ -31,6 +31,7 @@
 
 #ifdef AE_LOOKUP_TABLE
 
+#include <climits>
 
 namespace artyk {
 	///contains mathematical functions

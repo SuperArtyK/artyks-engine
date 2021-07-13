@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/AELog.hpp
+/** @file include/engine/AELog.hpp
  *  This file contains the logger class, for logging data to file.
  *  
  *  Should not cause everything to break.
@@ -27,21 +27,14 @@
 
 #ifndef FILELOG_HPP
 #define FILELOG_HPP
-#include <fstream>
+
 #include <atomic>
-#include <iostream>
-#include <thread>
 #include <fstream>
-#include <vector>
 #include <string>
 #include "typedefs.hpp"
 #include "global_vars.hpp"
-
-using std::vector;
 using std::string;
 using std::atomic;
-using std::wstring;
-using std::to_string;
 
 //logger types, don't touch
 ///logger info message type  

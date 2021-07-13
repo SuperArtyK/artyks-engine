@@ -1,1 +1,1 @@
-This folder contains header files for engine
+This folder contains header files of the project/soluion.

@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/engine_flags.hpp
+/** @file include/engine/engine_flags.hpp
  *  This file contains engine flags that are used to alter it's code and behaviour.
  *  
  *  Should not cause everything to break.
@@ -72,7 +72,14 @@
 //#undef AE_LOOKUP_TABLE
 //#undef AE_LOG_ENABLE
 //#undef AE_ADD_APP_TITLE
-//#undef AE_KB_DELAY
-//#undef AE_BP_DELAY
+#undef AE_KB_DELAY
+#undef AE_BP_DELAY
 //#undef AE_DETAILED_WINDOW_MESSAGES
 //#undef AE_GLOBALKB_ENABLE_MOUSE
+
+//I know this is a crutch, but I don't want to add AE_DEBUG to the compiler settings, might break all of it
+#ifdef NDEBUG
+//remove if you want to test debug features in Release mode
+#undef AE_DEBUG
+
+#endif // NDEBUG

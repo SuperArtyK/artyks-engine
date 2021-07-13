@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/typedefs.hpp
+/** @file include/engine/typedefs.hpp
  *  This file contains typedefs/aliases of the variable types that are long and
  *  are used often/inconvenient to use in other naming.
  *  

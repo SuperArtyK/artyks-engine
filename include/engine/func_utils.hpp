@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/func_utils.hpp
+/** @file include/engine/func_utils.hpp
  *  This file contains the global functions that can be used everywhere.
  *  
  *  Should not cause everything to break.
@@ -27,31 +27,18 @@
 
 #ifndef GLOB_FUNCS_HPP
 #define GLOB_FUNCS_HPP
-#include <atomic>
-#include <iostream>
-#include <thread>
-#include <fstream>
-#include <any>
-#include <vector>
 #include <algorithm>
-#include <string>
+#include <iostream>
+#include <chrono>
 #include <sstream>
 #include "global_vars.hpp"
 #include "trig_lookup.hpp"
 
 //prototypes
 //moved from log.cpp
-using std::vector;
 using std::string;
-using std::atomic;
 using std::wstring;
 using std::to_string;
-
-
-///converts the "string literal" to u8"utf-8/unicode string literal"
-#define UTF8(x) u8 ## x //converts the "string" to the u8"string"
-///converts the "string literal" to L"wide string literal"
-#define WSTR(x) L ## x //converts the "string" to the L"string"
 
 ///This namespace contains all of things that any of the part of program can use, and is useful.
 ///Such things are -- handles to windows, app names, status(we're starter or closing), flags, functions, etc.
@@ -274,6 +261,39 @@ namespace artyk {
 			return 1 / cos(degrees * PI / 180.0f);
 		}
 	}
+
+	/// <summary>
+	/// This function initialises all stuff the engine needs, before it starts. 
+	/// Call it at the start up, or somewhere when you need, but you can do it only once.
+	/// </summary>
+	/// <param name="high_priority">flag to make main process high-priority</param>
+	/// <param name="noscrollbar">flag to disable console scrollbar showing</param>
+	/// <param name="noresize">flag to disable window resize ability</param>
+	/// <returns></returns>
+	inline void init_main(bool high_priority = true, bool noscrollbar = false, bool noresize = false) {
+		if (artyk::app_startstatus != SHRT_MAX) {
+			srand(time(NULL));
+			SetConsoleActiveScreenBuffer(artyk::g_output_handle);
+			SetConsoleCP(CP_UTF8);
+			SetConsoleOutputCP(CP_UTF8);
+			std::locale loc("en_US.UTF8");
+			std::cout.imbue(loc);
+			std::locale::global(loc);
+			std::setlocale(LC_ALL, "en_US.UTF8");
+			if (high_priority)
+				SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
+			if (noscrollbar)
+				ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
+			if (noresize)
+				SetWindowLong(GetConsoleWindow(), GWL_STYLE, GetWindowLong(GetConsoleWindow(), GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
+
+
+			artyk::app_startstatus = SHRT_MAX;
+			//done intitializing
+		}
+	}
+
+
 
 }
 

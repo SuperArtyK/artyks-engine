@@ -29,12 +29,6 @@
 #include <filesystem>
 #include <intrin.h>
 
-//using namespace std;
-using std::vector;
-using std::cout;
-using std::cin;//if I'll need it sometime
-using std::endl;
-
 
 atomic<biguint> AELog::m_globalmodulenum;
 int AELog::m_staticObjSize = sizeof(atomic<biguint>) +

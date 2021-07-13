@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/AEFrame.hpp
+/** @file include/engine/AEFrame.hpp
  *  This file contains the delay module code.  
  *  Useful if you need to limit the execution time of the program. It makes
  *  sure that the loop(f.ex.) executes with same delay, if contents of loop
@@ -31,15 +31,10 @@
 #ifndef AEFRAME_HPP
 #define AEFRAME_HPP
 
-#include <fstream>
-#include <atomic>
-#include <iostream>
 #include <thread>
-#include <fstream>
-#include <vector>
-#include <string>
 #include <chrono>
 #include "global_vars.hpp"
+#include "typedefs.hpp"
 
 //usage:
 // create obj AEFrame with fps value
@@ -99,6 +94,15 @@ tp(std::chrono::system_clock::now()), m_modulename("AEFrame"), nodelay((fps <= 0
 	inline int getframerate(void) const { return 1 / time_between_frames.count(); }
 	///returns the delay of AEFrame in seconds
 	inline float getdelay(void) const { return time_between_frames.count(); }
+#ifdef AE_EXPERIMENTAL
+	/// uses all utils for class
+	///@see similar thing as __AEBaseClass::benchmark()
+	void benchmark() {
+		setfps(getframerate());
+		getdelay();
+		getmodulename();
+	}
+#endif
 
 private:
 	
@@ -107,7 +111,7 @@ private:
 	///the timepoint, that sets time when to wake up the thread
 	std::chrono::time_point<std::chrono::system_clock, decltype(time_between_frames)> tp;
 	///module name
-	const string m_modulename;
+	const std::string m_modulename;
 	///flag if we don't need the delay
 	bool nodelay;
 };

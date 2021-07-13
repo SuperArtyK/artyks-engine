@@ -78,6 +78,10 @@ AEBeep::~AEBeep() {
 
 void AEBeep::makesound_async(short freq, short dur) {
 
+	if (freq < 25 || dur < 30) {
+		return;
+	}
+
 	if (m_bstop) {
 		openthread();
 	}
@@ -94,7 +98,7 @@ void AEBeep::makesound_block(short freq, short dur) {
 	}
 	if (playset[0] > 25) {
 		Sleep(playset[1]);
-		artyk::utils::debug_log(m_logptr, "(async)Waited ms:" + to_string(playset[1]), LOG_OK, m_modulename);
+		artyk::utils::debug_log(m_logptr, "Waited ms:" + to_string(playset[1]), LOG_OK, m_modulename);
 	}
 	Beep(freq, dur);
 	artyk::utils::debug_log(m_logptr, "(block)Played sound: " + to_string(freq) + " " + to_string(dur), LOG_OK, m_modulename);

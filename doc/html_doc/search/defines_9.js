@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['wstr_528',['WSTR',['../d5/d91/func__utils_8hpp.html#aa5ef465b3cfb7b096648181199e8029c',1,'func_utils.hpp']]]
+  ['uint_5fmin_537',['UINT_MIN',['../de/df7/typedefs_8hpp.html#a4c5cca78586f61bea3640a1563a43819',1,'typedefs.hpp']]],
+  ['utf8_538',['UTF8',['../d3/d97/global__vars_8hpp.html#a84e0a3e6c7c2b7be64ecc2591eb613d8',1,'global_vars.hpp']]]
 ];

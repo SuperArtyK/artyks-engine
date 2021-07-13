@@ -1,1 +1,1 @@
-This folder contains source code files for engine
+This folder contains source files of the project/soluion.

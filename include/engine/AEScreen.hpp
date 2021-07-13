@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/AEScreen.hpp
+/** @file include/engine/AEScreen.hpp
  *  This file contains the declaration of engine's simple screen manager, aka AEScreen
  *  Good if you don't need the power of graphics engine.  
  *  
@@ -28,25 +28,21 @@
 
 #ifndef SCREEN_HPP
 #define SCREEN_HPP
-#include "AELog.hpp"
-#include "global_vars.hpp"
-#include "func_utils.hpp"
+
+
 #include "AEBaseClass.hpp"
-#include <Windows.h>
-using std::vector;
+#include "func_utils.hpp"
+#include "func_system.hpp"
 using std::string;
 using std::atomic;
-using std::wstring;
 using std::to_string;
-
-
 
 /// \brief This module is made for simple screen management, and not made for the performance.  
 /// Good if you don't need the power of graphics engine, that will be added in v0.0.7.  
 /// Doesn't create any threads, purely single-threaded.  
 class AEScreen: public __AEBaseClass {//screen class for comfortability
 public:
-	friend int initenginestuff();
+	friend int __initengine_screen();
 
 	/// <summary>
 	/// Class constructor
@@ -116,8 +112,8 @@ public:
 	void benchmark(void) override {
 		using namespace artyk::color;
 		//setcursor(0, 0);
-		setScreen(96, 20, 14, 7);
-		setConsoleBufferSize(96, 20);
+		setScreen(128, 20, 14, 7);
+		setConsoleBufferSize(128, 20);
 		setFont(14, 7);
 		GetAppTitle();
 		setcolor_con(DEF_BGR, DEF_FGR);
@@ -156,14 +152,35 @@ private:
 
 
 };
+///initialises screen module
+inline int __initengine_screen() {
 
+	///initialises screen module
+	AEScreen::g_cfi.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
+	AEScreen::g_rgb_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
+	AEScreen::g_normal_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
 
+	if (
+		GetConsoleScreenBufferInfoEx(artyk::g_output_handle, &AEScreen::g_normal_color) &&
+		GetConsoleScreenBufferInfoEx(artyk::g_output_handle, &AEScreen::g_rgb_color) &&
+		GetCurrentConsoleFontEx(artyk::g_output_handle, FALSE, &AEScreen::g_cfi) &&
+		GetConsoleScreenBufferInfo(artyk::g_output_handle, &AEScreen::g_csbi)
+		)
+	{
+		artyk::utils::FError("Error initialising screen", DEF_MNAME, GET_FULL_DBG_INFO, artyk::exitcodes::INIT_SC_ERROR);
+	}
+	artyk::app_startstatus = 2; //done with screen
+	return 0;
+}
+
+const int __dummy_screen_initialisation = __initengine_screen();
 
 
 #ifdef AE_GLOBALMODULE
 ///our global simple screen manager module
 inline AEScreen global_screen(true,true);
 #endif
+
 
 
 

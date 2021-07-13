@@ -25,10 +25,8 @@
 
 #include "AEScreen.hpp" 
 #include "func_system.hpp"
-using std::vector;
 using std::string;
 using std::atomic;
-using std::wstring;
 using std::to_string;	
 using namespace artyk;
 
@@ -241,7 +239,6 @@ void AEScreen::settitle(const string& title) {//speaks for itself
 
 	if (findinstr(title, artyk::app_name)) {
 		SetConsoleTitleA(title.c_str());
-		std::cout << "title is the same\n";
 	}
 	else
 	{

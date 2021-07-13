@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/func_system.hpp
+/** @file include/engine/func_system.hpp
  *  This file contains functions for system message box creating.
  *  
  *  Should not cause everything to break.
@@ -32,13 +32,8 @@
 
 
 #include "AELog.hpp"
-#include "global_vars.hpp"
-#include <windows.h>
-#include <string>
-using std::vector;
 using std::string;
 using std::atomic;
-using std::wstring;
 using std::to_string;
 
 ///gets full info of code for AEDebugInfo, not working as func default argument

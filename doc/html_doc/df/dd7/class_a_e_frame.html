@@ -128,6 +128,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af659d9300dac5b7bcded2a2e028fb411"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#af659d9300dac5b7bcded2a2e028fb411">getdelay</a> (void) const</td></tr>
 <tr class="memdesc:af659d9300dac5b7bcded2a2e028fb411"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the delay of <a class="el" href="../../df/dd7/class_a_e_frame.html" title="This module is used for creating delays(in FPS format) in the engine.">AEFrame</a> in seconds  <a href="../../df/dd7/class_a_e_frame.html#af659d9300dac5b7bcded2a2e028fb411">More...</a><br /></td></tr>
 <tr class="separator:af659d9300dac5b7bcded2a2e028fb411"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ef3b45f9e330ab6e63dda74f5444411"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a8ef3b45f9e330ab6e63dda74f5444411">benchmark</a> ()</td></tr>
+<tr class="memdesc:a8ef3b45f9e330ab6e63dda74f5444411"><td class="mdescLeft">&#160;</td><td class="mdescRight">uses all utils for class  <a href="../../df/dd7/class_a_e_frame.html#a8ef3b45f9e330ab6e63dda74f5444411">More...</a><br /></td></tr>
+<tr class="separator:a8ef3b45f9e330ab6e63dda74f5444411"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -137,9 +140,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a25edaa6c5aa968349b7bb74fe0aff998"><td class="memItemLeft" align="right" valign="top">std::chrono::time_point&lt; std::chrono::system_clock, decltype(<a class="el" href="../../df/dd7/class_a_e_frame.html#aeb22b22a5eafedd29af0294164d9a543">time_between_frames</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a25edaa6c5aa968349b7bb74fe0aff998">tp</a></td></tr>
 <tr class="memdesc:a25edaa6c5aa968349b7bb74fe0aff998"><td class="mdescLeft">&#160;</td><td class="mdescRight">the timepoint, that sets time when to wake up the thread  <a href="../../df/dd7/class_a_e_frame.html#a25edaa6c5aa968349b7bb74fe0aff998">More...</a><br /></td></tr>
 <tr class="separator:a25edaa6c5aa968349b7bb74fe0aff998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33c5f14f933bf3d75a0d2b4e4c243ce3"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a33c5f14f933bf3d75a0d2b4e4c243ce3">m_modulename</a></td></tr>
-<tr class="memdesc:a33c5f14f933bf3d75a0d2b4e4c243ce3"><td class="mdescLeft">&#160;</td><td class="mdescRight">module name  <a href="../../df/dd7/class_a_e_frame.html#a33c5f14f933bf3d75a0d2b4e4c243ce3">More...</a><br /></td></tr>
-<tr class="separator:a33c5f14f933bf3d75a0d2b4e4c243ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe6eceff6796db49ba0f7e7393b33b08"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#abe6eceff6796db49ba0f7e7393b33b08">m_modulename</a></td></tr>
+<tr class="memdesc:abe6eceff6796db49ba0f7e7393b33b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">module name  <a href="../../df/dd7/class_a_e_frame.html#abe6eceff6796db49ba0f7e7393b33b08">More...</a><br /></td></tr>
+<tr class="separator:abe6eceff6796db49ba0f7e7393b33b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a001a93d25ec95a8f74dd6bb2cc525055"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a001a93d25ec95a8f74dd6bb2cc525055">nodelay</a></td></tr>
 <tr class="memdesc:a001a93d25ec95a8f74dd6bb2cc525055"><td class="mdescLeft">&#160;</td><td class="mdescRight">flag if we don't need the delay  <a href="../../df/dd7/class_a_e_frame.html#a001a93d25ec95a8f74dd6bb2cc525055">More...</a><br /></td></tr>
 <tr class="separator:a001a93d25ec95a8f74dd6bb2cc525055"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -330,6 +333,35 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a8ef3b45f9e330ab6e63dda74f5444411"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ef3b45f9e330ab6e63dda74f5444411">&#9670;&nbsp;</a></span>benchmark()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEFrame::benchmark </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>uses all utils for class </p>
+<dl class="section see"><dt>See also</dt><dd>similar thing as <a class="el" href="../../dc/dad/class_____a_e_base_class.html#afba226fbf458f09ebf98a50b4ea118e2" title="uses all utils for class">__AEBaseClass::benchmark()</a> </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="aeb22b22a5eafedd29af0294164d9a543"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeb22b22a5eafedd29af0294164d9a543">&#9670;&nbsp;</a></span>time_between_frames</h2>
@@ -379,8 +411,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a33c5f14f933bf3d75a0d2b4e4c243ce3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33c5f14f933bf3d75a0d2b4e4c243ce3">&#9670;&nbsp;</a></span>m_modulename</h2>
+<a id="abe6eceff6796db49ba0f7e7393b33b08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe6eceff6796db49ba0f7e7393b33b08">&#9670;&nbsp;</a></span>m_modulename</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -389,7 +421,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const string AEFrame::m_modulename</td>
+          <td class="memname">const std::string AEFrame::m_modulename</td>
         </tr>
       </table>
   </td>
@@ -428,7 +460,7 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>artyks_engine/include/<a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a></li>
+<li>artyks_engine/include/engine/<a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

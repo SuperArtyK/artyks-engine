@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/AETimer.hpp
+/** @file include/engine/AETimer.hpp
  *  This file contains the code for engine's timer.  
  *  
  *  Should not cause everything to break.  
@@ -27,15 +27,10 @@
 #ifndef TIMER_HPP
 #define TIMER_HPP
 
-#include "global_vars.hpp"
-#include "typedefs.hpp"
 #include "AEFrame.hpp"
 #include "func_system.hpp"
 
-using std::vector;
 using std::string;
-using std::atomic;
-using std::wstring;
 using std::to_string;
 
 /// \brief this is a engine timer, it starts to count up ticks as soon as module is created.  
@@ -84,7 +79,7 @@ public:
 		gettime();
 		getworldtime();
 		getmodulename();
-		getframerater();
+		getframerater().benchmark();
 
 	}
 #endif

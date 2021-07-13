@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/AEBeep.hpp
+/** @file include/engine/AEBeep.hpp
  *  This file contains the old sound system code.  
  *  Useful if you just need the simple beeping.  
  *  
@@ -28,7 +28,7 @@
 
 #ifndef SOUND_HPP
 #define SOUND_HPP
-#include "AELog.hpp"
+
 #include "AEBaseClass.hpp"
 
 /// \brief This module is for simple sine wave beeping.  

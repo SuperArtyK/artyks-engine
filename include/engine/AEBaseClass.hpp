@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/AEBaseClass.hpp
+/** @file include/engine/AEBaseClass.hpp
  *  This file contains the code for basic ArtyK's Console Engine(utility) class.  
  *  
  *  Should not cause everything to break.  
@@ -27,20 +27,10 @@
 
 #ifndef BASECLASS_HPP
 #define BASECLASS_HPP
-#include <fstream>
-#include <atomic>
-#include <iostream>
-#include <thread>
-#include <fstream>
-#include <vector>
-#include <string>
+
 #include "AEFrame.hpp"
 #include "AELog.hpp"
-#include "typedefs.hpp"
-using std::vector;
 using std::string;
-using std::atomic;
-using std::wstring;
 using std::to_string;
 
 

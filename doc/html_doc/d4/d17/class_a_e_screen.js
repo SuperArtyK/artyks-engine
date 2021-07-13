@@ -15,7 +15,7 @@ var class_a_e_screen =
     [ "benchmark", "d4/d17/class_a_e_screen.html#a8f10d0db9b0841c89cade8e8052dd28d", null ],
     [ "GetScreenRes", "d4/d17/class_a_e_screen.html#a16552b4ec9eaaddfa1ca49d6a92e09e7", null ],
     [ "checkhandles", "d4/d17/class_a_e_screen.html#afe1f600552e2ffe35aad71f282144d2a", null ],
-    [ "initenginestuff", "d4/d17/class_a_e_screen.html#ada1b149ae56ace56bbd92e0847c082a7", null ],
+    [ "__initengine_screen", "d4/d17/class_a_e_screen.html#ab9f340c58016b4eca8c6dc9ff35e3521", null ],
     [ "g_rgb_color", "d4/d17/class_a_e_screen.html#aa72ad0103d3697f3f1485c3a3cc72efa", null ],
     [ "g_normal_color", "d4/d17/class_a_e_screen.html#a3246180466372b7431d332ba2fcf1cc2", null ],
     [ "g_cfi", "d4/d17/class_a_e_screen.html#ad0805c4b9c3385add6df2a75876b7ffd", null ],

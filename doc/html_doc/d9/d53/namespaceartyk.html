@@ -96,6 +96,7 @@ $(document).ready(function(){initNavTree('d9/d53/namespaceartyk.html','../../');
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">artyk Namespace Reference</div>  </div>
@@ -120,6 +121,12 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:df/d21/namespaceartyk_1_1utils"><td class="mdescLeft">&#160;</td><td class="mdescRight">global useful functions <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a4c27bca181870a4181439d74a8ca4ec5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a4c27bca181870a4181439d74a8ca4ec5">init_main</a> (bool high_priority=true, bool noscrollbar=false, bool noresize=false)</td></tr>
+<tr class="memdesc:a4c27bca181870a4181439d74a8ca4ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function initialises all stuff the engine needs, before it starts.  <a href="../../d9/d53/namespaceartyk.html#a4c27bca181870a4181439d74a8ca4ec5">More...</a><br /></td></tr>
+<tr class="separator:a4c27bca181870a4181439d74a8ca4ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a0c33f1109b193d4bb639f7d3c0c9d554"><td class="memItemLeft" align="right" valign="top">uint_fast8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a0c33f1109b193d4bb639f7d3c0c9d554">closing_app</a> = 0</td></tr>
@@ -128,7 +135,7 @@ Variables</h2></td></tr>
 <tr class="memitem:ad1b6eadcc3f06c974fe9ec7a9163754c"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#ad1b6eadcc3f06c974fe9ec7a9163754c">app_name</a></td></tr>
 <tr class="memdesc:ad1b6eadcc3f06c974fe9ec7a9163754c"><td class="mdescLeft">&#160;</td><td class="mdescRight">name of the app  <a href="../../d9/d53/namespaceartyk.html#ad1b6eadcc3f06c974fe9ec7a9163754c">More...</a><br /></td></tr>
 <tr class="separator:ad1b6eadcc3f06c974fe9ec7a9163754c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acafb72f10c21898c876448a2904489b8"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#acafb72f10c21898c876448a2904489b8">app_build</a> = 3624</td></tr>
+<tr class="memitem:acafb72f10c21898c876448a2904489b8"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#acafb72f10c21898c876448a2904489b8">app_build</a> = 3635</td></tr>
 <tr class="memdesc:acafb72f10c21898c876448a2904489b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">build of app, how do you autoincrement these?  <a href="../../d9/d53/namespaceartyk.html#acafb72f10c21898c876448a2904489b8">More...</a><br /></td></tr>
 <tr class="separator:acafb72f10c21898c876448a2904489b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12b0879da633c41920969a5781f6dc88"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a12b0879da633c41920969a5781f6dc88">app_version</a> = &quot;v.0.0.6&quot;</td></tr>
@@ -150,7 +157,62 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This namespace contains all of things that any of the part of program can use, and is useful. </p>
 <p>Such things are &ndash; handles to windows, app names, status(we're starter or closing), flags, functions, etc. </p>
-</div><h2 class="groupheader">Variable Documentation</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a4c27bca181870a4181439d74a8ca4ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c27bca181870a4181439d74a8ca4ec5">&#9670;&nbsp;</a></span>init_main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void artyk::init_main </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>high_priority</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>noscrollbar</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>noresize</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This function initialises all stuff the engine needs, before it starts. </p>
+<p>Call it at the start up, or somewhere when you need, but you can do it only once.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">high_priority</td><td>flag to make main process high-priority</td></tr>
+    <tr><td class="paramname">noscrollbar</td><td>flag to disable console scrollbar showing</td></tr>
+    <tr><td class="paramname">noresize</td><td>flag to disable window resize ability</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
 <a id="a0c33f1109b193d4bb639f7d3c0c9d554"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0c33f1109b193d4bb639f7d3c0c9d554">&#9670;&nbsp;</a></span>closing_app</h2>
 
@@ -207,7 +269,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr int artyk::app_build = 3624</td>
+          <td class="memname">constexpr int artyk::app_build = 3635</td>
         </tr>
       </table>
   </td>

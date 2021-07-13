@@ -88,6 +88,7 @@ var namespaceartyk =
       [ "isinfocus", "df/d21/namespaceartyk_1_1utils.html#a20bd2d09ad1666398407b845c8c11474", null ],
       [ "timecounter", "df/d21/namespaceartyk_1_1utils.html#aa2abf8271c37fb2d1b8e8b480c4ee419", null ]
     ] ],
+    [ "init_main", "d9/d53/namespaceartyk.html#a4c27bca181870a4181439d74a8ca4ec5", null ],
     [ "closing_app", "d9/d53/namespaceartyk.html#a0c33f1109b193d4bb639f7d3c0c9d554", null ],
     [ "app_name", "d9/d53/namespaceartyk.html#ad1b6eadcc3f06c974fe9ec7a9163754c", null ],
     [ "app_build", "d9/d53/namespaceartyk.html#acafb72f10c21898c876448a2904489b8", null ],

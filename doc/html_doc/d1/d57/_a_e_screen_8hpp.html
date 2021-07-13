@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ArtyK&#39;s Console Engine: artyks_engine/include/AEScreen.hpp File Reference</title>
+<title>ArtyK&#39;s Console Engine: artyks_engine/include/engine/AEScreen.hpp File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -95,7 +95,9 @@ $(document).ready(function(){initNavTree('d1/d57/_a_e_screen_8hpp.html','../../'
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">AEScreen.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -103,11 +105,9 @@ $(document).ready(function(){initNavTree('d1/d57/_a_e_screen_8hpp.html','../../'
 
 <p>This file contains the declaration of engine's simple screen manager, aka <a class="el" href="../../d4/d17/class_a_e_screen.html" title="This module is made for simple screen management, and not made for the performance.">AEScreen</a> Good if you don't need the power of graphics engine.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d4/d7c/_a_e_base_class_8hpp_source.html">AEBaseClass.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d5/d91/func__utils_8hpp_source.html">func_utils.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d4/d7c/_a_e_base_class_8hpp_source.html">AEBaseClass.hpp</a>&quot;</code><br />
-<code>#include &lt;Windows.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/de6/func__system_8hpp_source.html">func_system.hpp</a>&quot;</code><br />
 </div>
 <p><a href="../../d1/d57/_a_e_screen_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -116,6 +116,17 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html">AEScreen</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This module is made for simple screen management, and not made for the performance.  <a href="../../d4/d17/class_a_e_screen.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ab9f340c58016b4eca8c6dc9ff35e3521"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d57/_a_e_screen_8hpp.html#ab9f340c58016b4eca8c6dc9ff35e3521">__initengine_screen</a> ()</td></tr>
+<tr class="memdesc:ab9f340c58016b4eca8c6dc9ff35e3521"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialises screen module  <a href="../../d1/d57/_a_e_screen_8hpp.html#ab9f340c58016b4eca8c6dc9ff35e3521">More...</a><br /></td></tr>
+<tr class="separator:ab9f340c58016b4eca8c6dc9ff35e3521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a6171129baa1891d7f0cad390f9cf65d7"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d57/_a_e_screen_8hpp.html#a6171129baa1891d7f0cad390f9cf65d7">__dummy_screen_initialisation</a> = <a class="el" href="../../d1/d57/_a_e_screen_8hpp.html#ab9f340c58016b4eca8c6dc9ff35e3521">__initengine_screen</a>()</td></tr>
+<tr class="separator:a6171129baa1891d7f0cad390f9cf65d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file contains the declaration of engine's simple screen manager, aka <a class="el" href="../../d4/d17/class_a_e_screen.html" title="This module is made for simple screen management, and not made for the performance.">AEScreen</a> Good if you don't need the power of graphics engine. </p>
@@ -123,12 +134,56 @@ Classes</h2></td></tr>
 </p>
 <p>Should not cause everything to break. <br  />
  </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ab9f340c58016b4eca8c6dc9ff35e3521"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9f340c58016b4eca8c6dc9ff35e3521">&#9670;&nbsp;</a></span>__initengine_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int __initengine_screen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>initialises screen module </p>
+<p>initialises screen module</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a6171129baa1891d7f0cad390f9cf65d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6171129baa1891d7f0cad390f9cf65d7">&#9670;&nbsp;</a></span>__dummy_screen_initialisation</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int __dummy_screen_initialisation = <a class="el" href="../../d1/d57/_a_e_screen_8hpp.html#ab9f340c58016b4eca8c6dc9ff35e3521">__initengine_screen</a>()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_199a0f6872fbcf95977fb13aa6bd319f.html">artyks_engine</a></li><li class="navelem"><a class="el" href="../../dir_197f3e410f817234c342e78215e0decc.html">include</a></li><li class="navelem"><a class="el" href="../../d1/d57/_a_e_screen_8hpp.html">AEScreen.hpp</a></li>
+    <li class="navelem"><a class="el" href="../../dir_199a0f6872fbcf95977fb13aa6bd319f.html">artyks_engine</a></li><li class="navelem"><a class="el" href="../../dir_197f3e410f817234c342e78215e0decc.html">include</a></li><li class="navelem"><a class="el" href="../../dir_b88c7ceb451bba20dc7216ca9e1270e9.html">engine</a></li><li class="navelem"><a class="el" href="../../d1/d57/_a_e_screen_8hpp.html">AEScreen.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

@@ -24,7 +24,8 @@
  */
 
 #include "AEKeyboard.hpp"
-#include <array>
+#include <vector>
+
 
 AEKBKey AEKeyboard::m_keys[256];
 short AEKeyboard::m_keyOld[256];
@@ -532,4 +533,4 @@ const std::array<std::pair<const char*, const smalluint>, 173> AEKeyboard::m_key
 {"noname", 252},
 {"pa1", 253},
 {"oemclear", 254},
-		} };
+} };

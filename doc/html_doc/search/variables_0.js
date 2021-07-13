@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_5f_5fdummy_5fdont_5fuse_5fever_5fplease_398',['__dummy_dont_use_ever_please',['../df/d0a/main_8cpp.html#ab27085aed0e2340cd984ddd0184c6972',1,'main.cpp']]]
+  ['_5f_5fdummy_5fkeyboard_5finitialisation_406',['__dummy_keyboard_initialisation',['../d4/d86/_a_e_keyboard_8hpp.html#aeaa3d205528afb53e09e38dc3b696a4d',1,'AEKeyboard.hpp']]],
+  ['_5f_5fdummy_5fscreen_5finitialisation_407',['__dummy_screen_initialisation',['../d1/d57/_a_e_screen_8hpp.html#a6171129baa1891d7f0cad390f9cf65d7',1,'AEScreen.hpp']]]
 ];
