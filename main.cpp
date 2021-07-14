@@ -40,71 +40,43 @@
 
 
 #include "include_engine.hpp"
+#include "AEGraphic.hpp"
 using namespace std;
 
 
-#ifdef AE_EXPERIMENTAL
-void benchmark() {
-
-__AEBaseClass mybc("BaseClass", 1);
-mybc.benchmark();
-
-AEBeep mybp(true, false);
-mybp.benchmark();
-//
-AEKeyboard mykb(true, false);
-mykb.benchmark();
-//
-AELog mylog;
-mylog.benchmark();
-//
-AEScreen myscr(true, false);
-myscr.benchmark();
-//
-AETimer mytime(-1);
-mytime.benchmark();
-//
-global_timer.benchmark();
-
-
-}
-#endif // AE_EXPERIMENTAL
 
 
 
-///our "starting point" of the program
+void benchmark();
+
 int main()
 {
-	//not required but recommended have this function in the start of the main
-	//completes engine initialisation
 	artyk::init_main(false, false, false);
 
 
 //your code goes below...
-
-
-	//this program benchmarks the engine, putting it to the worst possible case ever, as I think.
-	//it calls benchmark functions of each module, that use all possible public functions of the module once
-	//as AEScreen has the setScreen() function in its benchmark, the screen will flash.
-	//fps is the cycles of the main loop per second
-	cout << "Each beep means that, 1+ seconds has passed and we're calculating the results of benchmarking.\nEach \"frame\" is calling benchmark function that uses all of engine's modules\nin a worst way I think possible\n";
-
 	int i = 0;
 	int previ = 0;
 	auto timestart = std::chrono::system_clock::now();
 	auto timeend = std::chrono::system_clock::now();
 	float fElapsedTime;
+	int fps = 0, maxfps = fps, minfps = INT_MAX;
 	AEBeep mybp;
 	AEScreen myscr;
+	AEKeyboard mykb(false, false, true);
 	myscr.setcolor_con(artyk::color::DEF_BGR, artyk::color::DEF_FGR);
-	int fps = 0, maxfps = fps, minfps = INT_MAX;
-	artyk::utils::Info("I'm going to start the engine's benchmark. \nThis benchmark's goal is to see what performance you can get if to use the engine at it's maximum(e.g. worst case in using it).\nIt may use your processor to maximum, but I don't guarantee that it will do that, as it's not the goal.\nThis benchmark doesn't have an end, and the result is the \"FPS\" you will see in the app title.\nTo close this app, use task manager or your taskbar.", DEF_MNAME, false);
-	artyk::utils::Info("Each beep will mean that 1+ seconds has passed, and we're calculating the results of benchmarking.\nEach \"frame\" is calling benchmark function that uses all of engine's modules\nin a worst way I, ArtyK, think possible.\n\nWARNING: This benchmark has excessive flashing imagery.\nPress \"OK\" to start benchmark.", DEF_MNAME,false);
+	
 	Sleep(500);
-	timestart = std::chrono::system_clock::now();
+	AEGraphic mygx;
+
 	for (;;) {
 		i++;
-		benchmark();
+		if (!mykb.GetKey(1).m_isUsed)
+		mygx.clearscreen();
+
+		short mousepos[2] = { mykb.GetMouseX(),mykb.GetMouseY() };
+
+		mygx.drawscreen();
 	
 		timeend = std::chrono::system_clock::now();
 		fElapsedTime = std::chrono::duration<float>(timeend - timestart).count();
@@ -132,12 +104,38 @@ int main()
 		AELog mylog;
 		mylog.writetolog("Closed the \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build), LOG_INFO);
 	}
-	cout << "\nPress enter to continue . . .\n";
-	cin.get();
-	cout << "Exiting. . .\n";
+	//cout << "\nPress enter to continue . . .\n";
+	std::cin.get();
+	//cout << "Exiting. . .\n";
 	return 0;
 }
 
 
 
 
+#ifdef AE_EXPERIMENTAL
+void benchmark() {
+
+	__AEBaseClass mybc("BaseClass", 1);
+	mybc.benchmark();
+
+	AEBeep mybp(true, false);
+	mybp.benchmark();
+	//
+	AEKeyboard mykb(true, false);
+	mykb.benchmark();
+	//
+	AELog mylog;
+	mylog.benchmark();
+	//
+	AEScreen myscr(true, false);
+	myscr.benchmark();
+	//
+	AETimer mytime(-1);
+	mytime.benchmark();
+	//
+	global_timer.benchmark();
+
+
+}
+#endif // AE_EXPERIMENTAL

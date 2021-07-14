@@ -71,14 +71,14 @@
 
 //#undef AE_DEBUG
 #undef AE_GLOBALMODULE
-//#undef AE_EXPERIMENTAL
-//#undef AE_LOOKUP_TABLE
-//#undef AE_LOG_ENABLE
-//#undef AE_ADD_APP_TITLE
-#undef AE_KB_DELAY
-#undef AE_BP_DELAY
+#undef AE_EXPERIMENTAL
+#undef AE_LOOKUP_TABLE
+#undef AE_LOG_ENABLE
+#undef AE_ADD_APP_TITLE
+//#undef AE_KB_DELAY
+//#undef AE_BP_DELAY
 //#undef AE_DETAILED_WINDOW_MESSAGES
-//#undef AE_GLOBALKB_ENABLE_MOUSE
+#undef AE_GLOBALKB_ENABLE_MOUSE
 
 //I know this is a crutch, but I don't want to add AE_DEBUG to the compiler settings, might break all of it
 #ifdef NDEBUG

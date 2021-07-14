@@ -145,7 +145,9 @@ namespace artyk {
 
 			//default colors
 			DEF_BGR = BLACK,
-			DEF_FGR = B_GREEN;
+			DEF_FGR = B_GREEN,
+			DEF_ATTR = DEF_BGR*16+DEF_FGR;
+			
 
 	}
 	///list of the engine exit codes

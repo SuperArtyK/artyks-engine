@@ -171,7 +171,7 @@ private:
 	///do we need to stop the thread
 	bool m_bstoptrd;
 	///is mouse enabled
-	bool m_enablemouse;
+	static bool m_enablemouse;
 	
 
 };

@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file src/AEKeyboard.cpp
+/** @file src/engine/AEKeyboard.cpp
  *  This file contains the keyboard scanning functions' definitions.
  * 
  *  Should not cause everything to break.
@@ -32,16 +32,16 @@ short AEKeyboard::m_keyOld[256];
 atomic<biguint> AEKeyboard::m_globalmodulenum = 0;
 short AEKeyboard::m_mousepos[2] = { 0,0 };
 bool AEKeyboard::m_threadon = false;
-
+bool AEKeyboard::m_enablemouse;
 
 
 
 //constructors and destructors
 AEKeyboard::AEKeyboard(bool enablelog, bool useGlobLog, bool enablemouse) : __AEBaseClass("AEKeyboard",++m_globalmodulenum),
-m_bstoptrd(false), m_enablemouse(enablemouse)
+m_bstoptrd(false)
 
 {
-
+	m_enablemouse = enablemouse;
 #ifdef AE_LOG_ENABLE
 	if (enablelog) {
 		if (useGlobLog) {

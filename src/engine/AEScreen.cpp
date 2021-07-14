@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file src/AEScreen.cpp
+/** @file src/engine/AEScreen.cpp
  *  This file contains the screen module functions definitions.
  * 
  *  Should not cause everything to break.
@@ -36,13 +36,13 @@ CONSOLE_SCREEN_BUFFER_INFOEX AEScreen::g_rgb_color;
 CONSOLE_SCREEN_BUFFER_INFOEX AEScreen::g_normal_color;
 CONSOLE_SCREEN_BUFFER_INFO AEScreen::g_csbi;
 CONSOLE_FONT_INFOEX AEScreen::g_cfi;
-
+SMALL_RECT AEScreen::g_rectWindow = { 0,0,0,0 };
 
 
 
 //constructors/destructors
-AEScreen::AEScreen(bool enablelog, bool useGlobLog) :__AEBaseClass("AEScreen",++m_globalmodulenum),
-g_rectWindow({ 0,0,0,0 })//, interruptscroll(false)
+AEScreen::AEScreen(bool enablelog, bool useGlobLog) :__AEBaseClass("AEScreen",++m_globalmodulenum)
+//, interruptscroll(false)
 {
 #ifdef AE_LOG_ENABLE
 	if (enablelog) {

@@ -138,7 +138,7 @@ private:
 	///console buffer info, used to manage the screen
 	static CONSOLE_SCREEN_BUFFER_INFO g_csbi;
 	///temp variable to store window sizes
-	SMALL_RECT g_rectWindow;
+	static SMALL_RECT g_rectWindow;
 	///variable to store the module index number
 	static biguint m_globalmodulenum;
 	///our screen resolution
@@ -147,7 +147,7 @@ private:
 	//bool interruptscroll;
 	
 	
-	
+	friend class AEGraphic;
 	
 
 

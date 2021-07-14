@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file src/AEBeep.cpp
+/** @file src/engine/AEBeep.cpp
  *  This file contains the old sound system's function definitions.
  *  Useful if you just need the simple beeping.
  * 

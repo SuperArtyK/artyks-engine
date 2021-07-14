@@ -95,6 +95,8 @@ namespace artyk {
 		///scans and returns if the app is in focus
 		inline bool isinfocus(); //scans if the app is in focus
 
+		
+
 #ifdef AE_EXPERIMENTAL
 		///counts time between calls, not safe/consistent if used in other threads
 		inline float timecounter();
@@ -215,6 +217,9 @@ namespace artyk {
 		{
 			return artyk::g_console_hwnd == GetForegroundWindow();
 		}
+
+		
+
 
 #ifdef AE_EXPERIMENTAL
 		inline float timecounter() {
