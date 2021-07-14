@@ -73,10 +73,8 @@ int main()
 		i++;
 		if (!mykb.GetKey(1).m_isUsed)
 		mygx.clearscreen();
-
-		short mousepos[2] = { mykb.GetMouseX(),mykb.GetMouseY() };
-
-		mygx.drawscreen();
+		mygx.setpixel(mykb.GetMouseX(), mykb.GetMouseY());
+		//mygx.drawscreen();
 	
 		timeend = std::chrono::system_clock::now();
 		fElapsedTime = std::chrono::duration<float>(timeend - timestart).count();

@@ -31,6 +31,7 @@ int AEGraphic::graph_fps = 0;
 bool AEGraphic::m_threadon  =false;
 
 
+///FIXME:rewrite the initialisation to match variable declaration
 AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fpsdelay,bool enablelog, bool useGlobLog) : __AEBaseClass("AEGraphic", ++m_globalmodulenum), m_myscr(false), m_screendata(new CHAR_INFO[sizex * sizey]), m_fr(GAME_FPS), m_screensize{ sizex, sizey }, m_bstoptrd(false)
 {
 	memset(m_screendata, 0, sizex* sizey * sizeof(CHAR_INFO));
@@ -74,6 +75,69 @@ AEGraphic::~AEGraphic(){
 	}
 
 }
+
+inline void AEGraphic::drawscreen() const {
+	WriteConsoleOutput(artyk::g_output_handle, m_screendata, m_screensize, { 0,0 }, &m_myscr.g_rectWindow);
+}
+
+inline void AEGraphic::clearscreen() {
+	memset(m_screendata, 0, m_screensize.X * m_screensize.Y * sizeof(CHAR_INFO));
+}
+
+inline void AEGraphic::setpixel(short x, short y, wchar_t mych, smalluint color) {
+	m_screendata[m_screensize.X * y + x].Char.UnicodeChar = mych;
+	m_screendata[m_screensize.X * y + x].Attributes = color;
+}
+inline void AEGraphic::setpixel(short x, short y, const CHAR_INFO& mych) {
+	m_screendata[m_screensize.X * y + x] = mych;
+}
+
+
+void AEGraphic::startrd() {
+	if (m_threadon) {
+		return;
+	}
+	m_thread = std::thread(&AEGraphic::mainthread, this);
+	if (m_thread.joinable()) {
+		m_threadon = true;
+		artyk::utils::debug_log(m_logptr, "Started drawing thread.", LOG_OK, m_modulename);
+	}
+	else {
+		artyk::utils::debug_log(m_logptr, "Could NOT start drawing thread:reason unknown", LOG_ERROR, m_modulename);
+
+	}
+}
+
+void AEGraphic::closetrd(void) {
+	if (m_thread.joinable()) {
+		m_bstoptrd = true;
+		m_thread.join();
+		m_threadon = false;
+		artyk::utils::debug_log(m_logptr, "Closed keyscanning thread.", LOG_OK, m_modulename);
+	}
+	else {
+		artyk::utils::debug_log(m_logptr, "Could not close drawing thread:it wasn't started", LOG_ERROR, m_modulename);
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void AEGraphic::mainthread() {
 	artyk::utils::debug_log(m_logptr, "Entered main drawing thread", LOG_SUCCESS, m_modulename);

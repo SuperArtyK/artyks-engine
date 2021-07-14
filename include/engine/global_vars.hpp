@@ -1,4 +1,4 @@
-/*
+﻿/*
 	ArtyK's Console (Game) Engine. Console engine for apps and games
 	Copyright (C) 2021  Artemii Kozhemiak
 
@@ -167,6 +167,106 @@ namespace artyk {
 
 
 	}
+
+	///\brief this namespace contains predone characters/char cells used for drawing stuff with AEGraphic
+	namespace gfx {
+		///characters
+		constexpr wchar_t
+			CH_EMPTY = L'\0',//no difference in visual, but a difference in processing, used this to indicate empty/transparent stuff
+			CH_SPACE = L' ',
+			CH_25 = L'░',
+			CH_50 = L'▒',
+			CH_75 = L'▓',
+			CH_100 = L'█',
+			CH_BLOCK = CH_100,
+			CH_BOX1[]{
+				L'┌', L'┬', L'┐',
+				L'┤', L'┘', L'┴',
+				L'└', L'├', L'┼',
+				L'─', L'│',
+		},
+		CH_BOX2[]{
+			L'╒', L'╤', L'╕',
+			L'╡', L'╛', L'╧',
+			L'╘', L'╞', L'╪',
+			L'═', L'│',
+		},
+		CH_BOX3[]{
+			L'╓', L'╥', L'╖',
+			L'╢', L'╜', L'╨',
+			L'╙', L'╟', L'╫',
+			L'─', L'║',
+		},
+		CH_BOX4[]{
+			L'╔', L'╦', L'╗', L'╣', L'╝', L'╩', L'╚', L'╠', L'╬', L'═', L'║',
+		};
+
+		//char cells
+		constexpr CHAR_INFO
+			PX_EMPTY = { L'\0', 0 },
+			PX_SPACE = { L' ', artyk::color::DEF_ATTR },//no difference in visual, but a difference in processing, used this to indicate empty/transparent stuff
+			PX_25 = { L'░', artyk::color::DEF_ATTR },
+			PX_50 = { L'▒', artyk::color::DEF_ATTR },
+			PX_75 = { L'▓', artyk::color::DEF_ATTR },
+			PX_100 = { L'█', artyk::color::DEF_ATTR },
+			PX_BLOCK = PX_100,
+			PX_BOX1[]{
+				{L'┌', artyk::color::DEF_ATTR},
+				{L'┬', artyk::color::DEF_ATTR},
+				{L'┐', artyk::color::DEF_ATTR},
+				{L'┤', artyk::color::DEF_ATTR},
+				{L'┘', artyk::color::DEF_ATTR},
+				{L'┴', artyk::color::DEF_ATTR},
+				{L'└', artyk::color::DEF_ATTR},
+				{L'├', artyk::color::DEF_ATTR},
+				{L'┼', artyk::color::DEF_ATTR},
+				{L'─', artyk::color::DEF_ATTR},
+				{L'│', artyk::color::DEF_ATTR},
+		},
+		PX_BOX2[]{
+			{L'╒', artyk::color::DEF_ATTR},
+			{L'╤', artyk::color::DEF_ATTR},
+			{L'╕', artyk::color::DEF_ATTR},
+			{L'╡', artyk::color::DEF_ATTR},
+			{L'╛', artyk::color::DEF_ATTR},
+			{L'╧', artyk::color::DEF_ATTR},
+			{L'╘', artyk::color::DEF_ATTR},
+			{L'╞', artyk::color::DEF_ATTR},
+			{L'╪', artyk::color::DEF_ATTR},
+			{L'═', artyk::color::DEF_ATTR},
+			{L'│', artyk::color::DEF_ATTR},
+		},
+		PX_BOX3[]{
+			{L'╓', artyk::color::DEF_ATTR},
+			{L'╥', artyk::color::DEF_ATTR},
+			{L'╖', artyk::color::DEF_ATTR},
+			{L'╢', artyk::color::DEF_ATTR},
+			{L'╜', artyk::color::DEF_ATTR},
+			{L'╨', artyk::color::DEF_ATTR},
+			{L'╙', artyk::color::DEF_ATTR},
+			{L'╟', artyk::color::DEF_ATTR},
+			{L'╫', artyk::color::DEF_ATTR},
+			{L'─', artyk::color::DEF_ATTR},
+			{L'║', artyk::color::DEF_ATTR},
+		},
+		PX_BOX4[]{
+			{L'╔', artyk::color::DEF_ATTR},
+			{L'╦', artyk::color::DEF_ATTR},
+			{L'╗', artyk::color::DEF_ATTR},
+			{L'╣', artyk::color::DEF_ATTR},
+			{L'╝', artyk::color::DEF_ATTR},
+			{L'╩', artyk::color::DEF_ATTR},
+			{L'╚', artyk::color::DEF_ATTR},
+			{L'╠', artyk::color::DEF_ATTR},
+			{L'╬', artyk::color::DEF_ATTR},
+			{L'═', artyk::color::DEF_ATTR},
+			{L'║', artyk::color::DEF_ATTR},
+		};
+
+
+	}
+
+
 
 }
 
