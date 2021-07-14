@@ -32,7 +32,7 @@ bool AEGraphic::m_threadon  =false;
 
 
 ///FIXME:rewrite the initialisation to match variable declaration
-AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fpsdelay,bool enablelog, bool useGlobLog) : __AEBaseClass("AEGraphic", ++m_globalmodulenum), m_myscr(false), m_screendata(new CHAR_INFO[sizex * sizey]), m_fr(GAME_FPS), m_screensize{ sizex, sizey }, m_bstoptrd(false)
+AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fpsdelay,bool enablelog, bool useGlobLog) : __AEBaseClass("AEGraphic", ++m_globalmodulenum), m_myscr(false), m_screendata(new CHAR_INFO[sizex * sizey]), m_fr(fpsdelay), m_screensize{ sizex, sizey }, m_bstoptrd(false)
 {
 	memset(m_screendata, 0, sizex* sizey * sizeof(CHAR_INFO));
 #ifdef AE_LOG_ENABLE
@@ -56,12 +56,12 @@ AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fps
 #endif // AE_LOG_DISABLE
 	m_myscr.setScreen(sizex, sizey, fonth, fontw);
 	artyk::utils::normal_log(m_logptr, "Started Graphics module!", LOG_SUCCESS, m_modulename);
-	mainthread();
+	startrd();
 	
 } 
 
 AEGraphic::~AEGraphic(){
-	m_bstoptrd = true;
+	closetrd();
 	artyk::utils::normal_log(m_logptr, "Closed Graphics module", LOG_SUCCESS, m_modulename);
 	if(
 #ifdef AE_GLOBALMODULE
@@ -76,19 +76,19 @@ AEGraphic::~AEGraphic(){
 
 }
 
-inline void AEGraphic::drawscreen() const {
+void AEGraphic::drawscreen() const {
 	WriteConsoleOutput(artyk::g_output_handle, m_screendata, m_screensize, { 0,0 }, &m_myscr.g_rectWindow);
 }
 
-inline void AEGraphic::clearscreen() {
+void AEGraphic::clearscreen() {
 	memset(m_screendata, 0, m_screensize.X * m_screensize.Y * sizeof(CHAR_INFO));
 }
 
-inline void AEGraphic::setpixel(short x, short y, wchar_t mych, smalluint color) {
+void AEGraphic::setpixel(short x, short y, wchar_t mych, smalluint color) {
 	m_screendata[m_screensize.X * y + x].Char.UnicodeChar = mych;
 	m_screendata[m_screensize.X * y + x].Attributes = color;
 }
-inline void AEGraphic::setpixel(short x, short y, const CHAR_INFO& mych) {
+void AEGraphic::setpixel(short x, short y, const CHAR_INFO& mych) {
 	m_screendata[m_screensize.X * y + x] = mych;
 }
 

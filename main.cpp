@@ -68,13 +68,10 @@ int main()
 	
 	Sleep(500);
 	AEGraphic mygx;
-
 	for (;;) {
 		i++;
-		if (!mykb.GetKey(1).m_isUsed)
-		mygx.clearscreen();
-		mygx.setpixel(mykb.GetMouseX(), mykb.GetMouseY());
-		//mygx.drawscreen();
+		//mygx.clearscreen();
+		mygx.setpixel(i % 128, (i/128)%128, artyk::gfx::CH_BLOCK, rand() % 16);
 	
 		timeend = std::chrono::system_clock::now();
 		fElapsedTime = std::chrono::duration<float>(timeend - timestart).count();
@@ -85,8 +82,9 @@ int main()
 			previ = i;
 			timestart = timeend;
 			mybp.makesound_async(660, 200);
+			
 		}
-		myscr.settitle("FPS: " + to_string(fps) + "|MAX FPS: " + to_string(maxfps) + "|MIN FPS: " + to_string(minfps) + "|Time Since start : " + to_string(global_timer.getworldtime()));
+		myscr.settitle("FPS: " + to_string(fps) + "|GFX FPS: "  + "|Time Since start : " + to_string(global_timer.getworldtime()));
 		
 		
 	

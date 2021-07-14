@@ -42,14 +42,14 @@ public:
 	AEGraphic(short sizex = 128, short sizey = 128, short fonth = 5, short fontw = 5, int fpsdelay = GAME_FPS, bool enablelog = true, bool useGlobLog = false);
 	~AEGraphic() override;
 	
-	inline void drawscreen() const;
-	inline void clearscreen();
-	inline void setpixel(short x, short y, wchar_t mych, smalluint color);
-	inline void setpixel(short x, short y, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+	void drawscreen() const;
+	void clearscreen();
+	void setpixel(short x, short y, wchar_t mych, smalluint color);
+	void setpixel(short x, short y, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
 	constexpr static inline smalluint calcColor(smalluint bgr = artyk::color::DEF_BGR, smalluint fgr = artyk::color::DEF_FGR){
 		return bgr * 16 + fgr;
 	}
-	static inline int getfps(void) {
+	static int getfps(void) {
 		return graph_fps;
 	}
 
@@ -62,7 +62,7 @@ private:
 	void mainthread(void);
 	bool m_bstoptrd;
 	AEScreen m_myscr;
-	atomic<CHAR_INFO*> m_screendata;
+	CHAR_INFO* m_screendata;
 	COORD m_screensize;
 	///frame limiter of the graphic thread
 	AEFrame m_fr;

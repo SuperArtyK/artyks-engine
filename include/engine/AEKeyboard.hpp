@@ -91,9 +91,9 @@ public:
 	vector<AEKBKey> GetUsedKeys(void);
 
 	///returns mouse x position, if the mouse scanning is enabled. Otherwise it wll be 0
-	inline int GetMouseX(void) const { return m_mousepos[0]; }
+	inline short GetMouseX(void) const { return m_mousepos[0]; }
 	///returns mouse y position, if the mouse scanning is enabled. Otherwise it wll be 0
-	inline int GetMouseY(void) const { return m_mousepos[1]; }
+	inline short GetMouseY(void) const { return m_mousepos[1]; }
 	///returns AEKBKey of the mouse key, with id you pass
 	
 	///returns key id of the key with given key name
