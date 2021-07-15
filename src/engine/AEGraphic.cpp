@@ -32,7 +32,8 @@ bool AEGraphic::m_threadon  =false;
 
 
 ///FIXME:rewrite the initialisation to match variable declaration
-AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fpsdelay,bool enablelog, bool useGlobLog) : __AEBaseClass("AEGraphic", ++m_globalmodulenum), m_myscr(false), m_screendata(new CHAR_INFO[sizex * sizey]), m_fr(fpsdelay), m_screensize{ sizex, sizey }, m_bstoptrd(false)
+AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fpsdelay,bool enablelog, bool useGlobLog) : __AEBaseClass("AEGraphic", ++m_globalmodulenum), 
+m_myscr(false), m_screendata(new CHAR_INFO[sizex * sizey]), m_fr(fpsdelay), m_screensize{ sizex, sizey }, m_bstoptrd(false), m_settingscreen(false)
 {
 	memset(m_screendata, 0, sizex* sizey * sizeof(CHAR_INFO));
 #ifdef AE_LOG_ENABLE
@@ -55,6 +56,8 @@ AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fps
 
 #endif // AE_LOG_DISABLE
 	m_myscr.setScreen(sizex, sizey, fonth, fontw);
+	m_rtwindow = { 0, 0,
+		short(m_myscr.GetScreenRes().X-1), short(m_myscr.GetScreenRes().Y-1)};
 	artyk::utils::normal_log(m_logptr, "Started Graphics module!", LOG_SUCCESS, m_modulename);
 	startrd();
 	
@@ -76,8 +79,10 @@ AEGraphic::~AEGraphic(){
 
 }
 
-void AEGraphic::drawscreen() const {
-	WriteConsoleOutput(artyk::g_output_handle, m_screendata, m_screensize, { 0,0 }, &m_myscr.g_rectWindow);
+void AEGraphic::drawscreen() {
+	SMALL_RECT temp = m_rtwindow;
+	if(!m_settingscreen)
+	WriteConsoleOutputW(artyk::g_output_handle, m_screendata, m_screensize, { 0,0 }, &temp);
 }
 
 void AEGraphic::clearscreen() {
@@ -85,11 +90,39 @@ void AEGraphic::clearscreen() {
 }
 
 void AEGraphic::setpixel(short x, short y, wchar_t mych, smalluint color) {
-	m_screendata[m_screensize.X * y + x].Char.UnicodeChar = mych;
-	m_screendata[m_screensize.X * y + x].Attributes = color;
+	if(x >= 0 && x < m_screensize.X&& y >= 0 && y < m_screensize.Y){
+		m_screendata[m_screensize.X * y + x].Char.UnicodeChar = mych;
+		m_screendata[m_screensize.X * y + x].Attributes = color;
+	}
 }
 void AEGraphic::setpixel(short x, short y, const CHAR_INFO& mych) {
-	m_screendata[m_screensize.X * y + x] = mych;
+	if (x >= 0 && x < m_screensize.X && y >= 0 && y < m_screensize.Y) {
+		m_screendata[m_screensize.X * y + x] = mych;
+	}
+}
+
+void AEGraphic::fill(short x1, short y1, short x2, short y2, const CHAR_INFO& mych) {
+	for (short i = y1; i < y2; i++) {
+		for (short a = x1; a < x2; a++) {
+			setpixel(a, i, mych);
+		}
+	}
+}
+
+void AEGraphic::fill(short x1, short y1, short x2, short y2, wchar_t mych, smalluint color) {
+	for (short i = y1; i < y2; i++) {
+		for (short a = x1; a < x2; a++) {
+			setpixel(a, i, mych, color);
+		}
+	}
+}
+
+void AEGraphic::fillrandom(short x1, short y1, short x2, short y2, wchar_t mych) {
+	for (short i = y1; i < y2; i++) {
+		for (short a = x1; a < x2; a++) {
+			setpixel(a, i, mych, a);
+		}
+	}
 }
 
 
@@ -122,39 +155,28 @@ void AEGraphic::closetrd(void) {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void AEGraphic::mainthread() {
+	using namespace artyk::gfx;
 	artyk::utils::debug_log(m_logptr, "Entered main drawing thread", LOG_SUCCESS, m_modulename);
+	SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
 	auto timestart = std::chrono::system_clock::now();
 	auto timeend = std::chrono::system_clock::now();
-	float fElapsedTime;
-	biguint i = 0, previ = i;
+	float timeelapsed;
+	bigint i = 0, previ = i;
+	
 	while (!m_bstoptrd)
 	{
 		m_fr.sleep();
-		WriteConsoleOutput(artyk::g_output_handle, m_screendata, m_screensize, { 0,0 }, &m_myscr.g_rectWindow);
+
+		drawscreen();
 		timeend = std::chrono::system_clock::now();
-		fElapsedTime = std::chrono::duration<float>(timeend - timestart).count();
-		if (fElapsedTime > 1.0f) {
+		timeelapsed = std::chrono::duration<float>(timeend - timestart).count();
+		if (timeelapsed > 1.0f) {
+			//i -= previ;
 			graph_fps = i - previ;
 			previ = i;
 			timestart = timeend;
+			
 		}
 		i++;
 

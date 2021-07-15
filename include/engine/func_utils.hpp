@@ -96,6 +96,23 @@ namespace artyk {
 		inline bool isinfocus(); //scans if the app is in focus
 
 		
+		
+
+		inline unsigned long xorshf96(void) {          //period 2^96-1
+			static unsigned long x = rand(), y = rand(), z = rand();
+			unsigned long t;
+			x ^= x << 16;
+			x ^= x >> 5;
+			x ^= x << 1;
+
+			t = x;
+			x = y;
+			y = z;
+			z = t ^ x ^ y;
+
+			return z;
+	}
+
 
 #ifdef AE_EXPERIMENTAL
 		///counts time between calls, not safe/consistent if used in other threads

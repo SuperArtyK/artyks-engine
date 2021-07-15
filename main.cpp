@@ -63,18 +63,21 @@ int main()
 	int fps = 0, maxfps = fps, minfps = INT_MAX;
 	AEBeep mybp;
 	AEScreen myscr;
-	AEKeyboard mykb(false, false, true);
 	myscr.setcolor_con(artyk::color::DEF_BGR, artyk::color::DEF_FGR);
-	
-	Sleep(500);
-	AEGraphic mygx;
+	short screenx = 64, screeny = 64;
+	AEFrame myfr;
+	AEGraphic mygx(screenx, screeny,10,10);
 	for (;;) {
 		i++;
-		//mygx.clearscreen();
-		mygx.setpixel(i % 128, (i/128)%128, artyk::gfx::CH_BLOCK, rand() % 16);
-	
+		myfr.sleep();
+		for (int a = 0; a < screeny; a++) {
+			for (int b = 0; b < screenx; b++) {
+				mygx.setpixel(b, a, artyk::gfx::CH_25, i+a+b);
+			}
+		}
 		timeend = std::chrono::system_clock::now();
 		fElapsedTime = std::chrono::duration<float>(timeend - timestart).count();
+			
 		if (fElapsedTime > 1.0f) {
 			fps = i - previ;
 			if (fps > maxfps) maxfps = fps;
@@ -82,9 +85,10 @@ int main()
 			previ = i;
 			timestart = timeend;
 			mybp.makesound_async(660, 200);
+			myscr.settitle("GFX FPS: "+ to_string(AEGraphic::getfps())+"|GAME FPS: "+to_string(fps)+"|Time Since start : " + to_string(global_timer.getworldtime()));
 			
 		}
-		myscr.settitle("FPS: " + to_string(fps) + "|GFX FPS: "  + "|Time Since start : " + to_string(global_timer.getworldtime()));
+		//_getch();
 		
 		
 	

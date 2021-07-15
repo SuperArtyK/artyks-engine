@@ -275,7 +275,7 @@ void AEScreen::clear(void) {//clears screen; much faster than system() but still
 	DWORD written;
 
 	//GetConsoleScreenBufferInfo(artyk::screen::g_hStdOut, &g_csbi);
-	FillConsoleOutputCharacterA(
+	FillConsoleOutputCharacter(
 		artyk::g_output_handle, ' ', g_csbi.dwSize.X * g_csbi.dwSize.Y, topLeft, &written
 	);
 	FillConsoleOutputAttribute(

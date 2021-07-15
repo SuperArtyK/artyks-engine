@@ -62,9 +62,11 @@ public:
 	/// <param name="sheight">screen height, in console character cells</param>
 	/// <param name="fonth">character font height, in pixels, doesnt't go less than 2</param>
 	/// <param name="fontw">character font width, in pixels, doesnt't go less than 2</param>
+	/// @warning DON'T USE THIS FUNCTION IF YOU ARE USING THE AEGraphic MODULE! Use the AEGraphic's version instead
 	void setScreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7);//sets console size
 
 	///sets console buffer size to the dimensions given, units are character cells
+	/// @warning DON'T USE THIS FUNCTION IF YOU ARE USING THE AEGraphic MODULE! Use the AEGraphic's version instead
 	void setConsoleBufferSize(short x, short y);
 	///sets the app title
 	///@note if the AE_ADD_APP_TITLE flag is defined, it will append artyk::app_name_full to  
@@ -77,6 +79,7 @@ public:
 	/// <param name="y">height of the font</param>
 	/// <param name="x">width of the font</param>
 	/// <param name="fontname">font name</param>
+	/// @warning DON'T USE THIS FUNCTION IF YOU ARE USING THE AEGraphic MODULE! Use the AEGraphic's version instead
 	void setFont(short y, short x, const string& fontname = "Consolas");//sets font size
 	
 	///clears the console screen; faster than using system(cls), but still slow for "draw frame, clear, draw again" scheme

@@ -42,10 +42,47 @@ public:
 	AEGraphic(short sizex = 128, short sizey = 128, short fonth = 5, short fontw = 5, int fpsdelay = GAME_FPS, bool enablelog = true, bool useGlobLog = false);
 	~AEGraphic() override;
 	
-	void drawscreen() const;
+	void drawscreen();
 	void clearscreen();
 	void setpixel(short x, short y, wchar_t mych, smalluint color);
 	void setpixel(short x, short y, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+	void fill(short x1, short y1, short x2, short y2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+
+	void fill(short x1, short y1, short x2, short y2, wchar_t mych, smalluint color);
+
+	void fillrandom(short x1, short y1, short x2, short y2, wchar_t mych);
+
+	CHAR_INFO getpixel(short x, short y) const {
+		return m_screendata[m_screensize.X * y + x];
+	}
+
+
+	void setscreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7) {
+		bool m_settingscreen = true;
+		clearscreen();
+		m_myscr.setScreen(swidth, sheight, fonth, fontw);
+		delete[] m_screendata;
+		m_screendata = new CHAR_INFO[swidth * sheight];
+		m_settingscreen = false;
+		
+	}
+
+	void setRenderType(int rtype) {
+		switch (rtype)
+		{
+
+		case 0:
+			startrd();
+			break;
+		case 1:
+			closetrd();
+			break;
+
+		default:
+			break;
+		}
+	}
+
 	constexpr static inline smalluint calcColor(smalluint bgr = artyk::color::DEF_BGR, smalluint fgr = artyk::color::DEF_FGR){
 		return bgr * 16 + fgr;
 	}
@@ -56,22 +93,20 @@ public:
 private:
 	///FIXME:rewrite the declarations to remove byte padding
 	void startrd(void);
-
 	void closetrd(void);
-
 	void mainthread(void);
-	bool m_bstoptrd;
 	AEScreen m_myscr;
-	CHAR_INFO* m_screendata;
-	COORD m_screensize;
-	///frame limiter of the graphic thread
 	AEFrame m_fr;
-	///thread itself
 	std::thread m_thread;
+	_SMALL_RECT m_rtwindow;
 	///variable to store the module index number
 	static atomic<biguint> m_globalmodulenum;
+	atomic<CHAR_INFO*> m_screendata;
+	COORD m_screensize;
 	static int graph_fps;
 	static bool m_threadon;
+	bool m_bstoptrd;
+	atomic<bool> m_settingscreen;
 };
 
 #endif // !AEGRAPHIC_HPP
