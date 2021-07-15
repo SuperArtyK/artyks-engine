@@ -44,16 +44,13 @@
 using namespace std;
 
 
-
-
-
 void benchmark();
 
 int main()
 {
 	artyk::init_main(false, false, false);
 
-
+	//USE_FAST_PIPE_IF_AVAILABLE();
 //your code goes below...
 	int i = 0;
 	int previ = 0;
@@ -63,18 +60,18 @@ int main()
 	int fps = 0, maxfps = fps, minfps = INT_MAX;
 	AEBeep mybp;
 	AEScreen myscr;
+	AEKeyboard mykb;
 	myscr.setcolor_con(artyk::color::DEF_BGR, artyk::color::DEF_FGR);
-	short screenx = 64, screeny = 64;
+	short screenx = 320, screeny = 240;
 	AEFrame myfr;
-	AEGraphic mygx(screenx, screeny,10,10);
+	AEGraphic mygx(screenx, screeny,1,1);
+	int posx = 0,posy = 0;
+	using artyk::utils::rand;
 	for (;;) {
 		i++;
-		myfr.sleep();
-		for (int a = 0; a < screeny; a++) {
-			for (int b = 0; b < screenx; b++) {
-				mygx.setpixel(b, a, artyk::gfx::CH_25, i+a+b);
-			}
-		}
+		mygx.fill(rand() % screenx, rand() % screeny, rand()% screenx, rand()%screeny, '#',rand());
+		
+		//mygx.drawscreen();
 		timeend = std::chrono::system_clock::now();
 		fElapsedTime = std::chrono::duration<float>(timeend - timestart).count();
 			
@@ -84,8 +81,8 @@ int main()
 			if (fps < minfps) minfps = fps;
 			previ = i;
 			timestart = timeend;
-			mybp.makesound_async(660, 200);
-			myscr.settitle("GFX FPS: "+ to_string(AEGraphic::getfps())+"|GAME FPS: "+to_string(fps)+"|Time Since start : " + to_string(global_timer.getworldtime()));
+			//mybp.makesound_async(660, 200);
+			myscr.settitle("GFX FPS: "+ to_string(AEGraphic::getfps())+"|GAME FPS: "+to_string(fps)+"|Time Since start : " + to_string(global_timer.getworldtime()) + " "+to_string(posx) + " "+to_string(posy));
 			
 		}
 		//_getch();

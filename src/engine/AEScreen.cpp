@@ -196,13 +196,13 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 
 	//checking if asked console size is in max allowed range
 	if (sheight > g_csbi.dwMaximumWindowSize.Y) {//checking it first, as people mostly mess this one up more often
-		artyk::utils::FError_log(m_logptr,"Window size.\nBruh, your console height you set is too big for this screen! Decrease it or something!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
+		artyk::utils::FError_log(m_logptr,"Window size.\nThe console height you set is too big for this screen! Decrease it or something!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
 
 	artyk::utils::debug_log(m_logptr, "Asked height is in range of dwMaximumWindowSize.Y of: "+to_string(g_csbi.dwMaximumWindowSize.Y), LOG_INFO, m_modulename);
 
 	if (swidth > g_csbi.dwMaximumWindowSize.X) {
-		artyk::utils::FError_log(m_logptr, "Window size.\nBruh, your console width you set is too big for this screen! Decrease it or something!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
+		artyk::utils::FError_log(m_logptr, "Window size.\nThe console width you set is too big for this screen! Decrease it or something!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
 
 	artyk::utils::debug_log(m_logptr, "Asked width is in range of dwMaximumWindowSize.X of: " + to_string(g_csbi.dwMaximumWindowSize.X), LOG_INFO, m_modulename);

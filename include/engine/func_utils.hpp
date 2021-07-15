@@ -98,8 +98,8 @@ namespace artyk {
 		
 		
 
-		inline unsigned long xorshf96(void) {          //period 2^96-1
-			static unsigned long x = rand(), y = rand(), z = rand();
+		inline unsigned long rand(void) {          //period 2^96-1
+			static unsigned long x = std::rand(), y = std::rand(), z = std::rand();
 			unsigned long t;
 			x ^= x << 16;
 			x ^= x >> 5;

@@ -66,6 +66,7 @@
 ///enable mouse scanning in the global_keyboard module
 #define AE_GLOBALKB_ENABLE_MOUSE
 
+#define AE_GFX_ENABLE_WRAPPING
 
 //undefine flags to turn them off
 

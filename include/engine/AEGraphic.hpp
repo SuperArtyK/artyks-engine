@@ -19,6 +19,9 @@
 
 /** @file include/engine/AEGraphic.hpp
  *  This file contains the code for graphics engine.
+ *  Very big thanks to David "JavidX9" Barr, for helping write the code and for inspiration!
+ *  Inspired by his olcConsoleGameEngine.
+ *  https://github.com/OneLoneCoder/videos/blob/master/olcConsoleGameEngine.h
  *
  *  Should not cause everything to break.
  */
@@ -56,12 +59,61 @@ public:
 		return m_screendata[m_screensize.X * y + x];
 	}
 
+	void drawLine(int x1, int y1, int x2, int y2, wchar_t mych, smalluint color) {
+		const int 
+			deltaX = abs(x2 - x1), 
+			deltaY = abs(y2 - y1), 
+			signX = x1 < x2 ? 1 : -1, 
+			signY = y1 < y2 ? 1 : -1;
+		if (deltaX == 0) {
+			for (int i = 0; i < deltaY; i++) {
+				y1 += signY;
+				setpixel(x1, y1, mych, color);
+			}
+			return;
+		}
+		if (deltaY == 0) {
+			for (int i = 0; i < deltaX; i++) {
+				x1 += signX;
+				setpixel(x1, y1, mych, color);
+			}
+			return;
+		}
+		if (deltaY == deltaX) {
+			for (int i = 0; i < deltaX; i++) {
+				x1 += signX;
+				y1 += signY;
+				setpixel(x1, y1, mych, color);
+			}
+			return;
+		}
+
+		int error = deltaX - deltaY;
+		setpixel(x2, y2, mych, color);
+		while (x1 != x2 || y1 != y2)
+		{
+			setpixel(x1, y1, mych, color);
+			int error2 = error * 2;
+			if (error2 > -deltaY)
+			{
+				error -= deltaY;
+				x1 += signX;
+			}
+			if (error2 < deltaX)
+			{
+				error += deltaX;
+				y1 += signY;
+			}
+		}
+
+	}
 
 	void setscreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7) {
 		bool m_settingscreen = true;
 		clearscreen();
 		m_myscr.setScreen(swidth, sheight, fonth, fontw);
-		delete[] m_screendata;
+		if(m_screendata)
+			delete[] m_screendata;
 		m_screendata = new CHAR_INFO[swidth * sheight];
 		m_settingscreen = false;
 		

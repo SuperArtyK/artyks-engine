@@ -90,37 +90,49 @@ void AEGraphic::clearscreen() {
 }
 
 void AEGraphic::setpixel(short x, short y, wchar_t mych, smalluint color) {
-	if(x >= 0 && x < m_screensize.X&& y >= 0 && y < m_screensize.Y){
-		m_screendata[m_screensize.X * y + x].Char.UnicodeChar = mych;
-		m_screendata[m_screensize.X * y + x].Attributes = color;
-	}
+	
+
+#ifdef AE_GFX_ENABLE_WRAPPING
+	x = abs(x % m_screensize.X);
+	y = abs(y % m_screensize.Y);
+	m_screendata[m_screensize.X * y + x].Char.UnicodeChar = mych;
+	m_screendata[m_screensize.X * y + x].Attributes = color;
+#else
+	//if(x > 0 && x <)
+#endif // !AE_GFX_ENABLE_WRAPPING
+
+
+
+	
+	//drawscreen();
 }
 void AEGraphic::setpixel(short x, short y, const CHAR_INFO& mych) {
-	if (x >= 0 && x < m_screensize.X && y >= 0 && y < m_screensize.Y) {
-		m_screendata[m_screensize.X * y + x] = mych;
-	}
+	x = abs(x % m_screensize.X);
+	y = abs(y % m_screensize.Y);
+	m_screendata[m_screensize.X * y + x] = mych;
+	
 }
 
 void AEGraphic::fill(short x1, short y1, short x2, short y2, const CHAR_INFO& mych) {
-	for (short i = y1; i < y2; i++) {
-		for (short a = x1; a < x2; a++) {
+	for (short i = y1; i <= y2; i++) {
+		for (short a = x1; a <= x2; a++) {
 			setpixel(a, i, mych);
 		}
 	}
 }
 
 void AEGraphic::fill(short x1, short y1, short x2, short y2, wchar_t mych, smalluint color) {
-	for (short i = y1; i < y2; i++) {
-		for (short a = x1; a < x2; a++) {
+	for (short i = y1; i <= y2; i++) {
+		for (short a = x1; a <= x2; a++) {
 			setpixel(a, i, mych, color);
 		}
 	}
 }
 
 void AEGraphic::fillrandom(short x1, short y1, short x2, short y2, wchar_t mych) {
-	for (short i = y1; i < y2; i++) {
-		for (short a = x1; a < x2; a++) {
-			setpixel(a, i, mych, a);
+	for (short i = y1; i <= y2; i++) {
+		for (short a = x1; a <= x2; a++) {
+			setpixel(a, i, mych, artyk::utils::rand());
 		}
 	}
 }
