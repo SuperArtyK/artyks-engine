@@ -81,24 +81,24 @@ AEGraphic::~AEGraphic(){
 
 void AEGraphic::drawscreen() {
 	SMALL_RECT temp = m_rtwindow;
-	if(!m_settingscreen)
-	WriteConsoleOutputW(artyk::g_output_handle, m_screendata, m_screensize, { 0,0 }, &temp);
+	if (!m_settingscreen) {
+		WriteConsoleOutputW(artyk::g_output_handle, m_screendata, m_screensize, { 0,0 }, &temp);
+	}
 }
 
 void AEGraphic::clearscreen() {
 	memset(m_screendata, 0, m_screensize.X * m_screensize.Y * sizeof(CHAR_INFO));
 }
 
-void AEGraphic::setpixel(short x, short y, wchar_t mych, smalluint color) {
+void AEGraphic::setpixel(const vec2& myvec2, wchar_t mych, smalluint color) {
 	
 
 #ifdef AE_GFX_ENABLE_WRAPPING
-	x = abs(x % m_screensize.X);
-	y = abs(y % m_screensize.Y);
-	m_screendata[m_screensize.X * y + x].Char.UnicodeChar = mych;
-	m_screendata[m_screensize.X * y + x].Attributes = color;
+	m_screendata[m_screensize.X * abs(myvec2.y % m_screensize.Y) + abs(myvec2.x % m_screensize.X)] = { {mych},color };
 #else
-	//if(x > 0 && x <)
+	if (myvec2.x > 0 && myvec2.x < m_screensize.X && myvec2.y > 0 && myvec2.y < m_screensize.Y) {
+		m_screendata[m_screensize.X * myvec2.y + myvec2.x] = { mych,color };
+	}
 #endif // !AE_GFX_ENABLE_WRAPPING
 
 
@@ -106,33 +106,41 @@ void AEGraphic::setpixel(short x, short y, wchar_t mych, smalluint color) {
 	
 	//drawscreen();
 }
-void AEGraphic::setpixel(short x, short y, const CHAR_INFO& mych) {
-	x = abs(x % m_screensize.X);
-	y = abs(y % m_screensize.Y);
-	m_screendata[m_screensize.X * y + x] = mych;
-	
+void AEGraphic::setpixel(const vec2& myvec2, const CHAR_INFO& mych) {
+
+#ifdef AE_GFX_ENABLE_WRAPPING
+	m_screendata[m_screensize.X * abs(myvec2.y % m_screensize.Y) + abs(myvec2.x % m_screensize.X)] = mych;
+#else
+	if (myvec2.x > 0 && myvec2.x < m_screensize.X && myvec2.y > 0 && myvec2.y < m_screensize.Y) {
+		m_screendata[m_screensize.X * myvec2.y + myvec2.x] = { mych,color };
+		m_screendata[m_screensize.X * y + x]
+	}
+#endif // !AE_GFX_ENABLE_WRAPPING
 }
 
-void AEGraphic::fill(short x1, short y1, short x2, short y2, const CHAR_INFO& mych) {
-	for (short i = y1; i <= y2; i++) {
-		for (short a = x1; a <= x2; a++) {
-			setpixel(a, i, mych);
+void AEGraphic::fill(const vec2& myvec2_1, const vec2& myvec2_2, const CHAR_INFO& mych) {
+	vec2 temp = myvec2_1;
+	for (; temp.y <= myvec2_2.y; temp.y++) {
+		for (; temp.x <= myvec2_2.x; temp.x++) {
+			setpixel(temp, mych);
 		}
 	}
 }
 
-void AEGraphic::fill(short x1, short y1, short x2, short y2, wchar_t mych, smalluint color) {
-	for (short i = y1; i <= y2; i++) {
-		for (short a = x1; a <= x2; a++) {
-			setpixel(a, i, mych, color);
+void AEGraphic::fill(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych, smalluint color) {
+	vec2 temp = myvec2_1;
+	for (; temp.y <= myvec2_2.y; temp.y++) {
+		for (; temp.x <= myvec2_2.x; temp.x++) {
+			setpixel(temp, mych,color);
 		}
 	}
 }
 
-void AEGraphic::fillrandom(short x1, short y1, short x2, short y2, wchar_t mych) {
-	for (short i = y1; i <= y2; i++) {
-		for (short a = x1; a <= x2; a++) {
-			setpixel(a, i, mych, artyk::utils::rand());
+void AEGraphic::fillrandom(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych) {
+	vec2 temp = myvec2_1;
+	for (; temp.y <= myvec2_2.y; temp.y++) {
+		for (; temp.x <= myvec2_2.x; temp.x++) {
+			setpixel(temp, mych, artyk::utils::rand_xor());
 		}
 	}
 }
@@ -158,7 +166,7 @@ void AEGraphic::closetrd(void) {
 		m_bstoptrd = true;
 		m_thread.join();
 		m_threadon = false;
-		artyk::utils::debug_log(m_logptr, "Closed keyscanning thread.", LOG_OK, m_modulename);
+		artyk::utils::debug_log(m_logptr, "Closed drawing thread.", LOG_OK, m_modulename);
 	}
 	else {
 		artyk::utils::debug_log(m_logptr, "Could not close drawing thread:it wasn't started", LOG_ERROR, m_modulename);
@@ -171,16 +179,16 @@ void AEGraphic::mainthread() {
 	using namespace artyk::gfx;
 	artyk::utils::debug_log(m_logptr, "Entered main drawing thread", LOG_SUCCESS, m_modulename);
 	SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
-	auto timestart = std::chrono::system_clock::now();
-	auto timeend = std::chrono::system_clock::now();
+	
 	float timeelapsed;
 	bigint i = 0, previ = i;
-	
+	systime timeend, timestart = std::chrono::system_clock::now();
 	while (!m_bstoptrd)
 	{
 		m_fr.sleep();
-
 		drawscreen();
+		if (m_clrscr)
+			clearscreen();
 		timeend = std::chrono::system_clock::now();
 		timeelapsed = std::chrono::duration<float>(timeend - timestart).count();
 		if (timeelapsed > 1.0f) {

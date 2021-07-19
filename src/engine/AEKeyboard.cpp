@@ -73,7 +73,7 @@ if (enablemouse) {
 		artyk::utils::normal_log(m_logptr, "Enabling mouse support", LOG_WARN, m_modulename);
 		artyk::utils::normal_log(m_logptr, "ENABLINMG MOUSE SUPPORT REMOVES SELECT ABILITY", LOG_SWARN, m_modulename);
 
-		if (!SetConsoleMode(GetStdHandle(STD_INPUT_HANDLE), ENABLE_EXTENDED_FLAGS | ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT)) {
+		if (!SetConsoleMode(GetStdHandle(STD_INPUT_HANDLE), ENABLE_EXTENDED_FLAGS | ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT) ) {
 			artyk::utils::Warn("Could not SetConsoleMode!\nFunction error code: " + to_string(GetLastError()), m_modulename, true, GET_FULL_DBG_INFO);
 		}
 	}

@@ -98,7 +98,7 @@ namespace artyk {
 		
 		
 
-		inline unsigned long rand(void) {          //period 2^96-1
+		inline unsigned long rand_xor(void) {          //period 2^96-1
 			static unsigned long x = std::rand(), y = std::rand(), z = std::rand();
 			unsigned long t;
 			x ^= x << 16;
@@ -241,8 +241,8 @@ namespace artyk {
 #ifdef AE_EXPERIMENTAL
 		inline float timecounter() {
 
-			static auto timestart = std::chrono::system_clock::now();
-			static auto timeend = std::chrono::system_clock::now();
+			static systime timestart = std::chrono::system_clock::now();
+			static systime timeend = std::chrono::system_clock::now();
 
 
 			timeend = std::chrono::system_clock::now();

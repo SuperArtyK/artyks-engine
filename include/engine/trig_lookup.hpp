@@ -31,7 +31,7 @@
 
 #ifdef AE_LOOKUP_TABLE
 
-#include <climits>
+#include <limits>
 
 namespace artyk {
 	///contains mathematical functions

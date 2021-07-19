@@ -31,8 +31,8 @@
 
  //from least to biggest dependencies
 #include "engine_flags.hpp"
-#include "typedefs.hpp"
 #include "trig_lookup.hpp"
+#include "typedefs.hpp"
 #include "global_vars.hpp"
 #include "AEFrame.hpp"
 #include "AELog.hpp"

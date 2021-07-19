@@ -30,8 +30,11 @@
 #define TYPEDEFS_HPP
 
 #include <limits>
+#include <chrono>
 
 //a few typedefs so I'll type less code
+// 
+//numbers
 ///short for small unsigned int
 typedef unsigned char smalluint;
 ///small signed int
@@ -43,8 +46,8 @@ typedef long long bigint;
 ///just unsigned int
 typedef unsigned long uint;
 
-//max/min values of these defines
 
+//max/min values of these numbers
 ///small unsigned int max
 #define SUINT_MAX UCHAR_MAX
 ///small unsigned int min
@@ -65,9 +68,27 @@ typedef unsigned long uint;
 ///big signed int min
 #define BINT_MIN LLONG_MIN
 
-/// no UINT_MAX, as it's already defined\
+/// no UINT_MAX, as it's already defined
 ///unsigned int min
 #define UINT_MIN 0
+
+
+
+
+//time
+///short for system time, so we dont need to use autos and init everytime
+typedef std::chrono::time_point<std::chrono::system_clock> systime;
+///good ol' high resolution clock
+typedef std::chrono::time_point<std::chrono::system_clock> highrestime;
+///and useful steady clock
+typedef std::chrono::time_point<std::chrono::system_clock> steadytime;
+///time point. using preprocessor macro, as it is a template, and we only need to shorten the name
+#define timepoint std::chrono::time_point
+
+
+
+
+
 
 #endif // !TYPEDEFS_HPP
 

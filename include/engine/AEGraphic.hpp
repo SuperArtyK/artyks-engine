@@ -34,6 +34,22 @@
 #include "AEBaseClass.hpp"
 #include "AEScreen.hpp"
 
+
+struct vec2 
+{
+	int x = 0;
+	int y = 0;
+};
+
+struct vec3
+{
+	int x = 0;
+	int y = 0;
+	int z = 0;
+};
+
+
+
 class AEGraphic : public __AEBaseClass
 {
 public:
@@ -47,74 +63,81 @@ public:
 	
 	void drawscreen();
 	void clearscreen();
-	void setpixel(short x, short y, wchar_t mych, smalluint color);
-	void setpixel(short x, short y, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
-	void fill(short x1, short y1, short x2, short y2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+	void setpixel(const vec2& myvec2, wchar_t mych, smalluint color);
+	void setpixel(const vec2& myvec2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+	void fill(const vec2& myvec2_1, const vec2& myvec2_2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
 
-	void fill(short x1, short y1, short x2, short y2, wchar_t mych, smalluint color);
+	void fill(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych, smalluint color);
 
-	void fillrandom(short x1, short y1, short x2, short y2, wchar_t mych);
+	void fillrandom(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych);
 
-	CHAR_INFO getpixel(short x, short y) const {
-		return m_screendata[m_screensize.X * y + x];
+	CHAR_INFO getpixel(const vec2& myvec2) const {
+		if (myvec2.x > 0 && myvec2.x < m_screensize.X && myvec2.y > 0 && myvec2.y < m_screensize.Y) {
+			return m_screendata[m_screensize.X * myvec2.y + myvec2.x];
+		}
+		return {0,0};
 	}
 
-	void drawLine(int x1, int y1, int x2, int y2, wchar_t mych, smalluint color) {
+
+
+
+	void drawLine(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych, smalluint color) {
 		const int 
-			deltaX = abs(x2 - x1), 
-			deltaY = abs(y2 - y1), 
-			signX = x1 < x2 ? 1 : -1, 
-			signY = y1 < y2 ? 1 : -1;
+			deltaX = abs(myvec2_2.x - myvec2_1.x),
+			deltaY = abs(myvec2_2.y - myvec2_1.y),
+			signX = myvec2_1.x < myvec2_2.x ? 1 : -1,
+			signY = myvec2_1.y < myvec2_2.y ? 1 : -1;
+		vec2 temp = myvec2_1;
 		if (deltaX == 0) {
 			for (int i = 0; i < deltaY; i++) {
-				y1 += signY;
-				setpixel(x1, y1, mych, color);
+				temp.y += signY;
+				setpixel(temp, mych, color);
 			}
 			return;
 		}
 		if (deltaY == 0) {
 			for (int i = 0; i < deltaX; i++) {
-				x1 += signX;
-				setpixel(x1, y1, mych, color);
+				temp.x += signX;
+				setpixel(temp, mych, color);
 			}
 			return;
 		}
 		if (deltaY == deltaX) {
 			for (int i = 0; i < deltaX; i++) {
-				x1 += signX;
-				y1 += signY;
-				setpixel(x1, y1, mych, color);
+				temp.x += signX;
+				temp.y += signY;
+				setpixel(temp, mych, color);
 			}
 			return;
 		}
 
 		int error = deltaX - deltaY;
-		setpixel(x2, y2, mych, color);
-		while (x1 != x2 || y1 != y2)
+		setpixel(myvec2_2, mych, color);
+		while (temp.x != myvec2_2.x || temp.y != myvec2_2.y)
 		{
-			setpixel(x1, y1, mych, color);
+			setpixel(temp, mych, color);
 			int error2 = error * 2;
 			if (error2 > -deltaY)
 			{
 				error -= deltaY;
-				x1 += signX;
+				temp.x += signX;
 			}
 			if (error2 < deltaX)
 			{
 				error += deltaX;
-				y1 += signY;
+				temp.y += signY;
 			}
 		}
 
 	}
 
 	void setscreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7) {
-		bool m_settingscreen = true;
-		clearscreen();
+		m_settingscreen = true;
 		m_myscr.setScreen(swidth, sheight, fonth, fontw);
 		if(m_screendata)
 			delete[] m_screendata;
 		m_screendata = new CHAR_INFO[swidth * sheight];
+		clearscreen();
 		m_settingscreen = false;
 		
 	}
@@ -129,13 +152,21 @@ public:
 		case 1:
 			closetrd();
 			break;
+		case 2:
+			m_clrscr = true;
+			startrd();
+			break;
+		case 3:
+			m_clrscr = false;
+			startrd();
+			break;
 
 		default:
 			break;
 		}
 	}
 
-	constexpr static inline smalluint calcColor(smalluint bgr = artyk::color::DEF_BGR, smalluint fgr = artyk::color::DEF_FGR){
+	constexpr static inline smalluint getattrib(smalluint bgr = artyk::color::DEF_BGR, smalluint fgr = artyk::color::DEF_FGR){
 		return bgr * 16 + fgr;
 	}
 	static int getfps(void) {
@@ -143,6 +174,7 @@ public:
 	}
 
 private:
+	
 	///FIXME:rewrite the declarations to remove byte padding
 	void startrd(void);
 	void closetrd(void);
@@ -153,11 +185,12 @@ private:
 	_SMALL_RECT m_rtwindow;
 	///variable to store the module index number
 	static atomic<biguint> m_globalmodulenum;
-	atomic<CHAR_INFO*> m_screendata;
+	CHAR_INFO* m_screendata;
 	COORD m_screensize;
 	static int graph_fps;
 	static bool m_threadon;
 	bool m_bstoptrd;
+	bool m_clrscr;
 	atomic<bool> m_settingscreen;
 };
 

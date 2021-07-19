@@ -22,6 +22,9 @@
  *  Should not cause everything to break.  
  */
 
+#define WINVER 0x0601 
+#define _WIN32_WINNT 0x0601  
+
 #pragma comment(lib, "winmm.lib")
 
 #if __cplusplus == 199711L
@@ -49,42 +52,44 @@ void benchmark();
 int main()
 {
 	artyk::init_main(false, false, false);
-
-	//USE_FAST_PIPE_IF_AVAILABLE();
 //your code goes below...
 	int i = 0;
 	int previ = 0;
-	auto timestart = std::chrono::system_clock::now();
-	auto timeend = std::chrono::system_clock::now();
+	systime timestart = std::chrono::system_clock::now();
+	systime timeend;
 	float fElapsedTime;
-	int fps = 0, maxfps = fps, minfps = INT_MAX;
-	AEBeep mybp;
+	int fps = 0;
 	AEScreen myscr;
-	AEKeyboard mykb;
-	myscr.setcolor_con(artyk::color::DEF_BGR, artyk::color::DEF_FGR);
-	short screenx = 320, screeny = 240;
+	const short screenx = 84, screeny = 84;
+	AEGraphic mygx(screenx, screeny,8,8);
 	AEFrame myfr;
-	AEGraphic mygx(screenx, screeny,1,1);
-	int posx = 0,posy = 0;
-	using artyk::utils::rand;
+	
+
+	
+	
+
 	for (;;) {
 		i++;
-		mygx.fill(rand() % screenx, rand() % screeny, rand()% screenx, rand()%screeny, '#',rand());
+		myfr.sleep();
 		
-		//mygx.drawscreen();
+		for (int x = 0; x < screenx; x++) {
+			for (int y = 0; y < screeny; y++) {
+				mygx.setpixel({ x, y }, artyk::gfx::CH_25, i + x + y);
+			}
+		}
+
 		timeend = std::chrono::system_clock::now();
 		fElapsedTime = std::chrono::duration<float>(timeend - timestart).count();
 			
-		if (fElapsedTime > 1.0f) {
+		if (fElapsedTime > 1.0f) { 
 			fps = i - previ;
-			if (fps > maxfps) maxfps = fps;
-			if (fps < minfps) minfps = fps;
 			previ = i;
 			timestart = timeend;
 			//mybp.makesound_async(660, 200);
-			myscr.settitle("GFX FPS: "+ to_string(AEGraphic::getfps())+"|GAME FPS: "+to_string(fps)+"|Time Since start : " + to_string(global_timer.getworldtime()) + " "+to_string(posx) + " "+to_string(posy));
+			myscr.settitle("GFX FPS: " + to_string(AEGraphic::getfps()) + "|GAME FPS: " + to_string(fps) + "|Time Since start : " + to_string(global_timer.getworldtime()));
 			
 		}
+		
 		//_getch();
 		
 		
