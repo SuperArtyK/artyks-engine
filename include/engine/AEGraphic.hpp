@@ -63,84 +63,31 @@ public:
 	
 	void drawscreen();
 	void clearscreen();
-	void setpixel(const vec2& myvec2, wchar_t mych, smalluint color);
-	void setpixel(const vec2& myvec2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
-	void fill(const vec2& myvec2_1, const vec2& myvec2_2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+	void setscreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7, bool preservedata = false);
 
+	void setPixel(const vec2& myvec2, wchar_t mych, smalluint color, CHAR_INFO* bufferptr = m_screendata);
+	void setPixel(const vec2& myvec2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK, CHAR_INFO* bufferptr = m_screendata);
+
+	void fill(const vec2& myvec2_1, const vec2& myvec2_2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
 	void fill(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych, smalluint color);
 
-	void fillrandom(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych);
+	void fillRandom(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych);
 
-	CHAR_INFO getpixel(const vec2& myvec2) const {
-		if (myvec2.x > 0 && myvec2.x < m_screensize.X && myvec2.y > 0 && myvec2.y < m_screensize.Y) {
-			return m_screendata[m_screensize.X * myvec2.y + myvec2.x];
+	void drawLine(const vec2& myvec2_1, const vec2& myvec2_2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+	void drawLine(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych, smalluint color);
+
+	void drawTriangle(const vec2& myvec2_1, const vec2& myvec2_2, const vec2& myvec2_3, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+	void drawTriangle(const vec2& myvec2_1, const vec2& myvec2_2, const vec2& myvec2_3, wchar_t mych, smalluint color);
+
+	void copybuffer(const CHAR_INFO* mych, int buffsize, const vec2& myvec2 = { 0,0 }) {
+		m_settingscreen = true;//atomic bool, blocks the drawing thread untill false
+		if (buffsize > (m_screensize.X * m_screensize.Y)) {//precaution, if buffsize is more than screen size
+			buffsize = m_screensize.X * m_screensize.Y;
 		}
-		return {0,0};
+		memcpy(m_screendata, mych, buffsize * sizeof(CHAR_INFO));//copying data...
+		m_settingscreen = false;//removing blocking
 	}
-
-
-
-
-	void drawLine(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych, smalluint color) {
-		const int 
-			deltaX = abs(myvec2_2.x - myvec2_1.x),
-			deltaY = abs(myvec2_2.y - myvec2_1.y),
-			signX = myvec2_1.x < myvec2_2.x ? 1 : -1,
-			signY = myvec2_1.y < myvec2_2.y ? 1 : -1;
-		vec2 temp = myvec2_1;
-		if (deltaX == 0) {
-			for (int i = 0; i < deltaY; i++) {
-				temp.y += signY;
-				setpixel(temp, mych, color);
-			}
-			return;
-		}
-		if (deltaY == 0) {
-			for (int i = 0; i < deltaX; i++) {
-				temp.x += signX;
-				setpixel(temp, mych, color);
-			}
-			return;
-		}
-		if (deltaY == deltaX) {
-			for (int i = 0; i < deltaX; i++) {
-				temp.x += signX;
-				temp.y += signY;
-				setpixel(temp, mych, color);
-			}
-			return;
-		}
-
-		int error = deltaX - deltaY;
-		setpixel(myvec2_2, mych, color);
-		while (temp.x != myvec2_2.x || temp.y != myvec2_2.y)
-		{
-			setpixel(temp, mych, color);
-			int error2 = error * 2;
-			if (error2 > -deltaY)
-			{
-				error -= deltaY;
-				temp.x += signX;
-			}
-			if (error2 < deltaX)
-			{
-				error += deltaX;
-				temp.y += signY;
-			}
-		}
-
-	}
-
-	void setscreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7) {
-		m_settingscreen = true;
-		m_myscr.setScreen(swidth, sheight, fonth, fontw);
-		if(m_screendata)
-			delete[] m_screendata;
-		m_screendata = new CHAR_INFO[swidth * sheight];
-		clearscreen();
-		m_settingscreen = false;
-		
-	}
+	
 
 	void setRenderType(int rtype) {
 		switch (rtype)
@@ -154,11 +101,13 @@ public:
 			break;
 		case 2:
 			m_clrscr = true;
-			startrd();
 			break;
 		case 3:
 			m_clrscr = false;
-			startrd();
+			break;
+
+		case 4:
+			
 			break;
 
 		default:
@@ -166,12 +115,42 @@ public:
 		}
 	}
 
-	constexpr static inline smalluint getattrib(smalluint bgr = artyk::color::DEF_BGR, smalluint fgr = artyk::color::DEF_FGR){
+	CHAR_INFO getpixel(const vec2& myvec2) const;
+
+	constexpr static inline smalluint getattrib(smalluint bgr = AEGraphic::DEF_BGR, smalluint fgr = AEGraphic::DEF_FGR) {
 		return bgr * 16 + fgr;
 	}
 	static int getfps(void) {
 		return graph_fps;
 	}
+
+	
+	///\brief console colors for the graphics engine
+	/// took them from the color namespace
+	/// @see artyk::color
+	static constexpr unsigned char
+		BLACK = artyk::color::BLACK,
+		D_BLUE = artyk::color::D_BLUE,    //DARK
+		D_GREEN = artyk::color::D_GREEN,   //DARK
+		D_CYAN = artyk::color::D_CYAN,    //DARK
+		D_RED = artyk::color::D_RED,     //DARK
+		D_MAGENTA = artyk::color::D_MAGENTA, //DARK
+		D_YELLOW = artyk::color::D_YELLOW,  //DARK
+		D_WHITE = artyk::color::D_WHITE,   //DARK
+		GRAY = artyk::color::GRAY,
+		B_BLUE = artyk::color::B_BLUE,    //BRIGHT
+		B_GREEN = artyk::color::B_GREEN,  //BRIGHT
+		B_CYAN = artyk::color::B_CYAN,   //BRIGHT
+		B_RED = artyk::color::B_RED,    //BRIGHT
+		B_PURPLE = artyk::color::B_PURPLE, //BRIGHT
+		B_YELLOW = artyk::color::B_YELLOW, //BRIGHT
+		WHITE = artyk::color::WHITE,
+
+		//default colors
+		DEF_BGR = artyk::color::DEF_BGR,
+		DEF_FGR = artyk::color::DEF_BGR,
+		DEF_ATTR = artyk::color::DEF_BGR * 16 + artyk::color::DEF_FGR;
+
 
 private:
 	
@@ -179,18 +158,26 @@ private:
 	void startrd(void);
 	void closetrd(void);
 	void mainthread(void);
+	void convertScreenType(char screentype) {
+
+		
+
+	}
 	AEScreen m_myscr;
 	AEFrame m_fr;
 	std::thread m_thread;
 	_SMALL_RECT m_rtwindow;
 	///variable to store the module index number
 	static atomic<biguint> m_globalmodulenum;
-	CHAR_INFO* m_screendata;
-	COORD m_screensize;
+	static CHAR_INFO* m_screendata;
+
+
+	static COORD m_screensize;
 	static int graph_fps;
 	static bool m_threadon;
 	bool m_bstoptrd;
 	bool m_clrscr;
+	bool m_monochrome;
 	atomic<bool> m_settingscreen;
 };
 

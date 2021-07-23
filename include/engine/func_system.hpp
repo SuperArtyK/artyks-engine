@@ -155,8 +155,8 @@ namespace artyk {//continuing our namespace
 		inline void FError_log(AELog* logger, const string& text = "Fatal error(log)", const string& modulename = DEF_MNAME, const AEDebugInfo& dbg = GET_DBG_INFO, int errorcode = 1) {
 			//throws an error message box with given text and modulename
 			//and then exits the program with given error code
-
-			logger->writetolog(text, LOG_FATAL_ERROR, modulename);
+			if(logger)
+				logger->writetolog(text, LOG_FATAL_ERROR, modulename);
 			MessageBoxA(g_console_hwnd, (
 				text +
 #ifdef AE_DETAILED_WINDOW_MESSAGES
@@ -175,10 +175,10 @@ namespace artyk {//continuing our namespace
 		/// <param name="text">text of the window</param>
 		/// <param name="modulename">the name of the module that asked for the window</param>
 		/// <param name="dbg">debug info</param>
-		inline void Error_log(AELog& logger, const string& text = "Error(log)", const string& modulename = DEF_MNAME, const AEDebugInfo& dbg = GET_DBG_INFO) {
+		inline void Error_log(AELog* logger, const string& text = "Error(log)", const string& modulename = DEF_MNAME, const AEDebugInfo& dbg = GET_DBG_INFO) {
 			//throws an error message box with given text and modulename
-
-			logger.writetolog(text, LOG_ERROR, modulename);
+			if (logger)
+				logger->writetolog(text, LOG_ERROR, modulename);
 			MessageBoxA(g_console_hwnd, (
 				text + 
 #ifdef AE_DETAILED_WINDOW_MESSAGES
@@ -197,10 +197,11 @@ namespace artyk {//continuing our namespace
 		/// <param name="modulename">the name of the module that asked for the window</param>
 		/// <param name="usedebug">flag if to use the debug info</param>
 		/// <param name="dbg">debug info</param>
-		inline void Warn_log(AELog& logger, const string& text = "Warning(log)", const string& modulename = DEF_MNAME, bool usedebug = false, const AEDebugInfo& dbg = GET_DBG_INFO) {
+		inline void Warn_log(AELog* logger, const string& text = "Warning(log)", const string& modulename = DEF_MNAME, bool usedebug = false, const AEDebugInfo& dbg = GET_DBG_INFO) {
 			//throws an warning message box with given text and modulename
 			
-			logger.writetolog(text, LOG_WARN, modulename);
+			if (logger)
+				logger->writetolog(text, LOG_WARN, modulename);
 			MessageBoxA(g_console_hwnd, (
 				text + "\n\nModule: " + modulename
 #ifdef AE_DETAILED_WINDOW_MESSAGES
@@ -220,10 +221,11 @@ namespace artyk {//continuing our namespace
 		/// <param name="modulename">the name of the module that asked for the window</param>
 		/// <param name="usedebug">flag if to use the debug info</param>
 		/// <param name="dbg">debug info</param>
-		inline void Info_log(AELog& logger, const string& text = "Info(log)", const string& modulename = DEF_MNAME, bool usedebug = false, const AEDebugInfo& dbg = GET_DBG_INFO) {
+		inline void Info_log(AELog* logger, const string& text = "Info(log)", const string& modulename = DEF_MNAME, bool usedebug = false, const AEDebugInfo& dbg = GET_DBG_INFO) {
 			//throws an information message box with given text and modulename
 
-			logger.writetolog(text, LOG_INFO, modulename);
+			if (logger)
+				logger->writetolog(text, LOG_INFO, modulename);
 			MessageBoxA(g_console_hwnd, (
 				text 
 #ifdef AE_DETAILED_WINDOW_MESSAGES

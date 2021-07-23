@@ -5,7 +5,7 @@ ArtyK's Console Engine is the open-source composition of code that make possible
 
 @section ae_why Why to use this tool?
 Because it is simple to use, lightweight and consists only of the code files, so, no playing with linker necessary!  
-Also it is based on modules that you can enable and disable when you need them, So you will get needed functionality when it is necessary.  
+Also it is divided into modules that you can enable and disable when you need them, So you will get needed functionality when it is necessary.  
 
 Basically console game engine for my console games and apps.  
 Currently will work for windows, but I'll try to port it to linux later. 

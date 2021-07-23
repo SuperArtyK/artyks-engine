@@ -82,6 +82,7 @@ typedef std::chrono::time_point<std::chrono::system_clock> systime;
 typedef std::chrono::time_point<std::chrono::system_clock> highrestime;
 ///and useful steady clock
 typedef std::chrono::time_point<std::chrono::system_clock> steadytime;
+#define getsystime std::chrono::system_clock::now()
 ///time point. using preprocessor macro, as it is a template, and we only need to shorten the name
 #define timepoint std::chrono::time_point
 

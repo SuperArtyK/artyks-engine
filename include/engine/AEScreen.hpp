@@ -79,17 +79,16 @@ public:
 	/// <param name="y">height of the font</param>
 	/// <param name="x">width of the font</param>
 	/// <param name="fontname">font name</param>
-	/// @warning DON'T USE THIS FUNCTION IF YOU ARE USING THE AEGraphic MODULE! Use the AEGraphic's version instead
-	void setFont(short y, short x, const string& fontname = "Consolas");//sets font size
+	void setFont(short y, short x, const string& fontname = "Lucida Console");//sets font size
 	
 	///clears the console screen; faster than using system(cls), but still slow for "draw frame, clear, draw again" scheme
 	void clear(void);
 
 	///sets the color of the future text(with printf/cout) out of 16color pallete. Colors are in the artyk::screen namespace
-	void setcolor_con(const smalluint back, const smalluint fore);//sets color of text out of 16 color pallete
+	void setcolor_con(const smalluint back = DEF_BGR, const smalluint fore = DEF_FGR);//sets color of text out of 16 color pallete
 	
 	/// returns current app title
-	/// @bug There's a known bug, where if you use feed GetAppTitle() into settitle() continuously, it will set title to what you previously set it to
+	/// @bug There's a known bug, where if you feed GetAppTitle() into settitle() continuously, it will set title to what you previously set it to
 	static inline string GetAppTitle() {
 		char wnd_title[256];
 		GetWindowTextA(artyk::g_console_hwnd, wnd_title, sizeof(wnd_title));
@@ -127,6 +126,33 @@ public:
 
 	//returns screen size/resolution, in character cells
 	static inline COORD GetScreenRes(void) { return AEScreen::g_csbi.dwSize; }
+
+
+	///\brief console colors for the graphics engine
+	/// took them from the color namespace
+	/// @see artyk::color
+	static constexpr unsigned char
+		BLACK = artyk::color::BLACK,
+		D_BLUE = artyk::color::D_BLUE,    //DARK
+		D_GREEN = artyk::color::D_GREEN,   //DARK
+		D_CYAN = artyk::color::D_CYAN,    //DARK
+		D_RED = artyk::color::D_RED,     //DARK
+		D_MAGENTA = artyk::color::D_MAGENTA, //DARK
+		D_YELLOW = artyk::color::D_YELLOW,  //DARK
+		D_WHITE = artyk::color::D_WHITE,   //DARK
+		GRAY = artyk::color::GRAY,
+		B_BLUE = artyk::color::B_BLUE,    //BRIGHT
+		B_GREEN = artyk::color::B_GREEN,  //BRIGHT
+		B_CYAN = artyk::color::B_CYAN,   //BRIGHT
+		B_RED = artyk::color::B_RED,    //BRIGHT
+		B_PURPLE = artyk::color::B_PURPLE, //BRIGHT
+		B_YELLOW = artyk::color::B_YELLOW, //BRIGHT
+		WHITE = artyk::color::WHITE,
+
+		//default colors
+		DEF_BGR = artyk::color::DEF_BGR,
+		DEF_FGR = artyk::color::DEF_BGR,
+		DEF_ATTR = artyk::color::DEF_BGR * 16 + artyk::color::DEF_FGR;
 
 private:
 	///checks HANDLE's and HWND's being valid. if some fail the check, engine closes with error message and log entry, otherwise return true;

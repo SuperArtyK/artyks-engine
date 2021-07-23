@@ -127,18 +127,18 @@ namespace artyk {
 		constexpr unsigned char 
 
 			BLACK = 0,
-			D_BLUE = 1,  //DARK
-			D_GREEN = 2,  //DARK
-			D_CYAN = 3,  //DARK
-			D_RED = 4,  //DARK
-			D_MAGENTA = 5,  //DARK
+			D_BLUE = 1,    //DARK
+			D_GREEN = 2,   //DARK
+			D_CYAN = 3,    //DARK
+			D_RED = 4,     //DARK
+			D_MAGENTA = 5, //DARK
 			D_YELLOW = 6,  //DARK
-			D_WHITE = 7,  //DARK
+			D_WHITE = 7,   //DARK
 			GRAY = 8,
-			B_BLUE = 9,  //BRIGHT
-			B_GREEN = 10, //BRIGHT
-			B_CYAN = 11, //BRIGHT
-			B_RED = 12, //BRIGHT
+			B_BLUE = 9,    //BRIGHT
+			B_GREEN = 10,  //BRIGHT
+			B_CYAN = 11,   //BRIGHT
+			B_RED = 12,    //BRIGHT
 			B_PURPLE = 13, //BRIGHT
 			B_YELLOW = 14, //BRIGHT
 			WHITE = 15, 

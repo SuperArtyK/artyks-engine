@@ -66,20 +66,25 @@
 ///enable mouse scanning in the global_keyboard module
 #define AE_GLOBALKB_ENABLE_MOUSE
 
-#define AE_GFX_ENABLE_WRAPPING
+#define AE_GFX_ENABLE_WRAPPING	
+
+#define AE_GFX_ALWAYS_CLEAR_AFTER_DRAW
 
 //undefine flags to turn them off
 
-//#undef AE_DEBUG
-//#undef AE_GLOBALMODULE
-//#undef AE_EXPERIMENTAL
-//#undef AE_LOOKUP_TABLE
-//#undef AE_LOG_ENABLE
-//#undef AE_ADD_APP_TITLE
+#undef AE_DEBUG
+#undef AE_GLOBALMODULE
+#undef AE_EXPERIMENTAL
+#undef AE_LOOKUP_TABLE
+#undef AE_LOG_ENABLE
+#undef AE_ADD_APP_TITLE
 //#undef AE_KB_DELAY
 //#undef AE_BP_DELAY
-//#undef AE_DETAILED_WINDOW_MESSAGES
+#undef AE_DETAILED_WINDOW_MESSAGES
 #undef AE_GLOBALKB_ENABLE_MOUSE
+#undef AE_GFX_ENABLE_WRAPPING
+#undef AE_GFX_ALWAYS_CLEAR_AFTER_DRAW
+
 
 //I know this is a crutch, but I don't want to add AE_DEBUG to the compiler settings, might break all of it
 #ifdef NDEBUG
