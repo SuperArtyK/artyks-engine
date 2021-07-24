@@ -18,9 +18,9 @@
 */
 
 /** @file include/engine/AETimer.hpp
- *  This file contains the code for engine's timer.  
- *  
- *  Should not cause everything to break.  
+ *  This file contains the code for engine's timer.
+ *
+ *  Should not cause everything to break.
  */
 
 #pragma once
@@ -33,16 +33,16 @@
 using std::string;
 using std::to_string;
 
-/// \brief this is a engine timer, it starts to count up ticks as soon as module is created.  
-/// It starts separate thread that increases the internal timer time.  
-/// Useful for scheduling the delays or calculating time.  
+/// \brief this is a engine timer, it starts to count up ticks as soon as module is created.
+/// It starts separate thread that increases the internal timer time.
+/// Useful for scheduling the delays or calculating time.
 class AETimer {
 public:
 	/// <summary>
 	/// Class constructor
 	/// </summary>
 	/// <param name="delay">delay of the timer between ticks</param>
-	explicit AETimer(float delay = GAME_FPS) :  m_fr(delay), m_modulename("AETimer"), m_time(0), m_delay(delay), stopthread(false) {
+	explicit AETimer(float delay = GAME_FPS) : m_fr(delay), m_modulename("AETimer"), m_time(0), m_delay(delay), stopthread(false) {
 		//m_time = 0;
 		t1 = std::thread(&AETimer::incrtimer, this);
 		if (!t1.joinable()) {
@@ -52,8 +52,7 @@ public:
 		}
 	}
 
-
-	~AETimer() { 
+	~AETimer() {
 		stopthread = true;
 		if (t1.joinable()) {
 			t1.join();
@@ -61,17 +60,16 @@ public:
 		if (m_time < TIMER_WAIT) {
 			m_time = TIMER_WAIT;
 		}
-
 	}
 	///returns the time of timer in ticks
-	inline bigint gettime(void) const { return m_time;}
+	inline bigint gettime(void) const { return m_time; }
 	///returns the approximate time of timer in whole seconds
-	inline bigint getworldtime(void) const { return m_time/ m_delay;}
+	inline bigint getworldtime(void) const { return m_time / m_delay; }
 	///returns AEFrame of timer
 	inline AEFrame getframerater(void) const { return m_fr; }
-	///Returns the module name 
+	///Returns the module name
 	///@see __AEBaseClass::getmodulename()
-	inline string getmodulename(void) const{ return m_modulename; }
+	inline string getmodulename(void) const { return m_modulename; }
 #ifdef AE_EXPERIMENTAL
 	/// uses all utils for class
 	///@see similar thing as __AEBaseClass::benchmark()
@@ -80,11 +78,8 @@ public:
 		getworldtime();
 		getmodulename();
 		getframerater().benchmark();
-
 	}
 #endif
-
-
 
 private:
 	///tick delayer
@@ -100,28 +95,24 @@ private:
 	///flag to stop thread
 	bool stopthread;
 	///function of the timer to increase time
-	
+
 	void incrtimer(void) {
 #ifdef _WIN32
-#ifdef _MSC_VER 
+#ifdef _MSC_VER
 		SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
-#endif // _MSC_VER 
+#endif // _MSC_VER
 #endif // _WIN32
 
-		while(!stopthread){
+		while (!stopthread) {
 			m_fr.sleep();
 			m_time++;
-
 		}
-
 	}
 };
 /// our global timer
 inline AETimer global_timer;
 
-
 namespace artyk::utils {
-
 	/// <summary>
 	/// waits for the tick amount of the timer
 	/// </summary>
@@ -167,11 +158,5 @@ namespace artyk::utils {
 		waitfortick(mytimer, std::round(waitms / mytimer.getframerater().getdelay()));
 	}
 }
-
-
-
-
-
-
 
 #endif // !TIMER_HPP

@@ -18,10 +18,10 @@
 */
 
 /** @file include/engine/AEBeep.hpp
- *  This file contains the old sound system code.  
- *  Useful if you just need the simple beeping.  
- *  
- *  Should not cause everything to break.  
+ *  This file contains the old sound system code.
+ *  Useful if you just need the simple beeping.
+ *
+ *  Should not cause everything to break.
  */
 
 #pragma once
@@ -31,11 +31,11 @@
 
 #include "AEBaseClass.hpp"
 
-/// \brief This module is for simple sine wave beeping.  
-/// It creates separated thread for the asynchronous beeping.  
-/// It uses winapi's Beep() so expect all bugs with this module, as with Beep().  
-/// It is based on __AEBaseClass.  
-class AEBeep: public __AEBaseClass{
+ /// \brief This module is for simple sine wave beeping.
+ /// It creates separated thread for the asynchronous beeping.
+ /// It uses winapi's Beep() so expect all bugs with this module, as with Beep().
+ /// It is based on __AEBaseClass.
+class AEBeep : public __AEBaseClass {
 public:
 	/// <summary>
 	/// Class constructor
@@ -55,7 +55,6 @@ public:
 	/// uses all utils for class
 	///@see __AEBaseClass::benchmark()
 	void benchmark(void) override {
-
 		makesound_async(0, 0);
 		makesound_block(0, 0);
 		getmodulename();
@@ -83,7 +82,6 @@ private:
 	atomic<bool> m_bstop;
 	///variable to indicate if we want to play sound
 	bool m_makesound;
-	
 };
 
 #ifdef AE_GLOBALMODULE
@@ -91,9 +89,4 @@ private:
 inline AEBeep global_beeper(true);
 #endif
 
-
-
 #endif // SOUND_HPP
-
-
-

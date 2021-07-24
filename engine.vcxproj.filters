@@ -465,7 +465,7 @@
     <ClInclude Include="include\engine\AETimer.hpp">
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
-    <ClInclude Include="include\engine\allheaders.hpp">
+    <ClInclude Include="include\engine\engine_include.hpp">
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
     <ClInclude Include="include\engine\engine_flags.hpp">
@@ -480,7 +480,7 @@
     <ClInclude Include="include\engine\global_vars.hpp">
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
-    <ClInclude Include="include\engine\include_engine.hpp">
+    <ClInclude Include="include\engine\includeall.hpp">
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
     <ClInclude Include="include\engine\trig_lookup.hpp">
@@ -490,6 +490,9 @@
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
     <ClInclude Include="include\engine\AEGraphic.hpp">
+      <Filter>Header Files\include\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\engine\engine_math.hpp">
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
     <ClInclude Include="include\engine\custom_types.hpp">

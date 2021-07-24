@@ -18,8 +18,8 @@
 */
 
 /** @file include/engine/func_utils.hpp
- *  This file contains the global functions that can be used everywhere.
- *  
+ *  This file contains engine function (hopefully useful)utilities.
+ *
  *  Should not cause everything to break.
  */
 
@@ -34,8 +34,8 @@
 #include "global_vars.hpp"
 #include "trig_lookup.hpp"
 
-//prototypes
-//moved from log.cpp
+ //prototypes
+ //moved from log.cpp
 using std::string;
 using std::wstring;
 using std::to_string;
@@ -43,13 +43,10 @@ using std::to_string;
 ///This namespace contains all of things that any of the part of program can use, and is useful.
 ///Such things are -- handles to windows, app names, status(we're starter or closing), flags, functions, etc.
 namespace artyk {
-	
-
 	///global useful functions
 	namespace utils {
 		//prototypes
-		inline std::string BoolToString(bool b);//converts bool value to cstring 
-
+		inline std::string BoolToString(bool b);//converts bool value to cstring
 
 		template<typename T>
 		/// <summary>
@@ -95,9 +92,6 @@ namespace artyk {
 		///scans and returns if the app is in focus
 		inline bool isinfocus(); //scans if the app is in focus
 
-		
-		
-
 		inline unsigned long rand_xor(void) {          //period 2^96-1
 			static unsigned long x = std::rand(), y = std::rand(), z = std::rand();
 			unsigned long t;
@@ -113,12 +107,10 @@ namespace artyk {
 			return z;
 		}
 
-
 #ifdef AE_EXPERIMENTAL
 		///counts time between calls, not safe/consistent if used in other threads
 		inline float timecounter();
 #endif
-
 
 		inline std::string BoolToString(bool b)
 		{
@@ -188,7 +180,6 @@ namespace artyk {
 			}
 		}
 
-
 		inline wstring widen_str(const string& str)
 		{
 			std::wostringstream wstm;
@@ -209,21 +200,12 @@ namespace artyk {
 			return stm.str();
 		}
 
-
-
 		inline long long findinstr(const std::string& str, const std::string& text, long long pos) {//finds text in string we pass. if successful return index of first letter of text+1
 			long long int found = str.find(text, pos);
-			if (found != string::npos) { return found+1;/*we get a pos we found it in relation to length*/ }
+			if (found != string::npos) { return found + 1;/*we get a pos we found it in relation to length*/ }
 			return 0;//if we didnt find, return false
-
-
 		}
 
-
-
-		
-		
-		
 		inline std::string addrtostr(void* myptr) {//adds address value to string
 			std::ostringstream oss;
 			oss << myptr;
@@ -235,15 +217,10 @@ namespace artyk {
 			return artyk::g_console_hwnd == GetForegroundWindow();
 		}
 
-		
-
-
 #ifdef AE_EXPERIMENTAL
 		inline float timecounter() {
-
 			static systime timestart = std::chrono::system_clock::now();
 			static systime timeend = std::chrono::system_clock::now();
-
 
 			timeend = std::chrono::system_clock::now();
 			//std::chrono::duration<float> elapsedTime = timeend - timestart;
@@ -251,41 +228,11 @@ namespace artyk {
 			float fElapsedTime = std::chrono::duration<float>(timeend - timestart).count();
 			timestart = timeend;
 			return fElapsedTime;
-
 		}
 #endif
-
-
 	}
-
-	///contains mathematical functions
-	namespace math {
-		//math stuff
-
-		inline constexpr float PI = 3.141592654f;
-
-		inline float sindeg(float degrees) {//calculated sine of the given degrees
-			return sin(degrees * PI / 180.0f);
-		}
-		inline float cosdeg(float degrees) {//calculated sine of the given degrees
-			return cos(degrees * PI / 180.0f);
-		}
-		inline float tandeg(float degrees) {//calculated sine of the given degrees
-			return tan(degrees * PI / 180.0f);
-		}
-		inline float cotdeg(float degrees) {//calculated sine of the given degrees
-			return 1 / tan(degrees * PI / 180.0f);
-		}
-		inline float cscdeg(float degrees) {//calculated sine of the given degrees
-			return 1 / sin(degrees * PI / 180.0f);
-		}
-		inline float secdeg(float degrees) {//calculated sine of the given degrees
-			return 1 / cos(degrees * PI / 180.0f);
-		}
-	}
-
 	/// <summary>
-	/// This function initialises all stuff the engine needs, before it starts. 
+	/// This function initialises all stuff the engine needs, before it starts.
 	/// Call it at the start up, or somewhere when you need, but you can do it only once.
 	/// </summary>
 	/// <param name="high_priority">flag to make main process high-priority</param>
@@ -309,19 +256,10 @@ namespace artyk {
 			if (noresize)
 				SetWindowLong(GetConsoleWindow(), GWL_STYLE, GetWindowLong(GetConsoleWindow(), GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
 
-
 			artyk::app_startstatus = SHRT_MAX;
 			//done intitializing
 		}
 	}
-
-
-
 }
 
-
-
-
-
 #endif // !GLOB_FUNCS_HPP
-

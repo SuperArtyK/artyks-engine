@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/engine/custom types.hpp
+/** @file include/engine/custom_types.hpp
  *  This file contains the code for custom datatypes(vectors, keystates, etc)
  *
  *  Should not cause everything to break.
@@ -25,12 +25,14 @@
 
 #pragma once
 
-///2d integer vector type
+#include "typedefs.hpp"
+
+ ///2d integer vector type
 struct vec2int
 {
 	int x;
 	int y;
-	constexpr static inline vec2int zero(){
+	constexpr static inline vec2int zero() {
 		return { 0,0 };
 	}
 };
@@ -46,8 +48,6 @@ struct vec2
 	}
 };
 typedef vec2 vector2;
-
-
 
 struct vec3int
 {
@@ -71,9 +71,7 @@ struct vec3
 };
 typedef vec3 vector3;
 
-
-
-///data type to store keys and their data  
+///data type to store keys and their data
 struct keystate
 {
 	///name of the key
@@ -90,8 +88,5 @@ struct keystate
 	bool m_isHeld;
 	///flag if key is used at all
 	bool m_isUsed;
-	
-
 };
 typedef keystate AEKBKey;
-

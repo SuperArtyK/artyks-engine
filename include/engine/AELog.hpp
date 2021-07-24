@@ -19,7 +19,7 @@
 
 /** @file include/engine/AELog.hpp
  *  This file contains the logger class, for logging data to file.
- *  
+ *
  *  Should not cause everything to break.
  */
 
@@ -37,33 +37,31 @@ using std::string;
 using std::atomic;
 
 //logger types, don't touch
-///logger info message type  
-#define LOG_INFO 0 
-///logger warning message type  
+///logger info message type
+#define LOG_INFO 0
+///logger warning message type
 #define LOG_WARN 1
 ///logger error message type
 #define LOG_ERROR 2
-///logger fatal error message type  
+///logger fatal error message type
 #define LOG_FERROR 3
-///logger fatal error message type  
+///logger fatal error message type
 #define LOG_FATAL_ERROR 3
-///logger severe warning message type  
+///logger severe warning message type
 #define LOG_SWARN 4
-///logger severe warning message type  
+///logger severe warning message type
 #define LOG_SEVERE_WARNING 4
-///logger ok message type  
+///logger ok message type
 #define LOG_OK 5
-///logger success message type  
+///logger success message type
 #define LOG_SUCCESS 6
 
-
-///Default log path, used in modules and logger as default path. Changing it won't(hopefully) break anything, but will change lots of stuff  
+///Default log path, used in modules and logger as default path. Changing it won't(hopefully) break anything, but will change lots of stuff
 #define DEF_LOG_PATH "logs/"
 
-
-/// \brief This module implements logging as much as you will probably need.  
+/// \brief This module implements logging as much as you will probably need.
 /// This module is not inherited from the base class, as it the base class is based on this class(AELog pointer)
-/// that says it all, it's just a logger.  
+/// that says it all, it's just a logger.
 class AELog {
 public:
 	/// <summary>
@@ -83,13 +81,12 @@ public:
 	/// <returns>0 if completed successfully, 1 if AE_LOG_ENABLE is not defined</returns>
 	int writetolog(const std::string& l_strMessg, const smalluint l_iType = LOG_INFO, const std::string& l_strProg_module = "Logger");
 
-
-	///Returns the module name 
+	///Returns the module name
 	///@see __AEBaseClass::getmodulename()
-	inline string getmodulename(void) const{ return m_modulename; }
+	inline string getmodulename(void) const { return m_modulename; }
 	/// returns m_modulenum of the module
 	///@see __AEBaseClass::getmodulenum()
-	inline biguint getmodulenum(void) const{return m_modulenum;}
+	inline biguint getmodulenum(void) const { return m_modulenum; }
 	///returns m_ullEntrycount of the module
 	inline biguint getentrycount(void)const { return m_ullEntrycount; }
 #ifdef AE_EXPERIMENTAL
@@ -102,7 +99,7 @@ public:
 		getentrycount();
 	}
 #endif
-private:	
+private:
 	/// retusn date for the log file, in string with format of "[year]-[month]-[day]"
 	static std::string logdate(void);
 	///checks the given type and returns it's word representation
@@ -142,8 +139,7 @@ inline AELog global_logger;
 //default logger, will be used if "useGlobLog" is set to true in modules
 //wont be moved to global_vars.hpp
 //will probably cause infinite recursion for compiler
-//I don't want that 
-
+//I don't want that
 
 namespace artyk::utils {
 	/// <summary>
@@ -157,13 +153,13 @@ namespace artyk::utils {
 	inline int debug_log(AELog* logptr, const std::string& messg = "", const smalluint mtype = LOG_INFO, const std::string& mouldename = DEF_MNAME) {//wrapper for debug logging
 #ifdef AE_DEBUG
 #ifdef AE_LOG_ENABLE
-	if (logptr) {
-		logptr->writetolog(messg, mtype, mouldename);
-		return 0;
-	}
+		if (logptr) {
+			logptr->writetolog(messg, mtype, mouldename);
+			return 0;
+		}
 
 #endif // AE_LOG_DISABLE
-		
+
 #endif
 		return 1;
 	}
@@ -178,18 +174,15 @@ namespace artyk::utils {
 	/// <returns>0 if AE_LOG_ENABLE is defined and logptr is not nullptr, 1 otherwise</returns>
 	inline int normal_log(AELog* logptr, const std::string& messg = "", const smalluint mtype = LOG_INFO, const std::string& mouldename = DEF_MNAME) {//wrapper for normal logging
 #ifdef AE_LOG_ENABLE
-	if (logptr) {
+		if (logptr) {
 			logptr->writetolog(messg, mtype, mouldename);
 			return 0;
-	}
+		}
 
 #endif // AE_LOG_DISABLE
-	
+
 		return 1;
 	}
 }
 
 #endif //FILELOG_HPP
-
-
-

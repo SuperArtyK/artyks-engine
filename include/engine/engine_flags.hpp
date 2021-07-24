@@ -19,7 +19,7 @@
 
 /** @file include/engine/engine_flags.hpp
  *  This file contains engine flags that are used to alter it's code and behaviour.
- *  
+ *
  *  Should not cause everything to break.
  */
 
@@ -35,13 +35,11 @@
 
 ///enables global modules
 ///the global_timer and global_focusScanner don't apply to that
-#define AE_GLOBALMODULE 
-
+#define AE_GLOBALMODULE
 
 ///experimental features
 ///WARNING:May break engine completely!
 #define AE_EXPERIMENTAL
-
 
 ///enables the trig lookup tables(may compile slow AF!)
 #define AE_LOOKUP_TABLE
@@ -50,7 +48,7 @@
 #define AE_LOG_ENABLE //enables logger
 
 ///auto-adding application title when changing title with AEScreen
-#define AE_ADD_APP_TITLE 
+#define AE_ADD_APP_TITLE
 
 ///AEFrame delay in AEKeyboard key scanning thread
 #define AE_KB_DELAY
@@ -61,12 +59,12 @@
 ///utilises the AEDebugInfo, currently used in message functions
 ///good for debugging
 ///@see func_system.hpp
-#define AE_DETAILED_WINDOW_MESSAGES "\nLine: " + to_string(dbg.line) + "\nFile: " + dbg.currentfile + "\nCompile Date: " + dbg.compiledate + "\nCompile Time: " + dbg.compiletime + "\nFunction: " + dbg.compilefunc 
+#define AE_DETAILED_WINDOW_MESSAGES "\nLine: " + to_string(dbg.line) + "\nFile: " + dbg.currentfile + "\nCompile Date: " + dbg.compiledate + "\nCompile Time: " + dbg.compiletime + "\nFunction: " + dbg.compilefunc
 
 ///enable mouse scanning in the global_keyboard module
 #define AE_GLOBALKB_ENABLE_MOUSE
 
-#define AE_GFX_ENABLE_WRAPPING	
+#define AE_GFX_ENABLE_WRAPPING
 
 #define AE_GFX_ALWAYS_CLEAR_AFTER_DRAW
 
@@ -85,7 +83,6 @@
 #undef AE_GFX_ENABLE_WRAPPING
 #undef AE_GFX_ALWAYS_CLEAR_AFTER_DRAW
 
-
 //I know this is a crutch, but I don't want to add AE_DEBUG to the compiler settings, might break all of it
 #ifdef NDEBUG
 //remove if you want to test debug features in Release mode
@@ -94,7 +91,3 @@
 #endif // NDEBUG
 
 #endif // !ENGINE_FLAGS_HPP
-
-
-
- 

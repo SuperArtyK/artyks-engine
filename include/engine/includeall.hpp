@@ -17,9 +17,10 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/engine/include_engine.hpp
+/** @file include/engine/includeall.hpp
  *  This file includes everything this engine has, for less typing.
  *  Don't include this file in the engine header files!
+ *  the least problem is that the compile time will be big, if so.
  *
  *  Should not cause everything to break.
  */
@@ -31,8 +32,10 @@
 
  //from least to biggest dependencies
 #include "engine_flags.hpp"
+#include "engine_math.hpp"
 #include "trig_lookup.hpp"
 #include "typedefs.hpp"
+#include "custom_types.hpp"
 #include "global_vars.hpp"
 #include "AEFrame.hpp"
 #include "AELog.hpp"
@@ -43,7 +46,7 @@
 #include "AEBeep.hpp"
 #include "AEScreen.hpp"
 #include "AEKeyboard.hpp"
-#include "allheaders.hpp"
+#include "engine_include.hpp"
 
 #endif // !INCLUDE_ENGINE_HPP
 

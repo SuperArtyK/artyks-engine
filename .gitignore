@@ -14,11 +14,11 @@
 *.userprefs
 
 # Build results
-[Dd]ebug/
+#[Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
-x64/
+#x64/
 x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
@@ -360,6 +360,9 @@ healthchecksdb
 /Release/consoleprog1.res
 /Debug/vc142.ib_pdb_index
 /Debug/consoleprog1.res
-*.exe
 *.dll
 .replit
+/x64/Debug/Engine - Copy (4).exe
+/x64/Debug/vc142.ib_pdb_index
+/x64/Debug/result.txt
+/x64/Debug/Engine - Copy.exe

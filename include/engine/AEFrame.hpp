@@ -18,12 +18,12 @@
 */
 
 /** @file include/engine/AEFrame.hpp
- *  This file contains the delay module code.  
+ *  This file contains the delay module code.
  *  Useful if you need to limit the execution time of the program. It makes
  *  sure that the loop(f.ex.) executes with same delay, if contents of loop
- *  processed faster than you need.  
- *  
- *  Should not cause everything to break.  
+ *  processed faster than you need.
+ *
+ *  Should not cause everything to break.
  */
 
 #pragma once
@@ -36,35 +36,34 @@
 #include "global_vars.hpp"
 #include "typedefs.hpp"
 
-//usage:
-// create obj AEFrame with fps value
-// AEFrame fr(30); -- creates frame_rater fr with 30fps delays
-//
-// after your stuff is done, call frame_rater::sleep();
-//	while(true) {
-//		std::cout << "Hello world\n";
-//		fr.sleep();                   
-//	}
-// it outputs "Hello world" and waits the rest of time of 30fps delay(cout delay+rest = 0.0333...)
-// 
-// also you can change framerate on the fly with AEFrame::setfps(float myfps)
+ //usage:
+ // create obj AEFrame with fps value
+ // AEFrame fr(30); -- creates frame_rater fr with 30fps delays
+ //
+ // after your stuff is done, call frame_rater::sleep();
+ //	while(true) {
+ //		std::cout << "Hello world\n";
+ //		fr.sleep();
+ //	}
+ // it outputs "Hello world" and waits the rest of time of 30fps delay(cout delay+rest = 0.0333...)
+ //
+ // also you can change framerate on the fly with AEFrame::setfps(float myfps)
 
-/// \brief This module is used for creating delays(in FPS format) in the engine.  
-/// It is great if used in loops, as it makes them have delay of AEFrame, if body executes fasted than the delay time.  
-/// This module is not inherited from the base class, as it needs to be very fast, faster than the base class even,
-/// and without much of dependencies.  
+ /// \brief This module is used for creating delays(in FPS format) in the engine.
+ /// It is great if used in loops, as it makes them have delay of AEFrame, if body executes fasted than the delay time.
+ /// This module is not inherited from the base class, as it needs to be very fast, faster than the base class even,
+ /// and without much of dependencies.
 class AEFrame {
 public:
-	
+
 	/// <summary>
 	/// Class constructor
 	/// </summary>
 	/// <param name="fps">the delay in the format of framerate, defaults to the GAME_FPS</param>
 	/// @note if you pass it 0 or negative number it will disable the delay
 	explicit AEFrame(float fps = GAME_FPS) : time_between_frames((fps <= 0) ? std::chrono::microseconds(0) : std::chrono::microseconds(biguint(1000000 / fps))),
-tp(std::chrono::system_clock::now()), m_modulename("AEFrame"), nodelay((fps <= 0))
+		tp(std::chrono::system_clock::now()), m_modulename("AEFrame"), nodelay((fps <= 0))
 	{
-		
 	}
 
 	///resets the delay value to what you pass to it
@@ -85,9 +84,8 @@ tp(std::chrono::system_clock::now()), m_modulename("AEFrame"), nodelay((fps <= 0
 		tp += time_between_frames;
 		// and sleep until that time point
 		std::this_thread::sleep_until(tp);
-		
 	}
-	///Returns the module name 
+	///Returns the module name
 	///@see __AEBaseClass::getmodulename()
 	inline string getmodulename(void) const { return m_modulename; }
 	///returns framerate of AEFrame
@@ -105,7 +103,7 @@ tp(std::chrono::system_clock::now()), m_modulename("AEFrame"), nodelay((fps <= 0
 #endif
 
 private:
-	
+
 	///delay between seconds
 	std::chrono::duration<double> time_between_frames;
 	///the timepoint, that sets time when to wake up the thread
@@ -115,6 +113,5 @@ private:
 	///flag if we don't need the delay
 	bool nodelay;
 };
-
 
 #endif // !AEFRAME_HPP

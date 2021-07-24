@@ -19,16 +19,15 @@
 
 /** @file include/engine/AEScreen.hpp
  *  This file contains the declaration of engine's simple screen manager, aka AEScreen
- *  Good if you don't need the power of graphics engine.  
- *  
- *  Should not cause everything to break.  
+ *  Good if you don't need the power of graphics engine.
+ *
+ *  Should not cause everything to break.
  */
 
 #pragma once
 
 #ifndef SCREEN_HPP
 #define SCREEN_HPP
-
 
 #include "AEBaseClass.hpp"
 #include "func_utils.hpp"
@@ -37,10 +36,10 @@ using std::string;
 using std::atomic;
 using std::to_string;
 
-/// \brief This module is made for simple screen management, and not made for the performance.  
-/// Good if you don't need the power of graphics engine, that will be added in v0.0.7.  
-/// Doesn't create any threads, purely single-threaded.  
-class AEScreen: public __AEBaseClass {//screen class for comfortability
+/// \brief This module is made for simple screen management, and not made for the performance.
+/// Good if you don't need the power of graphics engine, that will be added in v0.0.7.
+/// Doesn't create any threads, purely single-threaded.
+class AEScreen : public __AEBaseClass {//screen class for comfortability
 public:
 	friend int __initengine_screen();
 
@@ -69,10 +68,9 @@ public:
 	/// @warning DON'T USE THIS FUNCTION IF YOU ARE USING THE AEGraphic MODULE! Use the AEGraphic's version instead
 	void setConsoleBufferSize(short x, short y);
 	///sets the app title
-	///@note if the AE_ADD_APP_TITLE flag is defined, it will append artyk::app_name_full to  
+	///@note if the AE_ADD_APP_TITLE flag is defined, it will append artyk::app_name_full to
 	void settitle(const string& title);//sets app title
-	
-	
+
 	/// <summary>
 	/// sets the font setting to provided ones
 	/// </summary>
@@ -80,13 +78,13 @@ public:
 	/// <param name="x">width of the font</param>
 	/// <param name="fontname">font name</param>
 	void setFont(short y, short x, const string& fontname = "Lucida Console");//sets font size
-	
+
 	///clears the console screen; faster than using system(cls), but still slow for "draw frame, clear, draw again" scheme
 	void clear(void);
 
 	///sets the color of the future text(with printf/cout) out of 16color pallete. Colors are in the artyk::screen namespace
 	void setcolor_con(const smalluint back = DEF_BGR, const smalluint fore = DEF_FGR);//sets color of text out of 16 color pallete
-	
+
 	/// returns current app title
 	/// @bug There's a known bug, where if you feed GetAppTitle() into settitle() continuously, it will set title to what you previously set it to
 	static inline string GetAppTitle() {
@@ -106,8 +104,7 @@ public:
 	/// <param name="fblue">blue</param>
 	void setcolor_rgb(smalluint fred, smalluint fgreen, smalluint fblue);//doesnt really work, if you'll fork this engine, plz find a way to fix this
 #endif
-	
-	
+
 #ifdef AE_EXPERIMENTAL
 	/// uses all utils for class
 	///@see __AEBaseClass::benchmark()
@@ -126,7 +123,6 @@ public:
 
 	//returns screen size/resolution, in character cells
 	static inline COORD GetScreenRes(void) { return AEScreen::g_csbi.dwSize; }
-
 
 	///\brief console colors for the graphics engine
 	/// took them from the color namespace
@@ -174,16 +170,11 @@ private:
 	static COORD m_screenres;
 	// variable for the scrolltitle()
 	//bool interruptscroll;
-	
-	
+
 	friend class AEGraphic;
-	
-
-
 };
 ///initialises screen module
 inline int __initengine_screen() {
-
 	///initialises screen module
 	AEScreen::g_cfi.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
 	AEScreen::g_rgb_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
@@ -204,17 +195,9 @@ inline int __initengine_screen() {
 
 const int __dummy_screen_initialisation = __initengine_screen();
 
-
 #ifdef AE_GLOBALMODULE
 ///our global simple screen manager module
-inline AEScreen global_screen(true,true);
+inline AEScreen global_screen(true, true);
 #endif
-
-
-
-
-
-
-
 
 #endif // SCREEN_HPP

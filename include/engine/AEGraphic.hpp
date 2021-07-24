@@ -58,6 +58,17 @@ public:
 	void clearscreen();
 	///clears the current selected buffers(the one that setPixel() uses)
 	void clearbuffer();
+	/// <summary>
+	/// copies given buffer to the the screen buffer
+	/// </summary>
+	/// <param name="mych">the buffer itself; </param>
+	/// <param name="buffsize">size of the buffer, in array members; default to m_screensize</param>
+	/// @note if size is bigger than current screen buffer size, it will be truncated
+	void copybuffer(const CHAR_INFO* mych = m_currentbuffer, int buffsize = m_screensize.X*m_screensize.Y);
+	///sets current buffer
+	void setbuffer(CHAR_INFO* mych) {
+		m_currentbuffer = mych;
+	}
 
 	void setscreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7, bool preservedata = false);
 
@@ -75,13 +86,13 @@ public:
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, wchar_t mych, smalluint color);
 
-	void copybuffer(const CHAR_INFO* mych, int buffsize, const vec2int& myvec2 = { 0,0 }) {
-		m_settingscreen = true;//atomic bool, blocks the drawing thread untill false
-		if (buffsize > (m_screensize.X * m_screensize.Y)) {//precaution, if buffsize is more than screen size
-			buffsize = m_screensize.X * m_screensize.Y;
+	void drawPoly(const vec2int& myvec2_1, short radius, vec2 distortion = { 1.0f,1.0f }, int iterations = 1) {
+		float angleincrement = 360.0f / iterations;
+		
+		for (int i = 0; i < 360; i+=angleincrement) {
+			
 		}
-		memcpy(m_screendata, mych, buffsize * sizeof(CHAR_INFO));//copying data...
-		m_settingscreen = false;//removing blocking
+
 	}
 	
 
@@ -147,12 +158,11 @@ public:
 		DEF_FGR = artyk::color::DEF_BGR,
 		DEF_ATTR = artyk::color::DEF_BGR * 16 + artyk::color::DEF_FGR;
 
-
+	void startrd(void);
+	void closetrd(void);
 private:
 	
 	///FIXME:rewrite the declarations to remove byte padding
-	void startrd(void);
-	void closetrd(void);
 	void mainthread(void);
 	void convertScreenType(char screentype) {
 

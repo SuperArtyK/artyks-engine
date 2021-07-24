@@ -42,7 +42,7 @@
 #endif // !#define UNICODE
 
 
-#include "include_engine.hpp"
+#include "includeall.hpp"
 #include "AEGraphic.hpp"
 using namespace std;
 
@@ -98,6 +98,8 @@ CHAR_INFO objdistance[]{
 };
 
 
+
+
 inline bool colliding() {
 	return gamemap[(int)fPlayerX][(int)fPlayerY] == '#' && (fPlayerX < nMapWidth&& fPlayerX >0 && fPlayerY < nMapHeight&& fPlayerY>0);
 }
@@ -125,12 +127,13 @@ int main()
 	cin >> fonth;
 
 	AEGraphic mygx(screenx, screeny, fontw, fonth,-1);
-	mygx.setRenderType(1);
+	
+	//mygx.setRenderType(1);
 	AEKeyboard mykb;
 	AEFrame myfr;
 	CHAR_INFO* mybuffer = new CHAR_INFO[screenx*screeny];
-	
-	
+	mygx.setbuffer(mybuffer);
+	vec2* wallscan = new vec2[screenx];
 
 
 
@@ -148,6 +151,8 @@ int main()
 	systime cyclestart = timestart;
 	systime cycleend;
 	
+
+
 	while (1)
 	{
 		i++;
@@ -269,7 +274,7 @@ int main()
 		mygx.setPixel({ screenx / 2-1,screeny / 2 }, artyk::gfx::CH_100, 15);
 		mygx.setPixel({ screenx / 2,screeny / 2+1 }, artyk::gfx::CH_100, 15);
 		mygx.setPixel({ screenx / 2,screeny / 2-1 }, artyk::gfx::CH_100, 15);
-		mygx.drawscreen();
+		mygx.copybuffer();
 
 		prevposx = fPlayerX, prevposy = fPlayerY;
 		timeend = getsystime;
@@ -280,16 +285,17 @@ int main()
 			previ = i;
 			timestart = timeend;
 			//mybp.makesound_async(660, 200);
-			myscr.settitle("GFX FPS: " + to_string(AEGraphic::getfps()) + "|GAME FPS: " + to_string(fps) + "| posx:"+to_string(fPlayerX) + " posx:" + to_string(fPlayerY));
+			myscr.settitle("GFX FPS: " + to_string(AEGraphic::getfps()) + "|GAME FPS: " + to_string(fps) + "| posx:"+to_string(fPlayerX) + " posy:" + to_string(fPlayerY));
 
 		}
 		
-		//myfr.sleep();
+		myfr.sleep();
 	}
 
 	
 
 	delete[] mybuffer;
+	delete[] wallscan;
 
 
 

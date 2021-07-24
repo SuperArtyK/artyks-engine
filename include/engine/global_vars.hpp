@@ -18,13 +18,12 @@
 */
 
 /** @file include/engine/global_vars.hpp
- *  This file contains the global variables that can be used everywhere.  
- * 
- *  Should not cause everything to break.  
+ *  This file contains the global variables that can be used everywhere.
+ *
+ *  Should not cause everything to break.
  */
 
 #pragma once
-
 
 #ifndef GLOB_VARS_HPP
 #define GLOB_VARS_HPP
@@ -39,9 +38,6 @@ using std::to_string;
 #define _SECURE_SCL 0
 #define _HAS_ITERATOR_DEBUGGING 0
 #endif
-
-
-
 
 //engine stuff, DO NOT TOUCH
 
@@ -58,7 +54,6 @@ using std::to_string;
 
 #endif
 
-
 #ifndef GAME_FPS
 #error Warning, GAME_FPS is not defined! Always define it, as it's a part of an engine logic and delay handling
 #endif // !GAME_FPS
@@ -73,7 +68,6 @@ using std::to_string;
 
 //END OF ENGINE DEFINES
 
-
 ///converts the "string literal" to u8"utf-8/unicode string literal"
 #define UTF8(x) u8 ## x //converts the "string" to the u8"string"
 ///converts the "string literal" to L"wide string literal"
@@ -83,23 +77,20 @@ using std::to_string;
 ///macro for newline string
 #define NLS "\n"
 
-
-
 //im making this, so I can differentiate between std, mine, and other namespaces
 //and have "intuitive" positions of things, that screen stuff is in screen subns, for example
 ///This namespace contains all of things that any of the part of program can use, and is useful.
 ///Such things are -- handles to windows, app names, status(we're starter or closing), flags, functions, etc.
 namespace artyk {
-
 	///flag if app is being closed, 1 if it user closes app, more -- modules are turning off
 	///still unsure how to implement that tho
 	inline uint_fast8_t closing_app = 0;
 
 	///name of the app
-	const string app_name = 
+	const string app_name =
 #ifdef AE_DEBUG
-		
-		string("(DEBUG)") + 
+
+		string("(DEBUG)") +
 #endif // AE_DEBUG
 		"ArtyK's Console Engine Test";
 
@@ -108,7 +99,7 @@ namespace artyk {
 	///version
 	const string app_version = "v.0.0.6";
 	///full name of the app
-	const string app_name_full = app_name + " " + app_version + ":"+to_string(app_build);
+	const string app_name_full = app_name + " " + app_version + ":" + to_string(app_build);
 
 	///status of starting up
 	inline short app_startstatus = 0;
@@ -121,10 +112,9 @@ namespace artyk {
 	///Prefix 'D' means "Dark" and 'B' meand "Bright".
 	///Exceptions are black gray and white
 	namespace color {
-
 		//prefix 'D' means "Dark" and 'B' meand "Bright"
 		//exceptions are black gray and white
-		constexpr unsigned char 
+		constexpr unsigned char
 
 			BLACK = 0,
 			D_BLUE = 1,    //DARK
@@ -141,18 +131,15 @@ namespace artyk {
 			B_RED = 12,    //BRIGHT
 			B_PURPLE = 13, //BRIGHT
 			B_YELLOW = 14, //BRIGHT
-			WHITE = 15, 
+			WHITE = 15,
 
 			//default colors
 			DEF_BGR = BLACK,
 			DEF_FGR = B_GREEN,
-			DEF_ATTR = DEF_BGR*16+DEF_FGR;
-			
-
+			DEF_ATTR = DEF_BGR * 16 + DEF_FGR;
 	}
 	///list of the engine exit codes
 	namespace exitcodes {
-		 
 		constexpr char
 			NORMAL_EXIT = 0,
 			ERROR_EXIT = 1,
@@ -164,15 +151,14 @@ namespace artyk {
 			INIT_SC_ERROR = 7,
 			ERROR_SETTING_SCREEN = 8
 			;
-
-
 	}
 
 	///\brief this namespace contains predone characters/char cells used for drawing stuff with AEGraphic
 	namespace gfx {
 		///characters
 		constexpr wchar_t
-			CH_EMPTY = L'\0',//no difference in visual, but a difference in processing, used this to indicate empty/transparent stuff
+			//no difference in visual, but a difference in processing, used this to indicate empty/transparent stuff
+			CH_EMPTY = L'\0',
 			CH_SPACE = L' ',
 			CH_25 = L'░',
 			CH_50 = L'▒',
@@ -203,75 +189,68 @@ namespace artyk {
 
 		//char cells
 		constexpr CHAR_INFO
-			PX_EMPTY = { L'\0', 0 },
-			PX_SPACE = { L' ', artyk::color::DEF_ATTR },//no difference in visual, but a difference in processing, used this to indicate empty/transparent stuff
-			PX_25 = { L'░', artyk::color::DEF_ATTR },
-			PX_50 = { L'▒', artyk::color::DEF_ATTR },
-			PX_75 = { L'▓', artyk::color::DEF_ATTR },
-			PX_100 = { L'█', artyk::color::DEF_ATTR },
-			PX_BLOCK = PX_100,
+
+			//no difference in visual, but a difference in processing, used this to indicate empty/transparent stuff
+			PX_EMPTY =  { L'\0', 0 },
+			PX_SPACE =  { L' ', artyk::color::DEF_ATTR },
+			PX_25 =     { L'░', artyk::color::DEF_ATTR },
+			PX_50 =     { L'▒', artyk::color::DEF_ATTR },
+			PX_75 =     { L'▓', artyk::color::DEF_ATTR },
+			PX_100 =    { L'█', artyk::color::DEF_ATTR },
+			PX_BLOCK =  PX_100,
 			PX_BOX1[]{
-				{L'┌', artyk::color::DEF_ATTR},
-				{L'┬', artyk::color::DEF_ATTR},
-				{L'┐', artyk::color::DEF_ATTR},
-				{L'┤', artyk::color::DEF_ATTR},
-				{L'┘', artyk::color::DEF_ATTR},
-				{L'┴', artyk::color::DEF_ATTR},
-				{L'└', artyk::color::DEF_ATTR},
-				{L'├', artyk::color::DEF_ATTR},
-				{L'┼', artyk::color::DEF_ATTR},
-				{L'─', artyk::color::DEF_ATTR},
-				{L'│', artyk::color::DEF_ATTR},
-		},
-		PX_BOX2[]{
-			{L'╒', artyk::color::DEF_ATTR},
-			{L'╤', artyk::color::DEF_ATTR},
-			{L'╕', artyk::color::DEF_ATTR},
-			{L'╡', artyk::color::DEF_ATTR},
-			{L'╛', artyk::color::DEF_ATTR},
-			{L'╧', artyk::color::DEF_ATTR},
-			{L'╘', artyk::color::DEF_ATTR},
-			{L'╞', artyk::color::DEF_ATTR},
-			{L'╪', artyk::color::DEF_ATTR},
-			{L'═', artyk::color::DEF_ATTR},
-			{L'│', artyk::color::DEF_ATTR},
-		},
-		PX_BOX3[]{
-			{L'╓', artyk::color::DEF_ATTR},
-			{L'╥', artyk::color::DEF_ATTR},
-			{L'╖', artyk::color::DEF_ATTR},
-			{L'╢', artyk::color::DEF_ATTR},
-			{L'╜', artyk::color::DEF_ATTR},
-			{L'╨', artyk::color::DEF_ATTR},
-			{L'╙', artyk::color::DEF_ATTR},
-			{L'╟', artyk::color::DEF_ATTR},
-			{L'╫', artyk::color::DEF_ATTR},
-			{L'─', artyk::color::DEF_ATTR},
-			{L'║', artyk::color::DEF_ATTR},
-		},
-		PX_BOX4[]{
-			{L'╔', artyk::color::DEF_ATTR},
-			{L'╦', artyk::color::DEF_ATTR},
-			{L'╗', artyk::color::DEF_ATTR},
-			{L'╣', artyk::color::DEF_ATTR},
-			{L'╝', artyk::color::DEF_ATTR},
-			{L'╩', artyk::color::DEF_ATTR},
-			{L'╚', artyk::color::DEF_ATTR},
-			{L'╠', artyk::color::DEF_ATTR},
-			{L'╬', artyk::color::DEF_ATTR},
-			{L'═', artyk::color::DEF_ATTR},
-			{L'║', artyk::color::DEF_ATTR},
-		};
-
-
+						{L'┌', artyk::color::DEF_ATTR},
+						{L'┬', artyk::color::DEF_ATTR},
+						{L'┐', artyk::color::DEF_ATTR},
+						{L'┤', artyk::color::DEF_ATTR},
+						{L'┘', artyk::color::DEF_ATTR},
+						{L'┴', artyk::color::DEF_ATTR},
+						{L'└', artyk::color::DEF_ATTR},
+						{L'├', artyk::color::DEF_ATTR},
+						{L'┼', artyk::color::DEF_ATTR},
+						{L'─', artyk::color::DEF_ATTR},
+						{L'│', artyk::color::DEF_ATTR},
+			},
+			PX_BOX2[]{
+						{L'╒', artyk::color::DEF_ATTR},
+						{L'╤', artyk::color::DEF_ATTR},
+						{L'╕', artyk::color::DEF_ATTR},
+						{L'╡', artyk::color::DEF_ATTR},
+						{L'╛', artyk::color::DEF_ATTR},
+						{L'╧', artyk::color::DEF_ATTR},
+						{L'╘', artyk::color::DEF_ATTR},
+						{L'╞', artyk::color::DEF_ATTR},
+						{L'╪', artyk::color::DEF_ATTR},
+						{L'═', artyk::color::DEF_ATTR},
+						{L'│', artyk::color::DEF_ATTR},
+			},
+			PX_BOX3[]{
+						{L'╓', artyk::color::DEF_ATTR},
+						{L'╥', artyk::color::DEF_ATTR},
+						{L'╖', artyk::color::DEF_ATTR},
+						{L'╢', artyk::color::DEF_ATTR},
+						{L'╜', artyk::color::DEF_ATTR},
+						{L'╨', artyk::color::DEF_ATTR},
+						{L'╙', artyk::color::DEF_ATTR},
+						{L'╟', artyk::color::DEF_ATTR},
+						{L'╫', artyk::color::DEF_ATTR},
+						{L'─', artyk::color::DEF_ATTR},
+						{L'║', artyk::color::DEF_ATTR},
+			},
+			PX_BOX4[]{
+						{L'╔', artyk::color::DEF_ATTR},
+						{L'╦', artyk::color::DEF_ATTR},
+						{L'╗', artyk::color::DEF_ATTR},
+						{L'╣', artyk::color::DEF_ATTR},
+						{L'╝', artyk::color::DEF_ATTR},
+						{L'╩', artyk::color::DEF_ATTR},
+						{L'╚', artyk::color::DEF_ATTR},
+						{L'╠', artyk::color::DEF_ATTR},
+						{L'╬', artyk::color::DEF_ATTR},
+						{L'═', artyk::color::DEF_ATTR},
+						{L'║', artyk::color::DEF_ATTR},
+			};
 	}
-
-
-
 }
 
-
-
 #endif // !GLOB_VARS_HPP
-
-

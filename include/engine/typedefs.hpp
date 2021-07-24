@@ -20,7 +20,7 @@
 /** @file include/engine/typedefs.hpp
  *  This file contains typedefs/aliases of the variable types that are long and
  *  are used often/inconvenient to use in other naming.
- *  
+ *
  *  Should not cause everything to break.
  */
 
@@ -32,10 +32,10 @@
 #include <limits>
 #include <chrono>
 
-//a few typedefs so I'll type less code
-// 
-//numbers
-///short for small unsigned int
+ //a few typedefs so I'll type less code
+ //
+ //numbers
+ ///short for small unsigned int
 typedef unsigned char smalluint;
 ///small signed int
 typedef char smallint;
@@ -45,7 +45,6 @@ typedef unsigned long long biguint;
 typedef long long bigint;
 ///just unsigned int
 typedef unsigned long uint;
-
 
 //max/min values of these numbers
 ///small unsigned int max
@@ -72,9 +71,6 @@ typedef unsigned long uint;
 ///unsigned int min
 #define UINT_MIN 0
 
-
-
-
 //time
 ///short for system time, so we dont need to use autos and init everytime
 typedef std::chrono::time_point<std::chrono::system_clock> systime;
@@ -86,13 +82,4 @@ typedef std::chrono::time_point<std::chrono::system_clock> steadytime;
 ///time point. using preprocessor macro, as it is a template, and we only need to shorten the name
 #define timepoint std::chrono::time_point
 
-
-
-
-
-
 #endif // !TYPEDEFS_HPP
-
-
-
-

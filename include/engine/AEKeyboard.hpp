@@ -18,11 +18,11 @@
 */
 
 /** @file include/engine/AEKeyboard.hpp
- *  This file contains the keyboard scanning code and struct for the keys.  
+ *  This file contains the keyboard scanning code and struct for the keys.
  *  I would like to thank the David "JavidX9" Barr for giving the idea
- *  of how it should be done.  
- *  
- *  Should not cause everything to break.  
+ *  of how it should be done.
+ *
+ *  Should not cause everything to break.
  */
 
 #pragma once
@@ -41,12 +41,11 @@ using std::string;
 using std::atomic;
 using std::to_string;
 
-
-/// \brief This module is for scanning keyboard and mouse for keystrokes and other key events.  
-/// It creates separated thread for the scanning, but it is one thread on all modules.  
-/// It uses winapi's GetAsyncKeyState() so expect all bugs with this module, as with GetAsyncKeyState().  
-/// It is based on __AEBaseClass.  
-class AEKeyboard: public __AEBaseClass {
+/// \brief This module is for scanning keyboard and mouse for keystrokes and other key events.
+/// It creates separated thread for the scanning, but it is one thread on all modules.
+/// It uses winapi's GetAsyncKeyState() so expect all bugs with this module, as with GetAsyncKeyState().
+/// It is based on __AEBaseClass.
+class AEKeyboard : public __AEBaseClass {
 public:
 	///this function initialises all stuff the engine needs, before it starts.
 	///marked as friend function, so it can init stuff from this class
@@ -60,10 +59,6 @@ public:
 	AEKeyboard(bool enablelog = true, bool useGlobLog = false, bool enablemouse = false);
 	~AEKeyboard() override;
 
-
-
-	
-	
 	///returns AEKBKey struct of the key, with id you pass
 	inline AEKBKey GetKey(smalluint keyid) const { return m_keys[keyid]; }
 	///same as AEKBKey::GetKey() but limited to 6 mouse buttons
@@ -76,13 +71,12 @@ public:
 	///returns mouse y position, if the mouse scanning is enabled. Otherwise it wll be 0
 	inline short GetMouseY(void) const { return m_mousepos[1]; }
 	///returns AEKBKey of the mouse key, with id you pass
-	
+
 	///returns key id of the key with given key name
 	int GetKeyID(const char* keyname);
 	///returns key name of the key with given key id
 	const char* GetKeyName(smalluint keyid);
-	
-	
+
 	///returns pressed status of key of given key name
 	bool IsKeyPressed(const string& keyname);//looks at key list, and checks if given key has m_isPressed flag on
 	///returns pressed status of key of given key id
@@ -121,12 +115,8 @@ public:
 		IsKeyUsed("space");
 		getmodulename();
 		getmodulenum();
-
 	}
 #endif
-
-	
-
 
 private:
 	///the function of the thread itself
@@ -153,8 +143,6 @@ private:
 	bool m_bstoptrd;
 	///is mouse enabled
 	static bool m_enablemouse;
-	
-
 };
 ///initialises keyboard module
 inline int __initengine_keyboard() {
@@ -171,8 +159,8 @@ inline int __initengine_keyboard() {
 		}
 		if (AEKeyboard::m_keys[i].m_name == nullptr) {
 			AEKeyboard::m_keys[i].m_name = "---";
+		}
 	}
-}
 	//done with keyboard
 	artyk::app_startstatus = 1;
 	return 0;
@@ -182,14 +170,12 @@ const int __dummy_keyboard_initialisation = __initengine_keyboard();
 
 #ifdef AE_GLOBALMODULE
 ///global keyboard module
-inline AEKeyboard global_keyboard(true,true
+inline AEKeyboard global_keyboard(true, true
 #ifdef AE_GLOBALKB_ENABLE_MOUSE
-	,true
+	, true
 #endif // AE_GLOBALKB_ENABLE_MOUSE
 
 );
 #endif
-
-
 
 #endif // !KEYBOARD_HPP

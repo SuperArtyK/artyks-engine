@@ -135,6 +135,19 @@ void AEGraphic::clearbuffer() {
 	m_settingscreen = false;
 }
 
+void AEGraphic::copybuffer(const CHAR_INFO* mych, int buffsize) {
+	///check if our buffer is equals to our data buffer
+	//(if nothing was passed and m_currentbuffer is equals to m_screendata
+	if (mych == m_screendata) return;
+	m_settingscreen = true;//atomic bool, blocks the drawing thread untill false
+	if (buffsize > (m_screensize.X * m_screensize.Y)) {//precaution, if buffsize is more than screen size
+		buffsize = m_screensize.X * m_screensize.Y;
+	}
+	memcpy(m_screendata, mych, buffsize * sizeof(CHAR_INFO));//copying data...
+	m_settingscreen = false;//removing blocking
+}
+
+
 void AEGraphic::setscreen(short swidth, short sheight, short fonth, short fontw, bool preservedata) {
 	m_settingscreen = true;
 	m_myscr.setScreen(swidth, sheight, fonth, fontw);

@@ -254,7 +254,7 @@
     <ClInclude Include="include\engine\AELog.hpp" />
     <ClInclude Include="include\engine\AEScreen.hpp" />
     <ClInclude Include="include\engine\AETimer.hpp" />
-    <ClInclude Include="include\engine\allheaders.hpp" />
+    <ClInclude Include="include\engine\engine_include.hpp" />
     <ClInclude Include="include\engine\bits\algorithmfwd.h" />
     <ClInclude Include="include\engine\bits\allocated_ptr.h" />
     <ClInclude Include="include\engine\bits\allocator.h" />
@@ -385,10 +385,11 @@
     <ClInclude Include="include\engine\bits\valarray_before.h" />
     <ClInclude Include="include\engine\custom_types.hpp" />
     <ClInclude Include="include\engine\engine_flags.hpp" />
+    <ClInclude Include="include\engine\engine_math.hpp" />
     <ClInclude Include="include\engine\func_system.hpp" />
     <ClInclude Include="include\engine\func_utils.hpp" />
     <ClInclude Include="include\engine\global_vars.hpp" />
-    <ClInclude Include="include\engine\include_engine.hpp" />
+    <ClInclude Include="include\engine\includeall.hpp" />
     <ClInclude Include="include\engine\trig_lookup.hpp" />
     <ClInclude Include="include\engine\typedefs.hpp" />
   </ItemGroup>
