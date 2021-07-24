@@ -95,27 +95,27 @@ namespace artyk {
 		};
 
 		///returns the result of sin in degrees from lookup table
-		inline float sindeg_table(float degrees) {
+		constexpr inline float sindeg_table(float degrees) {
 			return sintable[(unsigned short)degrees % (sizeof(sintable) / sizeof(sintable[0]))];
 		}
 		///returns the result of cos in degrees from lookup table
-		inline float cosdeg_table(float degrees) {
+		constexpr inline float cosdeg_table(float degrees) {
 			return costable[(unsigned short)degrees % (sizeof(costable) / sizeof(costable[0]))];
 		}
 		///returns the result of tan in degrees from lookup table
-		inline float tandeg_table(float degrees) {
+		constexpr inline float tandeg_table(float degrees) {
 			return tantable[(unsigned short)degrees % (sizeof(tantable) / sizeof(tantable[0]))];
 		}
 		///returns the result of cot in degrees from lookup table
-		inline float cotdeg_table(float degrees) {
+		constexpr inline float cotdeg_table(float degrees) {
 			return cottable[(unsigned short)degrees % (sizeof(cottable) / sizeof(cottable[0]))];
 		}
 		///returns the result of csc in degrees from lookup table
-		inline float cscdeg_table(float degrees) {
+		constexpr inline float cscdeg_table(float degrees) {
 			return csctable[(unsigned short)degrees % (sizeof(csctable) / sizeof(csctable[0]))];
 		}
 		///returns the result of sec in degrees from lookup table
-		inline float secdeg_table(float degrees) {
+		constexpr inline float secdeg_table(float degrees) {
 			return sectable[(unsigned short)degrees % (sizeof(sectable) / sizeof(sectable[0]))];
 		}
 	}

@@ -73,7 +73,7 @@
 #undef AE_DEBUG
 #undef AE_GLOBALMODULE
 #undef AE_EXPERIMENTAL
-#undef AE_LOOKUP_TABLE
+//#undef AE_LOOKUP_TABLE
 #undef AE_LOG_ENABLE
 #undef AE_ADD_APP_TITLE
 //#undef AE_KB_DELAY

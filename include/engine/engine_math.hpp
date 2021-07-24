@@ -54,4 +54,9 @@ namespace artyk::math {
 	inline float secdeg(float degrees) {//calculated sine of the given degrees
 		return 1 / cosf(torad(degrees));
 	}
+
+	constexpr inline int roundtoint(float num) {
+		return int(num + 0.5f);
+	}
+
 }

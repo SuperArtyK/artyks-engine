@@ -19,7 +19,14 @@
 
 /** @file src/engine/AEGraphic.cpp
  *  This file contains the graphics engine functions definitions.
- *
+ * 
+ *  Credits:
+ *  Very big thanks to David "JavidX9" Barr, for helping write the code and for inspiration!
+ *  Inspired by his olcConsoleGameEngine.
+ *  https://github.com/OneLoneCoder/videos/blob/master/olcConsoleGameEngine.h
+ *  Ravbug -- for giving ideas and pointing out errors
+ *  Check him out: https://www.ravbug.com/
+ * 
  *  Should not cause everything to break.
  */
 

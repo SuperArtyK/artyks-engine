@@ -30,11 +30,13 @@
  ///2d integer vector type
 struct vec2int
 {
+
 	int x;
 	int y;
 	constexpr static inline vec2int zero() {
 		return { 0,0 };
 	}
+	
 };
 typedef vec2int vector2_int;
 
@@ -70,6 +72,28 @@ struct vec3
 	}
 };
 typedef vec3 vector3;
+
+
+inline vec2int tovec2int(const vec2& val) {
+	return { (int)val.x, (int)val.y };
+}
+
+inline vec2 tovec2(const vec2int& val) {
+	return  { (float)val.x, (float)val.y };
+}
+
+inline vec3int tovec2int(const vec3& val) {
+	return { (int)val.x, (int)val.y, (int)val.z };
+}
+
+inline vec3 tovec2(const vec3int& val) {
+	return  { (float)val.x, (float)val.y, (float)val.z };
+}
+
+
+
+
+
 
 ///data type to store keys and their data
 struct keystate

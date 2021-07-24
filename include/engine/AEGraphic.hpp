@@ -19,9 +19,14 @@
 
 /** @file include/engine/AEGraphic.hpp
  *  This file contains the code for graphics engine.
+ *  
+ *  Credits:
  *  Very big thanks to David "JavidX9" Barr, for helping write the code and for inspiration!
  *  Inspired by his olcConsoleGameEngine.
  *  https://github.com/OneLoneCoder/videos/blob/master/olcConsoleGameEngine.h
+ *  Ravbug -- for giving ideas and pointing out errors
+ *  Check him out: https://www.ravbug.com/
+ *  
  *
  *  Should not cause everything to break.
  */
@@ -34,7 +39,7 @@
 #include "AEBaseClass.hpp"
 #include "AEScreen.hpp"
 #include "custom_types.hpp"
-
+#include "engine_math.hpp"
 
 
 
@@ -86,15 +91,40 @@ public:
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, wchar_t mych, smalluint color);
 
-	void drawPoly(const vec2int& myvec2_1, short radius, vec2 distortion = { 1.0f,1.0f }, int iterations = 1) {
-		float angleincrement = 360.0f / iterations;
-		
-		for (int i = 0; i < 360; i+=angleincrement) {
-			
+	void drawRegPoly(const vec2int& myvec2, const short radius, const short sideamount = 5) {
+		const float angleincrement = 360.0f / sideamount;
+		vec2int pointpos;
+		for (int i = 0; i < sideamount; i++) {
+			pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(angleincrement * i - 90) * radius);
+			pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(angleincrement * i - 90) * radius);
+			setPixel(pointpos);
 		}
 
 	}
 	
+	void drawCircle(const vec2int& myvec2, const short radius, const vec2& distortion = { 1.0f,1.0f }) {
+		vec2int pointpos;
+		const float increment = 360.0f/(3.1416f * radius * radius);
+		for (float i = 0; i < 360.0f; i += increment) {
+			pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(i) * (radius-1));
+			pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(i) * (radius-1));
+			setPixel(pointpos);
+		}
+
+	}
+	void drawCircle2(const vec2int& myvec2, short radius, vec2 distortion = { 1.0f,1.0f }) {
+		vec2int pointpos;
+		pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(0) * (radius-1));
+		pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(0) * (radius-1));
+		vec2int prevpos = pointpos;
+		for (int i = 1; i < 360; i += 1) {
+			pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(i) * (radius - 1));
+			pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(i) * (radius - 1));
+			drawLine(prevpos,pointpos);
+			prevpos = pointpos;
+		}
+
+	}
 
 	void setRenderType(int rtype) {
 		switch (rtype)
