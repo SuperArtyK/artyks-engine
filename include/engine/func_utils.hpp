@@ -111,7 +111,7 @@ namespace artyk {
 			z = t ^ x ^ y;
 
 			return z;
-	}
+		}
 
 
 #ifdef AE_EXPERIMENTAL

@@ -35,30 +35,11 @@
 #include "AEBaseClass.hpp"
 #include "AETimer.hpp"
 #include "func_utils.hpp"
+#include "custom_types.hpp"
 using std::vector;
 using std::string;
 using std::atomic;
 using std::to_string;
-
-///data type to store keys and their data  
-struct AEKBKey
-{
-	///name of the key
-	const char* m_name;
-	///the GetAsyncKeyState() key state
-	short m_state;
-	///flag if key is pressed
-	bool m_isPressed;
-	///flag if key is released
-	bool m_isReleased;
-	///flag if key is held
-	bool m_isHeld;
-	///flag if key is used at all
-	bool m_isUsed;
-	///stores the key id
-	smalluint m_keyid;
-	
-};
 
 
 /// \brief This module is for scanning keyboard and mouse for keystrokes and other key events.  

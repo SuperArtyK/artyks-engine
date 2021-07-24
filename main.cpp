@@ -84,6 +84,19 @@ char gamemap[nMapWidth + 1][nMapHeight + 1]{
 		{".................."},
 };
 
+CHAR_INFO objdistance[]{
+		{artyk::gfx::CH_100,   AEGraphic::getattrib(AEGraphic::B_GREEN, AEGraphic::B_GREEN) },
+		{artyk::gfx::CH_75,    AEGraphic::getattrib(AEGraphic::D_GREEN, AEGraphic::B_GREEN) },
+		{artyk::gfx::CH_50,    AEGraphic::getattrib(AEGraphic::D_GREEN, AEGraphic::B_GREEN) },
+		{artyk::gfx::CH_25,    AEGraphic::getattrib(AEGraphic::D_GREEN, AEGraphic::B_GREEN) },
+		{artyk::gfx::CH_100,   AEGraphic::getattrib(AEGraphic::BLACK,   AEGraphic::D_GREEN) },
+		{artyk::gfx::CH_75,    AEGraphic::getattrib(AEGraphic::BLACK,   AEGraphic::D_GREEN) },
+		{artyk::gfx::CH_50,    AEGraphic::getattrib(AEGraphic::BLACK,   AEGraphic::D_GREEN) },
+		{artyk::gfx::CH_25,    AEGraphic::getattrib(AEGraphic::BLACK,   AEGraphic::D_GREEN) },
+
+
+};
+
 
 inline bool colliding() {
 	return gamemap[(int)fPlayerX][(int)fPlayerY] == '#' && (fPlayerX < nMapWidth&& fPlayerX >0 && fPlayerY < nMapHeight&& fPlayerY>0);
@@ -115,19 +128,12 @@ int main()
 	mygx.setRenderType(1);
 	AEKeyboard mykb;
 	AEFrame myfr;
-
-	CHAR_INFO objdistance[]{
-		{artyk::gfx::CH_100,mygx.getattrib(mygx.B_GREEN,mygx.B_GREEN)},
-		{artyk::gfx::CH_75,mygx.getattrib(mygx.D_GREEN,mygx.B_GREEN)},
-		{artyk::gfx::CH_50,mygx.getattrib(mygx.D_GREEN,mygx.B_GREEN)},
-		{artyk::gfx::CH_25,mygx.getattrib(mygx.D_GREEN,mygx.B_GREEN)},
-		{artyk::gfx::CH_100,mygx.getattrib(mygx.BLACK,mygx.D_GREEN)},
-		{artyk::gfx::CH_75,mygx.getattrib(mygx.BLACK,mygx.D_GREEN)},
-		{artyk::gfx::CH_50,mygx.getattrib(mygx.BLACK,mygx.D_GREEN)},
-		{artyk::gfx::CH_25,mygx.getattrib(mygx.BLACK,mygx.D_GREEN)},
+	CHAR_INFO* mybuffer = new CHAR_INFO[screenx*screeny];
+	
+	
 
 
-	};
+
 	const short distsize = (sizeof(objdistance) / sizeof(objdistance[0]));
 	float fDistanceToWall_center;
 
@@ -141,6 +147,7 @@ int main()
 
 	systime cyclestart = timestart;
 	systime cycleend;
+	
 	while (1)
 	{
 		i++;
@@ -282,7 +289,7 @@ int main()
 
 	
 
-	
+	delete[] mybuffer;
 
 
 

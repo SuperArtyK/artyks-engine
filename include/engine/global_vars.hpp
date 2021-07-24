@@ -152,7 +152,7 @@ namespace artyk {
 	}
 	///list of the engine exit codes
 	namespace exitcodes {
-
+		 
 		constexpr char
 			NORMAL_EXIT = 0,
 			ERROR_EXIT = 1,

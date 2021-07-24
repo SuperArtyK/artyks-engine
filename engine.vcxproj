@@ -383,6 +383,7 @@
     <ClInclude Include="include\engine\bits\valarray_after.h" />
     <ClInclude Include="include\engine\bits\valarray_array.h" />
     <ClInclude Include="include\engine\bits\valarray_before.h" />
+    <ClInclude Include="include\engine\custom_types.hpp" />
     <ClInclude Include="include\engine\engine_flags.hpp" />
     <ClInclude Include="include\engine\func_system.hpp" />
     <ClInclude Include="include\engine\func_utils.hpp" />

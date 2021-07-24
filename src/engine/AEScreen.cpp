@@ -150,9 +150,12 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 	}
 
 	//set the size of the screen buffer
-	if (!SetConsoleScreenBufferSize(g_output_handle, {swidth, sheight})) {
-		artyk::utils::FError("Could not SetConsoleScreenBufferSize!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
-	}
+	//if (!SetConsoleScreenBufferSize(g_output_handle, {swidth, sheight})) {
+	//	artyk::utils::FError("Could not SetConsoleScreenBufferSize!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
+	//}
+	// the reason I took it out of the if-statement, is that it somehow fails and sets the size anyways
+	// we only care about the size setting
+	SetConsoleScreenBufferSize(g_output_handle, { swidth, sheight });
 	
 	artyk::utils::debug_log(m_logptr, "Set console buffer to: " +to_string(swidth)+"x"+to_string(sheight), LOG_OK, m_modulename);
 

@@ -29,18 +29,24 @@
 atomic<biguint> AEGraphic::m_globalmodulenum;
 int AEGraphic::graph_fps = 0;
 bool AEGraphic::m_threadon  =false;
-CHAR_INFO* AEGraphic::m_screendata;
+CHAR_INFO* AEGraphic::m_screendata = nullptr;
+CHAR_INFO* AEGraphic::m_currentbuffer = nullptr;
 COORD AEGraphic::m_screensize;
+atomic<int> AEGraphic::moduleamt = 0;
+atomic<bool> AEGraphic::m_settingscreen = false;
+
 
 ///FIXME:rewrite the initialisation to match variable declaration
 AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fpsdelay,bool enablelog, bool useGlobLog) : __AEBaseClass("AEGraphic", ++m_globalmodulenum), 
-m_myscr(false), m_fr(fpsdelay), m_bstoptrd(false), m_settingscreen(false),
+m_myscr(false), m_fr(fpsdelay), m_bstoptrd(false),
 m_monochrome(false)
 {
+	moduleamt++;
 	if (!m_threadon) {
 		m_screensize = { sizex, sizey };
 		m_screendata = new CHAR_INFO[sizex * sizey];
 		memset(m_screendata, 0, sizex * sizey * sizeof(CHAR_INFO));
+		m_currentbuffer = m_screendata;
 	}
 	
 #ifdef AE_LOG_ENABLE
@@ -78,7 +84,15 @@ m_monochrome(false)
 } 
 
 AEGraphic::~AEGraphic(){
-	closetrd();
+	moduleamt--;
+	if (moduleamt == 0) {
+		closetrd();
+		if (m_screendata) {
+			delete[] m_screendata;
+			m_currentbuffer = nullptr;
+		}
+	}
+	
 	artyk::utils::normal_log(m_logptr, "Closed Graphics module", LOG_SUCCESS, m_modulename);
 	if(
 #ifdef AE_GLOBALMODULE
@@ -87,9 +101,7 @@ AEGraphic::~AEGraphic(){
 		m_logptr) {
 		delete m_logptr;
 	}
-	if (m_screendata) {
-		delete[] m_screendata;
-	}
+	
 
 }
 
@@ -102,9 +114,24 @@ void AEGraphic::drawscreen() {
 	WriteConsoleOutputW(artyk::g_output_handle, m_screendata, m_screensize, { 0,0 }, &temp);
 }
 
+void AEGraphic::drawbuffer() {
+	SMALL_RECT temp = m_rtwindow;
+
+	while (m_settingscreen)
+	{
+	}
+	WriteConsoleOutputW(artyk::g_output_handle, m_currentbuffer, m_screensize, { 0,0 }, &temp);
+}
+
 void AEGraphic::clearscreen() {
 	m_settingscreen = true;
 	memset(m_screendata, 0, m_screensize.X * m_screensize.Y * sizeof(CHAR_INFO));
+	m_settingscreen = false;
+}
+
+void AEGraphic::clearbuffer() {
+	m_settingscreen = true;
+	memset(m_currentbuffer, 0, m_screensize.X * m_screensize.Y * sizeof(CHAR_INFO));
 	m_settingscreen = false;
 }
 
@@ -116,6 +143,7 @@ void AEGraphic::setscreen(short swidth, short sheight, short fonth, short fontw,
 		if (m_screendata)
 			delete[] m_screendata;
 		m_screendata = new CHAR_INFO[swidth * sheight];
+		m_currentbuffer = m_screendata;
 	}
 	if(!preservedata)
 		clearscreen();
@@ -123,23 +151,25 @@ void AEGraphic::setscreen(short swidth, short sheight, short fonth, short fontw,
 
 }
 
-void AEGraphic::setPixel(const vec2& myvec2, wchar_t mych, smalluint color, CHAR_INFO* bufferptr) {
+void AEGraphic::setPixel(const vec2int& myvec2, wchar_t mych, smalluint color) {
 	setPixel(myvec2, { {mych},color });
 }
-void AEGraphic::setPixel(const vec2& myvec2, const CHAR_INFO& mych, CHAR_INFO* bufferptr) {
+void AEGraphic::setPixel(const vec2int& myvec2, const CHAR_INFO& mych) {
 
 #ifdef AE_GFX_ENABLE_WRAPPING
-	m_screendata[m_screensize.X * abs(myvec2.y % m_screensize.Y) + abs(myvec2.x % m_screensize.X)] = mych;
+	m_currentbuffer[m_screensize.X * abs(myvec2.y % m_screensize.Y) + abs(myvec2.x % m_screensize.X)] = mych;
 #else
 	if (myvec2.x >= 0 && myvec2.x < m_screensize.X && myvec2.y >= 0 && myvec2.y < m_screensize.Y) {
-		m_screendata[m_screensize.X * myvec2.y + myvec2.x] = mych;
+		m_currentbuffer[m_screensize.X * myvec2.y + myvec2.x] = mych;
 	}
 #endif // !AE_GFX_ENABLE_WRAPPING
 
 
 }
 
-void AEGraphic::fill(const vec2& myvec2_1, const vec2& myvec2_2, const CHAR_INFO& mych) {
+void AEGraphic::fill(const vec2int& myvec2_1, const vec2int& myvec2_2, const CHAR_INFO& mych) {
+
+
 	for (short y = myvec2_1.y; y < myvec2_2.y; y++) {
 		for (short x = myvec2_1.x; x < myvec2_2.x; x++) {
 			setPixel({ x,y }, mych);
@@ -147,7 +177,7 @@ void AEGraphic::fill(const vec2& myvec2_1, const vec2& myvec2_2, const CHAR_INFO
 	}
 }
 
-void AEGraphic::fill(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych, smalluint color) {
+void AEGraphic::fill(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych, smalluint color) {
 	for (short y = myvec2_1.y; y < myvec2_2.y; y++) {
 		for (short x = myvec2_1.x; x < myvec2_2.x; x++) {
 			setPixel({ x,y }, mych,color);
@@ -156,7 +186,7 @@ void AEGraphic::fill(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych, s
 }
 
 
-void AEGraphic::fillRandom(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych) {
+void AEGraphic::fillRandom(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych) {
 	for (short y = myvec2_1.y; y < myvec2_2.y; y++) {
 		for (short x = myvec2_1.x; x < myvec2_2.x; x++) {
 			setPixel({ x,y }, mych,rand());
@@ -165,7 +195,7 @@ void AEGraphic::fillRandom(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t m
 }
 
 
-CHAR_INFO AEGraphic::getpixel(const vec2& myvec2) const {
+CHAR_INFO AEGraphic::getpixel(const vec2int& myvec2) const {
 	if (myvec2.x > 0 && myvec2.x < m_screensize.X && myvec2.y > 0 && myvec2.y < m_screensize.Y) {
 		return m_screendata[m_screensize.X * myvec2.y + myvec2.x];
 	}
@@ -173,13 +203,13 @@ CHAR_INFO AEGraphic::getpixel(const vec2& myvec2) const {
 }
 
 
-void AEGraphic::drawLine(const vec2& myvec2_1, const vec2& myvec2_2, const CHAR_INFO& mych) {
+void AEGraphic::drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, const CHAR_INFO& mych) {
 	const int
 		deltaX = abs(myvec2_2.x - myvec2_1.x),
 		deltaY = abs(myvec2_2.y - myvec2_1.y),
 		signX = myvec2_1.x < myvec2_2.x ? 1 : -1,
 		signY = myvec2_1.y < myvec2_2.y ? 1 : -1;
-	vec2 temp = myvec2_1;
+	vec2int temp = myvec2_1;
 	if (deltaX == 0) {
 		for (int i = 0; i <= deltaY; i++) {
 			setPixel(temp, mych);
@@ -222,17 +252,17 @@ void AEGraphic::drawLine(const vec2& myvec2_1, const vec2& myvec2_2, const CHAR_
 	}
 }
 
-void AEGraphic::drawLine(const vec2& myvec2_1, const vec2& myvec2_2, wchar_t mych, smalluint color) {
+void AEGraphic::drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych, smalluint color) {
 	drawLine(myvec2_1, myvec2_2, { {mych},color });
 }
 
-void AEGraphic::drawTriangle(const vec2& myvec2_1, const vec2& myvec2_2, const vec2& myvec2_3, const CHAR_INFO& mych) {
+void AEGraphic::drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, const CHAR_INFO& mych) {
 	drawLine(myvec2_1, myvec2_2, mych);
 	drawLine(myvec2_2, myvec2_3, mych);
 	drawLine(myvec2_3, myvec2_1, mych);
 }
 
-void AEGraphic::drawTriangle(const vec2& myvec2_1, const vec2& myvec2_2, const vec2& myvec2_3, wchar_t mych, smalluint color) {
+void AEGraphic::drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, wchar_t mych, smalluint color) {
 	drawTriangle(myvec2_1, myvec2_2, myvec2_3, { {mych}, color });
 }
 
