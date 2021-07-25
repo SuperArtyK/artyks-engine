@@ -125,7 +125,7 @@ void AEScreen::setcursor(short x, short y)
 
 }
 
-void AEScreen::setConsoleBufferSize(short x, short y) {//sets console buffer size
+void AEScreen::setBufferSize(short x, short y) {//sets console buffer size
 	//units are character cells
 
 	COORD coord = { x,y };
@@ -156,7 +156,8 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 	// the reason I took it out of the if-statement, is that it somehow fails and sets the size anyways
 	// we only care about the size setting
 	SetConsoleScreenBufferSize(g_output_handle, { swidth, sheight });
-	
+	//setBufferSize(swidth, sheight);
+
 	artyk::utils::debug_log(m_logptr, "Set console buffer to: " +to_string(swidth)+"x"+to_string(sheight), LOG_OK, m_modulename);
 
 

@@ -49,7 +49,7 @@ using namespace std;
 
 int main()
 {
-	artyk::init_main(false, false, false);
+	artyk::init_main(false, true, false);
 //your code goes below...
 	int i = 0;
 	int previ = 0;
@@ -58,15 +58,11 @@ int main()
 	float fElapsedTime;
 	int fps = 0;
 	AEScreen myscr;
-	short screenx = 32, screeny = 32, fontw = 20, fonth = 20;
-	AEGraphic mygx(screenx, screeny, fontw, fonth,-1);
-
-	AEKeyboard mykb;
+	short screenx = 32, screeny = 32, fontw = 10, fonth = 10;
+	AEGraphic mygx(screenx, screeny, fontw, fonth);
 	AEFrame myfr;
-	
-
 	for (;;){
-		mygx.drawCircle({ screenx / 2,screeny / 2 }, 2);
+		mygx.drawCircle({ screenx / 2,screeny / 2 }, i%screeny, '#',rand());
 		
 		i++;
 		timeend = getsystime;
@@ -76,6 +72,7 @@ int main()
 			fps = i - previ;
 			previ = i;
 			timestart = timeend;
+			
 			//mybp.makesound_async(660, 200);
 			myscr.settitle("GFX FPS: " + to_string(AEGraphic::getfps()) + "|GAME FPS: " + to_string(fps) + "");
 

@@ -66,7 +66,7 @@ public:
 
 	///sets console buffer size to the dimensions given, units are character cells
 	/// @warning DON'T USE THIS FUNCTION IF YOU ARE USING THE AEGraphic MODULE! Use the AEGraphic's version instead
-	void setConsoleBufferSize(short x, short y);
+	void setBufferSize(short x, short y);
 	///sets the app title
 	///@note if the AE_ADD_APP_TITLE flag is defined, it will append artyk::app_name_full to
 	void settitle(const string& title);//sets app title
@@ -112,7 +112,7 @@ public:
 		using namespace artyk::color;
 		//setcursor(0, 0);
 		setScreen(128, 20, 14, 7);
-		setConsoleBufferSize(128, 20);
+		setBufferSize(128, 20);
 		setFont(14, 7);
 		GetAppTitle();
 		setcolor_con(DEF_BGR, DEF_FGR);

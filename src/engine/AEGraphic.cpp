@@ -309,35 +309,82 @@ void AEGraphic::drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, c
 }
 
 void AEGraphic::drawCircle(const vec2int& myvec2, const int radius, const CHAR_INFO& mych) {
-	int x = 0;
-	int y = radius;
-	int delta = 1 - 2 * radius;
-	int error = 0;
+	
 
-	while (y >= x) {
-		setPixel({ myvec2.x + x, myvec2.y + y }, mych);
-		setPixel({ myvec2.x + x, myvec2.y - y }, mych);
-		setPixel({ myvec2.x - x, myvec2.y + y }, mych);
-		setPixel({ myvec2.x - x, myvec2.y - y }, mych);
-		setPixel({ myvec2.x + y, myvec2.y + x }, mych);
-		setPixel({ myvec2.x + y, myvec2.y - x }, mych);
-		setPixel({ myvec2.x - y, myvec2.y + x }, mych);
-		setPixel({ myvec2.x - y, myvec2.y - x }, mych);
-		error = 2 * (delta + y) - 1;
-		if ((delta < 0) && (error <= 0)) {
-			delta += 2 * ++x + 1;
-			continue;
+	switch (radius)
+	{
+		//just dot
+	case 0:
+		return;
+		break;
+
+		//crosshair without middle dot
+	case 1:
+		setPixel({ myvec2.x - 1, myvec2.y }, mych);
+		setPixel({ myvec2.x + 1, myvec2.y }, mych);
+		setPixel({ myvec2.x, myvec2.y - 1 }, mych);
+		setPixel({ myvec2.x, myvec2.y + 1 }, mych);
+		return;
+		break;
+
+		//5x5 square without corner pixels
+	case 2:
+		//top line
+		setPixel({ myvec2.x - 1, myvec2.y - 2 }, mych);
+		setPixel({ myvec2.x, myvec2.y - 2 }, mych);
+		setPixel({ myvec2.x + 1, myvec2.y - 2 }, mych);
+		//bottom line
+		setPixel({ myvec2.x - 1, myvec2.y + 2 }, mych);
+		setPixel({ myvec2.x, myvec2.y + 2 }, mych);
+		setPixel({ myvec2.x + 1, myvec2.y + 2 }, mych);
+		//left line
+		setPixel({ myvec2.x - 2, myvec2.y - 1 }, mych);
+		setPixel({ myvec2.x - 2, myvec2.y}, mych);
+		setPixel({ myvec2.x - 2, myvec2.y + 1 }, mych);
+		//right line
+		setPixel({ myvec2.x + 2, myvec2.y - 1 }, mych);
+		setPixel({ myvec2.x + 2, myvec2.y }, mych);
+		setPixel({ myvec2.x + 2, myvec2.y + 1 }, mych);
+		return;
+		break;
+
+
+
+	default:
+		int x = 0;
+		int y = radius;
+		int delta = 1 - 2 * radius;
+		int error = 0;
+
+		while (y >= x) {
+			setPixel({ myvec2.x + x, myvec2.y + y }, mych);
+			setPixel({ myvec2.x + x, myvec2.y - y }, mych);
+			setPixel({ myvec2.x - x, myvec2.y + y }, mych);
+			setPixel({ myvec2.x - x, myvec2.y - y }, mych);
+			setPixel({ myvec2.x + y, myvec2.y + x }, mych);
+			setPixel({ myvec2.x + y, myvec2.y - x }, mych);
+			setPixel({ myvec2.x - y, myvec2.y + x }, mych);
+			setPixel({ myvec2.x - y, myvec2.y - x }, mych);
+			error = 2 * (delta + y) - 1;
+			if ((delta < 0) && (error <= 0)) {
+				delta += 2 * ++x + 1;
+				continue;
+			}
+			if ((delta > 0) && (error > 0)) {
+				delta -= 2 * --y + 1;
+				continue;
+			}
+			delta += 2 * (++x - --y);
 		}
-		if ((delta > 0) && (error > 0)) {
-			delta -= 2 * --y + 1;
-			continue;
-		}
-		delta += 2 * (++x - --y);
+		break;
 	}
+
 
 }
 
-
+void AEGraphic::drawCircle(const vec2int& myvec2, const int radius, const wchar_t mych, const smalluint color) {
+	drawCircle(myvec2, radius, { mych, color });
+}
 
 
 void AEGraphic::startrd() {

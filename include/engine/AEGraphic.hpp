@@ -133,6 +133,7 @@ public:
 	}
 
 	void drawCircle(const vec2int& myvec2, const int radius, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+	void drawCircle(const vec2int& myvec2, const int radius, const wchar_t mych, const smalluint color);
 
 	void setRenderType(int rtype) {
 		switch (rtype)
