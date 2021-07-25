@@ -31,6 +31,7 @@
 
 #include <limits>
 #include <chrono>
+#include "custom_types.hpp"
 
  //a few typedefs so I'll type less code
  //
@@ -81,5 +82,20 @@ typedef std::chrono::time_point<std::chrono::system_clock> steadytime;
 #define getsystime std::chrono::system_clock::now()
 ///time point. using preprocessor macro, as it is a template, and we only need to shorten the name
 #define timepoint std::chrono::time_point
+
+//custom types
+
+///long name for vector 2(int)
+typedef vec2int vector2_int;
+///long name for vector 2(float)
+typedef vec2 vector2;
+///long name for vector 3(int)
+typedef vec3int vector3_int;
+///long name for vector 3(float)
+typedef vec3 vector3;
+///another name for the keystate
+typedef keystate AEKBKey;
+
+
 
 #endif // !TYPEDEFS_HPP

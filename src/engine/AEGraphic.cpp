@@ -1,4 +1,4 @@
-﻿/*
+/*
 	ArtyK's Console (Game) Engine. Console engine for apps and games
 	Copyright (C) 2021  Artemii Kozhemiak
 
@@ -41,20 +41,27 @@ CHAR_INFO* AEGraphic::m_currentbuffer = nullptr;
 COORD AEGraphic::m_screensize;
 atomic<int> AEGraphic::moduleamt = 0;
 atomic<bool> AEGraphic::m_settingscreen = false;
-
+bool AEGraphic::m_bstoptrd = false;
+std::thread AEGraphic::m_thread;
+bool AEGraphic::m_clrscr;
+AEScreen* AEGraphic::m_myscr = nullptr;
+AEFrame AEGraphic::m_fr(GAME_FPS);
 
 ///FIXME:rewrite the initialisation to match variable declaration
-AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fpsdelay,bool enablelog, bool useGlobLog) : __AEBaseClass("AEGraphic", ++m_globalmodulenum), 
-m_myscr(false), m_fr(fpsdelay), m_bstoptrd(false),
-m_monochrome(false)
+AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fpsdelay,bool enablelog, bool useGlobLog) : __AEBaseClass("AEGraphic", ++m_globalmodulenum)
 {
-	moduleamt++;
-	if (!m_threadon) {
+	m_fr.setfps(fpsdelay);
+	if (moduleamt == 0) {
 		m_screensize = { sizex, sizey };
 		m_screendata = new CHAR_INFO[sizex * sizey];
 		memset(m_screendata, 0, sizex * sizey * sizeof(CHAR_INFO));
 		m_currentbuffer = m_screendata;
+		//this is very very bad, but making m_myscr a variable, breaks the engine
+		//with error code "bad handle". And the cause is the global variable declaration order
+		m_myscr = new AEScreen;
 	}
+	moduleamt++;
+	
 	
 #ifdef AE_LOG_ENABLE
 	if (enablelog) {
@@ -80,11 +87,11 @@ m_monochrome(false)
 	}
 	else
 	{
-		m_myscr.setScreen(sizex, sizey, fonth, fontw);
+		m_myscr->setScreen(sizex, sizey, fonth, fontw);
 	}
 	
 	m_rtwindow = { 0, 0,
-		short(m_myscr.GetScreenRes().X-1), short(m_myscr.GetScreenRes().Y-1)};
+		short(m_myscr->GetScreenRes().X-1), short(m_myscr->GetScreenRes().Y-1)};
 	artyk::utils::normal_log(m_logptr, "Started Graphics module!", LOG_SUCCESS, m_modulename);
 	startrd();
 	
@@ -94,10 +101,19 @@ AEGraphic::~AEGraphic(){
 	moduleamt--;
 	if (moduleamt == 0) {
 		closetrd();
-		if (m_screendata) {
+		if (m_screendata && m_currentbuffer != m_screendata) {
 			delete[] m_screendata;
 			m_currentbuffer = nullptr;
 		}
+		if (m_screendata) {
+			delete[] m_screendata;
+			m_screendata = nullptr;
+		}
+		if (m_myscr) {
+			delete[] m_myscr;
+			m_myscr = nullptr;
+		}
+
 	}
 	
 	artyk::utils::normal_log(m_logptr, "Closed Graphics module", LOG_SUCCESS, m_modulename);
@@ -156,8 +172,11 @@ void AEGraphic::copybuffer(const CHAR_INFO* mych, int buffsize) {
 
 
 void AEGraphic::setscreen(short swidth, short sheight, short fonth, short fontw, bool preservedata) {
+	
+	
+	
 	m_settingscreen = true;
-	m_myscr.setScreen(swidth, sheight, fonth, fontw);
+	m_myscr->setScreen(swidth, sheight, fonth, fontw);
 
 	if (swidth != m_screensize.X || sheight != m_screensize.Y) {
 		if (m_screendata)
@@ -183,7 +202,7 @@ void AEGraphic::setPixel(const vec2int& myvec2, const CHAR_INFO& mych) {
 		m_currentbuffer[m_screensize.X * myvec2.y + myvec2.x] = mych;
 	}
 #endif // !AE_GFX_ENABLE_WRAPPING
-
+	//drawscreen();
 
 }
 
@@ -216,13 +235,15 @@ void AEGraphic::fillRandom(const vec2int& myvec2_1, const vec2int& myvec2_2, wch
 
 
 CHAR_INFO AEGraphic::getpixel(const vec2int& myvec2) const {
-	if (myvec2.x > 0 && myvec2.x < m_screensize.X && myvec2.y > 0 && myvec2.y < m_screensize.Y) {
+
+	if (m_screendata && myvec2.x > 0 && myvec2.x < m_screensize.X && myvec2.y > 0 && myvec2.y < m_screensize.Y) {
 		return m_screendata[m_screensize.X * myvec2.y + myvec2.x];
 	}
 	return { 0,0 };
 }
 
-
+//just copied the bresenham's line algorithm
+//added only the vertical, horisontal and diagonal(45deg) lines
 void AEGraphic::drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, const CHAR_INFO& mych) {
 	const int
 		deltaX = abs(myvec2_2.x - myvec2_1.x),
@@ -270,6 +291,7 @@ void AEGraphic::drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, const
 			temp.y += signY;
 		}
 	}
+	
 }
 
 void AEGraphic::drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych, smalluint color) {
@@ -286,11 +308,43 @@ void AEGraphic::drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, c
 	drawTriangle(myvec2_1, myvec2_2, myvec2_3, { {mych}, color });
 }
 
+void AEGraphic::drawCircle(const vec2int& myvec2, const int radius, const CHAR_INFO& mych) {
+	int x = 0;
+	int y = radius;
+	int delta = 1 - 2 * radius;
+	int error = 0;
+
+	while (y >= x) {
+		setPixel({ myvec2.x + x, myvec2.y + y }, mych);
+		setPixel({ myvec2.x + x, myvec2.y - y }, mych);
+		setPixel({ myvec2.x - x, myvec2.y + y }, mych);
+		setPixel({ myvec2.x - x, myvec2.y - y }, mych);
+		setPixel({ myvec2.x + y, myvec2.y + x }, mych);
+		setPixel({ myvec2.x + y, myvec2.y - x }, mych);
+		setPixel({ myvec2.x - y, myvec2.y + x }, mych);
+		setPixel({ myvec2.x - y, myvec2.y - x }, mych);
+		error = 2 * (delta + y) - 1;
+		if ((delta < 0) && (error <= 0)) {
+			delta += 2 * ++x + 1;
+			continue;
+		}
+		if ((delta > 0) && (error > 0)) {
+			delta -= 2 * --y + 1;
+			continue;
+		}
+		delta += 2 * (++x - --y);
+	}
+
+}
+
+
+
 
 void AEGraphic::startrd() {
 	if (m_threadon) {
 		return;
 	}
+	m_bstoptrd = false;
 	m_thread = std::thread(&AEGraphic::mainthread, this);
 	if (m_thread.joinable()) {
 		m_threadon = true;

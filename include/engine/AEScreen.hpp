@@ -121,8 +121,10 @@ public:
 	}
 #endif
 
-	//returns screen size/resolution, in character cells
+	///returns screen size/resolution, in character cells
 	static inline COORD GetScreenRes(void) { return AEScreen::g_csbi.dwSize; }
+	///returns screen font size, in pixels(x,y)
+	static inline COORD GetFontSize(void) {return { g_cfi.dwFontSize.X, g_cfi.dwFontSize.Y};}
 
 	///\brief console colors for the graphics engine
 	/// took them from the color namespace

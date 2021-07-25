@@ -1,4 +1,4 @@
-﻿/*
+/*
 	ArtyK's Console (Game) Engine. Console engine for apps and games
 	Copyright (C) 2021  Artemii Kozhemiak
 
@@ -91,40 +91,48 @@ public:
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, wchar_t mych, smalluint color);
 
-	void drawRegPoly(const vec2int& myvec2, const short radius, const short sideamount = 5) {
+    void drawPoly(const vec2int parr[], const unsigned int arrsize){
+        if(arrsize == 0) return;
+        vec2int prevpos{parr[0]};
+        for(unsigned int i = 1; i < arrsize; i++){
+            drawLine(prevpos,parr[i]);
+            prevpos = parr[i];
+        }
+    }
+
+	void drawRegPoly(const vec2int& myvec2, const int radius, const int sideamount = 5) {
 		const float angleincrement = 360.0f / sideamount;
 		vec2int pointpos;
-		for (int i = 0; i < sideamount; i++) {
+		vec2int prevpos{
+		    artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(-90) * radius),
+		    artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(-90) * radius)
+	    };
+		for (int i = 1; i < sideamount+1; i++) {
 			pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(angleincrement * i - 90) * radius);
 			pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(angleincrement * i - 90) * radius);
-			setPixel(pointpos);
-		}
-
-	}
-	
-	void drawCircle(const vec2int& myvec2, const short radius, const vec2& distortion = { 1.0f,1.0f }) {
-		vec2int pointpos;
-		const float increment = 360.0f/(3.1416f * radius * radius);
-		for (float i = 0; i < 360.0f; i += increment) {
-			pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(i) * (radius-1));
-			pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(i) * (radius-1));
-			setPixel(pointpos);
-		}
-
-	}
-	void drawCircle2(const vec2int& myvec2, short radius, vec2 distortion = { 1.0f,1.0f }) {
-		vec2int pointpos;
-		pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(0) * (radius-1));
-		pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(0) * (radius-1));
-		vec2int prevpos = pointpos;
-		for (int i = 1; i < 360; i += 1) {
-			pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(i) * (radius - 1));
-			pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(i) * (radius - 1));
-			drawLine(prevpos,pointpos);
+			drawLine(pointpos, prevpos);
 			prevpos = pointpos;
 		}
 
 	}
+	
+	void drawRegPoly2(const vec2int& myvec2, const int radius, const int sideamount = 5) {
+		const float angleincrement = 360.0f / sideamount;
+		vec2int pointpos;
+		vec2int prevpos{
+		    artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(-90) * radius),
+		    artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(-90) * radius)
+	    };
+		for (float i = -90+angleincrement; i < 360; i+=angleincrement) {
+			pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(i) * radius);
+			pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(i) * radius);
+			drawLine(pointpos, prevpos);
+			prevpos = pointpos;
+		}
+
+	}
+
+	void drawCircle(const vec2int& myvec2, const int radius, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
 
 	void setRenderType(int rtype) {
 		switch (rtype)
@@ -151,7 +159,7 @@ public:
 			break;
 		}
 	}
-
+    ///returns pixel value at given location
 	CHAR_INFO getpixel(const vec2int& myvec2) const;
 
 	constexpr static inline smalluint getattrib(smalluint bgr = AEGraphic::DEF_BGR, smalluint fgr = AEGraphic::DEF_FGR) {
@@ -187,40 +195,49 @@ public:
 		DEF_BGR = artyk::color::DEF_BGR,
 		DEF_FGR = artyk::color::DEF_BGR,
 		DEF_ATTR = artyk::color::DEF_BGR * 16 + artyk::color::DEF_FGR;
-
+    ///opens and starts the drawing thread
 	void startrd(void);
+	///stops and closes the drawing thread
 	void closetrd(void);
 private:
 	
-	///FIXME:rewrite the declarations to remove byte padding
+	//FIXME:rewrite the declarations to remove byte padding
+	///the graphics thread code
 	void mainthread(void);
-	void convertScreenType(char screentype) {
-
-		
-
-	}
-	AEScreen m_myscr;
-	AEFrame m_fr;
-	std::thread m_thread;
+	///pointer AEScreen module for screen manipulations
+	///needed as if to make it a variable, it would crash with "bad handle" error
+	///because it creates the module before creating and assigning handles
+	static AEScreen* m_myscr;
+	///AEFrame module for thread drawing delay
+	static AEFrame m_fr;
+	///thread object to create drawing thread
+	static std::thread m_thread;
+	///variable to store window size
 	_SMALL_RECT m_rtwindow;
 	///variable to store the module index number
 	static atomic<biguint> m_globalmodulenum;
-	///the buffer we made
+	///the screen buffer that module draws
 	static CHAR_INFO* m_screendata;
 	///the buffer our utilities will use, usually m_screendata
 	///otherwise, if its set to other buffer, copy it with copybuffer()
 	static CHAR_INFO* m_currentbuffer;
-
+    ///stores screen size, in character cells
 	static COORD m_screensize;
+	///the thread fps amount, get it using getfps(void)
 	static int graph_fps;
 	///amount of graphics modules currently active
+	///(to close thread and dealloc memory when needed)
 	static atomic<int> moduleamt;
+	///bool to indicate if we are doing something with console screen or buffer
+	///(prevents write if true)
 	static atomic<bool> m_settingscreen;
+	///bool to indicate if the thread is working currently
 	static bool m_threadon;
-	bool m_bstoptrd;
-	bool m_clrscr;
-	bool m_monochrome;
-	
+	///bool to indicate if we need to stop the drawing thread
+	static bool m_bstoptrd;
+	///bool to indicate if graphics thread needs to clear buffer after drawing
+	///(not used if AE_GFX_ALWAYS_CLEAR_AFTER_DRAW is on) 
+	static bool m_clrscr;
 };
 
 #endif // !AEGRAPHIC_HPP

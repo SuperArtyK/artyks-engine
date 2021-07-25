@@ -66,7 +66,7 @@ int main()
 	
 
 	for (;;){
-		mygx.drawRegPoly({ screenx / 2,screeny / 2 }, 5, 9);
+		mygx.drawCircle({ screenx / 2,screeny / 2 }, 2);
 		
 		i++;
 		timeend = getsystime;
