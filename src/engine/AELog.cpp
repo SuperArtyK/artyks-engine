@@ -75,7 +75,7 @@ int AELog::writetolog(const std::string& l_strMessg, const smalluint l_iType, co
 		first_log_entry_done = true;
 		m_message = m_strLogpath + "LOG_" + logdate() + ".log";
 		std::fstream engstarted(m_message.c_str(), std::fstream::out | std::fstream::app);
-		m_message = "[ " + artyk::utils::currentDateTime() + " ] [" + checktype(LOG_SUCCESS) + "] [Engine]: " + "Started \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build) + "\n";
+		m_message = "[ " + artyk::utils::currentDateTime() + " ] [" + checktype(LOG_SUCCESS) + "] [Engine]: " + "Started \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + artyk::app_build + "\n";
 #ifdef AE_DEBUG
 		//https://stackoverflow.com/questions/850774/how-to-determine-the-hardware-cpu-and-ram-on-a-machine
 		//thanks bsruth

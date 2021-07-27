@@ -50,6 +50,9 @@
 ///auto-adding application title when changing title with AEScreen
 #define AE_ADD_APP_TITLE
 
+///auto-adding application version when changing title with AEScreen
+#define AE_ADD_APP_VERSION
+
 ///AEFrame delay in AEKeyboard key scanning thread
 #define AE_KB_DELAY
 
@@ -70,17 +73,18 @@
 
 //undefine flags to turn them off
 
-#undef AE_DEBUG
-#undef AE_GLOBALMODULE
-#undef AE_EXPERIMENTAL
+//#undef AE_DEBUG
+//#undef AE_GLOBALMODULE
+//#undef AE_EXPERIMENTAL
 //#undef AE_LOOKUP_TABLE
-#undef AE_LOG_ENABLE
-#undef AE_ADD_APP_TITLE
+//#undef AE_LOG_ENABLE
+//#undef AE_ADD_APP_TITLE
+//#undef AE_ADD_APP_VERSION
 //#undef AE_KB_DELAY
 //#undef AE_BP_DELAY
 //#undef AE_DETAILED_WINDOW_MESSAGES
 #undef AE_GLOBALKB_ENABLE_MOUSE
-#undef AE_GFX_ENABLE_WRAPPING
+//#undef AE_GFX_ENABLE_WRAPPING
 #undef AE_GFX_ALWAYS_CLEAR_AFTER_DRAW
 
 //I know this is a crutch, but I don't want to add AE_DEBUG to the compiler settings, might break all of it

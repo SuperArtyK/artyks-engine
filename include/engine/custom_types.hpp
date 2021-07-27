@@ -27,10 +27,11 @@
 
 #ifndef CUSTOM_TYPES_HPP
 #define CUSTOM_TYPES_HPP
- ///2d integer vector type
 
 #include <Windows.h>
 
+
+///2d integer vector type
 struct vec2int
 {
 

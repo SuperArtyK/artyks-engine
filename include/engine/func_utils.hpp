@@ -40,6 +40,13 @@ using std::string;
 using std::wstring;
 using std::to_string;
 
+
+#define arrsize(x) (sizeof(x)/sizeof(x[0]))
+#define mod0(x,y) !(x%y)
+
+
+
+
 ///This namespace contains all of things that any of the part of program can use, and is useful.
 ///Such things are -- handles to windows, app names, status(we're starter or closing), flags, functions, etc.
 namespace artyk {

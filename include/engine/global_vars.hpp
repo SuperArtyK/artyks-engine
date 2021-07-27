@@ -77,6 +77,7 @@ using std::to_string;
 ///macro for newline string
 #define NLS "\n"
 
+
 //im making this, so I can differentiate between std, mine, and other namespaces
 //and have "intuitive" positions of things, that screen stuff is in screen subns, for example
 ///This namespace contains all of things that any of the part of program can use, and is useful.
@@ -93,13 +94,22 @@ namespace artyk {
 		string("(DEBUG)") +
 #endif // AE_DEBUG
 		"ArtyK's Console Engine Test";
+	
+	///has engine version stuff(ints)
+	namespace version {
+		constexpr int major = 0;
+		constexpr int minor = 7;
+		constexpr int patch = 0;
+		///build of app, how do you autoincrement these?
+		constexpr int build = 3635;
+	}
 
-	///build of app, how do you autoincrement these?
-	constexpr int app_build = 3635;
 	///version
-	const string app_version = "v.0.0.6";
+	const string app_version = "v"+to_string(version::major)+"."+to_string(version::minor)+"."+to_string(version::patch);
+	///build
+	const string app_build = to_string(version::build);
 	///full name of the app
-	const string app_name_full = app_name + " " + app_version + ":" + to_string(app_build);
+	const string app_name_full = app_name + " " + app_version + ":" + app_build;
 
 	///status of starting up
 	inline short app_startstatus = 0;

@@ -46,6 +46,11 @@
 #include "AEGraphic.hpp"
 using namespace std;
 
+#define scrhalfx (screenx/2)
+#define scrhalfy (screeny/2)
+
+
+short screenx = 128, screeny = 128, fontw = 5, fonth = 5;
 
 int main()
 {
@@ -58,11 +63,16 @@ int main()
 	float fElapsedTime;
 	int fps = 0;
 	AEScreen myscr;
-	short screenx = 32, screeny = 32, fontw = 10, fonth = 10;
 	AEGraphic mygx(screenx, screeny, fontw, fonth);
 	AEFrame myfr;
+	const int radius = scrhalfx;
+	mygx.createTripleBuffering();
 	for (;;){
-		mygx.drawCircle({ screenx / 2,screeny / 2 }, i%screeny, '#',rand());
+		mygx.clearbuffer();
+		for (int x = 0; x < screenx; x++) {
+			mygx.drawCircle({ i+x, x }, x, '#', i+x);
+		}
+		
 		
 		i++;
 		timeend = getsystime;
@@ -75,20 +85,22 @@ int main()
 			
 			//mybp.makesound_async(660, 200);
 			myscr.settitle("GFX FPS: " + to_string(AEGraphic::getfps()) + "|GAME FPS: " + to_string(fps) + "");
+			
 
 		}
-		//myfr.sleep();
+		mygx.copybuffer();
+		myfr.sleep();
 	}
 
 	
 
-
+	mygx.removeTripleBuffering();
 
 	artyk::closing_app = 1;
 
 	if (artyk::closing_app) {
 		AELog mylog;
-		mylog.writetolog("Closed the \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + to_string(artyk::app_build), LOG_INFO);
+		mylog.writetolog("Closed the \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + artyk::app_build, LOG_INFO);
 	}
 	//cout << "\nPress enter to continue . . .\n";
 	std::cin.get();

@@ -66,16 +66,41 @@ public:
 	/// <summary>
 	/// copies given buffer to the the screen buffer
 	/// </summary>
-	/// <param name="mych">the buffer itself; </param>
+	/// <param name="mych">the buffer itself; default is m_currentbuffer</param>
 	/// <param name="buffsize">size of the buffer, in array members; default to m_screensize</param>
 	/// @note if size is bigger than current screen buffer size, it will be truncated
+	/// @note if nothing is passed, the m_currentbuffer will be copied to the drawing buffer
 	void copybuffer(const CHAR_INFO* mych = m_currentbuffer, int buffsize = m_screensize.X*m_screensize.Y);
-	///sets current buffer
-	void setbuffer(CHAR_INFO* mych) {
-		m_currentbuffer = mych;
+	
+	///Creates third buffer(second AEGraphic buffer) to create frames and feed them entirely to drawing thread.
+	///Helps to remove flickering
+	void createTripleBuffering() {
+		if (m_currentbuffer && m_currentbuffer != m_screendata) {
+			return;
+		}
+		m_currentbuffer = new CHAR_INFO[m_screensize.X * m_screensize.Y];
 	}
 
-	void setscreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7, bool preservedata = false);
+	void removeTripleBuffering() {
+		if (m_currentbuffer && m_currentbuffer != m_screendata) {
+			return;
+		}
+		delete[] m_currentbuffer;
+		m_currentbuffer = m_screendata;
+	}
+
+	/// <summary>
+	/// returns pointer to third pointer, if it exists. If it doesnt, returns nullptr
+	/// </summary>
+	/// @warning USE THIS WITH CARE! DON'T DELETE THE POINTER, OR GRAPHICS ENGINE WILL CRASH!
+	CHAR_INFO* getTripleBufferPtr() {
+		if (m_currentbuffer && m_currentbuffer != m_screendata)
+			return m_currentbuffer;
+		else
+			return nullptr;
+	}
+
+	void setscreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7);
 
 	void setPixel(const vec2int& myvec2, wchar_t mych, smalluint color);
 	void setPixel(const vec2int& myvec2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
@@ -91,13 +116,14 @@ public:
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, wchar_t mych, smalluint color);
 
-    void drawPoly(const vec2int parr[], const unsigned int arrsize){
-        if(arrsize == 0) return;
+    void drawPoly(const vec2int parr[], const unsigned int polyarrsize){
+        if(polyarrsize == 0) return;
         vec2int prevpos{parr[0]};
-        for(unsigned int i = 1; i < arrsize; i++){
+        for(unsigned int i = 1; i < polyarrsize; i++){
             drawLine(prevpos,parr[i]);
             prevpos = parr[i];
         }
+		drawLine(prevpos, parr[0]);
     }
 
 	void drawRegPoly(const vec2int& myvec2, const int radius, const int sideamount = 5) {
@@ -196,15 +222,16 @@ public:
 		DEF_BGR = artyk::color::DEF_BGR,
 		DEF_FGR = artyk::color::DEF_BGR,
 		DEF_ATTR = artyk::color::DEF_BGR * 16 + artyk::color::DEF_FGR;
-    ///opens and starts the drawing thread
-	void startrd(void);
-	///stops and closes the drawing thread
-	void closetrd(void);
+    
 private:
 	
 	//FIXME:rewrite the declarations to remove byte padding
 	///the graphics thread code
 	void mainthread(void);
+	///opens and starts the drawing thread
+	void startrd(void);
+	///stops and closes the drawing thread
+	void closetrd(void);
 	///pointer AEScreen module for screen manipulations
 	///needed as if to make it a variable, it would crash with "bad handle" error
 	///because it creates the module before creating and assigning handles

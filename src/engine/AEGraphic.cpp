@@ -47,7 +47,9 @@ bool AEGraphic::m_clrscr;
 AEScreen* AEGraphic::m_myscr = nullptr;
 AEFrame AEGraphic::m_fr(GAME_FPS);
 
-///FIXME:rewrite the initialisation to match variable declaration
+
+
+//FIXME:rewrite the initialisation to match variable declaration
 AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fpsdelay,bool enablelog, bool useGlobLog) : __AEBaseClass("AEGraphic", ++m_globalmodulenum)
 {
 	m_fr.setfps(fpsdelay);
@@ -101,13 +103,13 @@ AEGraphic::~AEGraphic(){
 	moduleamt--;
 	if (moduleamt == 0) {
 		closetrd();
-		if (m_screendata && m_currentbuffer != m_screendata) {
-			delete[] m_screendata;
-			m_currentbuffer = nullptr;
-		}
 		if (m_screendata) {
 			delete[] m_screendata;
 			m_screendata = nullptr;
+		}
+		if (m_currentbuffer) {
+			delete[] m_screendata;
+			m_currentbuffer = nullptr;
 		}
 		if (m_myscr) {
 			delete[] m_myscr;
@@ -159,8 +161,9 @@ void AEGraphic::clearbuffer() {
 }
 
 void AEGraphic::copybuffer(const CHAR_INFO* mych, int buffsize) {
-	///check if our buffer is equals to our data buffer
+	//check if our buffer is equals to our data buffer
 	//(if nothing was passed and m_currentbuffer is equals to m_screendata
+
 	if (mych == m_screendata) return;
 	m_settingscreen = true;//atomic bool, blocks the drawing thread untill false
 	if (buffsize > (m_screensize.X * m_screensize.Y)) {//precaution, if buffsize is more than screen size
@@ -171,7 +174,7 @@ void AEGraphic::copybuffer(const CHAR_INFO* mych, int buffsize) {
 }
 
 
-void AEGraphic::setscreen(short swidth, short sheight, short fonth, short fontw, bool preservedata) {
+void AEGraphic::setscreen(short swidth, short sheight, short fonth, short fontw) {
 	
 	
 	
@@ -179,13 +182,18 @@ void AEGraphic::setscreen(short swidth, short sheight, short fonth, short fontw,
 	m_myscr->setScreen(swidth, sheight, fonth, fontw);
 
 	if (swidth != m_screensize.X || sheight != m_screensize.Y) {
-		if (m_screendata)
+		if (m_currentbuffer && m_currentbuffer != m_screendata) {
+			delete[] m_currentbuffer;
+			m_currentbuffer = new CHAR_INFO[swidth * sheight];
+		}
+		if (m_screendata) {
 			delete[] m_screendata;
+		}
 		m_screendata = new CHAR_INFO[swidth * sheight];
-		m_currentbuffer = m_screendata;
-	}
-	if(!preservedata)
 		clearscreen();
+		clearbuffer();
+	}
+	
 	m_settingscreen = false;
 
 }
@@ -245,6 +253,12 @@ CHAR_INFO AEGraphic::getpixel(const vec2int& myvec2) const {
 //just copied the bresenham's line algorithm
 //added only the vertical, horisontal and diagonal(45deg) lines
 void AEGraphic::drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, const CHAR_INFO& mych) {
+	
+	if (myvec2_1.x == myvec2_2.x && myvec2_1.y == myvec2_2.y) {
+		setPixel(myvec2_1, mych);
+		return;
+	}
+
 	const int
 		deltaX = abs(myvec2_2.x - myvec2_1.x),
 		deltaY = abs(myvec2_2.y - myvec2_1.y),

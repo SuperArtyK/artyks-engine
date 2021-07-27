@@ -144,30 +144,27 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 
 	//change console visual size to a minimum so ScreenBuffer can shrink
 	//below the actual visual size
+	artyk::utils::debug_log(m_logptr, "----------START SCREEN SETTING----------", LOG_INFO, m_modulename);
 	g_rectWindow = { 0, 0, 1, 1 };
 	if (!SetConsoleWindowInfo(g_output_handle, TRUE, &g_rectWindow)) {
-		artyk::utils::FError("Could not SetConsoleWindowInfo!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
+		artyk::utils::FError_log(m_logptr, "Could not SetConsoleWindowInfo!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
-
+	artyk::utils::debug_log(m_logptr, "Set console window info to: 0,0,1,1", LOG_OK, m_modulename);
 	//set the size of the screen buffer
-	//if (!SetConsoleScreenBufferSize(g_output_handle, {swidth, sheight})) {
-	//	artyk::utils::FError("Could not SetConsoleScreenBufferSize!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
-	//}
-	// the reason I took it out of the if-statement, is that it somehow fails and sets the size anyways
+	if (!SetConsoleScreenBufferSize(g_output_handle, {swidth, sheight})) {
+		artyk::utils::debug_log(m_logptr, "Could not SetConsoleScreenBufferSize!\nFunction error code: " + to_string(GetLastError()), LOG_ERROR,m_modulename);
+	}
+	// the reason I took it out of the fatal error call, is that it somehow fails and sets the size anyways
 	// we only care about the size setting
-	SetConsoleScreenBufferSize(g_output_handle, { swidth, sheight });
+	//SetConsoleScreenBufferSize(g_output_handle, { swidth, sheight });
 	//setBufferSize(swidth, sheight);
 
 	artyk::utils::debug_log(m_logptr, "Set console buffer to: " +to_string(swidth)+"x"+to_string(sheight), LOG_OK, m_modulename);
-
-
-
 	//assign screen buffer to the console
 	if (!SetConsoleActiveScreenBuffer(g_output_handle)) {
-		artyk::utils::FError("Could not SetConsoleActiveScreenBuffer!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
+		artyk::utils::FError_log(m_logptr,"Could not SetConsoleActiveScreenBuffer!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
-
-	artyk::utils::debug_log(m_logptr, "Assigned the screen buffer to console", LOG_OK, m_modulename);
+	artyk::utils::debug_log(m_logptr, "Set console's active screen buffer to: "+utils::addrtostr(g_output_handle), LOG_OK, m_modulename);
 	artyk::utils::debug_log(m_logptr, "Setting console font", LOG_INFO, m_modulename);
 
 	//set the font info
@@ -180,24 +177,20 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 
 	//set the name of font
 	wcscpy_s(g_cfi.FaceName, L"Lucida Console");
-
-
-	artyk::utils::debug_log(m_logptr, "Set console font to: Consolas " + to_string(fontw) + "x" + to_string(fonth), LOG_OK, m_modulename);
-
-
 	//assign font info to console
 	if (!SetCurrentConsoleFontEx(g_output_handle, false, &g_cfi)) {
-		artyk::utils::FError("Could not SetCurrentConsoleFontEx!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
+		artyk::utils::FError_log(m_logptr, "Could not SetCurrentConsoleFontEx!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
+	artyk::utils::debug_log(m_logptr, "Set console font to: Consolas " + to_string(fontw) + "x" + to_string(fonth), LOG_OK, m_modulename);
 
 	artyk::utils::debug_log(m_logptr, "Assigned the console font", LOG_OK, m_modulename);
 
 	//getting buffer info for further checking
 	if (!GetConsoleScreenBufferInfo(g_output_handle, &g_csbi)) {
-		artyk::utils::FError("Could not GetConsoleScreenBufferInfo!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
+		artyk::utils::FError_log(m_logptr, "Could not GetConsoleScreenBufferInfo!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
 
-	artyk::utils::debug_log(m_logptr, "Got GetConsoleScreenBufferInfo", LOG_OK, m_modulename);
+	artyk::utils::debug_log(m_logptr, "Got console screen buffer information", LOG_OK, m_modulename);
 
 
 	//checking if asked console size is in max allowed range
@@ -205,9 +198,9 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 		artyk::utils::FError_log(m_logptr,
 			"Window size.\n"
 			"The console height you set is too big for this screen! Decrease it or something!\n"
-			"Allowed size: " + to_string(g_csbi.dwMaximumWindowSize.X) + "x" + to_string(g_csbi.dwMaximumWindowSize.Y) +
-			"\nWith the font : " + to_string(fontw) + "x" + to_string(fonth) +
-			"\nAsked for: " + to_string(swidth) + "x" + to_string(sheight) +
+			"\nWith the font set: " + to_string(fontw) + "x" + to_string(fonth) +
+			"\nThe Allowed size is: " + to_string(g_csbi.dwMaximumWindowSize.X) + "x" + to_string(g_csbi.dwMaximumWindowSize.Y) +
+			"\nWhile Asked for: " + to_string(swidth) + "x" + to_string(sheight) +
 			"\nFunction error code : " + to_string(GetLastError()),
 			m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
@@ -218,9 +211,9 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 		artyk::utils::FError_log(m_logptr,
 			"Window size.\n"
 			"The console height you set is too big for this screen! Decrease it or something!\n"
-			"Allowed size: " + to_string(g_csbi.dwMaximumWindowSize.X) + "x" + to_string(g_csbi.dwMaximumWindowSize.Y) +
-			"\nWith the font : " + to_string(fontw) + "x" + to_string(fonth) +
-			"\nAsked for: " + to_string(swidth) + "x" + to_string(sheight) +
+			"\nWith the font set: " + to_string(fontw) + "x" + to_string(fonth) +
+			"\nThe Allowed size is: " + to_string(g_csbi.dwMaximumWindowSize.X) + "x" + to_string(g_csbi.dwMaximumWindowSize.Y) +
+			"\nWhile Asked for: " + to_string(swidth) + "x" + to_string(sheight) +
 			"\nFunction error code : " + to_string(GetLastError()),
 			m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
@@ -236,6 +229,8 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 
 	}
 	artyk::utils::debug_log(m_logptr, "Window set successfully to: "+to_string(swidth)+"x"+to_string(sheight) + " with font: Consolas " + to_string(fontw) + "x" + to_string(fonth), LOG_INFO, m_modulename);
+	
+	artyk::utils::debug_log(m_logptr, "----------END SCREEN SETTING----------", LOG_INFO, m_modulename);
 	//our beloved flags, probably will be useful
 	// 	   --Past ArtyK
 // 	if (!SetConsoleMode(g_hStdIn, ENABLE_EXTENDED_FLAGS | ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT)) {
@@ -254,19 +249,25 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 void AEScreen::settitle(const string& title) {//speaks for itself
 		//sets app title
 	using namespace artyk::utils;
-	
+	SetConsoleTitleA((
 #ifdef AE_ADD_APP_TITLE
 
-	if (findinstr(title, artyk::app_name)) {
-		SetConsoleTitleA(title.c_str());
-	}
-	else
-	{
-		SetConsoleTitleA((artyk::app_name_full + " | " + title).c_str());
-	}
+#ifdef AE_ADD_APP_VERSION
+
+	((!findinstr(title, artyk::app_name_full)) ? app_name_full : "")
+		+
 #else
-	SetConsoleTitleA(title.c_str());
+	((!findinstr(title, artyk::app_name)) ? app_name : "")
+		+
 #endif // AE_ADD_APP_TITLE
+		" | "+
+
+#endif // AE_ADD_APP_TITLE
+
+
+
+
+	title).c_str());
 	//artyk::utils::debug_log(m_logptr, "Set window title to: " + title, LOG_INFO, m_modulename);
 
 	
