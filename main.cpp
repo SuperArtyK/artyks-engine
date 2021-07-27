@@ -50,7 +50,7 @@ using namespace std;
 #define scrhalfy (screeny/2)
 
 
-short screenx = 128, screeny = 128, fontw = 5, fonth = 5;
+short screenx = 100, screeny = 100, fontw = 7, fonth = 7;
 
 int main()
 {

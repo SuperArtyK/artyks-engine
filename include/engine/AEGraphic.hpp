@@ -189,9 +189,7 @@ public:
     ///returns pixel value at given location
 	CHAR_INFO getpixel(const vec2int& myvec2) const;
 
-	constexpr static inline smalluint getattrib(smalluint bgr = AEGraphic::DEF_BGR, smalluint fgr = AEGraphic::DEF_FGR) {
-		return bgr * 16 + fgr;
-	}
+	
 	static int getfps(void) {
 		return graph_fps;
 	}

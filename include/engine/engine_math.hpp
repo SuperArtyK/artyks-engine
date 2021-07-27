@@ -27,11 +27,14 @@
 #pragma once
 
 #include <cmath>
+
  ///converts degrees value x to radians
 #define torad(x) x * 3.141592654f / 180.0f
 
+
+///contains mathematical functions
 namespace artyk::math {
-	///contains mathematical functions
+	
 	//math stuff
 
 	constexpr float PI = 3.141592654f;

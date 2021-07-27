@@ -30,6 +30,10 @@
 
 #include <string>
 #include <Windows.h>
+#include <algorithm>
+#include <iostream>
+#include <chrono>
+#include <sstream>
 #include "engine_flags.hpp"
 using std::string;
 using std::to_string;
@@ -97,25 +101,28 @@ namespace artyk {
 	
 	///has engine version stuff(ints)
 	namespace version {
-		constexpr int major = 0;
-		constexpr int minor = 7;
-		constexpr int patch = 0;
+		constexpr int majorver = 0;
+		constexpr int minorver = 7;
+		constexpr int patchnum = 0;
 		///build of app, how do you autoincrement these?
-		constexpr int build = 3635;
+		constexpr int buildnum = 3635;
 	}
 
 	///version
-	const string app_version = "v"+to_string(version::major)+"."+to_string(version::minor)+"."+to_string(version::patch);
+	const string app_version = "v"+to_string(version::majorver)+"."+to_string(version::minorver)+"."+to_string(version::patchnum);
 	///build
-	const string app_build = to_string(version::build);
+	const string app_build = to_string(version::buildnum);
 	///full name of the app
 	const string app_name_full = app_name + " " + app_version + ":" + app_build;
 
 	///status of starting up
 	inline short app_startstatus = 0;
 
+	///console output handle
 	const HANDLE g_output_handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	///console input handle
 	const HANDLE g_input_handle = GetStdHandle(STD_INPUT_HANDLE);
+	///console window handle
 	const HWND g_console_hwnd = GetConsoleWindow();
 
 	///Screen colors for graphic engine and AEScreen.
@@ -261,6 +268,39 @@ namespace artyk {
 						{L'║', artyk::color::DEF_ATTR},
 			};
 	}
+
+	//not a global variable but a function to set them up
+
+	/// <summary>
+	/// This function initialises all stuff the engine needs, before it starts.
+	/// Call it at the start up, or somewhere when you need, but you can do it only once.
+	/// </summary>
+	/// <param name="high_priority">flag to make main process high-priority</param>
+	/// <param name="noscrollbar">flag to disable console scrollbar showing</param>
+	/// <param name="noresize">flag to disable window resize ability</param>
+	/// <returns></returns>
+	inline void init_main(bool high_priority = true, bool noscrollbar = false, bool noresize = false) {
+		if (artyk::app_startstatus != SHRT_MAX) {
+			srand(time(NULL));
+			SetConsoleActiveScreenBuffer(artyk::g_output_handle);
+			SetConsoleCP(CP_UTF8);
+			SetConsoleOutputCP(CP_UTF8);
+			std::locale loc("en_US.UTF8");
+			std::cout.imbue(loc);
+			std::locale::global(loc);
+			std::setlocale(LC_ALL, "en_US.UTF8");
+			if (high_priority)
+				SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
+			if (noscrollbar)
+				ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
+			if (noresize)
+				SetWindowLong(GetConsoleWindow(), GWL_STYLE, GetWindowLong(GetConsoleWindow(), GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
+
+			artyk::app_startstatus = SHRT_MAX;
+			//done intitializing
+		}
+	}
+
 }
 
 #endif // !GLOB_VARS_HPP

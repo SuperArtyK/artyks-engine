@@ -27,10 +27,6 @@
 
 #ifndef GLOB_FUNCS_HPP
 #define GLOB_FUNCS_HPP
-#include <algorithm>
-#include <iostream>
-#include <chrono>
-#include <sstream>
 #include "global_vars.hpp"
 #include "trig_lookup.hpp"
 
@@ -52,10 +48,14 @@ using std::to_string;
 namespace artyk {
 	///global useful functions
 	namespace utils {
-		//prototypes
-		inline std::string BoolToString(bool b);//converts bool value to cstring
 
-		template<typename T>
+//////////////////////////////////////////////////////////////////////////
+// prototypes
+//////////////////////////////////////////////////////////////////////////
+
+
+		inline std::string btostr(bool b);//converts bool value to std::string
+
 		/// <summary>
 		/// checks if the value you pass is in range
 		/// </summary>
@@ -64,6 +64,7 @@ namespace artyk {
 		/// <param name="maxval">maximum value of range</param>
 		/// <param name="i">the value to check</param>
 		/// <returns>true if in range, false otherwise</returns>
+		template<typename T>
 		inline bool inrange(T minval, T maxval, T i);//checks if the number is in range
 
 		///lowers the and writes to the string you pass
@@ -75,14 +76,19 @@ namespace artyk {
 		///checks if the string is a number. ture if it is, false otherwise
 		inline bool isnum(const std::string& s);
 
-		//returns string of current date and time in YYYY-MM-DD.HH:mm:SS format
+		///returns string of current date and time in YYYY-MM-DD.HH:mm:SS format
 		inline const std::string currentDateTime();
 
+		/// <summary>
+		/// gets numeric value from cin, and repeats untill the value is numeric
+		/// </summary>
+		/// <typeparam name="T">type of the variable</typeparam>
+		/// <param name="variable">the variable to get input to</param>
 		template<typename T>
 		inline void getCinNum(T& variable);
 
 		///fixes cin stream
-		inline void fixcin();
+		inline void fixcin(void);
 
 		/// converts/wides normal string to wide string
 		inline std::wstring widen_str(const std::string& str);//converts string to wstring
@@ -97,29 +103,26 @@ namespace artyk {
 		inline std::string addrtostr(void* myptr);//adds address value to string
 
 		///scans and returns if the app is in focus
-		inline bool isinfocus(); //scans if the app is in focus
+		inline bool isinfocus(void); //scans if the app is in focus
 
-		inline unsigned long rand_xor(void) {          //period 2^96-1
-			static unsigned long x = std::rand(), y = std::rand(), z = std::rand();
-			unsigned long t;
-			x ^= x << 16;
-			x ^= x >> 5;
-			x ^= x << 1;
+		///pseudorandom number generator based on XOR algorithm
+		inline unsigned long rand_xor(void);
 
-			t = x;
-			x = y;
-			y = z;
-			z = t ^ x ^ y;
-
-			return z;
-		}
+		///returns color attribute of the cell from given backround and foreground
+		constexpr inline smalluint getattrib(smalluint bgr, smalluint fgr);
 
 #ifdef AE_EXPERIMENTAL
 		///counts time between calls, not safe/consistent if used in other threads
-		inline float timecounter();
+		inline float timecounter(void);
 #endif
 
-		inline std::string BoolToString(bool b)
+
+//////////////////////////////////////////////////////////////////////////
+// defines
+//////////////////////////////////////////////////////////////////////////
+
+
+		inline std::string btostr(bool b)
 		{
 			return b ? "true" : "false";
 		}
@@ -149,7 +152,7 @@ namespace artyk {
 			return true;
 		}
 
-		inline const std::string currentDateTime() {//returns current date in YYYY-MM-DD.HH:mm:SS format
+		inline const std::string currentDateTime(void) {//returns current date in YYYY-MM-DD.HH:mm:SS format
 			time_t now = time(0);
 			struct tm tstruct;
 			char buff[80];
@@ -161,11 +164,6 @@ namespace artyk {
 		}
 
 		template<typename T>
-		/// <summary>
-		/// gets numeric value from cin, and repeats untill the value is numeric
-		/// </summary>
-		/// <typeparam name="T">type of the variable</typeparam>
-		/// <param name="variable">the variable to get input to</param>
 		inline void getCinNum(T& variable) {
 #undef max
 			//used in some of my old projects
@@ -226,8 +224,8 @@ namespace artyk {
 
 #ifdef AE_EXPERIMENTAL
 		inline float timecounter() {
-			static systime timestart = std::chrono::system_clock::now();
-			static systime timeend = std::chrono::system_clock::now();
+			static systime timestart = getsystime;
+			static systime timeend = getsystime;
 
 			timeend = std::chrono::system_clock::now();
 			//std::chrono::duration<float> elapsedTime = timeend - timestart;
@@ -237,36 +235,27 @@ namespace artyk {
 			return fElapsedTime;
 		}
 #endif
-	}
-	/// <summary>
-	/// This function initialises all stuff the engine needs, before it starts.
-	/// Call it at the start up, or somewhere when you need, but you can do it only once.
-	/// </summary>
-	/// <param name="high_priority">flag to make main process high-priority</param>
-	/// <param name="noscrollbar">flag to disable console scrollbar showing</param>
-	/// <param name="noresize">flag to disable window resize ability</param>
-	/// <returns></returns>
-	inline void init_main(bool high_priority = true, bool noscrollbar = false, bool noresize = false) {
-		if (artyk::app_startstatus != SHRT_MAX) {
-			srand(time(NULL));
-			SetConsoleActiveScreenBuffer(artyk::g_output_handle);
-			SetConsoleCP(CP_UTF8);
-			SetConsoleOutputCP(CP_UTF8);
-			std::locale loc("en_US.UTF8");
-			std::cout.imbue(loc);
-			std::locale::global(loc);
-			std::setlocale(LC_ALL, "en_US.UTF8");
-			if (high_priority)
-				SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
-			if (noscrollbar)
-				ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
-			if (noresize)
-				SetWindowLong(GetConsoleWindow(), GWL_STYLE, GetWindowLong(GetConsoleWindow(), GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
 
-			artyk::app_startstatus = SHRT_MAX;
-			//done intitializing
+		inline unsigned long rand_xor(void) {
+			static unsigned long x = std::rand(), y = std::rand(), z = std::rand();
+			unsigned long t;
+			x ^= x << 16;
+			x ^= x >> 5;
+			x ^= x << 1;
+
+			t = x;
+			x = y;
+			y = z;
+			z = t ^ x ^ y;
+
+			return z;
+		}
+
+		constexpr inline smalluint getattrib(smalluint bgr = color::DEF_BGR, smalluint fgr = color::DEF_FGR) {
+			return bgr * 16 + fgr;
 		}
 	}
+
 }
 
 #endif // !GLOB_FUNCS_HPP

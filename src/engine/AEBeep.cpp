@@ -46,21 +46,13 @@ AEBeep::AEBeep(bool enablelog, bool useGlobLog) :  __AEBaseClass("AEBeep",++m_gl
 		}
 		else
 		{
-			m_logptr = new AELog(DEF_LOG_PATH, "SND");
+			m_logptr = new AELog(DEF_LOG_PATH, "BEP");
 		}
 	}
 
 #endif // AE_LOG_DISABLE
 
-
-
-
-
-
-
-
 	artyk::utils::normal_log(m_logptr, "Started AEBeep module!", LOG_SUCCESS, m_modulename);
-
 
 }
 
