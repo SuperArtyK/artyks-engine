@@ -200,7 +200,7 @@ public:
 		drawLine(prevpos, parr[0]);
     }
 
-	void drawPoly(const std::vector<vec2int> parr, const unsigned int polyarrsize) {
+	void drawPoly(const std::vector<vec2int>& parr, const unsigned int polyarrsize) {
 		if (polyarrsize == 0) return;
 		vec2int prevpos = parr[0];
 		for (unsigned int i = 1; i < polyarrsize; i++) {
