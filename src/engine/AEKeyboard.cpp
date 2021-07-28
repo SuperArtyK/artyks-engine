@@ -29,18 +29,20 @@
 
 AEKBKey AEKeyboard::m_keys[256];
 short AEKeyboard::m_keyOld[256];
+std::thread AEKeyboard::m_kbtrd;
 atomic<biguint> AEKeyboard::m_globalmodulenum = 0;
+atomic<biguint> AEKeyboard::moduleamt = 0;
 short AEKeyboard::m_mousepos[2] = { 0,0 };
 bool AEKeyboard::m_threadon = false;
 bool AEKeyboard::m_enablemouse;
+bool AEKeyboard::m_bstoptrd = false;
 
 
 
 //constructors and destructors
-AEKeyboard::AEKeyboard(bool enablelog, bool useGlobLog, bool enablemouse) : __AEBaseClass("AEKeyboard",++m_globalmodulenum),
-m_bstoptrd(false)
-
+AEKeyboard::AEKeyboard(bool enablelog, bool useGlobLog, bool enablemouse) : __AEBaseClass("AEKeyboard",++m_globalmodulenum)
 {
+	
 	m_enablemouse = enablemouse;
 #ifdef AE_LOG_ENABLE
 	if (enablelog) {
@@ -77,11 +79,19 @@ if (enablemouse) {
 			artyk::utils::Warn("Could not SetConsoleMode!\nFunction error code: " + to_string(GetLastError()), m_modulename, true, GET_FULL_DBG_INFO);
 		}
 	}
-
-	startrd();
+	moduleamt++;
+	if (moduleamt == 1) {
+		startrd();
+	}
+	
 }
 AEKeyboard::~AEKeyboard() {
-	closetrd();
+
+	moduleamt--;
+	if(!moduleamt){
+		closetrd();
+	}
+	
 	artyk::utils::normal_log(m_logptr, "Closed AEKeyboard Module.", LOG_SUCCESS, m_modulename);
 	if (
 #ifdef AE_GLOBALMODULE
@@ -131,7 +141,6 @@ void AEKeyboard::closetrd(void) {
 //get/set
 
 int AEKeyboard::GetKeyID(const char* keyname) {
-	startrd();
 	artyk::utils::debug_log(m_logptr, "Getting key id for the key: " + string(keyname), LOG_INFO, m_modulename);
 
 	for (short i = 0; i < (sizeof(m_keys) / sizeof(m_keys[0])); i++) {
@@ -144,8 +153,6 @@ int AEKeyboard::GetKeyID(const char* keyname) {
 }
 
 const char* AEKeyboard::GetKeyName(smalluint keyid) {
-	startrd();
-
 	artyk::utils::debug_log(m_logptr, "Getting key name for the key: " + to_string(keyid), LOG_INFO, m_modulename);
 
 	return m_keys[keyid].m_name;
@@ -154,8 +161,6 @@ const char* AEKeyboard::GetKeyName(smalluint keyid) {
 //very bad implementation in my opinion
 //but it will work for now
 std::vector<AEKBKey> AEKeyboard::GetUsedKeys(){
-	startrd();
-
 	artyk::utils::debug_log(m_logptr, "Getting current used keys", LOG_INFO, m_modulename);
 
 	//int presskeys = 0;
@@ -178,9 +183,6 @@ std::vector<AEKBKey> AEKeyboard::GetUsedKeys(){
 
 bool AEKeyboard::IsKeyPressed(const string& keyname)
 {//looks at the keynames[][] and checks if given key is pressed; if not found returns 0;
-	startrd();
-
-
 	artyk::utils::debug_log(m_logptr, "Is key:" +keyname+" pressed:"+to_string(m_keys[GetKeyID(keyname.c_str())].m_isPressed), LOG_INFO, m_modulename);
 
 
@@ -189,8 +191,6 @@ bool AEKeyboard::IsKeyPressed(const string& keyname)
 
 bool AEKeyboard::IsKeyPressed(smalluint keyid)
 {//looks at the m_kstKeys[] directly and checks if given key is pressed; if not found returns 0;
-	startrd();
-
 	artyk::utils::debug_log(m_logptr, "Is key:" + to_string(keyid) + " pressed:" + to_string(m_keys[keyid].m_isPressed), LOG_INFO, m_modulename);
 
 	return m_keys[keyid].m_isPressed;
@@ -198,8 +198,6 @@ bool AEKeyboard::IsKeyPressed(smalluint keyid)
 
 bool AEKeyboard::IsKeyHeld(const string& keyname)
 {//looks at the keynames[][] and checks if given key is held; if not found returns 0;
-	startrd();
-
 	artyk::utils::debug_log(m_logptr, "Is key:" + keyname + " held:" + to_string(m_keys[GetKeyID(keyname.c_str())].m_isHeld), LOG_INFO, m_modulename);
 
 	return m_keys[GetKeyID(keyname.c_str())].m_isHeld;
@@ -207,8 +205,6 @@ bool AEKeyboard::IsKeyHeld(const string& keyname)
 
 bool AEKeyboard::IsKeyHeld(smalluint keyid)
 {//looks at the m_kstKeys[] directly and checks if given key is held; if not found returns 0;
-	startrd();
-
 	artyk::utils::debug_log(m_logptr, "Is key:" + to_string(keyid) + " held:" + to_string(m_keys[keyid].m_isHeld), LOG_INFO, m_modulename);
 
 	return m_keys[keyid].m_isHeld;
@@ -216,8 +212,6 @@ bool AEKeyboard::IsKeyHeld(smalluint keyid)
 
 bool AEKeyboard::IsKeyReleased(const string& keyname)
 {//looks at the keynames[][] directly and checks if given key is released; if not found returns 0;
-	startrd();
-
 	artyk::utils::debug_log(m_logptr, "Is key:" + keyname + " released:" + to_string(m_keys[GetKeyID(keyname.c_str())].m_isReleased), LOG_INFO, m_modulename);
 
 	return m_keys[GetKeyID(keyname.c_str())].m_isReleased;
@@ -225,8 +219,6 @@ bool AEKeyboard::IsKeyReleased(const string& keyname)
 
 bool AEKeyboard::IsKeyReleased(smalluint keyid)
 {//looks at the m_kstKeys[] directly and checks if given key is released; if not found returns 0;
-	startrd();
-
 	artyk::utils::debug_log(m_logptr, "Is key:" + to_string(keyid) + " released:" + to_string(m_keys[keyid].m_isReleased), LOG_INFO, m_modulename);
 
 	return m_keys[keyid].m_isReleased;
@@ -234,8 +226,6 @@ bool AEKeyboard::IsKeyReleased(smalluint keyid)
 
 bool AEKeyboard::IsKeyUsed(const string& keyname)
 {//looks at the keynames[][] directly and checks if given key is used(pressed/held); if not found returns 0;
-	startrd();
-
 	artyk::utils::debug_log(m_logptr, "Is key:" + keyname + " used:" + to_string(m_keys[GetKeyID(keyname.c_str())].m_isUsed), LOG_INFO, m_modulename);
 
 	return m_keys[GetKeyID(keyname.c_str())].m_isUsed;
@@ -243,8 +233,6 @@ bool AEKeyboard::IsKeyUsed(const string& keyname)
 
 bool AEKeyboard::IsKeyUsed(smalluint keyid)
 {//looks at the m_kstKeys[] directly and checks if given key is used(pressed/held); if not found returns 0;
-	startrd();
-
 	artyk::utils::debug_log(m_logptr, "Is key:" + to_string(keyid) + " used:" + to_string(m_keys[keyid].m_isUsed), LOG_INFO, m_modulename);
 
 	return m_keys[keyid].m_isUsed;
@@ -274,41 +262,51 @@ void AEKeyboard::mainthread_keys(void) {
 		{
 			//std::cout << "scanning\n";
 			//get keyboard state
-			for (short i = 0; i < 256; i++)
+			for (int i = 0; i < 256; i++)
 			{
 
 				m_keys[i].m_state = GetAsyncKeyState(i);
-
-				m_keys[i].m_isPressed = false;
-				m_keys[i].m_isReleased = false;
+				
 
 				//m_kstKeys[i].m_name = GetKeyName(i);
-				if (m_keys[i].m_state != m_keyOld[i])
+				//if (m_keys[i].m_state != m_keyOld[i])
 				{
-					if (m_keys[i].m_state & 0x8000)
-					{
-						m_keys[i].m_isPressed = !m_keys[i].m_isHeld;
-						m_keys[i].m_isHeld = true;
-						m_keys[i].m_isUsed = true;
+					if (m_keys[i].m_state != 0) {
+						if (m_keyOld[i] == 0) {
+							m_keys[i].m_isPressed = true;
+							m_keys[i].m_isHeld = false;
+							m_keys[i].m_isReleased = false;
+							m_keys[i].m_isUsed = true;
+							
+						}
+						else
+						{
+							m_keys[i].m_isPressed = false;
+							m_keys[i].m_isHeld = true;
+							m_keys[i].m_isReleased = false;
+							m_keys[i].m_isUsed = true;
+						}
 					}
-					else
-					{
-						m_keys[i].m_isUsed = false;
-						m_keys[i].m_isReleased = true;
-						m_keys[i].m_isHeld = false;
+					else {
+						if (m_keyOld[i] != 0) {
+							m_keys[i].m_isPressed = false;
+							m_keys[i].m_isHeld = false;
+							m_keys[i].m_isReleased = true;
+							m_keys[i].m_isUsed = true;
+						}
+						else {
+							m_keys[i].m_isPressed = false;
+							m_keys[i].m_isHeld = false;
+							m_keys[i].m_isReleased = false;
+							m_keys[i].m_isUsed = false;
+						}
 					}
 				}
-
+				//if (i == VK_SPACE) {
+				//	std::cout << m_keys[i].m_state << " " << m_keyOld[i] << NLC;
+				//}
 				m_keyOld[i] = m_keys[i].m_state;
 			}
-
-			if (m_bstoptrd) {
-				artyk::utils::debug_log(m_logptr, "Stopped keyscanning sequence.", LOG_OK, m_modulename);
-				return;
-
-			}
-
-
 			if (m_enablemouse) {//only if we want support for mouse
 				//get mouse events
 				

@@ -90,7 +90,7 @@ public:
 	///returns released status of key of given key id
 	bool IsKeyReleased(smalluint keyid);
 	///returns used status of key of given key name
-	bool IsKeyUsed(const string& keyname);//looks at key list, and checks if given key has m_isPressed or m_isHeld flag on
+	bool IsKeyUsed(const string& keyname);//looks at key list, and checks if given key is used(if either of flags is true)
 	///returns used status of key of given key id
 	bool IsKeyUsed(smalluint keyid);
 
@@ -132,15 +132,18 @@ private:
 	///previous state of the keys, data is from GetAsyncKeyState()
 	static short m_keyOld[256];
 	///thread of the module
-	std::thread m_kbtrd;
+	static std::thread m_kbtrd;
 	///variable to store the module index number
 	static atomic<biguint> m_globalmodulenum;
+	///amount of graphics modules currently active
+	///(to close thread when needed)
+	static atomic<biguint> moduleamt;
 	///mouse position
 	static short m_mousepos[2];
 	///is the thread on
 	static bool m_threadon;
 	///do we need to stop the thread
-	bool m_bstoptrd;
+	static bool m_bstoptrd;
 	///is mouse enabled
 	static bool m_enablemouse;
 };

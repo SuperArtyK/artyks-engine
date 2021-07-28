@@ -74,7 +74,7 @@
 //undefine flags to turn them off
 
 //#undef AE_DEBUG
-//#undef AE_GLOBALMODULE
+#undef AE_GLOBALMODULE
 //#undef AE_EXPERIMENTAL
 //#undef AE_LOOKUP_TABLE
 //#undef AE_LOG_ENABLE

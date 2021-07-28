@@ -40,7 +40,8 @@
 #include "AEScreen.hpp"
 #include "custom_types.hpp"
 #include "engine_math.hpp"
-
+#include <array>
+#include <vector>
 
 
 
@@ -81,6 +82,7 @@ public:
 		m_currentbuffer = new CHAR_INFO[m_screensize.X * m_screensize.Y];
 	}
 
+	///removes third buffer and deallocates it(so be carefull)
 	void removeTripleBuffering() {
 		if (m_currentbuffer && m_currentbuffer != m_screendata) {
 			return;
@@ -100,21 +102,93 @@ public:
 			return nullptr;
 	}
 
+	/// <summary>
+	/// Sets the console screen to given dimensions if possible, otherwise throws Fatal error.
+	/// Also reallocates and clears buffers 
+	/// </summary>
+	/// <param name="swidth">screen width, in console character cells</param>
+	/// <param name="sheight">screen height, in console character cells</param>
+	/// <param name="fonth">character font height, in pixels, doesnt't go less than 2</param>
+	/// <param name="fontw">character font width, in pixels, doesnt't go less than 2</param>
 	void setscreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7);
 
-	void setPixel(const vec2int& myvec2, wchar_t mych, smalluint color);
+	/// <summary>
+	/// sets pixel at given position with given CHAR_INFO
+	/// </summary>
+	/// <param name="myvec2">2d pixel position in console buffer</param>
+	/// <param name="mych">character and attribute</param>
 	void setPixel(const vec2int& myvec2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+	
+	/// <summary>
+	/// sets pixel at given position with given character and attribute
+	/// </summary>
+	/// <param name="myvec2">2d pixel position in console buffer</param>
+	/// <param name="mych">character to set</param>
+	/// <param name="color">color/attribute to set</param>
+	void setPixel(const vec2int& myvec2, wchar_t mych, smalluint color);
 
+	/// <summary>
+	/// fills rectangle between points with given CHAR_INFO
+	/// </summary>
+	/// <param name="myvec2_1">point 1 of rectangle</param>
+	/// <param name="myvec2_2">point 2 of rectangle</param>
+	/// <param name="mych">CHAR_INFO to set</param>
 	void fill(const vec2int& myvec2_1, const vec2int& myvec2_2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+
+	/// <summary>
+	/// fills rectangle between points with given character and attribute
+	/// </summary>
+	/// <param name="myvec2_1">point 1 of rectangle</param>
+	/// <param name="myvec2_2">point 2 of rectangle</param>
+	/// <param name="mych">character to set</param>
+	/// <param name="color">color/attribute to set</param>
 	void fill(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych, smalluint color);
 
+	/// <summary>
+	/// fills rectangle between points with given character; the attribute for each pixel is random
+	/// </summary>
+	/// <param name="myvec2_1">point 1 of rectangle</param>
+	/// <param name="myvec2_2">point 2 of rectangle</param>
+	/// <param name="mych">character to set</param>
 	void fillRandom(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych);
 
+	/// <summary>
+	/// draws line between 2 points with given CHAR_INFO
+	/// </summary>
+	/// <param name="myvec2_1">point 1 of line</param>
+	/// <param name="myvec2_2">point 2 of line</param>
+	/// <param name="mych">CHAR_INFO to set</param>
 	void drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+
+	/// <summary>
+	/// draws line between 2 points with given 
+	/// </summary>
+	/// <param name="myvec2_1">point 1 of line</param>
+	/// <param name="myvec2_2">point 2 of line</param>
+	/// <param name="mych">character to set</param>
+	/// <param name="color">color/attribute to set</param>
 	void drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych, smalluint color);
 
+	/// <summary>
+	/// draws triangle between 3 points with given CHAR_INFO
+	/// </summary>
+	/// <param name="myvec2_1">point 1 of triangle</param>
+	/// <param name="myvec2_2">point 2 of triangle</param>
+	/// <param name="myvec2_3">point 3 of triangle</param>
+	/// <param name="mych">CHAR_INFO to set</param>
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+	
+	/// <summary>
+	/// draws triangle between 3 points with given CHAR_INFO
+	/// </summary>
+	/// <param name="myvec2_1">point 1 of triangle</param>
+	/// <param name="myvec2_2">point 2 of triangle</param>
+	/// <param name="myvec2_3">point 3 of triangle</param>
+	/// <param name="mych">character to set</param>
+	/// /// <param name="color">color/attribute to set</param>
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, wchar_t mych, smalluint color);
+
+
 
     void drawPoly(const vec2int parr[], const unsigned int polyarrsize){
         if(polyarrsize == 0) return;
@@ -126,20 +200,28 @@ public:
 		drawLine(prevpos, parr[0]);
     }
 
+	void drawPoly(const std::vector<vec2int> parr, const unsigned int polyarrsize) {
+		if (polyarrsize == 0) return;
+		vec2int prevpos = parr[0];
+		for (unsigned int i = 1; i < polyarrsize; i++) {
+			drawLine(prevpos, parr[i]);
+			prevpos = parr[i];
+		}
+
+		drawLine(prevpos, parr[0]);
+	}
+
+
 	void drawRegPoly(const vec2int& myvec2, const int radius, const int sideamount = 5) {
 		const float angleincrement = 360.0f / sideamount;
 		vec2int pointpos;
-		vec2int prevpos{
-		    artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(-90) * radius),
-		    artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(-90) * radius)
-	    };
-		for (int i = 1; i < sideamount+1; i++) {
-			pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(angleincrement * i - 90) * radius);
-			pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(angleincrement * i - 90) * radius);
-			drawLine(pointpos, prevpos);
-			prevpos = pointpos;
+		static std::vector<vec2int> parr;
+		parr.resize(sideamount + 1);
+		for (int i = 0; i < sideamount+1; i++) {
+			parr[i] = (vec2int{ artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(angleincrement * i - 90) * radius), artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(angleincrement * i - 90) * radius) });
 		}
-
+		drawPoly(parr, parr.size());
+		parr.clear();
 	}
 	
 	void drawRegPoly2(const vec2int& myvec2, const int radius, const int sideamount = 5) {

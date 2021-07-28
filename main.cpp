@@ -50,7 +50,7 @@ using namespace std;
 #define scrhalfy (screeny/2)
 
 
-short screenx = 100, screeny = 100, fontw = 7, fonth = 7;
+short screenx = 256, screeny = 256, fontw = 3, fonth = 3;
 
 int main()
 {
@@ -63,17 +63,20 @@ int main()
 	float fElapsedTime;
 	int fps = 0;
 	AEScreen myscr;
-	AEGraphic mygx(screenx, screeny, fontw, fonth);
 	AEFrame myfr;
-	const int radius = scrhalfx;
-	mygx.createTripleBuffering();
+	AEKeyboard mykb;
+
+
+	myscr.settitle("Setting up...");
+	artyk::utils::waitfortick();
+	myscr.settitle("Done!");
+	Sleep(100);
+
+	unsigned char arr[256];
+	
+
 	for (;;){
-		mygx.clearbuffer();
-		for (int x = 0; x < screenx; x++) {
-			mygx.drawCircle({ i+x, x }, x, '#', i+x);
-		}
-		
-		
+	
 		i++;
 		timeend = getsystime;
 		fElapsedTime = std::chrono::duration<float>(timeend - timestart).count();
@@ -84,17 +87,14 @@ int main()
 			timestart = timeend;
 			
 			//mybp.makesound_async(660, 200);
-			myscr.settitle("GFX FPS: " + to_string(AEGraphic::getfps()) + "|GAME FPS: " + to_string(fps) + "");
+			myscr.settitle("GFX FPS: " + to_string(AEGraphic::getfps()) + "|GAME FPS: " + to_string(fps));
 			
 
 		}
-		mygx.copybuffer();
 		myfr.sleep();
+		
 	}
 
-	
-
-	mygx.removeTripleBuffering();
 
 	artyk::closing_app = 1;
 

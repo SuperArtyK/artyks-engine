@@ -112,12 +112,6 @@ void AEScreen::setcursor(short x, short y)
 	if (x < 0) {
 		x = 0;
 	}
-	if (y > m_screenres.Y-1) {
-		y = m_screenres.Y-1;
-	}
-	if (x > m_screenres.X-1) {
-		x = m_screenres.X-1;
-	}
 
 	//std::cout.flush();
 	SetConsoleCursorPosition(artyk::g_output_handle, { x, y });

@@ -131,7 +131,7 @@ struct keystate
 	bool m_isReleased;
 	///flag if key is held
 	bool m_isHeld;
-	///flag if key is used at all
+	///flag if key is used at all(if either of flags is true)
 	bool m_isUsed;
 };
 
