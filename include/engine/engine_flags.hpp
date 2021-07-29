@@ -78,7 +78,7 @@
 //#undef AE_EXPERIMENTAL
 //#undef AE_LOOKUP_TABLE
 //#undef AE_LOG_ENABLE
-//#undef AE_ADD_APP_TITLE
+#undef AE_ADD_APP_TITLE
 //#undef AE_ADD_APP_VERSION
 //#undef AE_KB_DELAY
 //#undef AE_BP_DELAY

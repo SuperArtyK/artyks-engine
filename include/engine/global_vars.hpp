@@ -97,7 +97,7 @@ namespace artyk {
 
 		string("(DEBUG)") +
 #endif // AE_DEBUG
-		"ArtyK's Console Engine Test";
+		"Console Engine Test";
 	
 	///has engine version stuff(ints)
 	namespace version {

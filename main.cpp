@@ -48,9 +48,10 @@ using namespace std;
 
 #define scrhalfx (screenx/2)
 #define scrhalfy (screeny/2)
+#define halfscreen vec2int{screenx/2,screeny/2}
 
 
-short screenx = 256, screeny = 256, fontw = 3, fonth = 3;
+short screenx = 128, screeny = 128, fontw = 5, fonth = 5;
 
 int main()
 {
@@ -65,22 +66,38 @@ int main()
 	AEScreen myscr;
 	AEFrame myfr;
 	AEKeyboard mykb;
-
-
+	AEGraphic mygx(screenx, screeny, fonth, fontw);
+	
+	smalluint color = 3;
 	myscr.settitle("Setting up...");
 	artyk::utils::waitfortick();
 	myscr.settitle("Done!");
 	Sleep(100);
 
-	unsigned char arr[256];
-	
+	float a = 5;
+	float k = a / (2 * artyk::math::PI);
+	float f1 = 0, f2 =20*(2 * artyk::math::PI), DH = 1/f2;
 
+	vec2int p1, p2 = { 0,0 };
+	//mygx.createTripleBuffering();
 	for (;;){
-	
-		i++;
+		for (int x = 0; x < screenx; x++) 
+		{
+			for (float f = 0; f < f2; f += DH) {
+				float p = k * f;
+				p1.x = p * cos(f) + ((x+ i));
+				p1.y = -p * sin(f) + i;
+				mygx.setPixel(p1, { '#',color });
+
+			}
+			color++;
+		}
+		
+		
+		
 		timeend = getsystime;
 		fElapsedTime = std::chrono::duration<float>(timeend - timestart).count();
-
+	
 		if (fElapsedTime > 1.0f) {
 			fps = i - previ;
 			previ = i;
@@ -89,12 +106,15 @@ int main()
 			//mybp.makesound_async(660, 200);
 			myscr.settitle("GFX FPS: " + to_string(AEGraphic::getfps()) + "|GAME FPS: " + to_string(fps));
 			
-
+	
 		}
-		myfr.sleep();
-		
-	}
+		//mygx.copybuffer();
+		//myfr.sleep();
 
+		
+		i++;
+
+	}
 
 	artyk::closing_app = 1;
 

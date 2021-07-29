@@ -32,6 +32,7 @@
 
 #include "AEGraphic.hpp"
 #include "func_utils.hpp"
+#include "AETimer.hpp"
 
 atomic<biguint> AEGraphic::m_globalmodulenum;
 int AEGraphic::graph_fps = 0;
@@ -433,15 +434,17 @@ void AEGraphic::closetrd(void) {
 
 void AEGraphic::mainthread() {
 	using namespace artyk::gfx;
+	
 	artyk::utils::debug_log(m_logptr, "Entered main drawing thread", LOG_SUCCESS, m_modulename);
 	SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
 	
 	float timeelapsed;
 	bigint i = 0, previ = i;
+	artyk::utils::waitfortick();
 	systime timeend, timestart = std::chrono::system_clock::now();
 	while (!m_bstoptrd)
 	{
-		m_fr.sleep();
+		
 		drawscreen();
 #ifdef AE_GFX_ALWAYS_CLEAR_AFTER_DRAW
 		clearscreen();
@@ -460,8 +463,8 @@ void AEGraphic::mainthread() {
 			timestart = timeend;
 			
 		}
+		m_fr.sleep();
 		i++;
-
 	}
 	artyk::utils::normal_log(m_logptr, "Closed main drawing thread", LOG_SUCCESS, m_modulename);
 	graph_fps = 0;

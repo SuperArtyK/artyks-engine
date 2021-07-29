@@ -80,6 +80,7 @@ public:
 			return;
 		}
 		m_currentbuffer = new CHAR_INFO[m_screensize.X * m_screensize.Y];
+		memset(m_currentbuffer, 0, m_screensize.X * m_screensize.Y * sizeof(CHAR_INFO));
 	}
 
 	///removes third buffer and deallocates it(so be carefull)
