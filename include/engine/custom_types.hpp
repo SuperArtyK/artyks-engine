@@ -28,93 +28,7 @@
 #ifndef CUSTOM_TYPES_HPP
 #define CUSTOM_TYPES_HPP
 
-#include <Windows.h>
-
-
-///2d integer vector type
-struct vec2int
-{
-
-	int x;
-	int y;
-	constexpr static inline vec2int zero() {
-		return { 0,0 };
-	}
-
-};
-
-
-///2d (float) vector type
-struct vec2
-{
-	float x;
-	float y;
-	constexpr static inline vec2 zero() {
-		return { 0.0f,0.0f };
-	}
-};
-
-///3d integer vector type
-struct vec3int
-{
-	int x;
-	int y;
-	int z;
-	constexpr static inline vec3int zero() {
-		return { 0,0,0 };
-	}
-};
-
-///3d (float) vector type
-struct vec3
-{
-	float x;
-	float y;
-	float z;
-	constexpr static inline vec3 zero() {
-		return { 0.0f, 0.0f, 0.0f };
-	}
-};
-
-///converts given vec2 to vec2int(narrowing conversion)
-inline vec2int tovec2int(const vec2& val) {
-	return { (int)val.x, (int)val.y };
-}
-
-///converts given vec2int to vec2(narrowing conversion as well, due to float's mantissa)
-inline vec2 tovec2(const vec2int& val) {
-	return  { (float)val.x, (float)val.y };
-}
-
-///converts given vec3 to vec3int(narrowing conversion)
-inline vec3int tovec3int(const vec3& val) {
-	return { (int)val.x, (int)val.y, (int)val.z };
-}
-
-///converts given vec3int to vec3(narrowing conversion as well, due to float's mantissa)
-inline vec3 tovec3(const vec3int& val) {
-	return  { (float)val.x, (float)val.y, (float)val.z };
-}
-
-///converts given vec3 to vec2(z value is discared)
-inline vec2 vec3tovec2(const vec3& val) {
-	return { val.x,val.y };
-}
-
-///converts given vec2 to vec3(z value is zeroed)
-inline vec3 vec2tovec3(const vec2& val) {
-	return { val.x,val.y,0.0f };
-}
-
-///converts given vec3int to vec2int(z value is discared)
-inline vec2int vec3tovec2_int(const vec3int& val) {
-	return { val.x,val.y };
-}
-
-///converts given vec2int to vec3int(z value is zeroed)
-inline vec3int vec2tovec3_int(const vec2int& val) {
-	return { val.x,val.y,0 };
-}
+#include "vectors.hpp"
 
 ///data type to store keys and their data/state
 struct keystate
@@ -134,6 +48,7 @@ struct keystate
 	///flag if key is used at all(if either of flags is true)
 	bool m_isUsed;
 };
+
 
 
 #endif // !CUSTOM_TYPES_HPP

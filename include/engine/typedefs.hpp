@@ -75,24 +75,31 @@ typedef unsigned long uint;
 //time
 ///short for system time, so we dont need to use autos and init everytime
 typedef std::chrono::time_point<std::chrono::system_clock> systime;
-///good ol' high resolution clock
-typedef std::chrono::time_point<std::chrono::system_clock> highrestime;
-///and useful steady clock
-typedef std::chrono::time_point<std::chrono::system_clock> steadytime;
+///good ol' high resolution clock, for precision checking
+typedef std::chrono::time_point<std::chrono::high_resolution_clock> highrestime;
+///steady clock
+typedef std::chrono::time_point<std::chrono::steady_clock> steadytime;
+///returns system time
 #define getsystime std::chrono::system_clock::now()
+///returns highres time
+#define gethighrestime std::chrono::high_resolution_clock::now()
+///returns steady time
+#define getsteadytime std::chrono::steady_clock::now()
+///returns time between 2 timepoints(float)
+#define calculatetime(tp1,tp2) std::chrono::duration<float>(tp2 - tp1).count()
 ///time point. using preprocessor macro, as it is a template, and we only need to shorten the name
 #define timepoint std::chrono::time_point
 
 //custom types
 
 ///long name for vector 2(int)
-typedef vec2int vector2_int;
+typedef vec2int Vector2_int;
 ///long name for vector 2(float)
-typedef vec2 vector2;
+typedef vec2 Vector2;
 ///long name for vector 3(int)
-typedef vec3int vector3_int;
+typedef vec3int Vector3_int;
 ///long name for vector 3(float)
-typedef vec3 vector3;
+typedef vec3 Vector3;
 ///another name for the keystate
 typedef keystate AEKBKey;
 

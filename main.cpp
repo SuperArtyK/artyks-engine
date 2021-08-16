@@ -62,6 +62,7 @@ int main()
 	systime timestart = std::chrono::system_clock::now();
 	systime timeend;
 	float fElapsedTime;
+	cout << comparevec(vec3{ 0,0,0 }, vec2{ 0,0}, 0);
 	int fps = 0;
 	AEScreen myscr;
 	AEFrame myfr;
@@ -73,30 +74,12 @@ int main()
 	artyk::utils::waitfortick();
 	myscr.settitle("Done!");
 	Sleep(100);
+	
 
-	float a = 5;
-	float k = a / (2 * artyk::math::PI);
-	float f1 = 0, f2 =20*(2 * artyk::math::PI), DH = 1/f2;
-
-	vec2int p1, p2 = { 0,0 };
-	//mygx.createTripleBuffering();
 	for (;;){
-		for (int x = 0; x < screenx; x++) 
-		{
-			for (float f = 0; f < f2; f += DH) {
-				float p = k * f;
-				p1.x = p * cos(f) + ((x+ i));
-				p1.y = -p * sin(f) + i;
-				mygx.setPixel(p1, { '#',color });
-
-			}
-			color++;
-		}
-		
-		
 		
 		timeend = getsystime;
-		fElapsedTime = std::chrono::duration<float>(timeend - timestart).count();
+		fElapsedTime = calculatetime(timestart,timeend);
 	
 		if (fElapsedTime > 1.0f) {
 			fps = i - previ;

@@ -392,6 +392,7 @@
     <ClInclude Include="include\engine\includeall.hpp" />
     <ClInclude Include="include\engine\trig_lookup.hpp" />
     <ClInclude Include="include\engine\typedefs.hpp" />
+    <ClInclude Include="include\engine\vectors.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="include\engine\bits\basic_ios.tcc" />

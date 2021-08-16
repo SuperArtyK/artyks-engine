@@ -111,11 +111,11 @@ namespace artyk {
 		///returns color attribute of the cell from given backround and foreground
 		constexpr inline smalluint getattrib(smalluint bgr, smalluint fgr);
 
+
 #ifdef AE_EXPERIMENTAL
 		///counts time between calls, not safe/consistent if used in other threads
 		inline float timecounter(void);
 #endif
-
 
 //////////////////////////////////////////////////////////////////////////
 // defines

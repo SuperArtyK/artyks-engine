@@ -65,7 +65,7 @@ using std::to_string;
 
 ///amount of global timer ticks to wait for, untill launching the threads.
 ///used that global or modules created at startup, start their threads at ~~the same time.
-#define TIMER_WAIT 2*GAME_FPS //wait until timer time is 2xGAME_FPS ticks(2 world-seconds)
+#define TIMER_WAIT 1*GAME_FPS //wait until timer time is 2xGAME_FPS ticks(2 world-seconds)
 
 ///default modulename for engine
 #define DEF_MNAME "Engine"

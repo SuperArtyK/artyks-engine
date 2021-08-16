@@ -498,6 +498,9 @@
     <ClInclude Include="include\engine\custom_types.hpp">
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
+    <ClInclude Include="include\engine\vectors.hpp">
+      <Filter>Header Files\include\engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\engine\bits\basic_ios.tcc">

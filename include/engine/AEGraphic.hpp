@@ -212,19 +212,6 @@ public:
 		drawLine(prevpos, parr[0]);
 	}
 
-
-	void drawRegPoly(const vec2int& myvec2, const int radius, const int sideamount = 5) {
-		const float angleincrement = 360.0f / sideamount;
-		vec2int pointpos;
-		static std::vector<vec2int> parr;
-		parr.resize(sideamount + 1);
-		for (int i = 0; i < sideamount+1; i++) {
-			parr[i] = (vec2int{ artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(angleincrement * i - 90) * radius), artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(angleincrement * i - 90) * radius) });
-		}
-		drawPoly(parr, parr.size());
-		parr.clear();
-	}
-	
 	void drawRegPoly2(const vec2int& myvec2, const int radius, const int sideamount = 5) {
 		const float angleincrement = 360.0f / sideamount;
 		vec2int pointpos;
