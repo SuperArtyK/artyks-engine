@@ -23,8 +23,8 @@
  *  Should not cause everything to break.
  */
 
-#include "AEScreen.hpp" 
-#include "func_system.hpp"
+#include "include/engine/AEScreen.hpp" 
+#include "include/engine/func_system.hpp"
 using std::string;
 using std::atomic;
 using std::to_string;	

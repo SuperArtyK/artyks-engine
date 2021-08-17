@@ -27,8 +27,8 @@
 
 #ifndef GLOB_FUNCS_HPP
 #define GLOB_FUNCS_HPP
-#include "global_vars.hpp"
-#include "trig_lookup.hpp"
+#include "include/engine/global_vars.hpp"
+#include "include/engine/trig_lookup.hpp"
 
  //prototypes
  //moved from log.cpp

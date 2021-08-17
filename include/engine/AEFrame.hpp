@@ -33,8 +33,8 @@
 
 #include <thread>
 #include <chrono>
-#include "global_vars.hpp"
-#include "typedefs.hpp"
+#include "include/engine/global_vars.hpp"
+#include "include/engine/typedefs.hpp"
 
  //usage:
  // create obj AEFrame with fps value

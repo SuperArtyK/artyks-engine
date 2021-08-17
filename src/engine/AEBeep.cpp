@@ -24,7 +24,7 @@
  *  Should not cause everything to break.
  */
 
-#include "AEBeep.hpp"
+#include "include/engine/AEBeep.hpp"
 
 atomic<biguint> AEBeep::m_globalmodulenum = 0;
 

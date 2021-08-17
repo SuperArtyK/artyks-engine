@@ -27,8 +27,8 @@
 #ifndef TIMER_HPP
 #define TIMER_HPP
 
-#include "AEFrame.hpp"
-#include "func_system.hpp"
+#include "include/engine/AEFrame.hpp"
+#include "include/engine/func_system.hpp"
 
 using std::string;
 using std::to_string;

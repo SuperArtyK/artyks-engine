@@ -28,7 +28,7 @@
 #ifndef AEFUNC_SYSTEM_HPP
 #define AEFUNC_SYSTEM_HPP
 
-#include "AELog.hpp"
+#include "include/engine/AELog.hpp"
 using std::string;
 using std::atomic;
 using std::to_string;

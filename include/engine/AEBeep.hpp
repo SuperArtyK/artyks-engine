@@ -29,7 +29,7 @@
 #ifndef SOUND_HPP
 #define SOUND_HPP
 
-#include "AEBaseClass.hpp"
+#include "include/engine/AEBaseClass.hpp"
 
  /// \brief This module is for simple sine wave beeping.
  /// It creates separated thread for the asynchronous beeping.

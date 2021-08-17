@@ -30,9 +30,9 @@
  *  Should not cause everything to break.
  */
 
-#include "AEGraphic.hpp"
-#include "func_utils.hpp"
-#include "AETimer.hpp"
+#include "include/engine/AEGraphic.hpp"
+#include "include/engine/func_utils.hpp"
+#include "include/engine/AETimer.hpp"
 
 atomic<biguint> AEGraphic::m_globalmodulenum;
 int AEGraphic::graph_fps = 0;

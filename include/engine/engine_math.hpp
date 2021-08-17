@@ -28,7 +28,7 @@
 
 #include <cmath>
 #include <limits>
- ///converts degrees value x to radians
+///converts degrees value x to radians
 #define torad(x) x * 3.141592654f / 180.0f
 
 
@@ -36,25 +36,36 @@
 namespace artyk::math {
 	
 	//math stuff
-
+	///engine pi variable
 	constexpr float PI = 3.141592654f;
 
-	inline float sindeg(float degrees) {//calculated sine of the given degrees
+	///calculates sine of the given degrees
+	inline float sindeg(float degrees) {
 		return sinf(torad(degrees));
 	}
-	inline float cosdeg(float degrees) {//calculated cosine of the given degrees
+
+	///calculates cosine of the given degrees
+	inline float cosdeg(float degrees) {
 		return cosf(torad(degrees));
 	}
-	inline float tandeg(float degrees) {//calculated tangent of the given degrees
+
+	///calculates tangent of the given degrees
+	inline float tandeg(float degrees) {
 		return tanf(torad(degrees));
 	}
-	inline float cotdeg(float degrees) {//calculated cotangent of the given degrees
+
+	///calculates cotangent of the given degrees
+	inline float cotdeg(float degrees) {
 		return 1 / tanf(torad(degrees));
 	}
-	inline float cscdeg(float degrees) {//calculated cosecant of the given degrees
+
+	///calculates cosecant of the given degrees
+	inline float cscdeg(float degrees) {
 		return 1 / sinf(torad(degrees));
 	}
-	inline float secdeg(float degrees) {//calculated secant of the given degrees
+
+	///calculates secant of the given degrees
+	inline float secdeg(float degrees) {
 		return 1 / cosf(torad(degrees));
 	}
 
@@ -68,10 +79,10 @@ namespace artyk::math {
 		return (num < 0) ? num -1 : num;
 	}
 
-	///checks if given 2 floats are equal, using float epsilon
-	constexpr inline bool fequals(const float num, const float num2) {
-		return (num - num2) < std::numeric_limits<float>::epsilon() &&
-			   -(num - num2) < std::numeric_limits<float>::epsilon();
+	///checks if given 2 floats are equal, using epsilon(must not go further than float epsilon)
+	constexpr inline bool fequals(const float num, const float num2, const float _epsilon = std::numeric_limits<float>::epsilon()) {
+		return (num - num2) < _epsilon &&
+			   -(num - num2) < _epsilon;
 	}
 
 	///another sqrt implementation, useful when you need calculate sqrt for constexpr

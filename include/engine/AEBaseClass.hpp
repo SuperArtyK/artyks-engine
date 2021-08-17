@@ -28,8 +28,8 @@
 #ifndef BASECLASS_HPP
 #define BASECLASS_HPP
 
-#include "AEFrame.hpp"
-#include "AELog.hpp"
+#include "include/engine/AEFrame.hpp"
+#include "include/engine/AELog.hpp"
 using std::string;
 using std::to_string;
 

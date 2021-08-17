@@ -26,7 +26,6 @@
  *  https://github.com/OneLoneCoder/videos/blob/master/olcConsoleGameEngine.h
  *  Ravbug -- for giving ideas and pointing out errors
  *  Check him out: https://www.ravbug.com/
- *  
  *
  *  Should not cause everything to break.
  */
@@ -36,10 +35,10 @@
 #ifndef AEGRAPHIC_HPP
 #define AEGRAPHIC_HPP
 
-#include "AEBaseClass.hpp"
-#include "AEScreen.hpp"
-#include "custom_types.hpp"
-#include "engine_math.hpp"
+#include "include/engine/AEBaseClass.hpp"
+#include "include/engine/AEScreen.hpp"
+#include "include/engine/custom_types.hpp"
+#include "include/engine/engine_math.hpp"
 #include <array>
 #include <vector>
 
@@ -58,12 +57,16 @@ public:
 	
 	///draws the screen, using data from m_screendata
 	void drawscreen();
+	
 	///draws the current selected buffer directly, without copying
 	void drawbuffer();
+	
 	///clears the m_screendata buffer(screen buffer)
 	void clearscreen();
+	
 	///clears the current selected buffers(the one that setPixel() uses)
 	void clearbuffer();
+	
 	/// <summary>
 	/// copies given buffer to the the screen buffer
 	/// </summary>
@@ -189,10 +192,8 @@ public:
 	/// /// <param name="color">color/attribute to set</param>
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, wchar_t mych, smalluint color);
 
-
-
-    void drawPoly(const vec2int parr[], const unsigned int polyarrsize){
-        if(polyarrsize == 0) return;
+    void drawPoly(const vec2int* parr, const unsigned int polyarrsize){
+        if(polyarrsize == 0 || parr = nullptr) return;
         vec2int prevpos{parr[0]};
         for(unsigned int i = 1; i < polyarrsize; i++){
             drawLine(prevpos,parr[i]);
@@ -201,18 +202,7 @@ public:
 		drawLine(prevpos, parr[0]);
     }
 
-	void drawPoly(const std::vector<vec2int>& parr, const unsigned int polyarrsize) {
-		if (polyarrsize == 0) return;
-		vec2int prevpos = parr[0];
-		for (unsigned int i = 1; i < polyarrsize; i++) {
-			drawLine(prevpos, parr[i]);
-			prevpos = parr[i];
-		}
-
-		drawLine(prevpos, parr[0]);
-	}
-
-	void drawRegPoly2(const vec2int& myvec2, const int radius, const int sideamount = 5) {
+	void drawRegPoly(const vec2int& myvec2, const int radius, const int sideamount = 5) {
 		const float angleincrement = 360.0f / sideamount;
 		vec2int pointpos;
 		vec2int prevpos{

@@ -28,7 +28,8 @@
 #ifndef VECTORS_HPP
 #define VECTORS_HPP
 
-#include "engine_math.hpp"
+#include <cmath>
+#include <limits>
 
  ///2d integer vector type
 struct vec2int
@@ -145,7 +146,7 @@ inline vec3int vec2tovec3_int(const vec2int& val) {
 /// <param name="_vec1">vector 1</param>
 /// <param name="_vec2">vector 2</param>
 /// <param name="comptype">compare type: 0 </param>
-/// <param name="_epsilon">epsilon to compare against</param>
+/// <param name="_epsilon">epsilon to compare against, should not be bigger than float epsilon( std::numeric_limits<float>::epsilon() )</param>
 /// <returns></returns>
 template<typename A, typename B>
 inline bool comparevec(const A& _vec1, const B& _vec2, const int comptype, const float _epsilon = std::numeric_limits<float>::epsilon()) {

@@ -367,3 +367,5 @@ healthchecksdb
 /x64/Debug/result.txt
 /x64/Debug/Engine - Copy.exe
 /x64/Debug/Engine - Copy (2).exe
+.vscode/c_cpp_properties.json
+.vscode/settings.json
