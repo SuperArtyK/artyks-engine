@@ -17,7 +17,7 @@
 	along with this program.  If not, see <https://www.gnu.org/licenses/gpl-3.0.txt>.
 */
 
-/** @file include/engine/func_system.hpp
+/** @file include/engine/engine_messagebox.hpp
  *  This file contains functions for system message box creating.
  *
  *  Should not cause everything to break.
@@ -28,7 +28,7 @@
 #ifndef AEFUNC_SYSTEM_HPP
 #define AEFUNC_SYSTEM_HPP
 
-#include "include/engine/AELog.hpp"
+#include "AELog.hpp"
 using std::string;
 using std::atomic;
 using std::to_string;

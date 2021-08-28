@@ -32,10 +32,10 @@
 
 #include <array>
 #include <vector>
-#include "include/engine/AEBaseClass.hpp"
-#include "include/engine/AETimer.hpp"
-#include "include/engine/func_utils.hpp"
-#include "include/engine/custom_types.hpp"
+#include "AEBaseClass.hpp"
+#include "AETimer.hpp"
+#include "func_utils.hpp"
+#include "custom_types.hpp"
 using std::vector;
 using std::string;
 using std::atomic;

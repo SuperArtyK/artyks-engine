@@ -44,6 +44,7 @@
 
 #include "includeall.hpp"
 #include "AEGraphic.hpp"
+
 using namespace std;
 
 #define scrhalfx (screenx/2)
@@ -59,42 +60,42 @@ int main()
 //your code goes below...
 	int i = 0;
 	int previ = 0;
-	systime timestart = std::chrono::system_clock::now();
+	systime timestart = getsystime;
 	systime timeend;
 	float fElapsedTime;
-	cout << comparevec(vec3{ 0,0,0 }, vec2{ 0,0}, 0);
+	//cout << comparevec(vec3{ 0,0,0 }, vec2{ 0,0}, 0);
 	int fps = 0;
 	AEScreen myscr;
-	AEFrame myfr;
+	AEFrame myfr(100);
 	AEKeyboard mykb;
-	AEGraphic mygx(screenx, screeny, fonth, fontw);
-	
+	//AEGraphic mygx(screenx, screeny, fonth, fontw);
+	AEDelay myd;
 	smalluint color = 3;
 	myscr.settitle("Setting up...");
 	artyk::utils::waitfortick();
 	myscr.settitle("Done!");
 	Sleep(100);
-	
-
 	for (;;){
-		
+
+
+
+
+
+
+
 		timeend = getsystime;
 		fElapsedTime = calculatetime(timestart,timeend);
-	
 		if (fElapsedTime > 1.0f) {
 			fps = i - previ;
 			previ = i;
 			timestart = timeend;
-			
+
 			//mybp.makesound_async(660, 200);
 			myscr.settitle("GFX FPS: " + to_string(AEGraphic::getfps()) + "|GAME FPS: " + to_string(fps));
-			
-	
-		}
-		//mygx.copybuffer();
-		//myfr.sleep();
 
-		
+
+		}
+		myfr.sleep();
 		i++;
 
 	}

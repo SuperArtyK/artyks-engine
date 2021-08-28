@@ -27,8 +27,9 @@
 #ifndef TIMER_HPP
 #define TIMER_HPP
 
-#include "include/engine/AEFrame.hpp"
-#include "include/engine/func_system.hpp"
+#include "AEFrame.hpp"
+#include "engine_messagebox.hpp"
+#include "engine_math.hpp"
 
 using std::string;
 using std::to_string;
@@ -42,7 +43,7 @@ public:
 	/// Class constructor
 	/// </summary>
 	/// <param name="delay">delay of the timer between ticks</param>
-	explicit AETimer(float delay = GAME_FPS) : m_fr(delay), m_modulename("AETimer"), m_time(0), m_delay(delay), stopthread(false) {
+	explicit AETimer(const float delay = GAME_FPS) : m_fr(delay), m_modulename("AETimer"), m_time(0), m_delay(delay), stopthread(false) {
 		//m_time = 0;
 		t1 = std::thread(&AETimer::incrtimer, this);
 		if (!t1.joinable()) {
@@ -91,7 +92,7 @@ private:
 	///variable to store time
 	bigint m_time;
 	///stores delay of timer
-	float m_delay;
+	const float m_delay;
 	///flag to stop thread
 	bool stopthread;
 	///function of the timer to increase time
@@ -145,7 +146,7 @@ namespace artyk::utils {
 	/// <param name="waitms">how much of milliseconds you want to wait</param>
 	/// @warning If the time you ask to wait is less than the delay of the timer, then it will be rounded to nearest tick
 	inline void waittime(const AETimer& mytimer = global_timer, bigint waitms = 3000) {
-		waittick(mytimer, std::round(waitms / mytimer.getframerater().getdelay()));
+		waittick(mytimer, artyk::math::roundtobigint(waitms / mytimer.getframerater().getdelay()));
 	}
 
 	/// <summary>
@@ -155,7 +156,7 @@ namespace artyk::utils {
 	/// <param name="waitms">specific tick of the timer to wait for, converted to milliseconds</param>
 	/// @warning If the time you ask to wait is less than the delay of the timer, then it will be rounded to nearest tick
 	inline void waitfortime(const AETimer& mytimer = global_timer, bigint waitms = 3000) {
-		waitfortick(mytimer, std::round(waitms / mytimer.getframerater().getdelay()));
+		waitfortick(mytimer, artyk::math::roundtobigint(waitms / mytimer.getframerater().getdelay()));
 	}
 }
 

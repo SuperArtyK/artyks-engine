@@ -30,9 +30,9 @@
  *  Should not cause everything to break.
  */
 
-#include "include/engine/AEGraphic.hpp"
-#include "include/engine/func_utils.hpp"
-#include "include/engine/AETimer.hpp"
+#include "AEGraphic.hpp"
+#include "func_utils.hpp"
+#include "AETimer.hpp"
 
 atomic<biguint> AEGraphic::m_globalmodulenum;
 int AEGraphic::graph_fps = 0;
@@ -57,7 +57,7 @@ AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fps
 	if (moduleamt == 0) {
 		m_screensize = { sizex, sizey };
 		m_screendata = new CHAR_INFO[sizex * sizey];
-		memset(m_screendata, 0, sizex * sizey * sizeof(CHAR_INFO));
+		memset(m_screendata, 0, sizex * sizey * PIXELSIZE);
 		m_currentbuffer = m_screendata;
 		//this is very very bad, but making m_myscr a variable, breaks the engine
 		//with error code "bad handle". And the cause is the global variable declaration order
@@ -151,13 +151,14 @@ void AEGraphic::drawbuffer() {
 
 void AEGraphic::clearscreen() {
 	m_settingscreen = true;
-	memset(m_screendata, 0, m_screensize.X * m_screensize.Y * sizeof(CHAR_INFO));
+	memset(m_screendata, 0, m_screensize.X * m_screensize.Y * PIXELSIZE);
 	m_settingscreen = false;
 }
 
 void AEGraphic::clearbuffer() {
+	if (m_currentbuffer == nullptr) return;
 	m_settingscreen = true;
-	memset(m_currentbuffer, 0, m_screensize.X * m_screensize.Y * sizeof(CHAR_INFO));
+	memset(m_currentbuffer, 0, m_screensize.X * m_screensize.Y * PIXELSIZE);
 	m_settingscreen = false;
 }
 
@@ -170,10 +171,32 @@ void AEGraphic::copybuffer(const CHAR_INFO* mych, int buffsize) {
 	if (buffsize > (m_screensize.X * m_screensize.Y)) {//precaution, if buffsize is more than screen size
 		buffsize = m_screensize.X * m_screensize.Y;
 	}
-	memcpy(m_screendata, mych, buffsize * sizeof(CHAR_INFO));//copying data...
+	memcpy(m_screendata, mych, buffsize * PIXELSIZE);//copying data...
 	m_settingscreen = false;//removing blocking
 }
 
+void AEGraphic::createTripleBuffering(void) {
+	if (m_currentbuffer && m_currentbuffer != m_screendata) {
+		return;
+	}
+	m_currentbuffer = new CHAR_INFO[m_screensize.X * m_screensize.Y];
+	memset(m_currentbuffer, 0, m_screensize.X * m_screensize.Y * PIXELSIZE);
+}
+
+void AEGraphic::removeTripleBuffering(void) {
+	if (m_currentbuffer && m_currentbuffer != m_screendata) {
+		return;
+	}
+	delete[] m_currentbuffer;
+	m_currentbuffer = m_screendata;
+}
+
+CHAR_INFO* AEGraphic::getTripleBufferPtr(void) {
+	if (m_currentbuffer && m_currentbuffer != m_screendata)
+		return m_currentbuffer;
+	else
+		return nullptr;
+}
 
 void AEGraphic::setscreen(short swidth, short sheight, short fonth, short fontw) {
 	
@@ -199,8 +222,8 @@ void AEGraphic::setscreen(short swidth, short sheight, short fonth, short fontw)
 
 }
 
-void AEGraphic::setPixel(const vec2int& myvec2, wchar_t mych, smalluint color) {
-	setPixel(myvec2, { {mych},color });
+void AEGraphic::setPixel(const vec2int& myvec2, const wchar_t mych, const smalluint color) {
+	setPixel(myvec2, PIXEL(mych,color));
 }
 void AEGraphic::setPixel(const vec2int& myvec2, const CHAR_INFO& mych) {
 
@@ -220,24 +243,20 @@ void AEGraphic::fill(const vec2int& myvec2_1, const vec2int& myvec2_2, const CHA
 
 	for (short y = myvec2_1.y; y < myvec2_2.y; y++) {
 		for (short x = myvec2_1.x; x < myvec2_2.x; x++) {
-			setPixel({ x,y }, mych);
+			setPixel(vec2int{ x,y }, mych);
 		}
 	}
 }
 
-void AEGraphic::fill(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych, smalluint color) {
-	for (short y = myvec2_1.y; y < myvec2_2.y; y++) {
-		for (short x = myvec2_1.x; x < myvec2_2.x; x++) {
-			setPixel({ x,y }, mych,color);
-		}
-	}
+void AEGraphic::fill(const vec2int& myvec2_1, const vec2int& myvec2_2, const wchar_t mych, const smalluint color) {
+	fill(myvec2_1, myvec2_2, PIXEL(mych, color));
 }
 
 
-void AEGraphic::fillRandom(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych) {
+void AEGraphic::fillRandom(const vec2int& myvec2_1, const vec2int& myvec2_2, const wchar_t mych) {
 	for (short y = myvec2_1.y; y < myvec2_2.y; y++) {
 		for (short x = myvec2_1.x; x < myvec2_2.x; x++) {
-			setPixel({ x,y }, mych,rand());
+			setPixel(vec2int{ x,y }, mych,rand());
 		}
 	}
 }
@@ -248,7 +267,7 @@ CHAR_INFO AEGraphic::getpixel(const vec2int& myvec2) const {
 	if (m_screendata && myvec2.x > 0 && myvec2.x < m_screensize.X && myvec2.y > 0 && myvec2.y < m_screensize.Y) {
 		return m_screendata[m_screensize.X * myvec2.y + myvec2.x];
 	}
-	return { 0,0 };
+	return artyk::gfx::PX_EMPTY;
 }
 
 //just copied the bresenham's line algorithm
@@ -309,8 +328,8 @@ void AEGraphic::drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, const
 	
 }
 
-void AEGraphic::drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych, smalluint color) {
-	drawLine(myvec2_1, myvec2_2, { {mych},color });
+void AEGraphic::drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, const wchar_t mych, const smalluint color) {
+	drawLine(myvec2_1, myvec2_2, PIXEL(mych, color));
 }
 
 void AEGraphic::drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, const CHAR_INFO& mych) {
@@ -319,8 +338,52 @@ void AEGraphic::drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, c
 	drawLine(myvec2_3, myvec2_1, mych);
 }
 
-void AEGraphic::drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, wchar_t mych, smalluint color) {
-	drawTriangle(myvec2_1, myvec2_2, myvec2_3, { {mych}, color });
+void AEGraphic::drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, const wchar_t mych, const smalluint color) {
+	drawTriangle(myvec2_1, myvec2_2, myvec2_3, PIXEL(mych, color));
+}
+
+void AEGraphic::drawPoly(const vec2int parr[], const unsigned int polyarrsize, const CHAR_INFO& mych){
+        if(polyarrsize == 0 || parr == nullptr) return;
+        vec2int prevpos{parr[0]};
+        for(unsigned int i = 1; i < polyarrsize; i++){
+            drawLine(prevpos,parr[i],mych);
+            prevpos = parr[i];
+        }
+		drawLine(prevpos, parr[0]);
+    }
+
+void AEGraphic::drawPoly(const vec2int parr[], const unsigned int polyarrsize, const wchar_t mych, const smalluint color) {
+	drawPoly(parr, polyarrsize, PIXEL(mych, color));
+}
+
+void AEGraphic::drawRegPoly(const vec2int& myvec2, const int radius, const int sideamount, const CHAR_INFO& mych) {
+	//its a point anyway
+	if (radius == 1) {
+		setPixel(myvec2, mych);
+		return;
+	}
+	//or its a line
+	if (sideamount < 3) {
+		drawLine(vec2int{ myvec2.x, myvec2.y - radius }, vec2int{ myvec2.x, myvec2.y + radius }, mych);
+		return;
+	}
+	const float angleincrement = 360.0f / sideamount;
+	vec2int pointpos;
+	vec2int prevpos{
+		artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(-90) * radius),
+		artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(-90) * radius)
+	};
+	for (float i = -90 + angleincrement; i < 360; i += angleincrement) {
+		pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(i) * radius);
+		pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(i) * radius);
+		drawLine(pointpos, prevpos, mych);
+		prevpos = pointpos;
+	}
+
+}
+
+void AEGraphic::drawRegPoly(const vec2int& myvec2, const int radius, const int sideamount, const wchar_t mych, const smalluint color) {
+	drawRegPoly(myvec2, radius, sideamount, PIXEL(mych, color));
 }
 
 void AEGraphic::drawCircle(const vec2int& myvec2, const int radius, const CHAR_INFO& mych) {
@@ -362,14 +425,11 @@ void AEGraphic::drawCircle(const vec2int& myvec2, const int radius, const CHAR_I
 		setPixel({ myvec2.x + 2, myvec2.y + 1 }, mych);
 		return;
 		break;
-
-
-
 	default:
 		int x = 0;
 		int y = radius;
 		int delta = 1 - 2 * radius;
-		int error = 0;
+		int error;
 
 		while (y >= x) {
 			setPixel({ myvec2.x + x, myvec2.y + y }, mych);
@@ -398,11 +458,11 @@ void AEGraphic::drawCircle(const vec2int& myvec2, const int radius, const CHAR_I
 }
 
 void AEGraphic::drawCircle(const vec2int& myvec2, const int radius, const wchar_t mych, const smalluint color) {
-	drawCircle(myvec2, radius, { mych, color });
+	drawCircle(myvec2, radius, PIXEL(mych, color));
 }
 
 
-void AEGraphic::startrd() {
+void AEGraphic::startrd(void) {
 	if (m_threadon) {
 		return;
 	}
@@ -432,14 +492,14 @@ void AEGraphic::closetrd(void) {
 
 }
 
-void AEGraphic::mainthread() {
+void AEGraphic::mainthread(void) {
 	using namespace artyk::gfx;
 	
 	artyk::utils::debug_log(m_logptr, "Entered main drawing thread", LOG_SUCCESS, m_modulename);
 	SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
 	
 	float timeelapsed;
-	bigint i = 0, previ = i;
+	int i = 0, previ = i;
 	artyk::utils::waitfortick();
 	systime timeend, timestart = std::chrono::system_clock::now();
 	while (!m_bstoptrd)

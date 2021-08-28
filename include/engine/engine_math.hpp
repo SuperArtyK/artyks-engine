@@ -74,6 +74,11 @@ namespace artyk::math {
 		return (num<0)? int(num + 0.5f) *-1:int(num + 0.5f);
 	}
 
+	///rounds the given number to bigint(assumed its less than BINT_MAX)
+	constexpr inline long long roundtobigint(const float num) {
+		return (num < 0) ? (long long)(num + 0.5f) * -1 : (long long)(num + 0.5f);
+	}
+
 	///returns absolute value of given float
 	constexpr inline float absval(const float num) {
 		return (num < 0) ? num -1 : num;
@@ -91,7 +96,7 @@ namespace artyk::math {
 		float val[2] = { num,0 };
 		while (!fequals(val[0], val[1])) {
 			val[1] = val[0];
-			val[0] = 0.5 * (val[0] + num / val[0]);
+			val[0] = 0.5f * (val[0] + num / val[0]);
 		}
 		return val[1];
 	}

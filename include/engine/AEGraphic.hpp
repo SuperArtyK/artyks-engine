@@ -35,13 +35,16 @@
 #ifndef AEGRAPHIC_HPP
 #define AEGRAPHIC_HPP
 
-#include "include/engine/AEBaseClass.hpp"
-#include "include/engine/AEScreen.hpp"
-#include "include/engine/custom_types.hpp"
-#include "include/engine/engine_math.hpp"
+#include "AEBaseClass.hpp"
+#include "AEScreen.hpp"
+#include "custom_types.hpp"
+#include "engine_math.hpp"
 #include <array>
 #include <vector>
 
+#define PIXEL(...) _PIXEL(__VA_ARGS__) 
+#define _PIXEL(chr,clr) CHAR_INFO{chr, clr}
+#define PIXELSIZE sizeof(CHAR_INFO)
 
 
 class AEGraphic : public __AEBaseClass
@@ -55,16 +58,16 @@ public:
 	AEGraphic(short sizex = 128, short sizey = 128, short fonth = 5, short fontw = 5, int fpsdelay = GAME_FPS, bool enablelog = true, bool useGlobLog = false);
 	~AEGraphic() override;
 	
-	///draws the screen, using data from m_screendata
+	/// draws the screen, using data from m_screendata
 	void drawscreen();
 	
-	///draws the current selected buffer directly, without copying
+	/// draws the current selected buffer directly, without copying
 	void drawbuffer();
 	
-	///clears the m_screendata buffer(screen buffer)
+	/// clears the m_screendata buffer(screen buffer)
 	void clearscreen();
 	
-	///clears the current selected buffers(the one that setPixel() uses)
+	/// clears the current selected buffers(the one that setPixel() uses)
 	void clearbuffer();
 	
 	/// <summary>
@@ -72,39 +75,23 @@ public:
 	/// </summary>
 	/// <param name="mych">the buffer itself; default is m_currentbuffer</param>
 	/// <param name="buffsize">size of the buffer, in array members; default to m_screensize</param>
-	/// @note if size is bigger than current screen buffer size, it will be truncated
+	/// @note if size is bigger than current screen buffer size, it will be truncated; and if it's lower
+	/// @note and if size is lower than current screen buffer size, what was in buffer out of new buffer bounds will be left.
 	/// @note if nothing is passed, the m_currentbuffer will be copied to the drawing buffer
 	void copybuffer(const CHAR_INFO* mych = m_currentbuffer, int buffsize = m_screensize.X*m_screensize.Y);
 	
-	///Creates third buffer(second AEGraphic buffer) to create frames and feed them entirely to drawing thread.
-	///Helps to remove flickering
-	void createTripleBuffering() {
-		if (m_currentbuffer && m_currentbuffer != m_screendata) {
-			return;
-		}
-		m_currentbuffer = new CHAR_INFO[m_screensize.X * m_screensize.Y];
-		memset(m_currentbuffer, 0, m_screensize.X * m_screensize.Y * sizeof(CHAR_INFO));
-	}
+	/// Creates third buffer(second AEGraphic buffer) to create frames and feed them entirely to drawing thread.
+	/// Helps to remove flickering
+	void createTripleBuffering(void);
 
-	///removes third buffer and deallocates it(so be carefull)
-	void removeTripleBuffering() {
-		if (m_currentbuffer && m_currentbuffer != m_screendata) {
-			return;
-		}
-		delete[] m_currentbuffer;
-		m_currentbuffer = m_screendata;
-	}
+	///removes third buffer and deallocates it(so be carefull with all those dangling pointers)
+	void removeTripleBuffering(void);
 
 	/// <summary>
 	/// returns pointer to third pointer, if it exists. If it doesnt, returns nullptr
 	/// </summary>
 	/// @warning USE THIS WITH CARE! DON'T DELETE THE POINTER, OR GRAPHICS ENGINE WILL CRASH!
-	CHAR_INFO* getTripleBufferPtr() {
-		if (m_currentbuffer && m_currentbuffer != m_screendata)
-			return m_currentbuffer;
-		else
-			return nullptr;
-	}
+	CHAR_INFO* getTripleBufferPtr(void);
 
 	/// <summary>
 	/// Sets the console screen to given dimensions if possible, otherwise throws Fatal error.
@@ -129,7 +116,7 @@ public:
 	/// <param name="myvec2">2d pixel position in console buffer</param>
 	/// <param name="mych">character to set</param>
 	/// <param name="color">color/attribute to set</param>
-	void setPixel(const vec2int& myvec2, wchar_t mych, smalluint color);
+	void setPixel(const vec2int& myvec2, const wchar_t mych, const smalluint color);
 
 	/// <summary>
 	/// fills rectangle between points with given CHAR_INFO
@@ -146,7 +133,7 @@ public:
 	/// <param name="myvec2_2">point 2 of rectangle</param>
 	/// <param name="mych">character to set</param>
 	/// <param name="color">color/attribute to set</param>
-	void fill(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych, smalluint color);
+	void fill(const vec2int& myvec2_1, const vec2int& myvec2_2, const wchar_t mych, const smalluint color);
 
 	/// <summary>
 	/// fills rectangle between points with given character; the attribute for each pixel is random
@@ -154,7 +141,7 @@ public:
 	/// <param name="myvec2_1">point 1 of rectangle</param>
 	/// <param name="myvec2_2">point 2 of rectangle</param>
 	/// <param name="mych">character to set</param>
-	void fillRandom(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych);
+	void fillRandom(const vec2int& myvec2_1, const vec2int& myvec2_2, const wchar_t mych);
 
 	/// <summary>
 	/// draws line between 2 points with given CHAR_INFO
@@ -171,7 +158,7 @@ public:
 	/// <param name="myvec2_2">point 2 of line</param>
 	/// <param name="mych">character to set</param>
 	/// <param name="color">color/attribute to set</param>
-	void drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, wchar_t mych, smalluint color);
+	void drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, const wchar_t mych, const smalluint color);
 
 	/// <summary>
 	/// draws triangle between 3 points with given CHAR_INFO
@@ -183,78 +170,115 @@ public:
 	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
 	
 	/// <summary>
-	/// draws triangle between 3 points with given CHAR_INFO
+	/// draws triangle between 3 points with given char and color
 	/// </summary>
 	/// <param name="myvec2_1">point 1 of triangle</param>
 	/// <param name="myvec2_2">point 2 of triangle</param>
 	/// <param name="myvec2_3">point 3 of triangle</param>
 	/// <param name="mych">character to set</param>
-	/// /// <param name="color">color/attribute to set</param>
-	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, wchar_t mych, smalluint color);
+	/// <param name="color">color/attribute to set</param>
+	void drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, const vec2int& myvec2_3, const wchar_t mych, const smalluint color);
 
-    void drawPoly(const vec2int* parr, const unsigned int polyarrsize){
-        if(polyarrsize == 0 || parr = nullptr) return;
-        vec2int prevpos{parr[0]};
-        for(unsigned int i = 1; i < polyarrsize; i++){
-            drawLine(prevpos,parr[i]);
-            prevpos = parr[i];
-        }
-		drawLine(prevpos, parr[0]);
-    }
+	/// <summary>
+	/// draws polygon from given vec2 array and size of array of vertices and CHAR_INFO
+	/// </summary>
+	/// <param name="parr">array of the vertices in 2d space</param>
+	/// <param name="polyarrsize">array size</param>
+	/// <param name="mych">CHAR_INFO to set</param>
+    void drawPoly(const vec2int parr[], const unsigned int polyarrsize, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+    
+	/// <summary>
+	/// draws polygon from given vec2 array and size of array/amount of vertices and sets it to character and attribute you passed
+	/// </summary>
+	/// <param name="parr">array of the vertices in 2d space</param>
+	/// <param name="polyarrsize">array size/length</param>
+	/// <param name="mych">character to set</param>
+	/// <param name="color">color/attribute to set</param>
+	void drawPoly(const vec2int parr[], const unsigned int polyarrsize, const wchar_t mych, const smalluint color);
 
-	void drawRegPoly(const vec2int& myvec2, const int radius, const int sideamount = 5) {
-		const float angleincrement = 360.0f / sideamount;
-		vec2int pointpos;
-		vec2int prevpos{
-		    artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(-90) * radius),
-		    artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(-90) * radius)
-	    };
-		for (float i = -90+angleincrement; i < 360; i+=angleincrement) {
-			pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(i) * radius);
-			pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(i) * radius);
-			drawLine(pointpos, prevpos);
-			prevpos = pointpos;
-		}
-
-	}
-
+	/// <summary>
+	/// draws regular polygon from given radius, position(vec2), side amount and CHAR_INFO
+	/// </summary>
+	/// <param name="myvec2">array of the vertices in 2d space</param>
+	/// <param name="radius">array size</param>
+	/// <param name="sideamount">amount of sides in polygon</param>
+	/// <param name="mych">CHAR_INFO to set</param>
+	void drawRegPoly(const vec2int& myvec2, const int radius, const int sideamount, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+	
+	/// <summary>
+	/// draws regular polygon from given radius, position(vec2), side amount and char and attribute
+	/// </summary>
+	/// <param name="myvec2">array of the vertices in 2d space</param>
+	/// <param name="radius">array size</param>
+	/// <param name="sideamount">amount of sides in polygon</param>
+	/// <param name="mych">character to set</param>
+	/// <param name="color">color/attribute to set</param>
+	void drawRegPoly(const vec2int& myvec2, const int radius, const int sideamount, const wchar_t mych, const smalluint color);
+	
+	/// <summary>
+	/// draws circle with given radius and center point
+	/// </summary>
+	/// <param name="myvec2">center point</param>
+	/// <param name="radius">radius of circle</param>
+	/// <param name="mych">CHAR_INFO to set</param>
 	void drawCircle(const vec2int& myvec2, const int radius, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+
+	/// <summary>
+	/// draws circle with given radius and center point
+	/// </summary>
+	/// <param name="myvec2">center point</param>
+	/// <param name="radius">radius of circle</param>
+	/// <param name="mych">character to set</param>
+	/// <param name="color">color/attribute to set</param>
 	void drawCircle(const vec2int& myvec2, const int radius, const wchar_t mych, const smalluint color);
 
-	void setRenderType(int rtype) {
+	/// <summary>
+	/// sets renderer's flags.
+	/// </summary>
+	/// <param name="rtype">flag number</param>
+	/// <param name="val">bool to check</param>
+	void renderflags(const int rtype, const bool val) {
 		switch (rtype)
 		{
 
+		//auto/manual drawing
 		case 0:
-			startrd();
+			if (val) {
+				startrd();
+			}
+			else
+			{
+				closetrd();
+			}
 			break;
-		case 1:
-			closetrd();
-			break;
+		//auto clear screen buffer after drawing
 		case 2:
-			m_clrscr = true;
+			m_clrscr = val;
 			break;
+		//triple buffering
 		case 3:
-			m_clrscr = false;
-			break;
-
-		case 4:
-			
+			if (val) {
+				createTripleBuffering();
+			}
+			else
+			{
+				removeTripleBuffering();
+			}
 			break;
 
 		default:
 			break;
 		}
 	}
-    ///returns pixel value at given location
+
+    /// returns pixel at given location
 	CHAR_INFO getpixel(const vec2int& myvec2) const;
 
-	
+	/// returns fps of the graphics thread(if running)
 	static int getfps(void) {
 		return graph_fps;
 	}
 
-	
 	///\brief console colors for the graphics engine
 	/// took them from the color namespace
 	/// @see artyk::color
@@ -331,3 +355,10 @@ private:
 
 
 
+namespace artyk::utils {
+
+	///returns color attribute of the cell from given backround and foreground
+	constexpr inline smalluint getattrib(smalluint bgr = color::DEF_BGR, smalluint fgr = color::DEF_FGR) {
+		return (bgr << 4) + fgr;
+	}
+}

@@ -32,7 +32,7 @@
 #include <limits>
 #include <chrono>
 
-#include "include/engine/custom_types.hpp"
+#include "custom_types.hpp"
 
  //a few typedefs so I'll type less code
  //
@@ -90,6 +90,17 @@ typedef std::chrono::time_point<std::chrono::steady_clock> steadytime;
 #define calculatetime(tp1,tp2) std::chrono::duration<float>(tp2 - tp1).count()
 ///time point. using preprocessor macro, as it is a template, and we only need to shorten the name
 #define timepoint std::chrono::time_point
+///time duration, same reason as timepoint
+#define tduration std::chrono::duration
+///chrono's milliseconds
+#define millisec std::chrono::milliseconds
+///chrono's microseconds
+#define microsec std::chrono::microseconds
+
+//thread
+///thread's sleep_until
+#define sleepuntil std::this_thread::sleep_until
+
 
 //custom types
 

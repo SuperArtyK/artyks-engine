@@ -29,9 +29,9 @@
 #ifndef SCREEN_HPP
 #define SCREEN_HPP
 
-#include "include/engine/AEBaseClass.hpp"
-#include "include/engine/func_utils.hpp"
-#include "include/engine/func_system.hpp"
+#include "AEBaseClass.hpp"
+#include "func_utils.hpp"
+#include "engine_messagebox.hpp"
 using std::string;
 using std::atomic;
 using std::to_string;

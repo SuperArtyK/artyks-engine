@@ -248,6 +248,7 @@
   <ItemGroup>
     <ClInclude Include="include\engine\AEBaseClass.hpp" />
     <ClInclude Include="include\engine\AEBeep.hpp" />
+    <ClInclude Include="include\engine\AEDelay.hpp" />
     <ClInclude Include="include\engine\AEFrame.hpp" />
     <ClInclude Include="include\engine\AEGraphic.hpp" />
     <ClInclude Include="include\engine\AEKeyboard.hpp" />
@@ -386,7 +387,7 @@
     <ClInclude Include="include\engine\custom_types.hpp" />
     <ClInclude Include="include\engine\engine_flags.hpp" />
     <ClInclude Include="include\engine\engine_math.hpp" />
-    <ClInclude Include="include\engine\func_system.hpp" />
+    <ClInclude Include="include\engine\engine_messagebox.hpp" />
     <ClInclude Include="include\engine\func_utils.hpp" />
     <ClInclude Include="include\engine\global_vars.hpp" />
     <ClInclude Include="include\engine\includeall.hpp" />

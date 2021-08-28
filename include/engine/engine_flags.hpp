@@ -61,7 +61,7 @@
 
 ///utilises the AEDebugInfo, currently used in message functions
 ///good for debugging
-///@see func_system.hpp
+///@see engine_messagebox.hpp
 #define AE_DETAILED_WINDOW_MESSAGES "\nLine: " + to_string(dbg.line) + "\nFile: " + dbg.currentfile + "\nCompile Date: " + dbg.compiledate + "\nCompile Time: " + dbg.compiletime + "\nFunction: " + dbg.compilefunc
 
 ///enable mouse scanning in the global_keyboard module

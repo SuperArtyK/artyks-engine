@@ -31,8 +31,8 @@
 #include <atomic>
 #include <fstream>
 #include <string>
-#include "include/engine/typedefs.hpp"
-#include "include/engine/global_vars.hpp"
+#include "typedefs.hpp"
+#include "global_vars.hpp"
 using std::string;
 using std::atomic;
 

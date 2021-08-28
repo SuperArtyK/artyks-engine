@@ -28,7 +28,7 @@
 #ifndef CUSTOM_TYPES_HPP
 #define CUSTOM_TYPES_HPP
 
-#include "include/engine/vectors.hpp"
+#include "vectors.hpp"
 
 ///data type to store keys and their data/state
 struct keystate

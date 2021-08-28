@@ -27,8 +27,8 @@
 
 #ifndef GLOB_FUNCS_HPP
 #define GLOB_FUNCS_HPP
-#include "include/engine/global_vars.hpp"
-#include "include/engine/trig_lookup.hpp"
+#include "global_vars.hpp"
+#include "trig_lookup.hpp"
 
  //prototypes
  //moved from log.cpp
@@ -39,7 +39,6 @@ using std::to_string;
 
 #define arrsize(x) (sizeof(x)/sizeof(x[0]))
 #define mod0(x,y) !(x%y)
-
 
 
 
@@ -107,10 +106,6 @@ namespace artyk {
 
 		///pseudorandom number generator based on XOR algorithm
 		inline unsigned long rand_xor(void);
-
-		///returns color attribute of the cell from given backround and foreground
-		constexpr inline smalluint getattrib(smalluint bgr, smalluint fgr);
-
 
 #ifdef AE_EXPERIMENTAL
 		///counts time between calls, not safe/consistent if used in other threads
@@ -251,9 +246,7 @@ namespace artyk {
 			return z;
 		}
 
-		constexpr inline smalluint getattrib(smalluint bgr = color::DEF_BGR, smalluint fgr = color::DEF_FGR) {
-			return bgr * 16 + fgr;
-		}
+		
 	}
 
 }

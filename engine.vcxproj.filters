@@ -471,7 +471,7 @@
     <ClInclude Include="include\engine\engine_flags.hpp">
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
-    <ClInclude Include="include\engine\func_system.hpp">
+    <ClInclude Include="include\engine\engine_messagebox.hpp">
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
     <ClInclude Include="include\engine\func_utils.hpp">
@@ -499,6 +499,9 @@
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
     <ClInclude Include="include\engine\vectors.hpp">
+      <Filter>Header Files\include\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\engine\AEDelay.hpp">
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
   </ItemGroup>

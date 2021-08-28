@@ -23,9 +23,9 @@
  *  Should not cause everything to break.
  */
 
-#include "include/engine/AELog.hpp"
-#include "include/engine/func_utils.hpp"
-#include "include/engine/typedefs.hpp"
+#include "AELog.hpp"
+#include "func_utils.hpp"
+#include "typedefs.hpp"
 #include <filesystem>
 #include <intrin.h>
 

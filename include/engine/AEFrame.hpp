@@ -18,7 +18,7 @@
 */
 
 /** @file include/engine/AEFrame.hpp
- *  This file contains the delay module code.
+ *  This file contains the frame delay module code.
  *  Useful if you need to limit the execution time of the program. It makes
  *  sure that the loop(f.ex.) executes with same delay, if contents of loop
  *  processed faster than you need.
@@ -33,8 +33,9 @@
 
 #include <thread>
 #include <chrono>
-#include "include/engine/global_vars.hpp"
-#include "include/engine/typedefs.hpp"
+#include "global_vars.hpp"
+#include "typedefs.hpp"
+
 
  //usage:
  // create obj AEFrame with fps value
@@ -61,18 +62,18 @@ public:
 	/// </summary>
 	/// <param name="fps">the delay in the format of framerate, defaults to the GAME_FPS</param>
 	/// @note if you pass it 0 or negative number it will disable the delay
-	explicit AEFrame(float fps = GAME_FPS) : time_between_frames((fps <= 0) ? std::chrono::microseconds(0) : std::chrono::microseconds(biguint(1000000 / fps))),
-		tp(std::chrono::system_clock::now()), m_modulename("AEFrame"), nodelay((fps <= 0))
+	explicit AEFrame(const float fps = GAME_FPS) : time_between_frames((fps <= 0) ? microsec(0) : microsec(biguint(1000000 / fps))),
+		tp(getsystime), nodelay((fps <= 0))
 	{
 	}
 
 	///resets the delay value to what you pass to it
 	/// @note if you pass it 0 or negative number it will disable the delay
 	/// @see AEFrame()
-	void setfps(float fps = GAME_FPS) {
+	void setfps(const float fps = GAME_FPS) {
 		if (fps <= 0) { nodelay = true; return; }
-		time_between_frames = std::chrono::microseconds(biguint(1000000 / fps));
-		tp = std::chrono::system_clock::now();
+		time_between_frames = microsec(biguint(1000000 / fps));
+		tp = getsystime;
 	}
 
 	///makes the current thread sleep for a set delay
@@ -83,15 +84,21 @@ public:
 		}
 		tp += time_between_frames;
 		// and sleep until that time point
-		std::this_thread::sleep_until(tp);
+		sleepuntil(tp);
 	}
+
+	///resets the time point time to current system time
+	void resettime() {
+		tp = getsystime;
+	}
+
 	///Returns the module name
 	///@see __AEBaseClass::getmodulename()
 	inline string getmodulename(void) const { return m_modulename; }
 	///returns framerate of AEFrame
-	inline int getframerate(void) const { return 1 / time_between_frames.count(); }
+	inline int getframerate(void) const { return int((1.0 / time_between_frames.count())+0.5); }
 	///returns the delay of AEFrame in seconds
-	inline float getdelay(void) const { return time_between_frames.count(); }
+	inline double getdelay(void) const { return time_between_frames.count(); }
 #ifdef AE_EXPERIMENTAL
 	/// uses all utils for class
 	///@see similar thing as __AEBaseClass::benchmark()
@@ -105,13 +112,15 @@ public:
 private:
 
 	///delay between seconds
-	std::chrono::duration<double> time_between_frames;
+	tduration<double> time_between_frames;
 	///the timepoint, that sets time when to wake up the thread
-	std::chrono::time_point<std::chrono::system_clock, decltype(time_between_frames)> tp;
+	timepoint<std::chrono::system_clock, decltype(time_between_frames)> tp;
 	///module name
-	const std::string m_modulename;
+	inline static const std::string m_modulename = "AEFrame";
 	///flag if we don't need the delay
 	bool nodelay;
 };
+
+
 
 #endif // !AEFRAME_HPP
