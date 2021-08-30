@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="../../logo.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ArtyK&#39;s Console Engine
-   &#160;<span id="projectnumber">v0.0.6</span>
+   &#160;<span id="projectnumber">v0.7.0</span>
    </div>
    <div id="projectbrief">The Console engine for apps and games</div>
   </td>
@@ -194,9 +194,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This module implements logging as much as you will probably need. </p>
-<p><br  />
- This module is not inherited from the base class, as it the base class is based on this class(AELog pointer) that says it all, it's just a logger. <br  />
- </p>
+<p>This module is not inherited from the base class, as it the base class is based on this class(AELog pointer) that says it all, it's just a logger. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00065">65</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6d1bc7e3b38072b9e42b06b0d0abbdab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d1bc7e3b38072b9e42b06b0d0abbdab">&#9670;&nbsp;</a></span>AELog()</h2>
@@ -227,11 +227,13 @@ Static Private Attributes</h2></td></tr>
 <p>Class constructor </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">l_strPathtolog</td><td>path to the log file. The folder it is bound to is the folder of exe(you can't really go above), by default it's DEF_LOG_PATH</td></tr>
+    <tr><td class="paramname">l_strPathtolog</td><td>path to the log file, relative to the exe, by default it's DEF_LOG_PATH</td></tr>
     <tr><td class="paramname">l_strLogName</td><td>name of the log file. The log file will be in format of [log_name]_[year-month-day].log. By default it's "LOG"</td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html#l00043">43</a> of file <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html">AELog.cpp</a>.</p>
 
 </div>
 </div>
@@ -249,6 +251,8 @@ Static Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html#l00060">60</a> of file <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html">AELog.cpp</a>.</p>
 
 </div>
 </div>
@@ -296,6 +300,8 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if completed successfully, 1 if AE_LOG_ENABLE is not defined</dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html#l00068">68</a> of file <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html">AELog.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a8d745c6647b2415e51cb0d91fd209899"></a>
@@ -324,6 +330,8 @@ Static Private Attributes</h2></td></tr>
 
 <p>Returns the module name. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="../../dc/dad/class_____a_e_base_class.html#a62d1472da22bb4f3e5c82911d9c6f79c" title="returns the &quot;m_modulename&quot; of the module">__AEBaseClass::getmodulename()</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00086">86</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
 
 </div>
 </div>
@@ -354,6 +362,8 @@ Static Private Attributes</h2></td></tr>
 <p>returns m_modulenum of the module </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="../../dc/dad/class_____a_e_base_class.html#aef4b95893e469047a10f182731b2bd80" title="returns the &quot;m_modulenum&quot; of the module">__AEBaseClass::getmodulenum()</a> </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00089">89</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a0339abc2b9da0c562c4b3897c15bcd75"></a>
@@ -381,6 +391,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>returns m_ullEntrycount of the module </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
 
 </div>
 </div>
@@ -411,6 +423,8 @@ Static Private Attributes</h2></td></tr>
 <p>uses all utils for class </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="../../dc/dad/class_____a_e_base_class.html#afba226fbf458f09ebf98a50b4ea118e2" title="uses all utils for class">__AEBaseClass::benchmark()</a> </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00095">95</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a22999ee113e86f2da531290b484945ad"></a>
@@ -439,6 +453,8 @@ Static Private Attributes</h2></td></tr>
 
 <p>retusn date for the log file, in string with format of "[year]-[month]-[day]" </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html#l00199">199</a> of file <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html">AELog.cpp</a>.</p>
+
 </div>
 </div>
 <a id="aef11667015a1092e8bb3e70a380df59a"></a>
@@ -466,6 +482,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>checks the given type and returns it's word representation </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html#l00221">221</a> of file <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html">AELog.cpp</a>.</p>
 
 </div>
 </div>
@@ -496,6 +514,8 @@ Static Private Attributes</h2></td></tr>
 <p>opens file </p><dl class="section return"><dt>Returns</dt><dd>0 if completed successfully, 1 if not or AE_LOG_ENABLE is not defined</dd></dl>
 </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html#l00206">206</a> of file <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html">AELog.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a0df07299cf433bb2644c796d78176708"></a>
@@ -523,6 +543,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>closes file </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html#l00216">216</a> of file <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html">AELog.cpp</a>.</p>
 
 </div>
 </div>
@@ -552,6 +574,8 @@ Static Private Attributes</h2></td></tr>
 
 <p>opens file and starts logging, if AE_LOG_ENABLE is defined </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html#l00186">186</a> of file <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html">AELog.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a249370a65f27c76eddc4d80c5018cddf"></a>
@@ -580,6 +604,8 @@ Static Private Attributes</h2></td></tr>
 
 <p>stops logging and closes file </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html#l00174">174</a> of file <a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html">AELog.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -605,6 +631,8 @@ Static Private Attributes</h2></td></tr>
 
 <p>file stream variable for the current logfile </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a780bc30ce2f3829428117157887d94c5"></a>
@@ -628,6 +656,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>number of the module, used for identification </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00119">119</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
 
 </div>
 </div>
@@ -653,6 +683,8 @@ Static Private Attributes</h2></td></tr>
 
 <p>module name </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00121">121</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ad3b6965dacf661ebfdf03b8b36a47dad"></a>
@@ -676,6 +708,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>path to the log file </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00123">123</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
 
 </div>
 </div>
@@ -701,6 +735,8 @@ Static Private Attributes</h2></td></tr>
 
 <p>log file name, includes the log path </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00125">125</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
+
 </div>
 </div>
 <a id="aea1e24cedd7c4afc26916a7d3a958822"></a>
@@ -725,6 +761,8 @@ Static Private Attributes</h2></td></tr>
 
 <p>variable to store the module index number </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00127">127</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a238c093d50deb2cfd3f0ecfb007806d7"></a>
@@ -748,6 +786,8 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>number of entries this logger has made </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00129">129</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
 
 </div>
 </div>
@@ -776,9 +816,11 @@ Static Private Attributes</h2></td></tr>
 <div class="line">(<span class="keyword">sizeof</span>(std::string) * 1188) +</div>
 <div class="line"><span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) +</div>
 <div class="line"><span class="keyword">sizeof</span>(bool)</div>
-<div class="ttc" id="atypedefs_8hpp_html_a3d36c784f23265914e39e4477c74a5c5"><div class="ttname"><a href="../../de/df7/typedefs_8hpp.html#a3d36c784f23265914e39e4477c74a5c5">biguint</a></div><div class="ttdeci">unsigned long long biguint</div><div class="ttdoc">big unsigned int</div><div class="ttdef"><b>Definition:</b> typedefs.hpp:40</div></div>
+<div class="ttc" id="atypedefs_8hpp_html_a3d36c784f23265914e39e4477c74a5c5"><div class="ttname"><a href="../../de/df7/typedefs_8hpp.html#a3d36c784f23265914e39e4477c74a5c5">biguint</a></div><div class="ttdeci">unsigned long long biguint</div><div class="ttdoc">big unsigned int</div><div class="ttdef"><b>Definition:</b> <a href="../../de/df7/typedefs_8hpp_source.html#l00045">typedefs.hpp:45</a></div></div>
 </div><!-- fragment -->
 <p>object possible size </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00131">131</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
 
 </div>
 </div>
@@ -804,11 +846,13 @@ Static Private Attributes</h2></td></tr>
 
 <p>flag to indicate if the first log entry is written, used to check if we need to write intro text to log file </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html#l00133">133</a> of file <a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>artyks_engine/include/engine/<a class="el" href="../../d8/de5/_a_e_log_8hpp_source.html">AELog.hpp</a></li>
-<li>artyks_engine/src/engine/<a class="el" href="../../d3/d6d/_a_e_log_8cpp.html">AELog.cpp</a></li>
+<li>artyks_engine/src/engine/<a class="el" href="../../d3/d6d/_a_e_log_8cpp_source.html">AELog.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

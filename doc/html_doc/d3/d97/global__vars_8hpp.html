@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="../../logo.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ArtyK&#39;s Console Engine
-   &#160;<span id="projectnumber">v0.0.6</span>
+   &#160;<span id="projectnumber">v0.7.0</span>
    </div>
    <div id="projectbrief">The Console engine for apps and games</div>
   </td>
@@ -97,6 +97,7 @@ $(document).ready(function(){initNavTree('d3/d97/global__vars_8hpp.html','../../
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">global_vars.hpp File Reference</div>  </div>
@@ -107,6 +108,10 @@ $(document).ready(function(){initNavTree('d3/d97/global__vars_8hpp.html','../../
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &lt;Windows.h&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
 <code>#include &quot;<a class="el" href="../../d7/df5/engine__flags_8hpp_source.html">engine_flags.hpp</a>&quot;</code><br />
 </div>
 <p><a href="../../d3/d97/global__vars_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -116,11 +121,17 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d9/d53/namespaceartyk"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html">artyk</a></td></tr>
 <tr class="memdesc:d9/d53/namespaceartyk"><td class="mdescLeft">&#160;</td><td class="mdescRight">This namespace contains all of things that any of the part of program can use, and is useful. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:db/da8/namespaceartyk_1_1version"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/da8/namespaceartyk_1_1version.html">artyk::version</a></td></tr>
+<tr class="memdesc:db/da8/namespaceartyk_1_1version"><td class="mdescLeft">&#160;</td><td class="mdescRight">has engine version stuff(ints) <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:da/d11/namespaceartyk_1_1color"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d11/namespaceartyk_1_1color.html">artyk::color</a></td></tr>
 <tr class="memdesc:da/d11/namespaceartyk_1_1color"><td class="mdescLeft">&#160;</td><td class="mdescRight">Screen colors for graphic engine and <a class="el" href="../../d4/d17/class_a_e_screen.html" title="This module is made for simple screen management, and not made for the performance.">AEScreen</a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d1/dd6/namespaceartyk_1_1exitcodes"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd6/namespaceartyk_1_1exitcodes.html">artyk::exitcodes</a></td></tr>
 <tr class="memdesc:d1/dd6/namespaceartyk_1_1exitcodes"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of the engine exit codes <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d2/d5a/namespaceartyk_1_1gfx"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html">artyk::gfx</a></td></tr>
+<tr class="memdesc:d2/d5a/namespaceartyk_1_1gfx"><td class="mdescLeft">&#160;</td><td class="mdescRight">this namespace contains predone characters/char cells used for drawing stuff with <a class="el" href="../../dc/d7e/class_a_e_graphic.html">AEGraphic</a> <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -128,12 +139,14 @@ Macros</h2></td></tr>
 <tr class="memitem:a63a780eb9590cbea188494a74c8eb79e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a>&#160;&#160;&#160;66</td></tr>
 <tr class="memdesc:a63a780eb9590cbea188494a74c8eb79e"><td class="mdescLeft">&#160;</td><td class="mdescRight">the inner game maximum fps, won't be related to graphics fps.  <a href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">More...</a><br /></td></tr>
 <tr class="separator:a63a780eb9590cbea188494a74c8eb79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2637aea928c9805142482fdc65aa6179"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d97/global__vars_8hpp.html#a2637aea928c9805142482fdc65aa6179">TIMER_WAIT</a>&#160;&#160;&#160;2*<a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a></td></tr>
+<tr class="memitem:a2637aea928c9805142482fdc65aa6179"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d97/global__vars_8hpp.html#a2637aea928c9805142482fdc65aa6179">TIMER_WAIT</a>&#160;&#160;&#160;1*<a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a></td></tr>
 <tr class="memdesc:a2637aea928c9805142482fdc65aa6179"><td class="mdescLeft">&#160;</td><td class="mdescRight">amount of global timer ticks to wait for, untill launching the threads.  <a href="../../d3/d97/global__vars_8hpp.html#a2637aea928c9805142482fdc65aa6179">More...</a><br /></td></tr>
 <tr class="separator:a2637aea928c9805142482fdc65aa6179"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74f2022a88a3778b0c2f6ebd0e134adb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d97/global__vars_8hpp.html#a74f2022a88a3778b0c2f6ebd0e134adb">DEF_MNAME</a>&#160;&#160;&#160;&quot;Engine&quot;</td></tr>
 <tr class="memdesc:a74f2022a88a3778b0c2f6ebd0e134adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">default modulename for engine  <a href="../../d3/d97/global__vars_8hpp.html#a74f2022a88a3778b0c2f6ebd0e134adb">More...</a><br /></td></tr>
 <tr class="separator:a74f2022a88a3778b0c2f6ebd0e134adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6a161a1a72bc512fd291e654bd9cb1b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d97/global__vars_8hpp.html#ab6a161a1a72bc512fd291e654bd9cb1b">DEF_MODULENAME</a>&#160;&#160;&#160;&quot;Engine&quot;</td></tr>
+<tr class="separator:ab6a161a1a72bc512fd291e654bd9cb1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84e0a3e6c7c2b7be64ecc2591eb613d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d97/global__vars_8hpp.html#a84e0a3e6c7c2b7be64ecc2591eb613d8">UTF8</a>(x)&#160;&#160;&#160;u8 ## x</td></tr>
 <tr class="memdesc:a84e0a3e6c7c2b7be64ecc2591eb613d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">converts the "string literal" to u8"utf-8/unicode string literal"  <a href="../../d3/d97/global__vars_8hpp.html#a84e0a3e6c7c2b7be64ecc2591eb613d8">More...</a><br /></td></tr>
 <tr class="separator:a84e0a3e6c7c2b7be64ecc2591eb613d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,6 +160,12 @@ Macros</h2></td></tr>
 <tr class="memdesc:acc1931a50f4cdc27035829dbb830d22a"><td class="mdescLeft">&#160;</td><td class="mdescRight">macro for newline string  <a href="../../d3/d97/global__vars_8hpp.html#acc1931a50f4cdc27035829dbb830d22a">More...</a><br /></td></tr>
 <tr class="separator:acc1931a50f4cdc27035829dbb830d22a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a4c27bca181870a4181439d74a8ca4ec5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a4c27bca181870a4181439d74a8ca4ec5">artyk::init_main</a> (bool high_priority=true, bool noscrollbar=false, bool noresize=false)</td></tr>
+<tr class="memdesc:a4c27bca181870a4181439d74a8ca4ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function initialises all stuff the engine needs, before it starts.  <a href="../../d9/d53/namespaceartyk.html#a4c27bca181870a4181439d74a8ca4ec5">More...</a><br /></td></tr>
+<tr class="separator:a4c27bca181870a4181439d74a8ca4ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a0c33f1109b193d4bb639f7d3c0c9d554"><td class="memItemLeft" align="right" valign="top">uint_fast8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a0c33f1109b193d4bb639f7d3c0c9d554">artyk::closing_app</a> = 0</td></tr>
@@ -155,23 +174,35 @@ Variables</h2></td></tr>
 <tr class="memitem:ad1b6eadcc3f06c974fe9ec7a9163754c"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#ad1b6eadcc3f06c974fe9ec7a9163754c">artyk::app_name</a></td></tr>
 <tr class="memdesc:ad1b6eadcc3f06c974fe9ec7a9163754c"><td class="mdescLeft">&#160;</td><td class="mdescRight">name of the app  <a href="../../d9/d53/namespaceartyk.html#ad1b6eadcc3f06c974fe9ec7a9163754c">More...</a><br /></td></tr>
 <tr class="separator:ad1b6eadcc3f06c974fe9ec7a9163754c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acafb72f10c21898c876448a2904489b8"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#acafb72f10c21898c876448a2904489b8">artyk::app_build</a> = 3635</td></tr>
-<tr class="memdesc:acafb72f10c21898c876448a2904489b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">build of app, how do you autoincrement these?  <a href="../../d9/d53/namespaceartyk.html#acafb72f10c21898c876448a2904489b8">More...</a><br /></td></tr>
-<tr class="separator:acafb72f10c21898c876448a2904489b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12b0879da633c41920969a5781f6dc88"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a12b0879da633c41920969a5781f6dc88">artyk::app_version</a> = &quot;v.0.0.6&quot;</td></tr>
+<tr class="memitem:a16e365cd3f0eb854660e401e8227d28f"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a16e365cd3f0eb854660e401e8227d28f">artyk::version::majorver</a> = 0</td></tr>
+<tr class="separator:a16e365cd3f0eb854660e401e8227d28f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02efc0c7ec517f1972a361b771dbf0c5"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a02efc0c7ec517f1972a361b771dbf0c5">artyk::version::minorver</a> = 7</td></tr>
+<tr class="separator:a02efc0c7ec517f1972a361b771dbf0c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20d2bd332938818e520c46b936d13c79"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a20d2bd332938818e520c46b936d13c79">artyk::version::patchnum</a> = 0</td></tr>
+<tr class="separator:a20d2bd332938818e520c46b936d13c79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a64057b442be3a31a2f22970879f50e"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a9a64057b442be3a31a2f22970879f50e">artyk::version::buildnum</a> = 3635</td></tr>
+<tr class="memdesc:a9a64057b442be3a31a2f22970879f50e"><td class="mdescLeft">&#160;</td><td class="mdescRight">build of app, how do you autoincrement these?  <a href="../../db/da8/namespaceartyk_1_1version.html#a9a64057b442be3a31a2f22970879f50e">More...</a><br /></td></tr>
+<tr class="separator:a9a64057b442be3a31a2f22970879f50e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12b0879da633c41920969a5781f6dc88"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a12b0879da633c41920969a5781f6dc88">artyk::app_version</a> = &quot;v&quot;+to_string(version::majorver)+&quot;.&quot;+to_string(version::minorver)+&quot;.&quot;+to_string(version::patchnum)</td></tr>
 <tr class="memdesc:a12b0879da633c41920969a5781f6dc88"><td class="mdescLeft">&#160;</td><td class="mdescRight">version  <a href="../../d9/d53/namespaceartyk.html#a12b0879da633c41920969a5781f6dc88">More...</a><br /></td></tr>
 <tr class="separator:a12b0879da633c41920969a5781f6dc88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa955b3cc1feb9bcc4c3393bfbee21d0b"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#aa955b3cc1feb9bcc4c3393bfbee21d0b">artyk::app_name_full</a> = app_name + &quot; &quot; + app_version + &quot;:&quot;+to_string(app_build)</td></tr>
+<tr class="memitem:ad26ddd67e9d3a5e78255ef8692928913"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#ad26ddd67e9d3a5e78255ef8692928913">artyk::app_build</a> = to_string(version::buildnum)</td></tr>
+<tr class="memdesc:ad26ddd67e9d3a5e78255ef8692928913"><td class="mdescLeft">&#160;</td><td class="mdescRight">build  <a href="../../d9/d53/namespaceartyk.html#ad26ddd67e9d3a5e78255ef8692928913">More...</a><br /></td></tr>
+<tr class="separator:ad26ddd67e9d3a5e78255ef8692928913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa955b3cc1feb9bcc4c3393bfbee21d0b"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#aa955b3cc1feb9bcc4c3393bfbee21d0b">artyk::app_name_full</a> = app_name + &quot; &quot; + app_version + &quot;:&quot; + app_build</td></tr>
 <tr class="memdesc:aa955b3cc1feb9bcc4c3393bfbee21d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">full name of the app  <a href="../../d9/d53/namespaceartyk.html#aa955b3cc1feb9bcc4c3393bfbee21d0b">More...</a><br /></td></tr>
 <tr class="separator:aa955b3cc1feb9bcc4c3393bfbee21d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab04086ddb74d23868428f03caf756022"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#ab04086ddb74d23868428f03caf756022">artyk::app_startstatus</a> = 0</td></tr>
 <tr class="memdesc:ab04086ddb74d23868428f03caf756022"><td class="mdescLeft">&#160;</td><td class="mdescRight">status of starting up  <a href="../../d9/d53/namespaceartyk.html#ab04086ddb74d23868428f03caf756022">More...</a><br /></td></tr>
 <tr class="separator:ab04086ddb74d23868428f03caf756022"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02e5bcd6f413509a748b70ef67b7ff84"><td class="memItemLeft" align="right" valign="top">const HANDLE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a02e5bcd6f413509a748b70ef67b7ff84">artyk::g_output_handle</a> = GetStdHandle(STD_OUTPUT_HANDLE)</td></tr>
+<tr class="memdesc:a02e5bcd6f413509a748b70ef67b7ff84"><td class="mdescLeft">&#160;</td><td class="mdescRight">console output handle  <a href="../../d9/d53/namespaceartyk.html#a02e5bcd6f413509a748b70ef67b7ff84">More...</a><br /></td></tr>
 <tr class="separator:a02e5bcd6f413509a748b70ef67b7ff84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a853356cec684159f033d982dd69a7b59"><td class="memItemLeft" align="right" valign="top">const HANDLE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a853356cec684159f033d982dd69a7b59">artyk::g_input_handle</a> = GetStdHandle(STD_INPUT_HANDLE)</td></tr>
+<tr class="memdesc:a853356cec684159f033d982dd69a7b59"><td class="mdescLeft">&#160;</td><td class="mdescRight">console input handle  <a href="../../d9/d53/namespaceartyk.html#a853356cec684159f033d982dd69a7b59">More...</a><br /></td></tr>
 <tr class="separator:a853356cec684159f033d982dd69a7b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ea01c4468455a4fc220c1b5fecaedf9"><td class="memItemLeft" align="right" valign="top">const HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a5ea01c4468455a4fc220c1b5fecaedf9">artyk::g_console_hwnd</a> = GetConsoleWindow()</td></tr>
+<tr class="memdesc:a5ea01c4468455a4fc220c1b5fecaedf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">console window handle  <a href="../../d9/d53/namespaceartyk.html#a5ea01c4468455a4fc220c1b5fecaedf9">More...</a><br /></td></tr>
 <tr class="separator:a5ea01c4468455a4fc220c1b5fecaedf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e07ed4451ddb66e5e38985602a614bc"><td class="memItemLeft" align="right" valign="top">constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a6e07ed4451ddb66e5e38985602a614bc">artyk::color::BLACK</a> = 0</td></tr>
 <tr class="separator:a6e07ed4451ddb66e5e38985602a614bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,6 +240,8 @@ Variables</h2></td></tr>
 <tr class="separator:af531bab77bf1bc264bc7b5719a94dc13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0aa0392371b0f7f7ddba5fbc3860b176"><td class="memItemLeft" align="right" valign="top">constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a0aa0392371b0f7f7ddba5fbc3860b176">artyk::color::DEF_FGR</a> = B_GREEN</td></tr>
 <tr class="separator:a0aa0392371b0f7f7ddba5fbc3860b176"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a458e6e60794fdde5b2275fc44a820605"><td class="memItemLeft" align="right" valign="top">constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a458e6e60794fdde5b2275fc44a820605">artyk::color::DEF_ATTR</a> = DEF_BGR * 16 + DEF_FGR</td></tr>
+<tr class="separator:a458e6e60794fdde5b2275fc44a820605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72685bfa0bdb471072637a1403e6e007"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd6/namespaceartyk_1_1exitcodes.html#a72685bfa0bdb471072637a1403e6e007">artyk::exitcodes::NORMAL_EXIT</a> = 0</td></tr>
 <tr class="separator:a72685bfa0bdb471072637a1403e6e007"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8f6902af15b20f2c15e555a53cfcb77"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd6/namespaceartyk_1_1exitcodes.html#ad8f6902af15b20f2c15e555a53cfcb77">artyk::exitcodes::ERROR_EXIT</a> = 1</td></tr>
@@ -227,13 +260,57 @@ Variables</h2></td></tr>
 <tr class="separator:a2cdad9519fe9631fad68f3ca7c2f41c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a002cbda51141d68bcaf5571c9fe4dc23"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd6/namespaceartyk_1_1exitcodes.html#a002cbda51141d68bcaf5571c9fe4dc23">artyk::exitcodes::ERROR_SETTING_SCREEN</a> = 8</td></tr>
 <tr class="separator:a002cbda51141d68bcaf5571c9fe4dc23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a296af1917f7755903380a5549bb1173d"><td class="memItemLeft" align="right" valign="top">constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a296af1917f7755903380a5549bb1173d">artyk::gfx::CH_EMPTY</a> = L'\0'</td></tr>
+<tr class="memdesc:a296af1917f7755903380a5549bb1173d"><td class="mdescLeft">&#160;</td><td class="mdescRight">characters  <a href="../../d2/d5a/namespaceartyk_1_1gfx.html#a296af1917f7755903380a5549bb1173d">More...</a><br /></td></tr>
+<tr class="separator:a296af1917f7755903380a5549bb1173d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80844a9dc97b4d897e9fdde0494842f7"><td class="memItemLeft" align="right" valign="top">constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a80844a9dc97b4d897e9fdde0494842f7">artyk::gfx::CH_SPACE</a> = L' '</td></tr>
+<tr class="separator:a80844a9dc97b4d897e9fdde0494842f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90fd86d34df906089fc23ee2566f3b5e"><td class="memItemLeft" align="right" valign="top">constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a90fd86d34df906089fc23ee2566f3b5e">artyk::gfx::CH_25</a> = L'░'</td></tr>
+<tr class="separator:a90fd86d34df906089fc23ee2566f3b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37cd1616e7193fde132881c349710c70"><td class="memItemLeft" align="right" valign="top">constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a37cd1616e7193fde132881c349710c70">artyk::gfx::CH_50</a> = L'▒'</td></tr>
+<tr class="separator:a37cd1616e7193fde132881c349710c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a583a0711f1e04128536621779b3bd8d6"><td class="memItemLeft" align="right" valign="top">constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a583a0711f1e04128536621779b3bd8d6">artyk::gfx::CH_75</a> = L'▓'</td></tr>
+<tr class="separator:a583a0711f1e04128536621779b3bd8d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc059a4df1849957b1a55ffed43d4a9c"><td class="memItemLeft" align="right" valign="top">constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#adc059a4df1849957b1a55ffed43d4a9c">artyk::gfx::CH_100</a> = L'█'</td></tr>
+<tr class="separator:adc059a4df1849957b1a55ffed43d4a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18736a8c3803dafd50977dba503cb7b7"><td class="memItemLeft" align="right" valign="top">constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a18736a8c3803dafd50977dba503cb7b7">artyk::gfx::CH_BLOCK</a> = CH_100</td></tr>
+<tr class="separator:a18736a8c3803dafd50977dba503cb7b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60b04cf7b75d57033cd05ee9a2c8603f"><td class="memItemLeft" align="right" valign="top">constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a60b04cf7b75d57033cd05ee9a2c8603f">artyk::gfx::CH_BOX1</a> []</td></tr>
+<tr class="separator:a60b04cf7b75d57033cd05ee9a2c8603f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0238cb02e451e99f31498c866fda925f"><td class="memItemLeft" align="right" valign="top">constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a0238cb02e451e99f31498c866fda925f">artyk::gfx::CH_BOX2</a> []</td></tr>
+<tr class="separator:a0238cb02e451e99f31498c866fda925f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18cad86dfaa42ae9921b76116db569de"><td class="memItemLeft" align="right" valign="top">constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a18cad86dfaa42ae9921b76116db569de">artyk::gfx::CH_BOX3</a> []</td></tr>
+<tr class="separator:a18cad86dfaa42ae9921b76116db569de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad16831655c9d236e2f039cf668450a89"><td class="memItemLeft" align="right" valign="top">constexpr wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#ad16831655c9d236e2f039cf668450a89">artyk::gfx::CH_BOX4</a> []</td></tr>
+<tr class="separator:ad16831655c9d236e2f039cf668450a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1014a3fe3fc9e60d8d3351214010ba0"><td class="memItemLeft" align="right" valign="top">constexpr CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#aa1014a3fe3fc9e60d8d3351214010ba0">artyk::gfx::PX_EMPTY</a> = { L'\0', 0 }</td></tr>
+<tr class="separator:aa1014a3fe3fc9e60d8d3351214010ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6abbc524a7758a32bc92664a0a6fd9eb"><td class="memItemLeft" align="right" valign="top">constexpr CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a6abbc524a7758a32bc92664a0a6fd9eb">artyk::gfx::PX_SPACE</a> = { L' ', <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a458e6e60794fdde5b2275fc44a820605">artyk::color::DEF_ATTR</a> }</td></tr>
+<tr class="separator:a6abbc524a7758a32bc92664a0a6fd9eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0334beba209fc3c0eb04ed5a63df3bf9"><td class="memItemLeft" align="right" valign="top">constexpr CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a0334beba209fc3c0eb04ed5a63df3bf9">artyk::gfx::PX_25</a> = { L'░', <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a458e6e60794fdde5b2275fc44a820605">artyk::color::DEF_ATTR</a> }</td></tr>
+<tr class="separator:a0334beba209fc3c0eb04ed5a63df3bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82bb67e3dbdea7b187dc785e78be79de"><td class="memItemLeft" align="right" valign="top">constexpr CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a82bb67e3dbdea7b187dc785e78be79de">artyk::gfx::PX_50</a> = { L'▒', <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a458e6e60794fdde5b2275fc44a820605">artyk::color::DEF_ATTR</a> }</td></tr>
+<tr class="separator:a82bb67e3dbdea7b187dc785e78be79de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0bcfcbd7ac215ef5a1c0d21f2fa6344"><td class="memItemLeft" align="right" valign="top">constexpr CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#ac0bcfcbd7ac215ef5a1c0d21f2fa6344">artyk::gfx::PX_75</a> = { L'▓', <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a458e6e60794fdde5b2275fc44a820605">artyk::color::DEF_ATTR</a> }</td></tr>
+<tr class="separator:ac0bcfcbd7ac215ef5a1c0d21f2fa6344"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466ccfe7982fbfca343484579fa071cf"><td class="memItemLeft" align="right" valign="top">constexpr CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a466ccfe7982fbfca343484579fa071cf">artyk::gfx::PX_100</a> = { L'█', <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a458e6e60794fdde5b2275fc44a820605">artyk::color::DEF_ATTR</a> }</td></tr>
+<tr class="separator:a466ccfe7982fbfca343484579fa071cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f5af37a7f0ffa553df2f69d1844d132"><td class="memItemLeft" align="right" valign="top">constexpr CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a> = PX_100</td></tr>
+<tr class="separator:a5f5af37a7f0ffa553df2f69d1844d132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa38e3933787bf52d296527b16758b3ab"><td class="memItemLeft" align="right" valign="top">constexpr CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#aa38e3933787bf52d296527b16758b3ab">artyk::gfx::PX_BOX1</a> []</td></tr>
+<tr class="separator:aa38e3933787bf52d296527b16758b3ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8847b4782fd2be477f79267d1aa1ef5"><td class="memItemLeft" align="right" valign="top">constexpr CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#ac8847b4782fd2be477f79267d1aa1ef5">artyk::gfx::PX_BOX2</a> []</td></tr>
+<tr class="separator:ac8847b4782fd2be477f79267d1aa1ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79fc37a1da8bdfd9d3ef27d8baa2f258"><td class="memItemLeft" align="right" valign="top">constexpr CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a79fc37a1da8bdfd9d3ef27d8baa2f258">artyk::gfx::PX_BOX3</a> []</td></tr>
+<tr class="separator:a79fc37a1da8bdfd9d3ef27d8baa2f258"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6111e3d7d90afbd599dd79f3124835b2"><td class="memItemLeft" align="right" valign="top">constexpr CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a6111e3d7d90afbd599dd79f3124835b2">artyk::gfx::PX_BOX4</a> []</td></tr>
+<tr class="separator:a6111e3d7d90afbd599dd79f3124835b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file contains the global variables that can be used everywhere. </p>
-<p><br  />
-</p>
-<p>Should not cause everything to break. <br  />
- </p>
+<p>Should not cause everything to break. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a63a780eb9590cbea188494a74c8eb79e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a63a780eb9590cbea188494a74c8eb79e">&#9670;&nbsp;</a></span>GAME_FPS</h2>
@@ -250,6 +327,8 @@ Variables</h2></td></tr>
 <p>the inner game maximum fps, won't be related to graphics fps. </p>
 <p>Limits the amount of cycles per second of the game loops and game-related stuff(like keyboard scanning). </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00052">52</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a2637aea928c9805142482fdc65aa6179"></a>
@@ -259,13 +338,15 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TIMER_WAIT&#160;&#160;&#160;2*<a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a></td>
+          <td class="memname">#define TIMER_WAIT&#160;&#160;&#160;1*<a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>amount of global timer ticks to wait for, untill launching the threads. </p>
 <p>used that global or modules created at startup, start their threads at ~~the same time. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00068">68</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -282,6 +363,24 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>default modulename for engine </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00071">71</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab6a161a1a72bc512fd291e654bd9cb1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6a161a1a72bc512fd291e654bd9cb1b">&#9670;&nbsp;</a></span>DEF_MODULENAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEF_MODULENAME&#160;&#160;&#160;&quot;Engine&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00072">72</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -303,6 +402,8 @@ Variables</h2></td></tr>
 
 <p>converts the "string literal" to u8"utf-8/unicode string literal" </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00077">77</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+
 </div>
 </div>
 <a id="aa5ef465b3cfb7b096648181199e8029c"></a>
@@ -323,6 +424,8 @@ Variables</h2></td></tr>
 
 <p>converts the "string literal" to L"wide string literal" </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00079">79</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a9732970f9ca82af5d3e94cf069402340"></a>
@@ -339,6 +442,8 @@ Variables</h2></td></tr>
 
 <p>macro for newline char </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00081">81</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+
 </div>
 </div>
 <a id="acc1931a50f4cdc27035829dbb830d22a"></a>
@@ -354,6 +459,8 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>macro for newline string </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00083">83</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>

@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['game_5ffps_523',['GAME_FPS',['../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e',1,'global_vars.hpp']]],
-  ['get_5fdbg_5finfo_524',['GET_DBG_INFO',['../d2/de6/func__system_8hpp.html#a4dd4492d8600b76f0cfc9707494872b4',1,'func_system.hpp']]],
-  ['get_5ffull_5fdbg_5finfo_525',['GET_FULL_DBG_INFO',['../d2/de6/func__system_8hpp.html#a94829812584516b589d73a9625cd39ed',1,'func_system.hpp']]]
+  ['calculatetime_790',['calculatetime',['../de/df7/typedefs_8hpp.html#ae76364696f60b885b57a313c8ba3304a',1,'typedefs.hpp']]]
 ];

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="../../logo.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ArtyK&#39;s Console Engine
-   &#160;<span id="projectnumber">v0.0.6</span>
+   &#160;<span id="projectnumber">v0.7.0</span>
    </div>
    <div id="projectbrief">The Console engine for apps and games</div>
   </td>
@@ -105,6 +105,8 @@ $(document).ready(function(){initNavTree('de/df7/typedefs_8hpp.html','../../'); 
 <p>This file contains typedefs/aliases of the variable types that are long and are used often/inconvenient to use in other naming.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;limits&gt;</code><br />
+<code>#include &lt;chrono&gt;</code><br />
+<code>#include &quot;<a class="el" href="../../d7/d36/custom__types_8hpp_source.html">custom_types.hpp</a>&quot;</code><br />
 </div>
 <p><a href="../../de/df7/typedefs_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -135,8 +137,35 @@ Macros</h2></td></tr>
 <tr class="memdesc:a65f7228a90abb1187a341d4da2e45d76"><td class="mdescLeft">&#160;</td><td class="mdescRight">big signed int min  <a href="../../de/df7/typedefs_8hpp.html#a65f7228a90abb1187a341d4da2e45d76">More...</a><br /></td></tr>
 <tr class="separator:a65f7228a90abb1187a341d4da2e45d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c5cca78586f61bea3640a1563a43819"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#a4c5cca78586f61bea3640a1563a43819">UINT_MIN</a>&#160;&#160;&#160;0</td></tr>
-<tr class="memdesc:a4c5cca78586f61bea3640a1563a43819"><td class="mdescLeft">&#160;</td><td class="mdescRight">no UINT_MAX, as it's already defined\ unsigned int min  <a href="../../de/df7/typedefs_8hpp.html#a4c5cca78586f61bea3640a1563a43819">More...</a><br /></td></tr>
+<tr class="memdesc:a4c5cca78586f61bea3640a1563a43819"><td class="mdescLeft">&#160;</td><td class="mdescRight">no UINT_MAX, as it's already defined unsigned int min  <a href="../../de/df7/typedefs_8hpp.html#a4c5cca78586f61bea3640a1563a43819">More...</a><br /></td></tr>
 <tr class="separator:a4c5cca78586f61bea3640a1563a43819"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1242b7f7a995130306f070d177009d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#af1242b7f7a995130306f070d177009d8">getsystime</a>&#160;&#160;&#160;std::chrono::system_clock::now()</td></tr>
+<tr class="memdesc:af1242b7f7a995130306f070d177009d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns system time  <a href="../../de/df7/typedefs_8hpp.html#af1242b7f7a995130306f070d177009d8">More...</a><br /></td></tr>
+<tr class="separator:af1242b7f7a995130306f070d177009d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2dfc1e3dba4f502c96942c76be710d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#aa2dfc1e3dba4f502c96942c76be710d3">gethighrestime</a>&#160;&#160;&#160;std::chrono::high_resolution_clock::now()</td></tr>
+<tr class="memdesc:aa2dfc1e3dba4f502c96942c76be710d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns highres time  <a href="../../de/df7/typedefs_8hpp.html#aa2dfc1e3dba4f502c96942c76be710d3">More...</a><br /></td></tr>
+<tr class="separator:aa2dfc1e3dba4f502c96942c76be710d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfcf4f74c71695033591b3c1b862491b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#acfcf4f74c71695033591b3c1b862491b">getsteadytime</a>&#160;&#160;&#160;std::chrono::steady_clock::now()</td></tr>
+<tr class="memdesc:acfcf4f74c71695033591b3c1b862491b"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns steady time  <a href="../../de/df7/typedefs_8hpp.html#acfcf4f74c71695033591b3c1b862491b">More...</a><br /></td></tr>
+<tr class="separator:acfcf4f74c71695033591b3c1b862491b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae76364696f60b885b57a313c8ba3304a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#ae76364696f60b885b57a313c8ba3304a">calculatetime</a>(tp1,  tp2)&#160;&#160;&#160;std::chrono::duration&lt;float&gt;(tp2 - tp1).count()</td></tr>
+<tr class="memdesc:ae76364696f60b885b57a313c8ba3304a"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns time between 2 timepoints(float)  <a href="../../de/df7/typedefs_8hpp.html#ae76364696f60b885b57a313c8ba3304a">More...</a><br /></td></tr>
+<tr class="separator:ae76364696f60b885b57a313c8ba3304a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11fd5ba882ccf7e9382471a02fc4f194"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#a11fd5ba882ccf7e9382471a02fc4f194">timepoint</a>&#160;&#160;&#160;std::chrono::time_point</td></tr>
+<tr class="memdesc:a11fd5ba882ccf7e9382471a02fc4f194"><td class="mdescLeft">&#160;</td><td class="mdescRight">time point. using preprocessor macro, as it is a template, and we only need to shorten the name  <a href="../../de/df7/typedefs_8hpp.html#a11fd5ba882ccf7e9382471a02fc4f194">More...</a><br /></td></tr>
+<tr class="separator:a11fd5ba882ccf7e9382471a02fc4f194"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99209d01581670b5819588cc22eb58a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#a99209d01581670b5819588cc22eb58a7">tduration</a>&#160;&#160;&#160;std::chrono::duration</td></tr>
+<tr class="memdesc:a99209d01581670b5819588cc22eb58a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">time duration, same reason as timepoint  <a href="../../de/df7/typedefs_8hpp.html#a99209d01581670b5819588cc22eb58a7">More...</a><br /></td></tr>
+<tr class="separator:a99209d01581670b5819588cc22eb58a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff786d5deb995cda8584c05ed7279ee6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#aff786d5deb995cda8584c05ed7279ee6">millisec</a>&#160;&#160;&#160;std::chrono::milliseconds</td></tr>
+<tr class="memdesc:aff786d5deb995cda8584c05ed7279ee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">chrono's milliseconds  <a href="../../de/df7/typedefs_8hpp.html#aff786d5deb995cda8584c05ed7279ee6">More...</a><br /></td></tr>
+<tr class="separator:aff786d5deb995cda8584c05ed7279ee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf223aff1c23f5b2de603d70188d2440"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#aaf223aff1c23f5b2de603d70188d2440">microsec</a>&#160;&#160;&#160;std::chrono::microseconds</td></tr>
+<tr class="memdesc:aaf223aff1c23f5b2de603d70188d2440"><td class="mdescLeft">&#160;</td><td class="mdescRight">chrono's microseconds  <a href="../../de/df7/typedefs_8hpp.html#aaf223aff1c23f5b2de603d70188d2440">More...</a><br /></td></tr>
+<tr class="separator:aaf223aff1c23f5b2de603d70188d2440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39cf43ecb133491b5f7a763d84297bdf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#a39cf43ecb133491b5f7a763d84297bdf">sleepuntil</a>&#160;&#160;&#160;std::this_thread::sleep_until</td></tr>
+<tr class="memdesc:a39cf43ecb133491b5f7a763d84297bdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread's sleep_until  <a href="../../de/df7/typedefs_8hpp.html#a39cf43ecb133491b5f7a763d84297bdf">More...</a><br /></td></tr>
+<tr class="separator:a39cf43ecb133491b5f7a763d84297bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -155,10 +184,36 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ad01f6eb44f4812ed05c900e25ea905ec"><td class="memItemLeft" align="right" valign="top">typedef unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#ad01f6eb44f4812ed05c900e25ea905ec">uint</a></td></tr>
 <tr class="memdesc:ad01f6eb44f4812ed05c900e25ea905ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">just unsigned int  <a href="../../de/df7/typedefs_8hpp.html#ad01f6eb44f4812ed05c900e25ea905ec">More...</a><br /></td></tr>
 <tr class="separator:ad01f6eb44f4812ed05c900e25ea905ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeac8b2d17bf802384a692730834be01c"><td class="memItemLeft" align="right" valign="top">typedef std::chrono::time_point&lt; std::chrono::system_clock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#aeac8b2d17bf802384a692730834be01c">systime</a></td></tr>
+<tr class="memdesc:aeac8b2d17bf802384a692730834be01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">short for system time, so we dont need to use autos and init everytime  <a href="../../de/df7/typedefs_8hpp.html#aeac8b2d17bf802384a692730834be01c">More...</a><br /></td></tr>
+<tr class="separator:aeac8b2d17bf802384a692730834be01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71b2f25ee4702a7cabe99ef01bb24b79"><td class="memItemLeft" align="right" valign="top">typedef std::chrono::time_point&lt; std::chrono::high_resolution_clock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#a71b2f25ee4702a7cabe99ef01bb24b79">highrestime</a></td></tr>
+<tr class="memdesc:a71b2f25ee4702a7cabe99ef01bb24b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">good ol' high resolution clock, for precision checking  <a href="../../de/df7/typedefs_8hpp.html#a71b2f25ee4702a7cabe99ef01bb24b79">More...</a><br /></td></tr>
+<tr class="separator:a71b2f25ee4702a7cabe99ef01bb24b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab57fe1de92976c115f560283ace22d27"><td class="memItemLeft" align="right" valign="top">typedef std::chrono::time_point&lt; std::chrono::steady_clock &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#ab57fe1de92976c115f560283ace22d27">steadytime</a></td></tr>
+<tr class="memdesc:ab57fe1de92976c115f560283ace22d27"><td class="mdescLeft">&#160;</td><td class="mdescRight">steady clock  <a href="../../de/df7/typedefs_8hpp.html#ab57fe1de92976c115f560283ace22d27">More...</a><br /></td></tr>
+<tr class="separator:ab57fe1de92976c115f560283ace22d27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4748074c222f5852dca918e29792191"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#ad4748074c222f5852dca918e29792191">Vector2_int</a></td></tr>
+<tr class="memdesc:ad4748074c222f5852dca918e29792191"><td class="mdescLeft">&#160;</td><td class="mdescRight">long name for vector 2(int)  <a href="../../de/df7/typedefs_8hpp.html#ad4748074c222f5852dca918e29792191">More...</a><br /></td></tr>
+<tr class="separator:ad4748074c222f5852dca918e29792191"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06ee9703468d3e044a7ca289dfbbad35"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d4/df1/structvec2.html">vec2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#a06ee9703468d3e044a7ca289dfbbad35">Vector2</a></td></tr>
+<tr class="memdesc:a06ee9703468d3e044a7ca289dfbbad35"><td class="mdescLeft">&#160;</td><td class="mdescRight">long name for vector 2(float)  <a href="../../de/df7/typedefs_8hpp.html#a06ee9703468d3e044a7ca289dfbbad35">More...</a><br /></td></tr>
+<tr class="separator:a06ee9703468d3e044a7ca289dfbbad35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb9b10b984e95615c5af10edc9fa6974"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d3/d87/structvec3int.html">vec3int</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#adb9b10b984e95615c5af10edc9fa6974">Vector3_int</a></td></tr>
+<tr class="memdesc:adb9b10b984e95615c5af10edc9fa6974"><td class="mdescLeft">&#160;</td><td class="mdescRight">long name for vector 3(int)  <a href="../../de/df7/typedefs_8hpp.html#adb9b10b984e95615c5af10edc9fa6974">More...</a><br /></td></tr>
+<tr class="separator:adb9b10b984e95615c5af10edc9fa6974"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38f15714e63c0a43bb6921c6ef985525"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/de4/structvec3.html">vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#a38f15714e63c0a43bb6921c6ef985525">Vector3</a></td></tr>
+<tr class="memdesc:a38f15714e63c0a43bb6921c6ef985525"><td class="mdescLeft">&#160;</td><td class="mdescRight">long name for vector 3(float)  <a href="../../de/df7/typedefs_8hpp.html#a38f15714e63c0a43bb6921c6ef985525">More...</a><br /></td></tr>
+<tr class="separator:a38f15714e63c0a43bb6921c6ef985525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe2e3cc701a704f4250d03f0a664e329"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="../../d9/dd3/structkeystate.html">keystate</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df7/typedefs_8hpp.html#abe2e3cc701a704f4250d03f0a664e329">AEKBKey</a></td></tr>
+<tr class="memdesc:abe2e3cc701a704f4250d03f0a664e329"><td class="mdescLeft">&#160;</td><td class="mdescRight">another name for the keystate  <a href="../../de/df7/typedefs_8hpp.html#abe2e3cc701a704f4250d03f0a664e329">More...</a><br /></td></tr>
+<tr class="separator:abe2e3cc701a704f4250d03f0a664e329"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file contains typedefs/aliases of the variable types that are long and are used often/inconvenient to use in other naming. </p>
 <p>Should not cause everything to break. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aacd6d5ac92c90e3ea299c510d4cd0f48"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aacd6d5ac92c90e3ea299c510d4cd0f48">&#9670;&nbsp;</a></span>SUINT_MAX</h2>
@@ -173,6 +228,8 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 
 <p>small unsigned int max </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00053">53</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -190,6 +247,8 @@ Typedefs</h2></td></tr>
 
 <p>small unsigned int min </p>
 
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00055">55</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
 </div>
 </div>
 <a id="aba0afd3e5d286bcf0e7f2341c441c582"></a>
@@ -205,6 +264,8 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 
 <p>small signed int max </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00058">58</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -222,6 +283,8 @@ Typedefs</h2></td></tr>
 
 <p>small signed int min </p>
 
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00060">60</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a1dacc5013dcf124ae6ece5c83d2f00bf"></a>
@@ -237,6 +300,8 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 
 <p>big unsigned int max </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00063">63</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -254,6 +319,8 @@ Typedefs</h2></td></tr>
 
 <p>big unsigned int min </p>
 
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00065">65</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a9392acc5bd2e27881604304d8d7fda7b"></a>
@@ -269,6 +336,8 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 
 <p>big signed int max </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00068">68</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -286,6 +355,8 @@ Typedefs</h2></td></tr>
 
 <p>big signed int min </p>
 
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00070">70</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a4c5cca78586f61bea3640a1563a43819"></a>
@@ -300,7 +371,185 @@ Typedefs</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>no UINT_MAX, as it's already defined\ unsigned int min </p>
+<p>no UINT_MAX, as it's already defined unsigned int min </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00074">74</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af1242b7f7a995130306f070d177009d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1242b7f7a995130306f070d177009d8">&#9670;&nbsp;</a></span>getsystime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define getsystime&#160;&#160;&#160;std::chrono::system_clock::now()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns system time </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00084">84</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa2dfc1e3dba4f502c96942c76be710d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2dfc1e3dba4f502c96942c76be710d3">&#9670;&nbsp;</a></span>gethighrestime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define gethighrestime&#160;&#160;&#160;std::chrono::high_resolution_clock::now()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns highres time </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00086">86</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="acfcf4f74c71695033591b3c1b862491b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfcf4f74c71695033591b3c1b862491b">&#9670;&nbsp;</a></span>getsteadytime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define getsteadytime&#160;&#160;&#160;std::chrono::steady_clock::now()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns steady time </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00088">88</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae76364696f60b885b57a313c8ba3304a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae76364696f60b885b57a313c8ba3304a">&#9670;&nbsp;</a></span>calculatetime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define calculatetime</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">tp1, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">tp2&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;std::chrono::duration&lt;float&gt;(tp2 - tp1).count()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns time between 2 timepoints(float) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00090">90</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a11fd5ba882ccf7e9382471a02fc4f194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11fd5ba882ccf7e9382471a02fc4f194">&#9670;&nbsp;</a></span>timepoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define timepoint&#160;&#160;&#160;std::chrono::time_point</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>time point. using preprocessor macro, as it is a template, and we only need to shorten the name </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00092">92</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a99209d01581670b5819588cc22eb58a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99209d01581670b5819588cc22eb58a7">&#9670;&nbsp;</a></span>tduration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define tduration&#160;&#160;&#160;std::chrono::duration</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>time duration, same reason as timepoint </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00094">94</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aff786d5deb995cda8584c05ed7279ee6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff786d5deb995cda8584c05ed7279ee6">&#9670;&nbsp;</a></span>millisec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define millisec&#160;&#160;&#160;std::chrono::milliseconds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>chrono's milliseconds </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aaf223aff1c23f5b2de603d70188d2440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf223aff1c23f5b2de603d70188d2440">&#9670;&nbsp;</a></span>microsec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define microsec&#160;&#160;&#160;std::chrono::microseconds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>chrono's microseconds </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00098">98</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a39cf43ecb133491b5f7a763d84297bdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39cf43ecb133491b5f7a763d84297bdf">&#9670;&nbsp;</a></span>sleepuntil</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define sleepuntil&#160;&#160;&#160;std::this_thread::sleep_until</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>thread's sleep_until </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -319,6 +568,8 @@ Typedefs</h2></td></tr>
 
 <p>short for small unsigned int </p>
 
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00041">41</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a154e7d1e11ba2baf40b0121ec0993fe7"></a>
@@ -334,6 +585,8 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 
 <p>small signed int </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00043">43</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>
@@ -351,6 +604,8 @@ Typedefs</h2></td></tr>
 
 <p>big unsigned int </p>
 
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00045">45</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ac5844c324d2e11302ca2902e4a6d7452"></a>
@@ -367,6 +622,8 @@ Typedefs</h2></td></tr>
 
 <p>big signed int </p>
 
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00047">47</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ad01f6eb44f4812ed05c900e25ea905ec"></a>
@@ -382,6 +639,152 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 
 <p>just unsigned int </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00049">49</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aeac8b2d17bf802384a692730834be01c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeac8b2d17bf802384a692730834be01c">&#9670;&nbsp;</a></span>systime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::chrono::time_point&lt;std::chrono::system_clock&gt; <a class="el" href="../../de/df7/typedefs_8hpp.html#aeac8b2d17bf802384a692730834be01c">systime</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>short for system time, so we dont need to use autos and init everytime </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00078">78</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a71b2f25ee4702a7cabe99ef01bb24b79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71b2f25ee4702a7cabe99ef01bb24b79">&#9670;&nbsp;</a></span>highrestime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::chrono::time_point&lt;std::chrono::high_resolution_clock&gt; <a class="el" href="../../de/df7/typedefs_8hpp.html#a71b2f25ee4702a7cabe99ef01bb24b79">highrestime</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>good ol' high resolution clock, for precision checking </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00080">80</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab57fe1de92976c115f560283ace22d27"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab57fe1de92976c115f560283ace22d27">&#9670;&nbsp;</a></span>steadytime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::chrono::time_point&lt;std::chrono::steady_clock&gt; <a class="el" href="../../de/df7/typedefs_8hpp.html#ab57fe1de92976c115f560283ace22d27">steadytime</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>steady clock </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00082">82</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad4748074c222f5852dca918e29792191"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4748074c222f5852dca918e29792191">&#9670;&nbsp;</a></span>Vector2_int</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> <a class="el" href="../../de/df7/typedefs_8hpp.html#ad4748074c222f5852dca918e29792191">Vector2_int</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>long name for vector 2(int) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00108">108</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a06ee9703468d3e044a7ca289dfbbad35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06ee9703468d3e044a7ca289dfbbad35">&#9670;&nbsp;</a></span>Vector2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="../../d4/df1/structvec2.html">vec2</a> <a class="el" href="../../de/df7/typedefs_8hpp.html#a06ee9703468d3e044a7ca289dfbbad35">Vector2</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>long name for vector 2(float) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00110">110</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="adb9b10b984e95615c5af10edc9fa6974"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb9b10b984e95615c5af10edc9fa6974">&#9670;&nbsp;</a></span>Vector3_int</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="../../d3/d87/structvec3int.html">vec3int</a> <a class="el" href="../../de/df7/typedefs_8hpp.html#adb9b10b984e95615c5af10edc9fa6974">Vector3_int</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>long name for vector 3(int) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00112">112</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a38f15714e63c0a43bb6921c6ef985525"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38f15714e63c0a43bb6921c6ef985525">&#9670;&nbsp;</a></span>Vector3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="../../d9/de4/structvec3.html">vec3</a> <a class="el" href="../../de/df7/typedefs_8hpp.html#a38f15714e63c0a43bb6921c6ef985525">Vector3</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>long name for vector 3(float) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00114">114</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="abe2e3cc701a704f4250d03f0a664e329"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe2e3cc701a704f4250d03f0a664e329">&#9670;&nbsp;</a></span>AEKBKey</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="../../d9/dd3/structkeystate.html">keystate</a> <a class="el" href="../../de/df7/typedefs_8hpp.html#abe2e3cc701a704f4250d03f0a664e329">AEKBKey</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>another name for the keystate </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/df7/typedefs_8hpp_source.html#l00116">116</a> of file <a class="el" href="../../de/df7/typedefs_8hpp_source.html">typedefs.hpp</a>.</p>
 
 </div>
 </div>

@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="../../logo.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ArtyK&#39;s Console Engine
-   &#160;<span id="projectnumber">v0.0.6</span>
+   &#160;<span id="projectnumber">v0.7.0</span>
    </div>
    <div id="projectbrief">The Console engine for apps and games</div>
   </td>
@@ -95,6 +95,12 @@ $(document).ready(function(){initNavTree('dc/d7e/class_a_e_graphic.html','../../
 
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../d1/dc1/class_a_e_graphic-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">AEGraphic Class Reference</div>  </div>
@@ -112,8 +118,91 @@ Inheritance diagram for AEGraphic:</div>
   </map>
 </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a670c8389e659045ed64d12f8293f9c02"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a670c8389e659045ed64d12f8293f9c02">AEGraphic</a> (short sizex=128, short sizey=128, short <a class="el" href="../../df/d0a/main_8cpp.html#a8b73df71442c8344ac0e0c6727ac9430">fonth</a>=5, short <a class="el" href="../../df/d0a/main_8cpp.html#aee968b083be5932f1cc7c98fdcd511be">fontw</a>=5, int fpsdelay=<a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a>, bool enablelog=true, bool useGlobLog=false)</td></tr>
+<tr class="memdesc:a670c8389e659045ed64d12f8293f9c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor  <a href="../../dc/d7e/class_a_e_graphic.html#a670c8389e659045ed64d12f8293f9c02">More...</a><br /></td></tr>
+<tr class="separator:a670c8389e659045ed64d12f8293f9c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab814759b99734437af7ab73ec9c20dff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ab814759b99734437af7ab73ec9c20dff">~AEGraphic</a> () override</td></tr>
+<tr class="separator:ab814759b99734437af7ab73ec9c20dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a667c0741ec949cf8d2c65fae9bb2ded6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a667c0741ec949cf8d2c65fae9bb2ded6">drawscreen</a> ()</td></tr>
+<tr class="memdesc:a667c0741ec949cf8d2c65fae9bb2ded6"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws the screen, using data from m_screendata  <a href="../../dc/d7e/class_a_e_graphic.html#a667c0741ec949cf8d2c65fae9bb2ded6">More...</a><br /></td></tr>
+<tr class="separator:a667c0741ec949cf8d2c65fae9bb2ded6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af51dd59dd9283e6c0b099fd1014c4d91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#af51dd59dd9283e6c0b099fd1014c4d91">drawbuffer</a> ()</td></tr>
+<tr class="memdesc:af51dd59dd9283e6c0b099fd1014c4d91"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws the current selected buffer directly, without copying  <a href="../../dc/d7e/class_a_e_graphic.html#af51dd59dd9283e6c0b099fd1014c4d91">More...</a><br /></td></tr>
+<tr class="separator:af51dd59dd9283e6c0b099fd1014c4d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07a8a8b167b4bbce5a5b160fbd2b6f35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a07a8a8b167b4bbce5a5b160fbd2b6f35">clearscreen</a> ()</td></tr>
+<tr class="memdesc:a07a8a8b167b4bbce5a5b160fbd2b6f35"><td class="mdescLeft">&#160;</td><td class="mdescRight">clears the m_screendata buffer(screen buffer)  <a href="../../dc/d7e/class_a_e_graphic.html#a07a8a8b167b4bbce5a5b160fbd2b6f35">More...</a><br /></td></tr>
+<tr class="separator:a07a8a8b167b4bbce5a5b160fbd2b6f35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84ee29194050c01cd87412abd57a4855"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a84ee29194050c01cd87412abd57a4855">clearbuffer</a> ()</td></tr>
+<tr class="memdesc:a84ee29194050c01cd87412abd57a4855"><td class="mdescLeft">&#160;</td><td class="mdescRight">clears the current selected buffers(the one that setPixel() uses)  <a href="../../dc/d7e/class_a_e_graphic.html#a84ee29194050c01cd87412abd57a4855">More...</a><br /></td></tr>
+<tr class="separator:a84ee29194050c01cd87412abd57a4855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c915cb8d5d4db3b829018064a6dea1f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a2c915cb8d5d4db3b829018064a6dea1f">copybuffer</a> (const CHAR_INFO *mych=<a class="el" href="../../dc/d7e/class_a_e_graphic.html#ab60dd79daa65001336fac2de6661bfa5">m_currentbuffer</a>, int buffsize=m_screensize.X *m_screensize.Y)</td></tr>
+<tr class="memdesc:a2c915cb8d5d4db3b829018064a6dea1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">copies given buffer to the the screen buffer  <a href="../../dc/d7e/class_a_e_graphic.html#a2c915cb8d5d4db3b829018064a6dea1f">More...</a><br /></td></tr>
+<tr class="separator:a2c915cb8d5d4db3b829018064a6dea1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5219408112ab221466e3e11983e5ad56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a5219408112ab221466e3e11983e5ad56">createTripleBuffering</a> (void)</td></tr>
+<tr class="memdesc:a5219408112ab221466e3e11983e5ad56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates third buffer(second AEGraphic buffer) to create frames and feed them entirely to drawing thread.  <a href="../../dc/d7e/class_a_e_graphic.html#a5219408112ab221466e3e11983e5ad56">More...</a><br /></td></tr>
+<tr class="separator:a5219408112ab221466e3e11983e5ad56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab65454e41dba8a6aba1e6b06b90a8dad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ab65454e41dba8a6aba1e6b06b90a8dad">removeTripleBuffering</a> (void)</td></tr>
+<tr class="memdesc:ab65454e41dba8a6aba1e6b06b90a8dad"><td class="mdescLeft">&#160;</td><td class="mdescRight">removes third buffer and deallocates it(so be carefull with all those dangling pointers)  <a href="../../dc/d7e/class_a_e_graphic.html#ab65454e41dba8a6aba1e6b06b90a8dad">More...</a><br /></td></tr>
+<tr class="separator:ab65454e41dba8a6aba1e6b06b90a8dad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29047146905bd3e3ad4044799d144145"><td class="memItemLeft" align="right" valign="top">CHAR_INFO *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a29047146905bd3e3ad4044799d144145">getTripleBufferPtr</a> (void)</td></tr>
+<tr class="memdesc:a29047146905bd3e3ad4044799d144145"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns pointer to third pointer, if it exists.  <a href="../../dc/d7e/class_a_e_graphic.html#a29047146905bd3e3ad4044799d144145">More...</a><br /></td></tr>
+<tr class="separator:a29047146905bd3e3ad4044799d144145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97af1431fb61c9d044e1abfe27cd7cc0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a97af1431fb61c9d044e1abfe27cd7cc0">setscreen</a> (short swidth=128, short sheight=128, short <a class="el" href="../../df/d0a/main_8cpp.html#a8b73df71442c8344ac0e0c6727ac9430">fonth</a>=14, short <a class="el" href="../../df/d0a/main_8cpp.html#aee968b083be5932f1cc7c98fdcd511be">fontw</a>=7)</td></tr>
+<tr class="memdesc:a97af1431fb61c9d044e1abfe27cd7cc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the console screen to given dimensions if possible, otherwise throws Fatal error.  <a href="../../dc/d7e/class_a_e_graphic.html#a97af1431fb61c9d044e1abfe27cd7cc0">More...</a><br /></td></tr>
+<tr class="separator:a97af1431fb61c9d044e1abfe27cd7cc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69662d2c1732e03b24060ee7dc636da7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a69662d2c1732e03b24060ee7dc636da7">setPixel</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2, const CHAR_INFO &amp;mych=<a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a>)</td></tr>
+<tr class="memdesc:a69662d2c1732e03b24060ee7dc636da7"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets pixel at given position with given CHAR_INFO  <a href="../../dc/d7e/class_a_e_graphic.html#a69662d2c1732e03b24060ee7dc636da7">More...</a><br /></td></tr>
+<tr class="separator:a69662d2c1732e03b24060ee7dc636da7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af55717dfafc1036e82acb81592e81a3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#af55717dfafc1036e82acb81592e81a3a">setPixel</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2, const wchar_t mych, const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> color)</td></tr>
+<tr class="memdesc:af55717dfafc1036e82acb81592e81a3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets pixel at given position with given character and attribute  <a href="../../dc/d7e/class_a_e_graphic.html#af55717dfafc1036e82acb81592e81a3a">More...</a><br /></td></tr>
+<tr class="separator:af55717dfafc1036e82acb81592e81a3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53826422f973bbc13925e02846c3bc44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a53826422f973bbc13925e02846c3bc44">fill</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_1, const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_2, const CHAR_INFO &amp;mych=<a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a>)</td></tr>
+<tr class="memdesc:a53826422f973bbc13925e02846c3bc44"><td class="mdescLeft">&#160;</td><td class="mdescRight">fills rectangle between points with given CHAR_INFO  <a href="../../dc/d7e/class_a_e_graphic.html#a53826422f973bbc13925e02846c3bc44">More...</a><br /></td></tr>
+<tr class="separator:a53826422f973bbc13925e02846c3bc44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5fb1b0a9bf126c520065e9ff5471496"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ae5fb1b0a9bf126c520065e9ff5471496">fill</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_1, const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_2, const wchar_t mych, const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> color)</td></tr>
+<tr class="memdesc:ae5fb1b0a9bf126c520065e9ff5471496"><td class="mdescLeft">&#160;</td><td class="mdescRight">fills rectangle between points with given character and attribute  <a href="../../dc/d7e/class_a_e_graphic.html#ae5fb1b0a9bf126c520065e9ff5471496">More...</a><br /></td></tr>
+<tr class="separator:ae5fb1b0a9bf126c520065e9ff5471496"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac03aebb953654b306506aa8d78b14d25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ac03aebb953654b306506aa8d78b14d25">fillRandom</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_1, const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_2, const wchar_t mych)</td></tr>
+<tr class="memdesc:ac03aebb953654b306506aa8d78b14d25"><td class="mdescLeft">&#160;</td><td class="mdescRight">fills rectangle between points with given character; the attribute for each pixel is random  <a href="../../dc/d7e/class_a_e_graphic.html#ac03aebb953654b306506aa8d78b14d25">More...</a><br /></td></tr>
+<tr class="separator:ac03aebb953654b306506aa8d78b14d25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a957d6858c8bb7d4f407d891452e7d62e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a957d6858c8bb7d4f407d891452e7d62e">drawLine</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_1, const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_2, const CHAR_INFO &amp;mych=<a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a>)</td></tr>
+<tr class="memdesc:a957d6858c8bb7d4f407d891452e7d62e"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws line between 2 points with given CHAR_INFO  <a href="../../dc/d7e/class_a_e_graphic.html#a957d6858c8bb7d4f407d891452e7d62e">More...</a><br /></td></tr>
+<tr class="separator:a957d6858c8bb7d4f407d891452e7d62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a242f01929882603c0bc04d9dbf043d83"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a242f01929882603c0bc04d9dbf043d83">drawLine</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_1, const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_2, const wchar_t mych, const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> color)</td></tr>
+<tr class="memdesc:a242f01929882603c0bc04d9dbf043d83"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws line between 2 points with given  <a href="../../dc/d7e/class_a_e_graphic.html#a242f01929882603c0bc04d9dbf043d83">More...</a><br /></td></tr>
+<tr class="separator:a242f01929882603c0bc04d9dbf043d83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6316a4784fa4c7384c8c15bcbc3e4c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ad6316a4784fa4c7384c8c15bcbc3e4c4">drawTriangle</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_1, const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_2, const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_3, const CHAR_INFO &amp;mych=<a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a>)</td></tr>
+<tr class="memdesc:ad6316a4784fa4c7384c8c15bcbc3e4c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws triangle between 3 points with given CHAR_INFO  <a href="../../dc/d7e/class_a_e_graphic.html#ad6316a4784fa4c7384c8c15bcbc3e4c4">More...</a><br /></td></tr>
+<tr class="separator:ad6316a4784fa4c7384c8c15bcbc3e4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a170d9a9b18bc8e2ba807809372a2dafb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a170d9a9b18bc8e2ba807809372a2dafb">drawTriangle</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_1, const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_2, const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2_3, const wchar_t mych, const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> color)</td></tr>
+<tr class="memdesc:a170d9a9b18bc8e2ba807809372a2dafb"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws triangle between 3 points with given char and color  <a href="../../dc/d7e/class_a_e_graphic.html#a170d9a9b18bc8e2ba807809372a2dafb">More...</a><br /></td></tr>
+<tr class="separator:a170d9a9b18bc8e2ba807809372a2dafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec5b242a19db78341de1904d12b02c26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#aec5b242a19db78341de1904d12b02c26">drawPoly</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> parr[], const unsigned int polyarrsize, const CHAR_INFO &amp;mych=<a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a>)</td></tr>
+<tr class="memdesc:aec5b242a19db78341de1904d12b02c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws polygon from given <a class="el" href="../../d4/df1/structvec2.html" title="2d (float) vector type">vec2</a> array and size of array of vertices and CHAR_INFO  <a href="../../dc/d7e/class_a_e_graphic.html#aec5b242a19db78341de1904d12b02c26">More...</a><br /></td></tr>
+<tr class="separator:aec5b242a19db78341de1904d12b02c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad783ce234a36ccd970e6f42eb510c8ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ad783ce234a36ccd970e6f42eb510c8ff">drawPoly</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> parr[], const unsigned int polyarrsize, const wchar_t mych, const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> color)</td></tr>
+<tr class="memdesc:ad783ce234a36ccd970e6f42eb510c8ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws polygon from given <a class="el" href="../../d4/df1/structvec2.html" title="2d (float) vector type">vec2</a> array and size of array/amount of vertices and sets it to character and attribute you passed  <a href="../../dc/d7e/class_a_e_graphic.html#ad783ce234a36ccd970e6f42eb510c8ff">More...</a><br /></td></tr>
+<tr class="separator:ad783ce234a36ccd970e6f42eb510c8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a523e2f2841c7db5171247386f6c9e17e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a523e2f2841c7db5171247386f6c9e17e">drawRegPoly</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2, const int radius, const int sideamount, const CHAR_INFO &amp;mych=<a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a>)</td></tr>
+<tr class="memdesc:a523e2f2841c7db5171247386f6c9e17e"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws regular polygon from given radius, position(vec2), side amount and CHAR_INFO  <a href="../../dc/d7e/class_a_e_graphic.html#a523e2f2841c7db5171247386f6c9e17e">More...</a><br /></td></tr>
+<tr class="separator:a523e2f2841c7db5171247386f6c9e17e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af438044f0cd28c1577b9d31c6dac9851"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#af438044f0cd28c1577b9d31c6dac9851">drawRegPoly</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2, const int radius, const int sideamount, const wchar_t mych, const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> color)</td></tr>
+<tr class="memdesc:af438044f0cd28c1577b9d31c6dac9851"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws regular polygon from given radius, position(vec2), side amount and char and attribute  <a href="../../dc/d7e/class_a_e_graphic.html#af438044f0cd28c1577b9d31c6dac9851">More...</a><br /></td></tr>
+<tr class="separator:af438044f0cd28c1577b9d31c6dac9851"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa639740b47b39f0fe7ae9123d44e4f7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#aa639740b47b39f0fe7ae9123d44e4f7e">drawCircle</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2, const int radius, const CHAR_INFO &amp;mych=<a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a>)</td></tr>
+<tr class="memdesc:aa639740b47b39f0fe7ae9123d44e4f7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws circle with given radius and center point  <a href="../../dc/d7e/class_a_e_graphic.html#aa639740b47b39f0fe7ae9123d44e4f7e">More...</a><br /></td></tr>
+<tr class="separator:aa639740b47b39f0fe7ae9123d44e4f7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0a05234f3b91c52c5918879cc08befd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ac0a05234f3b91c52c5918879cc08befd">drawCircle</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2, const int radius, const wchar_t mych, const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> color)</td></tr>
+<tr class="memdesc:ac0a05234f3b91c52c5918879cc08befd"><td class="mdescLeft">&#160;</td><td class="mdescRight">draws circle with given radius and center point  <a href="../../dc/d7e/class_a_e_graphic.html#ac0a05234f3b91c52c5918879cc08befd">More...</a><br /></td></tr>
+<tr class="separator:ac0a05234f3b91c52c5918879cc08befd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ac8085473a2649496bff6f819a6b8b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a5ac8085473a2649496bff6f819a6b8b1">renderflags</a> (const int rtype, const bool val)</td></tr>
+<tr class="memdesc:a5ac8085473a2649496bff6f819a6b8b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets renderer's flags.  <a href="../../dc/d7e/class_a_e_graphic.html#a5ac8085473a2649496bff6f819a6b8b1">More...</a><br /></td></tr>
+<tr class="separator:a5ac8085473a2649496bff6f819a6b8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e97426a2914bbc66c20cb33db2dd8f7"><td class="memItemLeft" align="right" valign="top">CHAR_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a3e97426a2914bbc66c20cb33db2dd8f7">getpixel</a> (const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;myvec2) const</td></tr>
+<tr class="memdesc:a3e97426a2914bbc66c20cb33db2dd8f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns pixel at given location  <a href="../../dc/d7e/class_a_e_graphic.html#a3e97426a2914bbc66c20cb33db2dd8f7">More...</a><br /></td></tr>
+<tr class="separator:a3e97426a2914bbc66c20cb33db2dd8f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_____a_e_base_class"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_____a_e_base_class')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../dc/dad/class_____a_e_base_class.html">__AEBaseClass</a></td></tr>
 <tr class="memitem:a5d04eb77f5e89475268f91b6e249c653 inherit pub_methods_class_____a_e_base_class"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dad/class_____a_e_base_class.html#a5d04eb77f5e89475268f91b6e249c653">__AEBaseClass</a> (const string &amp;modulename, <a class="el" href="../../de/df7/typedefs_8hpp.html#a3d36c784f23265914e39e4477c74a5c5">biguint</a> modulenum)</td></tr>
 <tr class="memdesc:a5d04eb77f5e89475268f91b6e249c653 inherit pub_methods_class_____a_e_base_class"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor  <a href="../../dc/dad/class_____a_e_base_class.html#a5d04eb77f5e89475268f91b6e249c653">More...</a><br /></td></tr>
@@ -130,6 +219,118 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:afba226fbf458f09ebf98a50b4ea118e2 inherit pub_methods_class_____a_e_base_class"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dad/class_____a_e_base_class.html#afba226fbf458f09ebf98a50b4ea118e2">benchmark</a> (void)</td></tr>
 <tr class="memdesc:afba226fbf458f09ebf98a50b4ea118e2 inherit pub_methods_class_____a_e_base_class"><td class="mdescLeft">&#160;</td><td class="mdescRight">uses all utils for class  <a href="../../dc/dad/class_____a_e_base_class.html#afba226fbf458f09ebf98a50b4ea118e2">More...</a><br /></td></tr>
 <tr class="separator:afba226fbf458f09ebf98a50b4ea118e2 inherit pub_methods_class_____a_e_base_class"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a3831cd08054bf56dfab51ea091222f1b"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a3831cd08054bf56dfab51ea091222f1b">getfps</a> (void)</td></tr>
+<tr class="memdesc:a3831cd08054bf56dfab51ea091222f1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns fps of the graphics thread(if running)  <a href="../../dc/d7e/class_a_e_graphic.html#a3831cd08054bf56dfab51ea091222f1b">More...</a><br /></td></tr>
+<tr class="separator:a3831cd08054bf56dfab51ea091222f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ae9049b79b52a7587824a368f36bd2ed4"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ae9049b79b52a7587824a368f36bd2ed4">BLACK</a> = artyk::color::BLACK</td></tr>
+<tr class="memdesc:ae9049b79b52a7587824a368f36bd2ed4"><td class="mdescLeft">&#160;</td><td class="mdescRight">console colors for the graphics engine took them from the color namespace  <a href="../../dc/d7e/class_a_e_graphic.html#ae9049b79b52a7587824a368f36bd2ed4">More...</a><br /></td></tr>
+<tr class="separator:ae9049b79b52a7587824a368f36bd2ed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a422f07c08f573bd1358d4ae47cd3cd89"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a422f07c08f573bd1358d4ae47cd3cd89">D_BLUE</a> = artyk::color::D_BLUE</td></tr>
+<tr class="separator:a422f07c08f573bd1358d4ae47cd3cd89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace3bccf09ba89a069544f7143f2f5bd6"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ace3bccf09ba89a069544f7143f2f5bd6">D_GREEN</a> = artyk::color::D_GREEN</td></tr>
+<tr class="separator:ace3bccf09ba89a069544f7143f2f5bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e7e7d2432cefc7a152b94b173052969"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a4e7e7d2432cefc7a152b94b173052969">D_CYAN</a> = artyk::color::D_CYAN</td></tr>
+<tr class="separator:a4e7e7d2432cefc7a152b94b173052969"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe75610ad63ed861bcff62c4d53f96b2"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#afe75610ad63ed861bcff62c4d53f96b2">D_RED</a> = artyk::color::D_RED</td></tr>
+<tr class="separator:afe75610ad63ed861bcff62c4d53f96b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeccf9819b13f16a09e07da1684d59747"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#aeccf9819b13f16a09e07da1684d59747">D_MAGENTA</a> = artyk::color::D_MAGENTA</td></tr>
+<tr class="separator:aeccf9819b13f16a09e07da1684d59747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73b675326e16690621167fdcf0f1df01"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a73b675326e16690621167fdcf0f1df01">D_YELLOW</a> = artyk::color::D_YELLOW</td></tr>
+<tr class="separator:a73b675326e16690621167fdcf0f1df01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad95eee92a2522123131a09ada35bc1de"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ad95eee92a2522123131a09ada35bc1de">D_WHITE</a> = artyk::color::D_WHITE</td></tr>
+<tr class="separator:ad95eee92a2522123131a09ada35bc1de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac53977e2ae48c7fdd6b429a64a6b90b5"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ac53977e2ae48c7fdd6b429a64a6b90b5">GRAY</a> = artyk::color::GRAY</td></tr>
+<tr class="separator:ac53977e2ae48c7fdd6b429a64a6b90b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4db68f86746c44deda5e318acdd74822"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a4db68f86746c44deda5e318acdd74822">B_BLUE</a> = artyk::color::B_BLUE</td></tr>
+<tr class="separator:a4db68f86746c44deda5e318acdd74822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f208c828b85da9887ecc59e359d7fc0"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a9f208c828b85da9887ecc59e359d7fc0">B_GREEN</a> = artyk::color::B_GREEN</td></tr>
+<tr class="separator:a9f208c828b85da9887ecc59e359d7fc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2119de56d0d989cc28fbd008873697d6"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a2119de56d0d989cc28fbd008873697d6">B_CYAN</a> = artyk::color::B_CYAN</td></tr>
+<tr class="separator:a2119de56d0d989cc28fbd008873697d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c445ceafcb7c59b38d127b39610aeff"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a5c445ceafcb7c59b38d127b39610aeff">B_RED</a> = artyk::color::B_RED</td></tr>
+<tr class="separator:a5c445ceafcb7c59b38d127b39610aeff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8f271bfc224c88ec8e74a8a2b5bca43"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ab8f271bfc224c88ec8e74a8a2b5bca43">B_PURPLE</a> = artyk::color::B_PURPLE</td></tr>
+<tr class="separator:ab8f271bfc224c88ec8e74a8a2b5bca43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0e117a94e7360ae8b92615ef2e297c3"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#af0e117a94e7360ae8b92615ef2e297c3">B_YELLOW</a> = artyk::color::B_YELLOW</td></tr>
+<tr class="separator:af0e117a94e7360ae8b92615ef2e297c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abab78041cd87329639fc07aebd8389f4"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#abab78041cd87329639fc07aebd8389f4">WHITE</a> = artyk::color::WHITE</td></tr>
+<tr class="separator:abab78041cd87329639fc07aebd8389f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80adf8d5ff07867b9eb7fab42b5a6ae5"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a80adf8d5ff07867b9eb7fab42b5a6ae5">DEF_BGR</a> = artyk::color::DEF_BGR</td></tr>
+<tr class="separator:a80adf8d5ff07867b9eb7fab42b5a6ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e52e8927cd4680363c23721a7583417"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a6e52e8927cd4680363c23721a7583417">DEF_FGR</a> = <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#af531bab77bf1bc264bc7b5719a94dc13">artyk::color::DEF_BGR</a></td></tr>
+<tr class="separator:a6e52e8927cd4680363c23721a7583417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa380381a92e9f2318818b58afdcc3e5f"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#aa380381a92e9f2318818b58afdcc3e5f">DEF_ATTR</a> = <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#af531bab77bf1bc264bc7b5719a94dc13">artyk::color::DEF_BGR</a> * 16 + <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a0aa0392371b0f7f7ddba5fbc3860b176">artyk::color::DEF_FGR</a></td></tr>
+<tr class="separator:aa380381a92e9f2318818b58afdcc3e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a6d4397f0d6e1e7096815439cb6b0d7dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a6d4397f0d6e1e7096815439cb6b0d7dc">mainthread</a> (void)</td></tr>
+<tr class="memdesc:a6d4397f0d6e1e7096815439cb6b0d7dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">the graphics thread code  <a href="../../dc/d7e/class_a_e_graphic.html#a6d4397f0d6e1e7096815439cb6b0d7dc">More...</a><br /></td></tr>
+<tr class="separator:a6d4397f0d6e1e7096815439cb6b0d7dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf59138f369bc17f270ee9c20f08ccac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#acf59138f369bc17f270ee9c20f08ccac">startrd</a> (void)</td></tr>
+<tr class="memdesc:acf59138f369bc17f270ee9c20f08ccac"><td class="mdescLeft">&#160;</td><td class="mdescRight">opens and starts the drawing thread  <a href="../../dc/d7e/class_a_e_graphic.html#acf59138f369bc17f270ee9c20f08ccac">More...</a><br /></td></tr>
+<tr class="separator:acf59138f369bc17f270ee9c20f08ccac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10fe7364a3bfbae7f4052d4381036110"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a10fe7364a3bfbae7f4052d4381036110">closetrd</a> (void)</td></tr>
+<tr class="memdesc:a10fe7364a3bfbae7f4052d4381036110"><td class="mdescLeft">&#160;</td><td class="mdescRight">stops and closes the drawing thread  <a href="../../dc/d7e/class_a_e_graphic.html#a10fe7364a3bfbae7f4052d4381036110">More...</a><br /></td></tr>
+<tr class="separator:a10fe7364a3bfbae7f4052d4381036110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aa5c9855eabdca1b535c9a7f451360385"><td class="memItemLeft" align="right" valign="top">_SMALL_RECT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#aa5c9855eabdca1b535c9a7f451360385">m_rtwindow</a></td></tr>
+<tr class="memdesc:aa5c9855eabdca1b535c9a7f451360385"><td class="mdescLeft">&#160;</td><td class="mdescRight">variable to store window size  <a href="../../dc/d7e/class_a_e_graphic.html#aa5c9855eabdca1b535c9a7f451360385">More...</a><br /></td></tr>
+<tr class="separator:aa5c9855eabdca1b535c9a7f451360385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a5659f2d6efc64247340dacc997a9edac"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d4/d17/class_a_e_screen.html">AEScreen</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a5659f2d6efc64247340dacc997a9edac">m_myscr</a> = nullptr</td></tr>
+<tr class="memdesc:a5659f2d6efc64247340dacc997a9edac"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer <a class="el" href="../../d4/d17/class_a_e_screen.html" title="This module is made for simple screen management, and not made for the performance.">AEScreen</a> module for screen manipulations needed as if to make it a variable, it would crash with "bad handle" error because it creates the module before creating and assigning handles  <a href="../../dc/d7e/class_a_e_graphic.html#a5659f2d6efc64247340dacc997a9edac">More...</a><br /></td></tr>
+<tr class="separator:a5659f2d6efc64247340dacc997a9edac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7a493c4f5e6f947622381cd7f0e1bff"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../df/dd7/class_a_e_frame.html">AEFrame</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ad7a493c4f5e6f947622381cd7f0e1bff">m_fr</a></td></tr>
+<tr class="memdesc:ad7a493c4f5e6f947622381cd7f0e1bff"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../df/dd7/class_a_e_frame.html" title="This module is used for creating delays(in FPS format) in the engine.">AEFrame</a> module for thread drawing delay.  <a href="../../dc/d7e/class_a_e_graphic.html#ad7a493c4f5e6f947622381cd7f0e1bff">More...</a><br /></td></tr>
+<tr class="separator:ad7a493c4f5e6f947622381cd7f0e1bff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4796af252a07797921b3fdaf013564e5"><td class="memItemLeft" align="right" valign="top">static std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a4796af252a07797921b3fdaf013564e5">m_thread</a></td></tr>
+<tr class="memdesc:a4796af252a07797921b3fdaf013564e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread object to create drawing thread  <a href="../../dc/d7e/class_a_e_graphic.html#a4796af252a07797921b3fdaf013564e5">More...</a><br /></td></tr>
+<tr class="separator:a4796af252a07797921b3fdaf013564e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a548b3ceab9f38db6bfefff7f6b3feeea"><td class="memItemLeft" align="right" valign="top">static atomic&lt; <a class="el" href="../../de/df7/typedefs_8hpp.html#a3d36c784f23265914e39e4477c74a5c5">biguint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a548b3ceab9f38db6bfefff7f6b3feeea">m_globalmodulenum</a></td></tr>
+<tr class="memdesc:a548b3ceab9f38db6bfefff7f6b3feeea"><td class="mdescLeft">&#160;</td><td class="mdescRight">variable to store the module index number  <a href="../../dc/d7e/class_a_e_graphic.html#a548b3ceab9f38db6bfefff7f6b3feeea">More...</a><br /></td></tr>
+<tr class="separator:a548b3ceab9f38db6bfefff7f6b3feeea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab407e8f56d35de34c2b5445ccbc5302c"><td class="memItemLeft" align="right" valign="top">static CHAR_INFO *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ab407e8f56d35de34c2b5445ccbc5302c">m_screendata</a> = nullptr</td></tr>
+<tr class="memdesc:ab407e8f56d35de34c2b5445ccbc5302c"><td class="mdescLeft">&#160;</td><td class="mdescRight">the screen buffer that module draws  <a href="../../dc/d7e/class_a_e_graphic.html#ab407e8f56d35de34c2b5445ccbc5302c">More...</a><br /></td></tr>
+<tr class="separator:ab407e8f56d35de34c2b5445ccbc5302c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab60dd79daa65001336fac2de6661bfa5"><td class="memItemLeft" align="right" valign="top">static CHAR_INFO *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ab60dd79daa65001336fac2de6661bfa5">m_currentbuffer</a> = nullptr</td></tr>
+<tr class="memdesc:ab60dd79daa65001336fac2de6661bfa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">the buffer our utilities will use, usually m_screendata otherwise, if its set to other buffer, copy it with <a class="el" href="../../dc/d7e/class_a_e_graphic.html#a2c915cb8d5d4db3b829018064a6dea1f" title="copies given buffer to the the screen buffer">copybuffer()</a>  <a href="../../dc/d7e/class_a_e_graphic.html#ab60dd79daa65001336fac2de6661bfa5">More...</a><br /></td></tr>
+<tr class="separator:ab60dd79daa65001336fac2de6661bfa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4eb0683631c553f2fd44844b2ea2a95"><td class="memItemLeft" align="right" valign="top">static COORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ab4eb0683631c553f2fd44844b2ea2a95">m_screensize</a></td></tr>
+<tr class="memdesc:ab4eb0683631c553f2fd44844b2ea2a95"><td class="mdescLeft">&#160;</td><td class="mdescRight">stores screen size, in character cells  <a href="../../dc/d7e/class_a_e_graphic.html#ab4eb0683631c553f2fd44844b2ea2a95">More...</a><br /></td></tr>
+<tr class="separator:ab4eb0683631c553f2fd44844b2ea2a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc9baf14461ec20f32d0796c82560a43"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#acc9baf14461ec20f32d0796c82560a43">graph_fps</a> = 0</td></tr>
+<tr class="memdesc:acc9baf14461ec20f32d0796c82560a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">the thread fps amount, get it using <a class="el" href="../../dc/d7e/class_a_e_graphic.html#a3831cd08054bf56dfab51ea091222f1b" title="returns fps of the graphics thread(if running)">getfps(void)</a>  <a href="../../dc/d7e/class_a_e_graphic.html#acc9baf14461ec20f32d0796c82560a43">More...</a><br /></td></tr>
+<tr class="separator:acc9baf14461ec20f32d0796c82560a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0c00f617bdc00bde2e2b8f0916d2639"><td class="memItemLeft" align="right" valign="top">static atomic&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ac0c00f617bdc00bde2e2b8f0916d2639">moduleamt</a> = 0</td></tr>
+<tr class="memdesc:ac0c00f617bdc00bde2e2b8f0916d2639"><td class="mdescLeft">&#160;</td><td class="mdescRight">amount of graphics modules currently active (to close thread and dealloc memory when needed)  <a href="../../dc/d7e/class_a_e_graphic.html#ac0c00f617bdc00bde2e2b8f0916d2639">More...</a><br /></td></tr>
+<tr class="separator:ac0c00f617bdc00bde2e2b8f0916d2639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36b349540fe30631e7cb34cb5a6534dc"><td class="memItemLeft" align="right" valign="top">static atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a36b349540fe30631e7cb34cb5a6534dc">m_settingscreen</a> = false</td></tr>
+<tr class="memdesc:a36b349540fe30631e7cb34cb5a6534dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">bool to indicate if we are doing something with console screen or buffer (prevents write if true)  <a href="../../dc/d7e/class_a_e_graphic.html#a36b349540fe30631e7cb34cb5a6534dc">More...</a><br /></td></tr>
+<tr class="separator:a36b349540fe30631e7cb34cb5a6534dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95e6c8612952542e53cf93869325ab5d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a95e6c8612952542e53cf93869325ab5d">m_threadon</a> =false</td></tr>
+<tr class="memdesc:a95e6c8612952542e53cf93869325ab5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">bool to indicate if the thread is working currently  <a href="../../dc/d7e/class_a_e_graphic.html#a95e6c8612952542e53cf93869325ab5d">More...</a><br /></td></tr>
+<tr class="separator:a95e6c8612952542e53cf93869325ab5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4e7122d2632cdab2cdb0be1a65ba89d"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ac4e7122d2632cdab2cdb0be1a65ba89d">m_bstoptrd</a> = false</td></tr>
+<tr class="memdesc:ac4e7122d2632cdab2cdb0be1a65ba89d"><td class="mdescLeft">&#160;</td><td class="mdescRight">bool to indicate if we need to stop the drawing thread  <a href="../../dc/d7e/class_a_e_graphic.html#ac4e7122d2632cdab2cdb0be1a65ba89d">More...</a><br /></td></tr>
+<tr class="separator:ac4e7122d2632cdab2cdb0be1a65ba89d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef6ac40b4b2829da5dab2ea485770a58"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#aef6ac40b4b2829da5dab2ea485770a58">m_clrscr</a></td></tr>
+<tr class="memdesc:aef6ac40b4b2829da5dab2ea485770a58"><td class="mdescLeft">&#160;</td><td class="mdescRight">bool to indicate if graphics thread needs to clear buffer after drawing (not used if AE_GFX_ALWAYS_CLEAR_AFTER_DRAW is on) <br  />
+  <a href="../../dc/d7e/class_a_e_graphic.html#aef6ac40b4b2829da5dab2ea485770a58">More...</a><br /></td></tr>
+<tr class="separator:aef6ac40b4b2829da5dab2ea485770a58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_class_____a_e_base_class"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_____a_e_base_class')"><img src="../../closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="../../dc/dad/class_____a_e_base_class.html">__AEBaseClass</a></td></tr>
 <tr class="memitem:a720073f973d83becf75e5b79b06373ca inherit pro_attribs_class_____a_e_base_class"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d59/class_a_e_log.html">AELog</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/dad/class_____a_e_base_class.html#a720073f973d83becf75e5b79b06373ca">m_logptr</a></td></tr>
 <tr class="memdesc:a720073f973d83becf75e5b79b06373ca inherit pro_attribs_class_____a_e_base_class"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to our possibly future logger  <a href="../../dc/dad/class_____a_e_base_class.html#a720073f973d83becf75e5b79b06373ca">More...</a><br /></td></tr>
@@ -141,8 +342,2128 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memdesc:a68b201c9fe038e49f4125ae895c818c4 inherit pro_attribs_class_____a_e_base_class"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of the module, used for identification  <a href="../../dc/dad/class_____a_e_base_class.html#a68b201c9fe038e49f4125ae895c818c4">More...</a><br /></td></tr>
 <tr class="separator:a68b201c9fe038e49f4125ae895c818c4 inherit pro_attribs_class_____a_e_base_class"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00053">53</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a670c8389e659045ed64d12f8293f9c02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a670c8389e659045ed64d12f8293f9c02">&#9670;&nbsp;</a></span>AEGraphic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AEGraphic::AEGraphic </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>sizex</em> = <code>128</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>sizey</em> = <code>128</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>fonth</em> = <code>5</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>fontw</em> = <code>5</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>fpsdelay</em> = <code><a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>enablelog</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>useGlobLog</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Class constructor </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enablelog</td><td>flag to check if we need to log stuff at all</td></tr>
+    <tr><td class="paramname">useGlobLog</td><td>flag to check if to use gloabal_logger or not(if it exists)</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00054">54</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab814759b99734437af7ab73ec9c20dff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab814759b99734437af7ab73ec9c20dff">&#9670;&nbsp;</a></span>~AEGraphic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">AEGraphic::~AEGraphic </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00103">103</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a667c0741ec949cf8d2c65fae9bb2ded6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a667c0741ec949cf8d2c65fae9bb2ded6">&#9670;&nbsp;</a></span>drawscreen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawscreen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws the screen, using data from m_screendata </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00134">134</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af51dd59dd9283e6c0b099fd1014c4d91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af51dd59dd9283e6c0b099fd1014c4d91">&#9670;&nbsp;</a></span>drawbuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawbuffer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws the current selected buffer directly, without copying </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00143">143</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a07a8a8b167b4bbce5a5b160fbd2b6f35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07a8a8b167b4bbce5a5b160fbd2b6f35">&#9670;&nbsp;</a></span>clearscreen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::clearscreen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>clears the m_screendata buffer(screen buffer) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00152">152</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a84ee29194050c01cd87412abd57a4855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84ee29194050c01cd87412abd57a4855">&#9670;&nbsp;</a></span>clearbuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::clearbuffer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>clears the current selected buffers(the one that setPixel() uses) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00158">158</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2c915cb8d5d4db3b829018064a6dea1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c915cb8d5d4db3b829018064a6dea1f">&#9670;&nbsp;</a></span>copybuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::copybuffer </td>
+          <td>(</td>
+          <td class="paramtype">const CHAR_INFO *&#160;</td>
+          <td class="paramname"><em>mych</em> = <code><a class="el" href="../../dc/d7e/class_a_e_graphic.html#ab60dd79daa65001336fac2de6661bfa5">m_currentbuffer</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>buffsize</em> = <code>m_screensize.X*m_screensize.Y</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>copies given buffer to the the screen buffer </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mych</td><td>the buffer itself; default is m_currentbuffer</td></tr>
+    <tr><td class="paramname">buffsize</td><td>size of the buffer, in array members; default to m_screensize</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>if size is bigger than current screen buffer size, it will be truncated; and if it's lower </dd>
+<dd>
+and if size is lower than current screen buffer size, what was in buffer out of new buffer bounds will be left. </dd>
+<dd>
+if nothing is passed, the m_currentbuffer will be copied to the drawing buffer </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00165">165</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5219408112ab221466e3e11983e5ad56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5219408112ab221466e3e11983e5ad56">&#9670;&nbsp;</a></span>createTripleBuffering()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::createTripleBuffering </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates third buffer(second AEGraphic buffer) to create frames and feed them entirely to drawing thread. </p>
+<p>Helps to remove flickering </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00178">178</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ab65454e41dba8a6aba1e6b06b90a8dad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab65454e41dba8a6aba1e6b06b90a8dad">&#9670;&nbsp;</a></span>removeTripleBuffering()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::removeTripleBuffering </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>removes third buffer and deallocates it(so be carefull with all those dangling pointers) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00186">186</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a29047146905bd3e3ad4044799d144145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29047146905bd3e3ad4044799d144145">&#9670;&nbsp;</a></span>getTripleBufferPtr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CHAR_INFO * AEGraphic::getTripleBufferPtr </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns pointer to third pointer, if it exists. </p>
+<p>If it doesnt, returns nullptr</p>
+<dl class="section warning"><dt>Warning</dt><dd>USE THIS WITH CARE! DON'T DELETE THE POINTER, OR GRAPHICS ENGINE WILL CRASH! </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00194">194</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a97af1431fb61c9d044e1abfe27cd7cc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97af1431fb61c9d044e1abfe27cd7cc0">&#9670;&nbsp;</a></span>setscreen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::setscreen </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>swidth</em> = <code>128</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>sheight</em> = <code>128</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>fonth</em> = <code>14</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>fontw</em> = <code>7</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the console screen to given dimensions if possible, otherwise throws Fatal error. </p>
+<p>Also reallocates and clears buffers</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">swidth</td><td>screen width, in console character cells</td></tr>
+    <tr><td class="paramname">sheight</td><td>screen height, in console character cells</td></tr>
+    <tr><td class="paramname">fonth</td><td>character font height, in pixels, doesnt't go less than 2</td></tr>
+    <tr><td class="paramname">fontw</td><td>character font width, in pixels, doesnt't go less than 2</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00201">201</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a69662d2c1732e03b24060ee7dc636da7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69662d2c1732e03b24060ee7dc636da7">&#9670;&nbsp;</a></span>setPixel() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::setPixel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CHAR_INFO &amp;&#160;</td>
+          <td class="paramname"><em>mych</em> = <code><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sets pixel at given position with given CHAR_INFO </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2</td><td>2d pixel position in console buffer</td></tr>
+    <tr><td class="paramname">mych</td><td>character and attribute</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00228">228</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af55717dfafc1036e82acb81592e81a3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af55717dfafc1036e82acb81592e81a3a">&#9670;&nbsp;</a></span>setPixel() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::setPixel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t&#160;</td>
+          <td class="paramname"><em>mych</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>sets pixel at given position with given character and attribute </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2</td><td>2d pixel position in console buffer</td></tr>
+    <tr><td class="paramname">mych</td><td>character to set</td></tr>
+    <tr><td class="paramname">color</td><td>color/attribute to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00225">225</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a53826422f973bbc13925e02846c3bc44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53826422f973bbc13925e02846c3bc44">&#9670;&nbsp;</a></span>fill() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::fill </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CHAR_INFO &amp;&#160;</td>
+          <td class="paramname"><em>mych</em> = <code><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fills rectangle between points with given CHAR_INFO </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2_1</td><td>point 1 of rectangle</td></tr>
+    <tr><td class="paramname">myvec2_2</td><td>point 2 of rectangle</td></tr>
+    <tr><td class="paramname">mych</td><td>CHAR_INFO to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00241">241</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae5fb1b0a9bf126c520065e9ff5471496"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5fb1b0a9bf126c520065e9ff5471496">&#9670;&nbsp;</a></span>fill() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::fill </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t&#160;</td>
+          <td class="paramname"><em>mych</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fills rectangle between points with given character and attribute </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2_1</td><td>point 1 of rectangle</td></tr>
+    <tr><td class="paramname">myvec2_2</td><td>point 2 of rectangle</td></tr>
+    <tr><td class="paramname">mych</td><td>character to set</td></tr>
+    <tr><td class="paramname">color</td><td>color/attribute to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00251">251</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac03aebb953654b306506aa8d78b14d25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac03aebb953654b306506aa8d78b14d25">&#9670;&nbsp;</a></span>fillRandom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::fillRandom </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t&#160;</td>
+          <td class="paramname"><em>mych</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fills rectangle between points with given character; the attribute for each pixel is random </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2_1</td><td>point 1 of rectangle</td></tr>
+    <tr><td class="paramname">myvec2_2</td><td>point 2 of rectangle</td></tr>
+    <tr><td class="paramname">mych</td><td>character to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00256">256</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a957d6858c8bb7d4f407d891452e7d62e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a957d6858c8bb7d4f407d891452e7d62e">&#9670;&nbsp;</a></span>drawLine() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawLine </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CHAR_INFO &amp;&#160;</td>
+          <td class="paramname"><em>mych</em> = <code><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws line between 2 points with given CHAR_INFO </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2_1</td><td>point 1 of line</td></tr>
+    <tr><td class="paramname">myvec2_2</td><td>point 2 of line</td></tr>
+    <tr><td class="paramname">mych</td><td>CHAR_INFO to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00275">275</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a242f01929882603c0bc04d9dbf043d83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a242f01929882603c0bc04d9dbf043d83">&#9670;&nbsp;</a></span>drawLine() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawLine </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t&#160;</td>
+          <td class="paramname"><em>mych</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws line between 2 points with given </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2_1</td><td>point 1 of line</td></tr>
+    <tr><td class="paramname">myvec2_2</td><td>point 2 of line</td></tr>
+    <tr><td class="paramname">mych</td><td>character to set</td></tr>
+    <tr><td class="paramname">color</td><td>color/attribute to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00331">331</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad6316a4784fa4c7384c8c15bcbc3e4c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6316a4784fa4c7384c8c15bcbc3e4c4">&#9670;&nbsp;</a></span>drawTriangle() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawTriangle </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CHAR_INFO &amp;&#160;</td>
+          <td class="paramname"><em>mych</em> = <code><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws triangle between 3 points with given CHAR_INFO </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2_1</td><td>point 1 of triangle</td></tr>
+    <tr><td class="paramname">myvec2_2</td><td>point 2 of triangle</td></tr>
+    <tr><td class="paramname">myvec2_3</td><td>point 3 of triangle</td></tr>
+    <tr><td class="paramname">mych</td><td>CHAR_INFO to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00335">335</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a170d9a9b18bc8e2ba807809372a2dafb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a170d9a9b18bc8e2ba807809372a2dafb">&#9670;&nbsp;</a></span>drawTriangle() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawTriangle </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2_3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t&#160;</td>
+          <td class="paramname"><em>mych</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws triangle between 3 points with given char and color </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2_1</td><td>point 1 of triangle</td></tr>
+    <tr><td class="paramname">myvec2_2</td><td>point 2 of triangle</td></tr>
+    <tr><td class="paramname">myvec2_3</td><td>point 3 of triangle</td></tr>
+    <tr><td class="paramname">mych</td><td>character to set</td></tr>
+    <tr><td class="paramname">color</td><td>color/attribute to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00341">341</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aec5b242a19db78341de1904d12b02c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec5b242a19db78341de1904d12b02c26">&#9670;&nbsp;</a></span>drawPoly() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawPoly </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a>&#160;</td>
+          <td class="paramname"><em>parr</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>polyarrsize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CHAR_INFO &amp;&#160;</td>
+          <td class="paramname"><em>mych</em> = <code><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws polygon from given <a class="el" href="../../d4/df1/structvec2.html" title="2d (float) vector type">vec2</a> array and size of array of vertices and CHAR_INFO </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parr</td><td>array of the vertices in 2d space</td></tr>
+    <tr><td class="paramname">polyarrsize</td><td>array size</td></tr>
+    <tr><td class="paramname">mych</td><td>CHAR_INFO to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00345">345</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad783ce234a36ccd970e6f42eb510c8ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad783ce234a36ccd970e6f42eb510c8ff">&#9670;&nbsp;</a></span>drawPoly() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawPoly </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a>&#160;</td>
+          <td class="paramname"><em>parr</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>polyarrsize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t&#160;</td>
+          <td class="paramname"><em>mych</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws polygon from given <a class="el" href="../../d4/df1/structvec2.html" title="2d (float) vector type">vec2</a> array and size of array/amount of vertices and sets it to character and attribute you passed </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parr</td><td>array of the vertices in 2d space</td></tr>
+    <tr><td class="paramname">polyarrsize</td><td>array size/length</td></tr>
+    <tr><td class="paramname">mych</td><td>character to set</td></tr>
+    <tr><td class="paramname">color</td><td>color/attribute to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00355">355</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a523e2f2841c7db5171247386f6c9e17e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a523e2f2841c7db5171247386f6c9e17e">&#9670;&nbsp;</a></span>drawRegPoly() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawRegPoly </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>radius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>sideamount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CHAR_INFO &amp;&#160;</td>
+          <td class="paramname"><em>mych</em> = <code><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws regular polygon from given radius, position(vec2), side amount and CHAR_INFO </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2</td><td>array of the vertices in 2d space</td></tr>
+    <tr><td class="paramname">radius</td><td>array size</td></tr>
+    <tr><td class="paramname">sideamount</td><td>amount of sides in polygon</td></tr>
+    <tr><td class="paramname">mych</td><td>CHAR_INFO to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00359">359</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af438044f0cd28c1577b9d31c6dac9851"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af438044f0cd28c1577b9d31c6dac9851">&#9670;&nbsp;</a></span>drawRegPoly() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawRegPoly </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>radius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>sideamount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t&#160;</td>
+          <td class="paramname"><em>mych</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws regular polygon from given radius, position(vec2), side amount and char and attribute </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2</td><td>array of the vertices in 2d space</td></tr>
+    <tr><td class="paramname">radius</td><td>array size</td></tr>
+    <tr><td class="paramname">sideamount</td><td>amount of sides in polygon</td></tr>
+    <tr><td class="paramname">mych</td><td>character to set</td></tr>
+    <tr><td class="paramname">color</td><td>color/attribute to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00385">385</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa639740b47b39f0fe7ae9123d44e4f7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa639740b47b39f0fe7ae9123d44e4f7e">&#9670;&nbsp;</a></span>drawCircle() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawCircle </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>radius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CHAR_INFO &amp;&#160;</td>
+          <td class="paramname"><em>mych</em> = <code><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html#a5f5af37a7f0ffa553df2f69d1844d132">artyk::gfx::PX_BLOCK</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws circle with given radius and center point </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2</td><td>center point</td></tr>
+    <tr><td class="paramname">radius</td><td>radius of circle</td></tr>
+    <tr><td class="paramname">mych</td><td>CHAR_INFO to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00389">389</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac0a05234f3b91c52c5918879cc08befd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0a05234f3b91c52c5918879cc08befd">&#9670;&nbsp;</a></span>drawCircle() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::drawCircle </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>radius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t&#160;</td>
+          <td class="paramname"><em>mych</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>draws circle with given radius and center point </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">myvec2</td><td>center point</td></tr>
+    <tr><td class="paramname">radius</td><td>radius of circle</td></tr>
+    <tr><td class="paramname">mych</td><td>character to set</td></tr>
+    <tr><td class="paramname">color</td><td>color/attribute to set</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00460">460</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5ac8085473a2649496bff6f819a6b8b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ac8085473a2649496bff6f819a6b8b1">&#9670;&nbsp;</a></span>renderflags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::renderflags </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>rtype</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sets renderer's flags. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rtype</td><td>flag number</td></tr>
+    <tr><td class="paramname">val</td><td>bool to check</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00243">243</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3e97426a2914bbc66c20cb33db2dd8f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e97426a2914bbc66c20cb33db2dd8f7">&#9670;&nbsp;</a></span>getpixel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CHAR_INFO AEGraphic::getpixel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d1/d61/structvec2int.html">vec2int</a> &amp;&#160;</td>
+          <td class="paramname"><em>myvec2</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>returns pixel at given location </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00265">265</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3831cd08054bf56dfab51ea091222f1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3831cd08054bf56dfab51ea091222f1b">&#9670;&nbsp;</a></span>getfps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int AEGraphic::getfps </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>returns fps of the graphics thread(if running) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00281">281</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6d4397f0d6e1e7096815439cb6b0d7dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d4397f0d6e1e7096815439cb6b0d7dc">&#9670;&nbsp;</a></span>mainthread()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::mainthread </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the graphics thread code </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00495">495</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acf59138f369bc17f270ee9c20f08ccac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf59138f369bc17f270ee9c20f08ccac">&#9670;&nbsp;</a></span>startrd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::startrd </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>opens and starts the drawing thread </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00465">465</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a10fe7364a3bfbae7f4052d4381036110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10fe7364a3bfbae7f4052d4381036110">&#9670;&nbsp;</a></span>closetrd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEGraphic::closetrd </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>stops and closes the drawing thread </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00481">481</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae9049b79b52a7587824a368f36bd2ed4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9049b79b52a7587824a368f36bd2ed4">&#9670;&nbsp;</a></span>BLACK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::BLACK = artyk::color::BLACK</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>console colors for the graphics engine took them from the color namespace </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../da/d11/namespaceartyk_1_1color.html" title="Screen colors for graphic engine and AEScreen.">artyk::color</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00289">289</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a422f07c08f573bd1358d4ae47cd3cd89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a422f07c08f573bd1358d4ae47cd3cd89">&#9670;&nbsp;</a></span>D_BLUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::D_BLUE = artyk::color::D_BLUE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00290">290</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ace3bccf09ba89a069544f7143f2f5bd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace3bccf09ba89a069544f7143f2f5bd6">&#9670;&nbsp;</a></span>D_GREEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::D_GREEN = artyk::color::D_GREEN</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00291">291</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4e7e7d2432cefc7a152b94b173052969"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e7e7d2432cefc7a152b94b173052969">&#9670;&nbsp;</a></span>D_CYAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::D_CYAN = artyk::color::D_CYAN</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00292">292</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="afe75610ad63ed861bcff62c4d53f96b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe75610ad63ed861bcff62c4d53f96b2">&#9670;&nbsp;</a></span>D_RED</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::D_RED = artyk::color::D_RED</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00293">293</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aeccf9819b13f16a09e07da1684d59747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeccf9819b13f16a09e07da1684d59747">&#9670;&nbsp;</a></span>D_MAGENTA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::D_MAGENTA = artyk::color::D_MAGENTA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00294">294</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a73b675326e16690621167fdcf0f1df01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73b675326e16690621167fdcf0f1df01">&#9670;&nbsp;</a></span>D_YELLOW</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::D_YELLOW = artyk::color::D_YELLOW</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00295">295</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad95eee92a2522123131a09ada35bc1de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad95eee92a2522123131a09ada35bc1de">&#9670;&nbsp;</a></span>D_WHITE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::D_WHITE = artyk::color::D_WHITE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00296">296</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ac53977e2ae48c7fdd6b429a64a6b90b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac53977e2ae48c7fdd6b429a64a6b90b5">&#9670;&nbsp;</a></span>GRAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::GRAY = artyk::color::GRAY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00297">297</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4db68f86746c44deda5e318acdd74822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4db68f86746c44deda5e318acdd74822">&#9670;&nbsp;</a></span>B_BLUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::B_BLUE = artyk::color::B_BLUE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00298">298</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a9f208c828b85da9887ecc59e359d7fc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f208c828b85da9887ecc59e359d7fc0">&#9670;&nbsp;</a></span>B_GREEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::B_GREEN = artyk::color::B_GREEN</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00299">299</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2119de56d0d989cc28fbd008873697d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2119de56d0d989cc28fbd008873697d6">&#9670;&nbsp;</a></span>B_CYAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::B_CYAN = artyk::color::B_CYAN</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00300">300</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a5c445ceafcb7c59b38d127b39610aeff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c445ceafcb7c59b38d127b39610aeff">&#9670;&nbsp;</a></span>B_RED</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::B_RED = artyk::color::B_RED</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00301">301</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab8f271bfc224c88ec8e74a8a2b5bca43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8f271bfc224c88ec8e74a8a2b5bca43">&#9670;&nbsp;</a></span>B_PURPLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::B_PURPLE = artyk::color::B_PURPLE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00302">302</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af0e117a94e7360ae8b92615ef2e297c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0e117a94e7360ae8b92615ef2e297c3">&#9670;&nbsp;</a></span>B_YELLOW</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::B_YELLOW = artyk::color::B_YELLOW</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00303">303</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="abab78041cd87329639fc07aebd8389f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abab78041cd87329639fc07aebd8389f4">&#9670;&nbsp;</a></span>WHITE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::WHITE = artyk::color::WHITE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00304">304</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a80adf8d5ff07867b9eb7fab42b5a6ae5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80adf8d5ff07867b9eb7fab42b5a6ae5">&#9670;&nbsp;</a></span>DEF_BGR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::DEF_BGR = artyk::color::DEF_BGR</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00307">307</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6e52e8927cd4680363c23721a7583417"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e52e8927cd4680363c23721a7583417">&#9670;&nbsp;</a></span>DEF_FGR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::DEF_FGR = <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#af531bab77bf1bc264bc7b5719a94dc13">artyk::color::DEF_BGR</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00308">308</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa380381a92e9f2318818b58afdcc3e5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa380381a92e9f2318818b58afdcc3e5f">&#9670;&nbsp;</a></span>DEF_ATTR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEGraphic::DEF_ATTR = <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#af531bab77bf1bc264bc7b5719a94dc13">artyk::color::DEF_BGR</a> * 16 + <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a0aa0392371b0f7f7ddba5fbc3860b176">artyk::color::DEF_FGR</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00309">309</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a5659f2d6efc64247340dacc997a9edac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5659f2d6efc64247340dacc997a9edac">&#9670;&nbsp;</a></span>m_myscr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d17/class_a_e_screen.html">AEScreen</a> * AEGraphic::m_myscr = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>pointer <a class="el" href="../../d4/d17/class_a_e_screen.html" title="This module is made for simple screen management, and not made for the performance.">AEScreen</a> module for screen manipulations needed as if to make it a variable, it would crash with "bad handle" error because it creates the module before creating and assigning handles </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00323">323</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad7a493c4f5e6f947622381cd7f0e1bff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7a493c4f5e6f947622381cd7f0e1bff">&#9670;&nbsp;</a></span>m_fr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../df/dd7/class_a_e_frame.html">AEFrame</a> AEGraphic::m_fr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../df/dd7/class_a_e_frame.html" title="This module is used for creating delays(in FPS format) in the engine.">AEFrame</a> module for thread drawing delay. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00325">325</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4796af252a07797921b3fdaf013564e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4796af252a07797921b3fdaf013564e5">&#9670;&nbsp;</a></span>m_thread</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::thread AEGraphic::m_thread</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>thread object to create drawing thread </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00327">327</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aa5c9855eabdca1b535c9a7f451360385"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5c9855eabdca1b535c9a7f451360385">&#9670;&nbsp;</a></span>m_rtwindow</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">_SMALL_RECT AEGraphic::m_rtwindow</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>variable to store window size </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00329">329</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a548b3ceab9f38db6bfefff7f6b3feeea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a548b3ceab9f38db6bfefff7f6b3feeea">&#9670;&nbsp;</a></span>m_globalmodulenum</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">atomic&lt; <a class="el" href="../../de/df7/typedefs_8hpp.html#a3d36c784f23265914e39e4477c74a5c5">biguint</a> &gt; AEGraphic::m_globalmodulenum</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>variable to store the module index number </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00331">331</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab407e8f56d35de34c2b5445ccbc5302c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab407e8f56d35de34c2b5445ccbc5302c">&#9670;&nbsp;</a></span>m_screendata</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CHAR_INFO * AEGraphic::m_screendata = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the screen buffer that module draws </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00333">333</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab60dd79daa65001336fac2de6661bfa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab60dd79daa65001336fac2de6661bfa5">&#9670;&nbsp;</a></span>m_currentbuffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CHAR_INFO * AEGraphic::m_currentbuffer = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the buffer our utilities will use, usually m_screendata otherwise, if its set to other buffer, copy it with <a class="el" href="../../dc/d7e/class_a_e_graphic.html#a2c915cb8d5d4db3b829018064a6dea1f" title="copies given buffer to the the screen buffer">copybuffer()</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00336">336</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab4eb0683631c553f2fd44844b2ea2a95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4eb0683631c553f2fd44844b2ea2a95">&#9670;&nbsp;</a></span>m_screensize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">COORD AEGraphic::m_screensize</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>stores screen size, in character cells </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00338">338</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="acc9baf14461ec20f32d0796c82560a43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc9baf14461ec20f32d0796c82560a43">&#9670;&nbsp;</a></span>graph_fps</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AEGraphic::graph_fps = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>the thread fps amount, get it using <a class="el" href="../../dc/d7e/class_a_e_graphic.html#a3831cd08054bf56dfab51ea091222f1b" title="returns fps of the graphics thread(if running)">getfps(void)</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00340">340</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ac0c00f617bdc00bde2e2b8f0916d2639"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0c00f617bdc00bde2e2b8f0916d2639">&#9670;&nbsp;</a></span>moduleamt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">atomic&lt; int &gt; AEGraphic::moduleamt = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>amount of graphics modules currently active (to close thread and dealloc memory when needed) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00343">343</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a36b349540fe30631e7cb34cb5a6534dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36b349540fe30631e7cb34cb5a6534dc">&#9670;&nbsp;</a></span>m_settingscreen</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">atomic&lt; bool &gt; AEGraphic::m_settingscreen = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>bool to indicate if we are doing something with console screen or buffer (prevents write if true) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00346">346</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a95e6c8612952542e53cf93869325ab5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95e6c8612952542e53cf93869325ab5d">&#9670;&nbsp;</a></span>m_threadon</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AEGraphic::m_threadon =false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>bool to indicate if the thread is working currently </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00348">348</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ac4e7122d2632cdab2cdb0be1a65ba89d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4e7122d2632cdab2cdb0be1a65ba89d">&#9670;&nbsp;</a></span>m_bstoptrd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AEGraphic::m_bstoptrd = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>bool to indicate if we need to stop the drawing thread </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00350">350</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aef6ac40b4b2829da5dab2ea485770a58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef6ac40b4b2829da5dab2ea485770a58">&#9670;&nbsp;</a></span>m_clrscr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AEGraphic::m_clrscr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>bool to indicate if graphics thread needs to clear buffer after drawing (not used if AE_GFX_ALWAYS_CLEAR_AFTER_DRAW is on) <br  />
+ </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00353">353</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>artyks_engine/include/engine/<a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a></li>
+<li>artyks_engine/src/engine/<a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

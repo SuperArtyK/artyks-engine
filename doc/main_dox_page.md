@@ -26,10 +26,4 @@ To install the engine code and be able to use it:
 4. ???  
 5. profit  
 
-**Code copy-paste method:**
-1. download code
-2. add "include" directory to additional include dirs
-3. add source files from "src" directory. Or if you are on linux, type out the/whole/path to all src files
-4. profit
-
 @copyright Copyright (C) 2021  Artemii Kozhemiak

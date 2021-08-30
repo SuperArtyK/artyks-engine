@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="../../logo.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ArtyK&#39;s Console Engine
-   &#160;<span id="projectnumber">v0.0.6</span>
+   &#160;<span id="projectnumber">v0.7.0</span>
    </div>
    <div id="projectbrief">The Console engine for apps and games</div>
   </td>
@@ -97,8 +97,7 @@ $(document).ready(function(){initNavTree('d4/d17/class_a_e_screen.html','../../'
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="../../d7/daa/class_a_e_screen-members.html">List of all members</a>  </div>
@@ -131,24 +130,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a180b31de81302e7c9bfe55133fcc8060"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a180b31de81302e7c9bfe55133fcc8060">setcursor</a> (short x, short y)</td></tr>
 <tr class="memdesc:a180b31de81302e7c9bfe55133fcc8060"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the output cursor to the given x/y pos of the screen  <a href="../../d4/d17/class_a_e_screen.html#a180b31de81302e7c9bfe55133fcc8060">More...</a><br /></td></tr>
 <tr class="separator:a180b31de81302e7c9bfe55133fcc8060"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f95e84dc89144bb3c380751ef8043f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a6f95e84dc89144bb3c380751ef8043f4">setScreen</a> (short swidth=128, short sheight=128, short fonth=14, short fontw=7)</td></tr>
+<tr class="memitem:a6f95e84dc89144bb3c380751ef8043f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a6f95e84dc89144bb3c380751ef8043f4">setScreen</a> (short swidth=128, short sheight=128, short <a class="el" href="../../df/d0a/main_8cpp.html#a8b73df71442c8344ac0e0c6727ac9430">fonth</a>=14, short <a class="el" href="../../df/d0a/main_8cpp.html#aee968b083be5932f1cc7c98fdcd511be">fontw</a>=7)</td></tr>
 <tr class="memdesc:a6f95e84dc89144bb3c380751ef8043f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the console screen to given dimensions if possible, otherwise throws Fatal error  <a href="../../d4/d17/class_a_e_screen.html#a6f95e84dc89144bb3c380751ef8043f4">More...</a><br /></td></tr>
 <tr class="separator:a6f95e84dc89144bb3c380751ef8043f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4947214b8bc4c4614e3b0c60343aa0b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a4947214b8bc4c4614e3b0c60343aa0b0">setConsoleBufferSize</a> (short x, short y)</td></tr>
-<tr class="memdesc:a4947214b8bc4c4614e3b0c60343aa0b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets console buffer size to the dimensions given, units are character cells  <a href="../../d4/d17/class_a_e_screen.html#a4947214b8bc4c4614e3b0c60343aa0b0">More...</a><br /></td></tr>
-<tr class="separator:a4947214b8bc4c4614e3b0c60343aa0b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af58bc7d5f582695248cd635f0c02f747"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#af58bc7d5f582695248cd635f0c02f747">setBufferSize</a> (short x, short y)</td></tr>
+<tr class="memdesc:af58bc7d5f582695248cd635f0c02f747"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets console buffer size to the dimensions given, units are character cells  <a href="../../d4/d17/class_a_e_screen.html#af58bc7d5f582695248cd635f0c02f747">More...</a><br /></td></tr>
+<tr class="separator:af58bc7d5f582695248cd635f0c02f747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad382c845d1cae2271f86d7818f942b8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#ad382c845d1cae2271f86d7818f942b8a">settitle</a> (const string &amp;title)</td></tr>
 <tr class="memdesc:ad382c845d1cae2271f86d7818f942b8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the app title  <a href="../../d4/d17/class_a_e_screen.html#ad382c845d1cae2271f86d7818f942b8a">More...</a><br /></td></tr>
 <tr class="separator:ad382c845d1cae2271f86d7818f942b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af208ca986095eb651062bc1f718f5eb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#af208ca986095eb651062bc1f718f5eb2">setFont</a> (short y, short x, const string &amp;fontname=&quot;Consolas&quot;)</td></tr>
-<tr class="memdesc:af208ca986095eb651062bc1f718f5eb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the font setting to provided ones  <a href="../../d4/d17/class_a_e_screen.html#af208ca986095eb651062bc1f718f5eb2">More...</a><br /></td></tr>
-<tr class="separator:af208ca986095eb651062bc1f718f5eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef333c265f9745fc4963d34d170bc125"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#aef333c265f9745fc4963d34d170bc125">setFont</a> (short y, short x, const string &amp;fontname=&quot;Lucida Console&quot;)</td></tr>
+<tr class="memdesc:aef333c265f9745fc4963d34d170bc125"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the font setting to provided ones  <a href="../../d4/d17/class_a_e_screen.html#aef333c265f9745fc4963d34d170bc125">More...</a><br /></td></tr>
+<tr class="separator:aef333c265f9745fc4963d34d170bc125"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e1485bd1f563decf4d1595d8faac869"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a9e1485bd1f563decf4d1595d8faac869">clear</a> (void)</td></tr>
 <tr class="memdesc:a9e1485bd1f563decf4d1595d8faac869"><td class="mdescLeft">&#160;</td><td class="mdescRight">clears the console screen; faster than using system(cls), but still slow for "draw frame, clear, draw again" scheme  <a href="../../d4/d17/class_a_e_screen.html#a9e1485bd1f563decf4d1595d8faac869">More...</a><br /></td></tr>
 <tr class="separator:a9e1485bd1f563decf4d1595d8faac869"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20d1e8adfea89ad38a98b4540b61f7e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a20d1e8adfea89ad38a98b4540b61f7e5">setcolor_con</a> (const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> back, const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> fore)</td></tr>
-<tr class="memdesc:a20d1e8adfea89ad38a98b4540b61f7e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the color of the future text(with printf/cout) out of 16color pallete. Colors are in the artyk::screen namespace  <a href="../../d4/d17/class_a_e_screen.html#a20d1e8adfea89ad38a98b4540b61f7e5">More...</a><br /></td></tr>
-<tr class="separator:a20d1e8adfea89ad38a98b4540b61f7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50280f9bf7b4d15694cee6aa64e63115"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a50280f9bf7b4d15694cee6aa64e63115">setcolor_con</a> (const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> back=<a class="el" href="../../d4/d17/class_a_e_screen.html#aeaab571dabbadcee64b5ed91e17a51a3">DEF_BGR</a>, const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> fore=<a class="el" href="../../d4/d17/class_a_e_screen.html#a416023e145b5728a649adb28270ac35a">DEF_FGR</a>)</td></tr>
+<tr class="memdesc:a50280f9bf7b4d15694cee6aa64e63115"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the color of the future text(with printf/cout) out of 16color pallete. Colors are in the artyk::screen namespace  <a href="../../d4/d17/class_a_e_screen.html#a50280f9bf7b4d15694cee6aa64e63115">More...</a><br /></td></tr>
+<tr class="separator:a50280f9bf7b4d15694cee6aa64e63115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b607c2bbfddcc468b3e0adf203c8162"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a5b607c2bbfddcc468b3e0adf203c8162">scrolltitle</a> (const string &amp;title, short delay, short scrolloffset)</td></tr>
 <tr class="memdesc:a5b607c2bbfddcc468b3e0adf203c8162"><td class="mdescLeft">&#160;</td><td class="mdescRight">UNDONE!!! <b>should</b> scroll the title.  <a href="../../d4/d17/class_a_e_screen.html#a5b607c2bbfddcc468b3e0adf203c8162">More...</a><br /></td></tr>
 <tr class="separator:a5b607c2bbfddcc468b3e0adf203c8162"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,28 +173,62 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ab94eaa62fd7706902042785d708bb550"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#ab94eaa62fd7706902042785d708bb550">GetAppTitle</a> ()</td></tr>
-<tr class="memdesc:ab94eaa62fd7706902042785d708bb550"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns current app title  <a href="../../d4/d17/class_a_e_screen.html#ab94eaa62fd7706902042785d708bb550">More...</a><br /></td></tr>
-<tr class="separator:ab94eaa62fd7706902042785d708bb550"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6022d2312eb3de9c6c2f7fc16276f6d0"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a6022d2312eb3de9c6c2f7fc16276f6d0">GetAppTitle</a> ()</td></tr>
+<tr class="memdesc:a6022d2312eb3de9c6c2f7fc16276f6d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns current app title  <a href="../../d4/d17/class_a_e_screen.html#a6022d2312eb3de9c6c2f7fc16276f6d0">More...</a><br /></td></tr>
+<tr class="separator:a6022d2312eb3de9c6c2f7fc16276f6d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16552b4ec9eaaddfa1ca49d6a92e09e7"><td class="memItemLeft" align="right" valign="top">static COORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a16552b4ec9eaaddfa1ca49d6a92e09e7">GetScreenRes</a> (void)</td></tr>
+<tr class="memdesc:a16552b4ec9eaaddfa1ca49d6a92e09e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns screen size/resolution, in character cells  <a href="../../d4/d17/class_a_e_screen.html#a16552b4ec9eaaddfa1ca49d6a92e09e7">More...</a><br /></td></tr>
 <tr class="separator:a16552b4ec9eaaddfa1ca49d6a92e09e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf7956006692b96e8ef63b8e21f044e"><td class="memItemLeft" align="right" valign="top">static COORD&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#aeaf7956006692b96e8ef63b8e21f044e">GetFontSize</a> (void)</td></tr>
+<tr class="memdesc:aeaf7956006692b96e8ef63b8e21f044e"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns screen font size, in pixels(x,y)  <a href="../../d4/d17/class_a_e_screen.html#aeaf7956006692b96e8ef63b8e21f044e">More...</a><br /></td></tr>
+<tr class="separator:aeaf7956006692b96e8ef63b8e21f044e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:afe1f600552e2ffe35aad71f282144d2a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#afe1f600552e2ffe35aad71f282144d2a">checkhandles</a> (void)</td></tr>
-<tr class="memdesc:afe1f600552e2ffe35aad71f282144d2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks HANDLE's and HWND's being valid. if some fail the check, engine closes with error message and log entry, otherwise return true;  <a href="../../d4/d17/class_a_e_screen.html#afe1f600552e2ffe35aad71f282144d2a">More...</a><br /></td></tr>
-<tr class="separator:afe1f600552e2ffe35aad71f282144d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:a71acfdf2df8a33eb75d33f1d16afbda8"><td class="memItemLeft" align="right" valign="top">SMALL_RECT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a71acfdf2df8a33eb75d33f1d16afbda8">g_rectWindow</a></td></tr>
-<tr class="memdesc:a71acfdf2df8a33eb75d33f1d16afbda8"><td class="mdescLeft">&#160;</td><td class="mdescRight">temp variable to store window sizes  <a href="../../d4/d17/class_a_e_screen.html#a71acfdf2df8a33eb75d33f1d16afbda8">More...</a><br /></td></tr>
-<tr class="separator:a71acfdf2df8a33eb75d33f1d16afbda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a351f48e7b5f891a2bb4271cb564d12a6"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a351f48e7b5f891a2bb4271cb564d12a6">BLACK</a> = artyk::color::BLACK</td></tr>
+<tr class="memdesc:a351f48e7b5f891a2bb4271cb564d12a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">console colors for the graphics engine took them from the color namespace  <a href="../../d4/d17/class_a_e_screen.html#a351f48e7b5f891a2bb4271cb564d12a6">More...</a><br /></td></tr>
+<tr class="separator:a351f48e7b5f891a2bb4271cb564d12a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2594f4064cd9f4cf0fc121b8802f8bd"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#af2594f4064cd9f4cf0fc121b8802f8bd">D_BLUE</a> = artyk::color::D_BLUE</td></tr>
+<tr class="separator:af2594f4064cd9f4cf0fc121b8802f8bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a939d196de7e35a4efb96d55be0a60eae"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a939d196de7e35a4efb96d55be0a60eae">D_GREEN</a> = artyk::color::D_GREEN</td></tr>
+<tr class="separator:a939d196de7e35a4efb96d55be0a60eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d5edc163a9d837ce13522f6a241ec67"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a4d5edc163a9d837ce13522f6a241ec67">D_CYAN</a> = artyk::color::D_CYAN</td></tr>
+<tr class="separator:a4d5edc163a9d837ce13522f6a241ec67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5df25478c49966244931a3c90a18d7dd"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a5df25478c49966244931a3c90a18d7dd">D_RED</a> = artyk::color::D_RED</td></tr>
+<tr class="separator:a5df25478c49966244931a3c90a18d7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c527cc0dad40f71c4979d9061267ac2"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a1c527cc0dad40f71c4979d9061267ac2">D_MAGENTA</a> = artyk::color::D_MAGENTA</td></tr>
+<tr class="separator:a1c527cc0dad40f71c4979d9061267ac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acac1a58db0ba909648341dbabad0fc28"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#acac1a58db0ba909648341dbabad0fc28">D_YELLOW</a> = artyk::color::D_YELLOW</td></tr>
+<tr class="separator:acac1a58db0ba909648341dbabad0fc28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16664efeec0df567352a540e0b70ffd3"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a16664efeec0df567352a540e0b70ffd3">D_WHITE</a> = artyk::color::D_WHITE</td></tr>
+<tr class="separator:a16664efeec0df567352a540e0b70ffd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c9d7489c5c4ccaedb28caac05c7dd6c"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a1c9d7489c5c4ccaedb28caac05c7dd6c">GRAY</a> = artyk::color::GRAY</td></tr>
+<tr class="separator:a1c9d7489c5c4ccaedb28caac05c7dd6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0deac1e678a3213b70684e15d7276bf7"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a0deac1e678a3213b70684e15d7276bf7">B_BLUE</a> = artyk::color::B_BLUE</td></tr>
+<tr class="separator:a0deac1e678a3213b70684e15d7276bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7246dc9cc130155626cfb17d3d0703e"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#ae7246dc9cc130155626cfb17d3d0703e">B_GREEN</a> = artyk::color::B_GREEN</td></tr>
+<tr class="separator:ae7246dc9cc130155626cfb17d3d0703e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9dbbd6a6e4c2b9349b06cbefdf42e7"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a3a9dbbd6a6e4c2b9349b06cbefdf42e7">B_CYAN</a> = artyk::color::B_CYAN</td></tr>
+<tr class="separator:a3a9dbbd6a6e4c2b9349b06cbefdf42e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a17ddfb455d61e97ea848ce336c521b"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a5a17ddfb455d61e97ea848ce336c521b">B_RED</a> = artyk::color::B_RED</td></tr>
+<tr class="separator:a5a17ddfb455d61e97ea848ce336c521b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bb243bad173e513f9f74a3cd11fd64d"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a9bb243bad173e513f9f74a3cd11fd64d">B_PURPLE</a> = artyk::color::B_PURPLE</td></tr>
+<tr class="separator:a9bb243bad173e513f9f74a3cd11fd64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e56decc808ba17982c1fdd29ef3c921"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a2e56decc808ba17982c1fdd29ef3c921">B_YELLOW</a> = artyk::color::B_YELLOW</td></tr>
+<tr class="separator:a2e56decc808ba17982c1fdd29ef3c921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e372fdea4826cf8c10bf95031f58e21"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a3e372fdea4826cf8c10bf95031f58e21">WHITE</a> = artyk::color::WHITE</td></tr>
+<tr class="separator:a3e372fdea4826cf8c10bf95031f58e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaab571dabbadcee64b5ed91e17a51a3"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#aeaab571dabbadcee64b5ed91e17a51a3">DEF_BGR</a> = artyk::color::DEF_BGR</td></tr>
+<tr class="separator:aeaab571dabbadcee64b5ed91e17a51a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a416023e145b5728a649adb28270ac35a"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a416023e145b5728a649adb28270ac35a">DEF_FGR</a> = <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#af531bab77bf1bc264bc7b5719a94dc13">artyk::color::DEF_BGR</a></td></tr>
+<tr class="separator:a416023e145b5728a649adb28270ac35a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd473596e76389a06dcd36c8e7ece46a"><td class="memItemLeft" align="right" valign="top">static constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#afd473596e76389a06dcd36c8e7ece46a">DEF_ATTR</a> = <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#af531bab77bf1bc264bc7b5719a94dc13">artyk::color::DEF_BGR</a> * 16 + <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a0aa0392371b0f7f7ddba5fbc3860b176">artyk::color::DEF_FGR</a></td></tr>
+<tr class="separator:afd473596e76389a06dcd36c8e7ece46a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:aa72ad0103d3697f3f1485c3a3cc72efa"><td class="memItemLeft" align="right" valign="top">static CONSOLE_SCREEN_BUFFER_INFOEX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#aa72ad0103d3697f3f1485c3a3cc72efa">g_rgb_color</a></td></tr>
-<tr class="memdesc:aa72ad0103d3697f3f1485c3a3cc72efa"><td class="mdescLeft">&#160;</td><td class="mdescRight">buffer info extended, used in <a class="el" href="../../d4/d17/class_a_e_screen.html#ab47284531622f1b8779a6acd542e1dd5" title="changes the pallete to the rgb value, broken, dont use">setcolor_rgb()</a> to set the color  <a href="../../d4/d17/class_a_e_screen.html#aa72ad0103d3697f3f1485c3a3cc72efa">More...</a><br /></td></tr>
+<tr class="memdesc:aa72ad0103d3697f3f1485c3a3cc72efa"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks HANDLE's and HWND's being valid. if some fail the check, engine closes with error message and log entry, otherwise return true;  <a href="../../d4/d17/class_a_e_screen.html#aa72ad0103d3697f3f1485c3a3cc72efa">More...</a><br /></td></tr>
 <tr class="separator:aa72ad0103d3697f3f1485c3a3cc72efa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3246180466372b7431d332ba2fcf1cc2"><td class="memItemLeft" align="right" valign="top">static CONSOLE_SCREEN_BUFFER_INFOEX&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a3246180466372b7431d332ba2fcf1cc2">g_normal_color</a></td></tr>
 <tr class="memdesc:a3246180466372b7431d332ba2fcf1cc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">buffer info extended, was used in setcolor() to revert back the pallete to default  <a href="../../d4/d17/class_a_e_screen.html#a3246180466372b7431d332ba2fcf1cc2">More...</a><br /></td></tr>
@@ -206,6 +239,9 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:adffc18b6cc60f2014914987394461890"><td class="memItemLeft" align="right" valign="top">static CONSOLE_SCREEN_BUFFER_INFO&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#adffc18b6cc60f2014914987394461890">g_csbi</a></td></tr>
 <tr class="memdesc:adffc18b6cc60f2014914987394461890"><td class="mdescLeft">&#160;</td><td class="mdescRight">console buffer info, used to manage the screen  <a href="../../d4/d17/class_a_e_screen.html#adffc18b6cc60f2014914987394461890">More...</a><br /></td></tr>
 <tr class="separator:adffc18b6cc60f2014914987394461890"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71acfdf2df8a33eb75d33f1d16afbda8"><td class="memItemLeft" align="right" valign="top">static SMALL_RECT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a71acfdf2df8a33eb75d33f1d16afbda8">g_rectWindow</a> = { 0,0,0,0 }</td></tr>
+<tr class="memdesc:a71acfdf2df8a33eb75d33f1d16afbda8"><td class="mdescLeft">&#160;</td><td class="mdescRight">temp variable to store window sizes  <a href="../../d4/d17/class_a_e_screen.html#a71acfdf2df8a33eb75d33f1d16afbda8">More...</a><br /></td></tr>
+<tr class="separator:a71acfdf2df8a33eb75d33f1d16afbda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a658ca1e21cbf5e57ff5caadb73567d80"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../de/df7/typedefs_8hpp.html#a3d36c784f23265914e39e4477c74a5c5">biguint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a658ca1e21cbf5e57ff5caadb73567d80">m_globalmodulenum</a> = 0</td></tr>
 <tr class="memdesc:a658ca1e21cbf5e57ff5caadb73567d80"><td class="mdescLeft">&#160;</td><td class="mdescRight">variable to store the module index number  <a href="../../d4/d17/class_a_e_screen.html#a658ca1e21cbf5e57ff5caadb73567d80">More...</a><br /></td></tr>
 <tr class="separator:a658ca1e21cbf5e57ff5caadb73567d80"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,6 +251,8 @@ Static Private Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
+<tr class="memitem:a04978ddf95dfa2a2dab34a0bd473e0cb"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#a04978ddf95dfa2a2dab34a0bd473e0cb">AEGraphic</a></td></tr>
+<tr class="separator:a04978ddf95dfa2a2dab34a0bd473e0cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9f340c58016b4eca8c6dc9ff35e3521"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d17/class_a_e_screen.html#ab9f340c58016b4eca8c6dc9ff35e3521">__initengine_screen</a> ()</td></tr>
 <tr class="memdesc:ab9f340c58016b4eca8c6dc9ff35e3521"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialises screen module  <a href="../../d4/d17/class_a_e_screen.html#ab9f340c58016b4eca8c6dc9ff35e3521">More...</a><br /></td></tr>
 <tr class="separator:ab9f340c58016b4eca8c6dc9ff35e3521"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -234,10 +272,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This module is made for simple screen management, and not made for the performance. </p>
-<p><br  />
- Good if you don't need the power of graphics engine, that will be added in v0.0.7. <br  />
- Doesn't create any threads, purely single-threaded. <br  />
- </p>
+<p>Good if you don't need the power of graphics engine, that will be added in v0.0.7. Doesn't create any threads, purely single-threaded. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00042">42</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa2a96bd136edd51bef90a84d16f566e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa2a96bd136edd51bef90a84d16f566e1">&#9670;&nbsp;</a></span>AEScreen()</h2>
@@ -274,6 +311,8 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html">AEScreen.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a6991d1f66c51062ce208685893c9a1a5"></a>
@@ -298,6 +337,8 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html#l00090">90</a> of file <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html">AEScreen.cpp</a>.</p>
 
 </div>
 </div>
@@ -329,6 +370,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>sets the output cursor to the given x/y pos of the screen </p>
+
+<p class="definition">Definition at line <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html#l00105">105</a> of file <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html">AEScreen.cpp</a>.</p>
 
 </div>
 </div>
@@ -380,17 +423,20 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>DON'T USE THIS FUNCTION IF YOU ARE USING THE <a class="el" href="../../dc/d7e/class_a_e_graphic.html">AEGraphic</a> MODULE! Use the <a class="el" href="../../dc/d7e/class_a_e_graphic.html">AEGraphic</a>'s version instead </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html#l00133">133</a> of file <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html">AEScreen.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a4947214b8bc4c4614e3b0c60343aa0b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4947214b8bc4c4614e3b0c60343aa0b0">&#9670;&nbsp;</a></span>setConsoleBufferSize()</h2>
+<a id="af58bc7d5f582695248cd635f0c02f747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af58bc7d5f582695248cd635f0c02f747">&#9670;&nbsp;</a></span>setBufferSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void AEScreen::setConsoleBufferSize </td>
+          <td class="memname">void AEScreen::setBufferSize </td>
           <td>(</td>
           <td class="paramtype">short&#160;</td>
           <td class="paramname"><em>x</em>, </td>
@@ -410,6 +456,9 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>sets console buffer size to the dimensions given, units are character cells </p>
+<dl class="section warning"><dt>Warning</dt><dd>DON'T USE THIS FUNCTION IF YOU ARE USING THE <a class="el" href="../../dc/d7e/class_a_e_graphic.html">AEGraphic</a> MODULE! Use the <a class="el" href="../../dc/d7e/class_a_e_graphic.html">AEGraphic</a>'s version instead </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html#l00121">121</a> of file <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html">AEScreen.cpp</a>.</p>
 
 </div>
 </div>
@@ -430,13 +479,14 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>sets the app title </p>
-<dl class="section note"><dt>Note</dt><dd>if the AE_ADD_APP_TITLE flag is defined, it will append <a class="el" href="../../d9/d53/namespaceartyk.html#aa955b3cc1feb9bcc4c3393bfbee21d0b" title="full name of the app">artyk::app_name_full</a> to <br  />
- </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>if the AE_ADD_APP_TITLE flag is defined, it will append <a class="el" href="../../d9/d53/namespaceartyk.html#aa955b3cc1feb9bcc4c3393bfbee21d0b" title="full name of the app">artyk::app_name_full</a> to </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html#l00242">242</a> of file <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html">AEScreen.cpp</a>.</p>
 
 </div>
 </div>
-<a id="af208ca986095eb651062bc1f718f5eb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af208ca986095eb651062bc1f718f5eb2">&#9670;&nbsp;</a></span>setFont()</h2>
+<a id="aef333c265f9745fc4963d34d170bc125"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef333c265f9745fc4963d34d170bc125">&#9670;&nbsp;</a></span>setFont()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -457,7 +507,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>fontname</em> = <code>&quot;Consolas&quot;</code>&#160;</td>
+          <td class="paramname"><em>fontname</em> = <code>&quot;Lucida&#160;Console&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -476,6 +526,8 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html#l00269">269</a> of file <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html">AEScreen.cpp</a>.</p>
 
 </div>
 </div>
@@ -497,10 +549,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>clears the console screen; faster than using system(cls), but still slow for "draw frame, clear, draw again" scheme </p>
 
+<p class="definition">Definition at line <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html#l00286">286</a> of file <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html">AEScreen.cpp</a>.</p>
+
 </div>
 </div>
-<a id="a20d1e8adfea89ad38a98b4540b61f7e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20d1e8adfea89ad38a98b4540b61f7e5">&#9670;&nbsp;</a></span>setcolor_con()</h2>
+<a id="a50280f9bf7b4d15694cee6aa64e63115"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50280f9bf7b4d15694cee6aa64e63115">&#9670;&nbsp;</a></span>setcolor_con()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -509,13 +563,13 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">void AEScreen::setcolor_con </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
-          <td class="paramname"><em>back</em>, </td>
+          <td class="paramname"><em>back</em> = <code><a class="el" href="../../d4/d17/class_a_e_screen.html#aeaab571dabbadcee64b5ed91e17a51a3">DEF_BGR</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
-          <td class="paramname"><em>fore</em>&#160;</td>
+          <td class="paramname"><em>fore</em> = <code><a class="el" href="../../d4/d17/class_a_e_screen.html#a416023e145b5728a649adb28270ac35a">DEF_FGR</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -527,10 +581,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>sets the color of the future text(with printf/cout) out of 16color pallete. Colors are in the artyk::screen namespace </p>
 
+<p class="definition">Definition at line <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html#l00305">305</a> of file <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html">AEScreen.cpp</a>.</p>
+
 </div>
 </div>
-<a id="ab94eaa62fd7706902042785d708bb550"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab94eaa62fd7706902042785d708bb550">&#9670;&nbsp;</a></span>GetAppTitle()</h2>
+<a id="a6022d2312eb3de9c6c2f7fc16276f6d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6022d2312eb3de9c6c2f7fc16276f6d0">&#9670;&nbsp;</a></span>GetAppTitle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -539,7 +595,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static string AEScreen::GetAppTitle </td>
+          <td class="memname">string AEScreen::GetAppTitle </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -547,13 +603,15 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>returns current app title </p>
-<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000001">Bug:</a></b></dt><dd>There's a known bug, where if you use feed <a class="el" href="../../d4/d17/class_a_e_screen.html#ab94eaa62fd7706902042785d708bb550" title="returns current app title">GetAppTitle()</a> into <a class="el" href="../../d4/d17/class_a_e_screen.html#ad382c845d1cae2271f86d7818f942b8a" title="sets the app title">settitle()</a> continuously, it will set title to what you previously set it to </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="../../de/da5/bug.html#_bug000001">Bug:</a></b></dt><dd>There's a known bug, where if you feed <a class="el" href="../../d4/d17/class_a_e_screen.html#a6022d2312eb3de9c6c2f7fc16276f6d0" title="returns current app title">GetAppTitle()</a> into <a class="el" href="../../d4/d17/class_a_e_screen.html#ad382c845d1cae2271f86d7818f942b8a" title="sets the app title">settitle()</a> continuously, it will set title to what you previously set it to </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html#l00314">314</a> of file <a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html">AEScreen.cpp</a>.</p>
 
 </div>
 </div>
@@ -666,6 +724,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dc/dad/class_____a_e_base_class.html#afba226fbf458f09ebf98a50b4ea118e2">__AEBaseClass</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00107">107</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a16552b4ec9eaaddfa1ca49d6a92e09e7"></a>
@@ -692,10 +752,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>returns screen size/resolution, in character cells </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00121">121</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
 </div>
 </div>
-<a id="afe1f600552e2ffe35aad71f282144d2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe1f600552e2ffe35aad71f282144d2a">&#9670;&nbsp;</a></span>checkhandles()</h2>
+<a id="aeaf7956006692b96e8ef63b8e21f044e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf7956006692b96e8ef63b8e21f044e">&#9670;&nbsp;</a></span>GetFontSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -704,7 +768,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool AEScreen::checkhandles </td>
+          <td class="memname">static COORD AEScreen::GetFontSize </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -713,16 +777,42 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>checks HANDLE's and HWND's being valid. if some fail the check, engine closes with error message and log entry, otherwise return true; </p>
+<p>returns screen font size, in pixels(x,y) </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00123">123</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a04978ddf95dfa2a2dab34a0bd473e0cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04978ddf95dfa2a2dab34a0bd473e0cb">&#9670;&nbsp;</a></span>AEGraphic</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="../../dc/d7e/class_a_e_graphic.html">AEGraphic</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00171">171</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
 <a id="ab9f340c58016b4eca8c6dc9ff35e3521"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab9f340c58016b4eca8c6dc9ff35e3521">&#9670;&nbsp;</a></span>__initengine_screen</h2>
 
@@ -749,9 +839,470 @@ Additional Inherited Members</h2></td></tr>
 <p>initialises screen module </p>
 <p>initialises screen module</p>
 
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00217">217</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a351f48e7b5f891a2bb4271cb564d12a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a351f48e7b5f891a2bb4271cb564d12a6">&#9670;&nbsp;</a></span>BLACK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::BLACK = artyk::color::BLACK</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>console colors for the graphics engine took them from the color namespace </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../da/d11/namespaceartyk_1_1color.html" title="Screen colors for graphic engine and AEScreen.">artyk::color</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00129">129</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af2594f4064cd9f4cf0fc121b8802f8bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2594f4064cd9f4cf0fc121b8802f8bd">&#9670;&nbsp;</a></span>D_BLUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::D_BLUE = artyk::color::D_BLUE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00130">130</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a939d196de7e35a4efb96d55be0a60eae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a939d196de7e35a4efb96d55be0a60eae">&#9670;&nbsp;</a></span>D_GREEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::D_GREEN = artyk::color::D_GREEN</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00131">131</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4d5edc163a9d837ce13522f6a241ec67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d5edc163a9d837ce13522f6a241ec67">&#9670;&nbsp;</a></span>D_CYAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::D_CYAN = artyk::color::D_CYAN</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00132">132</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a5df25478c49966244931a3c90a18d7dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5df25478c49966244931a3c90a18d7dd">&#9670;&nbsp;</a></span>D_RED</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::D_RED = artyk::color::D_RED</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00133">133</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a1c527cc0dad40f71c4979d9061267ac2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c527cc0dad40f71c4979d9061267ac2">&#9670;&nbsp;</a></span>D_MAGENTA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::D_MAGENTA = artyk::color::D_MAGENTA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00134">134</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="acac1a58db0ba909648341dbabad0fc28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acac1a58db0ba909648341dbabad0fc28">&#9670;&nbsp;</a></span>D_YELLOW</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::D_YELLOW = artyk::color::D_YELLOW</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00135">135</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a16664efeec0df567352a540e0b70ffd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16664efeec0df567352a540e0b70ffd3">&#9670;&nbsp;</a></span>D_WHITE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::D_WHITE = artyk::color::D_WHITE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00136">136</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a1c9d7489c5c4ccaedb28caac05c7dd6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c9d7489c5c4ccaedb28caac05c7dd6c">&#9670;&nbsp;</a></span>GRAY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::GRAY = artyk::color::GRAY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00137">137</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0deac1e678a3213b70684e15d7276bf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0deac1e678a3213b70684e15d7276bf7">&#9670;&nbsp;</a></span>B_BLUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::B_BLUE = artyk::color::B_BLUE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae7246dc9cc130155626cfb17d3d0703e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7246dc9cc130155626cfb17d3d0703e">&#9670;&nbsp;</a></span>B_GREEN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::B_GREEN = artyk::color::B_GREEN</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00139">139</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3a9dbbd6a6e4c2b9349b06cbefdf42e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a9dbbd6a6e4c2b9349b06cbefdf42e7">&#9670;&nbsp;</a></span>B_CYAN</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::B_CYAN = artyk::color::B_CYAN</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00140">140</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a5a17ddfb455d61e97ea848ce336c521b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a17ddfb455d61e97ea848ce336c521b">&#9670;&nbsp;</a></span>B_RED</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::B_RED = artyk::color::B_RED</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00141">141</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a9bb243bad173e513f9f74a3cd11fd64d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bb243bad173e513f9f74a3cd11fd64d">&#9670;&nbsp;</a></span>B_PURPLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::B_PURPLE = artyk::color::B_PURPLE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00142">142</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2e56decc808ba17982c1fdd29ef3c921"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e56decc808ba17982c1fdd29ef3c921">&#9670;&nbsp;</a></span>B_YELLOW</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::B_YELLOW = artyk::color::B_YELLOW</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00143">143</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a3e372fdea4826cf8c10bf95031f58e21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e372fdea4826cf8c10bf95031f58e21">&#9670;&nbsp;</a></span>WHITE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::WHITE = artyk::color::WHITE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00144">144</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aeaab571dabbadcee64b5ed91e17a51a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaab571dabbadcee64b5ed91e17a51a3">&#9670;&nbsp;</a></span>DEF_BGR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::DEF_BGR = artyk::color::DEF_BGR</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00147">147</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a416023e145b5728a649adb28270ac35a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a416023e145b5728a649adb28270ac35a">&#9670;&nbsp;</a></span>DEF_FGR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::DEF_FGR = <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#af531bab77bf1bc264bc7b5719a94dc13">artyk::color::DEF_BGR</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00148">148</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
+<a id="afd473596e76389a06dcd36c8e7ece46a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd473596e76389a06dcd36c8e7ece46a">&#9670;&nbsp;</a></span>DEF_ATTR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr unsigned char AEScreen::DEF_ATTR = <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#af531bab77bf1bc264bc7b5719a94dc13">artyk::color::DEF_BGR</a> * 16 + <a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a0aa0392371b0f7f7ddba5fbc3860b176">artyk::color::DEF_FGR</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00149">149</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
+</div>
+</div>
 <a id="aa72ad0103d3697f3f1485c3a3cc72efa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa72ad0103d3697f3f1485c3a3cc72efa">&#9670;&nbsp;</a></span>g_rgb_color</h2>
 
@@ -772,7 +1323,10 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>checks HANDLE's and HWND's being valid. if some fail the check, engine closes with error message and log entry, otherwise return true; </p>
 <p>buffer info extended, used in <a class="el" href="../../d4/d17/class_a_e_screen.html#ab47284531622f1b8779a6acd542e1dd5" title="changes the pallete to the rgb value, broken, dont use">setcolor_rgb()</a> to set the color </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00155">155</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
 
 </div>
 </div>
@@ -798,6 +1352,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p>buffer info extended, was used in setcolor() to revert back the pallete to default </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00157">157</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ad0805c4b9c3385add6df2a75876b7ffd"></a>
@@ -821,6 +1377,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>console font info extended, used to manage the font of console </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00159">159</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
 
 </div>
 </div>
@@ -846,6 +1404,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p>console buffer info, used to manage the screen </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00161">161</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a71acfdf2df8a33eb75d33f1d16afbda8"></a>
@@ -858,17 +1418,19 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SMALL_RECT AEScreen::g_rectWindow</td>
+          <td class="memname">SMALL_RECT AEScreen::g_rectWindow = { 0,0,0,0 }</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>temp variable to store window sizes </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00163">163</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
 
 </div>
 </div>
@@ -894,6 +1456,8 @@ Additional Inherited Members</h2></td></tr>
 
 <p>variable to store the module index number </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00165">165</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
 </div>
 </div>
 <a id="acf772d41cb9d38dbe99d48477ddcdc54"></a>
@@ -918,11 +1482,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p>our screen resolution </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html#l00167">167</a> of file <a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>artyks_engine/include/engine/<a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a></li>
-<li>artyks_engine/src/engine/<a class="el" href="../../df/dbb/_a_e_screen_8cpp.html">AEScreen.cpp</a></li>
+<li>artyks_engine/src/engine/<a class="el" href="../../df/dbb/_a_e_screen_8cpp_source.html">AEScreen.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

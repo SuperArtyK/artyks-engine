@@ -38,10 +38,12 @@ struct vec2int
 	int x;
 	int y;
 
+	///returns magnitude of a vector
 	inline float magnitude() const {
 		return sqrtf(x * x + y * y);
 	}
 
+	///returns zeroed vector
 	constexpr static inline vec2int zero() {
 		return { 0,0 };
 	}
@@ -55,10 +57,12 @@ struct vec2
 	float x;
 	float y;
 
+	///returns magnitude of a vector
 	inline float magnitude() const {
 		return sqrtf(x * x + y * y);
 	}
 
+	///returns zeroed vector
 	constexpr static inline vec2 zero() {
 		return { 0.0f,0.0f };
 	}
@@ -71,10 +75,12 @@ struct vec3int
 	int y;
 	int z;
 
+	///returns magnitude of a vector
 	inline float magnitude() const {
 		return sqrtf(x * x + y * y + z * z);
 	}
 
+	///returns zeroed vector
 	constexpr static inline vec3int zero() {
 		return { 0,0,0 };
 	}
@@ -88,10 +94,12 @@ struct vec3
 	float z;
 
 
+	///returns magnitude of a vector
 	inline float magnitude() const {
 		return sqrtf(x * x + y * y + z * z);
 	}
 
+	///returns zeroed vector
 	constexpr static inline vec3 zero() {
 		return { 0.0f, 0.0f, 0.0f };
 	}

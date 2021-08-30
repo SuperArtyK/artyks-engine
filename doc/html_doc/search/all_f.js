@@ -1,25 +1,8 @@
 var searchData=
 [
-  ['scrolltitle_219',['scrolltitle',['../d4/d17/class_a_e_screen.html#a5b607c2bbfddcc468b3e0adf203c8162',1,'AEScreen']]],
-  ['secdeg_220',['secdeg',['../d7/d6a/namespaceartyk_1_1math.html#a0938b3d8bd0baa551d52c6325ee51d11',1,'artyk::math']]],
-  ['setcolor_5fcon_221',['setcolor_con',['../d4/d17/class_a_e_screen.html#a20d1e8adfea89ad38a98b4540b61f7e5',1,'AEScreen']]],
-  ['setcolor_5frgb_222',['setcolor_rgb',['../d4/d17/class_a_e_screen.html#ab47284531622f1b8779a6acd542e1dd5',1,'AEScreen']]],
-  ['setconsolebuffersize_223',['setConsoleBufferSize',['../d4/d17/class_a_e_screen.html#a4947214b8bc4c4614e3b0c60343aa0b0',1,'AEScreen']]],
-  ['setcursor_224',['setcursor',['../d4/d17/class_a_e_screen.html#a180b31de81302e7c9bfe55133fcc8060',1,'AEScreen']]],
-  ['setfont_225',['setFont',['../d4/d17/class_a_e_screen.html#af208ca986095eb651062bc1f718f5eb2',1,'AEScreen']]],
-  ['setfps_226',['setfps',['../df/dd7/class_a_e_frame.html#a039b97975be5e6ed19433a539d7925e0',1,'AEFrame']]],
-  ['setscreen_227',['setScreen',['../d4/d17/class_a_e_screen.html#a6f95e84dc89144bb3c380751ef8043f4',1,'AEScreen']]],
-  ['settitle_228',['settitle',['../d4/d17/class_a_e_screen.html#ad382c845d1cae2271f86d7818f942b8a',1,'AEScreen']]],
-  ['sindeg_229',['sindeg',['../d7/d6a/namespaceartyk_1_1math.html#ac14877b44290cbdbb9910555af6ed9f8',1,'artyk::math']]],
-  ['sint_5fmax_230',['SINT_MAX',['../de/df7/typedefs_8hpp.html#aba0afd3e5d286bcf0e7f2341c441c582',1,'typedefs.hpp']]],
-  ['sint_5fmin_231',['SINT_MIN',['../de/df7/typedefs_8hpp.html#aa936407e170ea9cac428d91070d8e717',1,'typedefs.hpp']]],
-  ['sleep_232',['sleep',['../df/dd7/class_a_e_frame.html#aa3459df5ce99cf186b18f7d4c37ba161',1,'AEFrame']]],
-  ['smallint_233',['smallint',['../de/df7/typedefs_8hpp.html#a154e7d1e11ba2baf40b0121ec0993fe7',1,'typedefs.hpp']]],
-  ['smalluint_234',['smalluint',['../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125',1,'typedefs.hpp']]],
-  ['startlogging_235',['startlogging',['../df/d59/class_a_e_log.html#ae571df37ac256f3335647deffb194f2b',1,'AELog']]],
-  ['startrd_236',['startrd',['../de/d92/class_a_e_keyboard.html#a2e9fd021e7143335a7a549644bed018d',1,'AEKeyboard']]],
-  ['stoplogging_237',['stoplogging',['../df/d59/class_a_e_log.html#a249370a65f27c76eddc4d80c5018cddf',1,'AELog']]],
-  ['stopthread_238',['stopthread',['../da/d62/class_a_e_timer.html#a8a55d8d6220741b8ac3ce64f7fdca672',1,'AETimer']]],
-  ['suint_5fmax_239',['SUINT_MAX',['../de/df7/typedefs_8hpp.html#aacd6d5ac92c90e3ea299c510d4cd0f48',1,'typedefs.hpp']]],
-  ['suint_5fmin_240',['SUINT_MIN',['../de/df7/typedefs_8hpp.html#a1b574b7a803691d1290f45e6791d106f',1,'typedefs.hpp']]]
+  ['objdistance_297',['objdistance',['../d1/d2a/javidx9__fps_8cpp.html#a87e76612979411b14530ed2b3ca4e255',1,'javidx9_fps.cpp']]],
+  ['openfile_298',['openfile',['../df/d59/class_a_e_log.html#ae28fc4d715f30abf4a4332a2da1b7769',1,'AELog']]],
+  ['openthread_299',['openthread',['../d1/d1e/class_a_e_beep.html#a6cdc303bb6884f9895fc39511be58925',1,'AEBeep']]],
+  ['operator_21_3d_300',['operator!=',['../d9/dd3/structkeystate.html#ad161eee536014434c110fbd2906b6eb0',1,'keystate']]],
+  ['operator_3d_3d_301',['operator==',['../d9/dd3/structkeystate.html#a1673b301d99f82d447173767433b23af',1,'keystate']]]
 ];

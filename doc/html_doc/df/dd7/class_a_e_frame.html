@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="../../logo.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ArtyK&#39;s Console Engine
-   &#160;<span id="projectnumber">v0.0.6</span>
+   &#160;<span id="projectnumber">v0.7.0</span>
    </div>
    <div id="projectbrief">The Console engine for apps and games</div>
   </td>
@@ -97,6 +97,7 @@ $(document).ready(function(){initNavTree('df/dd7/class_a_e_frame.html','../../')
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../dc/dc9/class_a_e_frame-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">AEFrame Class Reference</div>  </div>
@@ -110,52 +111,57 @@ $(document).ready(function(){initNavTree('df/dd7/class_a_e_frame.html','../../')
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4baa6ab630414dce8791bb005faf850c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a4baa6ab630414dce8791bb005faf850c">AEFrame</a> (float fps=<a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a>)</td></tr>
-<tr class="memdesc:a4baa6ab630414dce8791bb005faf850c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor  <a href="../../df/dd7/class_a_e_frame.html#a4baa6ab630414dce8791bb005faf850c">More...</a><br /></td></tr>
-<tr class="separator:a4baa6ab630414dce8791bb005faf850c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a039b97975be5e6ed19433a539d7925e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a039b97975be5e6ed19433a539d7925e0">setfps</a> (float fps=<a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a>)</td></tr>
-<tr class="memdesc:a039b97975be5e6ed19433a539d7925e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">resets the delay value to what you pass to it  <a href="../../df/dd7/class_a_e_frame.html#a039b97975be5e6ed19433a539d7925e0">More...</a><br /></td></tr>
-<tr class="separator:a039b97975be5e6ed19433a539d7925e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa07648c5f929a9435f2c2a2449d2a387"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#aa07648c5f929a9435f2c2a2449d2a387">AEFrame</a> (const float fps=<a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a>)</td></tr>
+<tr class="memdesc:aa07648c5f929a9435f2c2a2449d2a387"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class constructor  <a href="../../df/dd7/class_a_e_frame.html#aa07648c5f929a9435f2c2a2449d2a387">More...</a><br /></td></tr>
+<tr class="separator:aa07648c5f929a9435f2c2a2449d2a387"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a114e65eb7be2d1ffc91c98e8ec80b7d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a114e65eb7be2d1ffc91c98e8ec80b7d5">setfps</a> (const float fps=<a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a>)</td></tr>
+<tr class="memdesc:a114e65eb7be2d1ffc91c98e8ec80b7d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">resets the delay value to what you pass to it  <a href="../../df/dd7/class_a_e_frame.html#a114e65eb7be2d1ffc91c98e8ec80b7d5">More...</a><br /></td></tr>
+<tr class="separator:a114e65eb7be2d1ffc91c98e8ec80b7d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3459df5ce99cf186b18f7d4c37ba161"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#aa3459df5ce99cf186b18f7d4c37ba161">sleep</a> (void)</td></tr>
 <tr class="memdesc:aa3459df5ce99cf186b18f7d4c37ba161"><td class="mdescLeft">&#160;</td><td class="mdescRight">makes the current thread sleep for a set delay  <a href="../../df/dd7/class_a_e_frame.html#aa3459df5ce99cf186b18f7d4c37ba161">More...</a><br /></td></tr>
 <tr class="separator:aa3459df5ce99cf186b18f7d4c37ba161"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab06a28a68f6ca31089f122644bd79425"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#ab06a28a68f6ca31089f122644bd79425">resettime</a> ()</td></tr>
+<tr class="memdesc:ab06a28a68f6ca31089f122644bd79425"><td class="mdescLeft">&#160;</td><td class="mdescRight">resets the time point time to current system time  <a href="../../df/dd7/class_a_e_frame.html#ab06a28a68f6ca31089f122644bd79425">More...</a><br /></td></tr>
+<tr class="separator:ab06a28a68f6ca31089f122644bd79425"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37a761e5421a094d8612b422c96b87f5"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a37a761e5421a094d8612b422c96b87f5">getmodulename</a> (void) const</td></tr>
 <tr class="memdesc:a37a761e5421a094d8612b422c96b87f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the module name.  <a href="../../df/dd7/class_a_e_frame.html#a37a761e5421a094d8612b422c96b87f5">More...</a><br /></td></tr>
 <tr class="separator:a37a761e5421a094d8612b422c96b87f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20b0e93e5a15a0548160f29e195f4a01"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a20b0e93e5a15a0548160f29e195f4a01">getframerate</a> (void) const</td></tr>
 <tr class="memdesc:a20b0e93e5a15a0548160f29e195f4a01"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns framerate of <a class="el" href="../../df/dd7/class_a_e_frame.html" title="This module is used for creating delays(in FPS format) in the engine.">AEFrame</a>  <a href="../../df/dd7/class_a_e_frame.html#a20b0e93e5a15a0548160f29e195f4a01">More...</a><br /></td></tr>
 <tr class="separator:a20b0e93e5a15a0548160f29e195f4a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af659d9300dac5b7bcded2a2e028fb411"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#af659d9300dac5b7bcded2a2e028fb411">getdelay</a> (void) const</td></tr>
-<tr class="memdesc:af659d9300dac5b7bcded2a2e028fb411"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the delay of <a class="el" href="../../df/dd7/class_a_e_frame.html" title="This module is used for creating delays(in FPS format) in the engine.">AEFrame</a> in seconds  <a href="../../df/dd7/class_a_e_frame.html#af659d9300dac5b7bcded2a2e028fb411">More...</a><br /></td></tr>
-<tr class="separator:af659d9300dac5b7bcded2a2e028fb411"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41d5c849c8407c9213dff37ef5eedf8c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a41d5c849c8407c9213dff37ef5eedf8c">getdelay</a> (void) const</td></tr>
+<tr class="memdesc:a41d5c849c8407c9213dff37ef5eedf8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the delay of <a class="el" href="../../df/dd7/class_a_e_frame.html" title="This module is used for creating delays(in FPS format) in the engine.">AEFrame</a> in seconds  <a href="../../df/dd7/class_a_e_frame.html#a41d5c849c8407c9213dff37ef5eedf8c">More...</a><br /></td></tr>
+<tr class="separator:a41d5c849c8407c9213dff37ef5eedf8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ef3b45f9e330ab6e63dda74f5444411"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a8ef3b45f9e330ab6e63dda74f5444411">benchmark</a> ()</td></tr>
 <tr class="memdesc:a8ef3b45f9e330ab6e63dda74f5444411"><td class="mdescLeft">&#160;</td><td class="mdescRight">uses all utils for class  <a href="../../df/dd7/class_a_e_frame.html#a8ef3b45f9e330ab6e63dda74f5444411">More...</a><br /></td></tr>
 <tr class="separator:a8ef3b45f9e330ab6e63dda74f5444411"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aeb22b22a5eafedd29af0294164d9a543"><td class="memItemLeft" align="right" valign="top">std::chrono::duration&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#aeb22b22a5eafedd29af0294164d9a543">time_between_frames</a></td></tr>
-<tr class="memdesc:aeb22b22a5eafedd29af0294164d9a543"><td class="mdescLeft">&#160;</td><td class="mdescRight">delay between seconds  <a href="../../df/dd7/class_a_e_frame.html#aeb22b22a5eafedd29af0294164d9a543">More...</a><br /></td></tr>
-<tr class="separator:aeb22b22a5eafedd29af0294164d9a543"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25edaa6c5aa968349b7bb74fe0aff998"><td class="memItemLeft" align="right" valign="top">std::chrono::time_point&lt; std::chrono::system_clock, decltype(<a class="el" href="../../df/dd7/class_a_e_frame.html#aeb22b22a5eafedd29af0294164d9a543">time_between_frames</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a25edaa6c5aa968349b7bb74fe0aff998">tp</a></td></tr>
-<tr class="memdesc:a25edaa6c5aa968349b7bb74fe0aff998"><td class="mdescLeft">&#160;</td><td class="mdescRight">the timepoint, that sets time when to wake up the thread  <a href="../../df/dd7/class_a_e_frame.html#a25edaa6c5aa968349b7bb74fe0aff998">More...</a><br /></td></tr>
-<tr class="separator:a25edaa6c5aa968349b7bb74fe0aff998"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe6eceff6796db49ba0f7e7393b33b08"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#abe6eceff6796db49ba0f7e7393b33b08">m_modulename</a></td></tr>
-<tr class="memdesc:abe6eceff6796db49ba0f7e7393b33b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">module name  <a href="../../df/dd7/class_a_e_frame.html#abe6eceff6796db49ba0f7e7393b33b08">More...</a><br /></td></tr>
-<tr class="separator:abe6eceff6796db49ba0f7e7393b33b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8392e1ff7520f91f936d4e582a9b1dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/df7/typedefs_8hpp.html#a99209d01581670b5819588cc22eb58a7">tduration</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#af8392e1ff7520f91f936d4e582a9b1dc">time_between_frames</a></td></tr>
+<tr class="memdesc:af8392e1ff7520f91f936d4e582a9b1dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">delay between seconds  <a href="../../df/dd7/class_a_e_frame.html#af8392e1ff7520f91f936d4e582a9b1dc">More...</a><br /></td></tr>
+<tr class="separator:af8392e1ff7520f91f936d4e582a9b1dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31062d08221373b4d22a21285d24938b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/df7/typedefs_8hpp.html#a11fd5ba882ccf7e9382471a02fc4f194">timepoint</a>&lt; std::chrono::system_clock, decltype(<a class="el" href="../../df/dd7/class_a_e_frame.html#af8392e1ff7520f91f936d4e582a9b1dc">time_between_frames</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a31062d08221373b4d22a21285d24938b">tp</a></td></tr>
+<tr class="memdesc:a31062d08221373b4d22a21285d24938b"><td class="mdescLeft">&#160;</td><td class="mdescRight">the timepoint, that sets time when to wake up the thread  <a href="../../df/dd7/class_a_e_frame.html#a31062d08221373b4d22a21285d24938b">More...</a><br /></td></tr>
+<tr class="separator:a31062d08221373b4d22a21285d24938b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a001a93d25ec95a8f74dd6bb2cc525055"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#a001a93d25ec95a8f74dd6bb2cc525055">nodelay</a></td></tr>
 <tr class="memdesc:a001a93d25ec95a8f74dd6bb2cc525055"><td class="mdescLeft">&#160;</td><td class="mdescRight">flag if we don't need the delay  <a href="../../df/dd7/class_a_e_frame.html#a001a93d25ec95a8f74dd6bb2cc525055">More...</a><br /></td></tr>
 <tr class="separator:a001a93d25ec95a8f74dd6bb2cc525055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:abe6eceff6796db49ba0f7e7393b33b08"><td class="memItemLeft" align="right" valign="top">static const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd7/class_a_e_frame.html#abe6eceff6796db49ba0f7e7393b33b08">m_modulename</a> = &quot;AEFrame&quot;</td></tr>
+<tr class="memdesc:abe6eceff6796db49ba0f7e7393b33b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">module name  <a href="../../df/dd7/class_a_e_frame.html#abe6eceff6796db49ba0f7e7393b33b08">More...</a><br /></td></tr>
+<tr class="separator:abe6eceff6796db49ba0f7e7393b33b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This module is used for creating delays(in FPS format) in the engine. </p>
-<p><br  />
- It is great if used in loops, as it makes them have delay of <a class="el" href="../../df/dd7/class_a_e_frame.html" title="This module is used for creating delays(in FPS format) in the engine.">AEFrame</a>, if body executes fasted than the delay time. <br  />
- This module is not inherited from the base class, as it needs to be very fast, faster than the base class even, and without much of dependencies. <br  />
- </p>
+<p>It is great if used in loops, as it makes them have delay of <a class="el" href="../../df/dd7/class_a_e_frame.html" title="This module is used for creating delays(in FPS format) in the engine.">AEFrame</a>, if body executes fasted than the delay time. This module is not inherited from the base class, as it needs to be very fast, faster than the base class even, and without much of dependencies. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00057">57</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a4baa6ab630414dce8791bb005faf850c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4baa6ab630414dce8791bb005faf850c">&#9670;&nbsp;</a></span>AEFrame()</h2>
+<a id="aa07648c5f929a9435f2c2a2449d2a387"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa07648c5f929a9435f2c2a2449d2a387">&#9670;&nbsp;</a></span>AEFrame()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,7 +172,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">AEFrame::AEFrame </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
+          <td class="paramtype">const float&#160;</td>
           <td class="paramname"><em>fps</em> = <code><a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a></code></td><td>)</td>
           <td></td>
         </tr>
@@ -187,11 +193,13 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>if you pass it 0 or negative number it will disable the delay </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00065">65</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a039b97975be5e6ed19433a539d7925e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a039b97975be5e6ed19433a539d7925e0">&#9670;&nbsp;</a></span>setfps()</h2>
+<a id="a114e65eb7be2d1ffc91c98e8ec80b7d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a114e65eb7be2d1ffc91c98e8ec80b7d5">&#9670;&nbsp;</a></span>setfps()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -202,7 +210,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void AEFrame::setfps </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
+          <td class="paramtype">const float&#160;</td>
           <td class="paramname"><em>fps</em> = <code><a class="el" href="../../d3/d97/global__vars_8hpp.html#a63a780eb9590cbea188494a74c8eb79e">GAME_FPS</a></code></td><td>)</td>
           <td></td>
         </tr>
@@ -216,7 +224,9 @@ Private Attributes</h2></td></tr>
 
 <p>resets the delay value to what you pass to it </p>
 <dl class="section note"><dt>Note</dt><dd>if you pass it 0 or negative number it will disable the delay </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../df/dd7/class_a_e_frame.html#a4baa6ab630414dce8791bb005faf850c" title="Class constructor">AEFrame()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../df/dd7/class_a_e_frame.html#aa07648c5f929a9435f2c2a2449d2a387" title="Class constructor">AEFrame()</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00073">73</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
 
 </div>
 </div>
@@ -245,6 +255,37 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>makes the current thread sleep for a set delay </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00080">80</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab06a28a68f6ca31089f122644bd79425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab06a28a68f6ca31089f122644bd79425">&#9670;&nbsp;</a></span>resettime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AEFrame::resettime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>resets the time point time to current system time </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
 
 </div>
 </div>
@@ -275,6 +316,8 @@ Private Attributes</h2></td></tr>
 <p>Returns the module name. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="../../dc/dad/class_____a_e_base_class.html#a62d1472da22bb4f3e5c82911d9c6f79c" title="returns the &quot;m_modulename&quot; of the module">__AEBaseClass::getmodulename()</a> </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00097">97</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a20b0e93e5a15a0548160f29e195f4a01"></a>
@@ -303,10 +346,12 @@ Private Attributes</h2></td></tr>
 
 <p>returns framerate of <a class="el" href="../../df/dd7/class_a_e_frame.html" title="This module is used for creating delays(in FPS format) in the engine.">AEFrame</a> </p>
 
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00099">99</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
+
 </div>
 </div>
-<a id="af659d9300dac5b7bcded2a2e028fb411"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af659d9300dac5b7bcded2a2e028fb411">&#9670;&nbsp;</a></span>getdelay()</h2>
+<a id="a41d5c849c8407c9213dff37ef5eedf8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41d5c849c8407c9213dff37ef5eedf8c">&#9670;&nbsp;</a></span>getdelay()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -315,7 +360,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float AEFrame::getdelay </td>
+          <td class="memname">double AEFrame::getdelay </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -330,6 +375,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>returns the delay of <a class="el" href="../../df/dd7/class_a_e_frame.html" title="This module is used for creating delays(in FPS format) in the engine.">AEFrame</a> in seconds </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00101">101</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
 
 </div>
 </div>
@@ -360,11 +407,13 @@ Private Attributes</h2></td></tr>
 <p>uses all utils for class </p>
 <dl class="section see"><dt>See also</dt><dd>similar thing as <a class="el" href="../../dc/dad/class_____a_e_base_class.html#afba226fbf458f09ebf98a50b4ea118e2" title="uses all utils for class">__AEBaseClass::benchmark()</a> </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00105">105</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aeb22b22a5eafedd29af0294164d9a543"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb22b22a5eafedd29af0294164d9a543">&#9670;&nbsp;</a></span>time_between_frames</h2>
+<a id="af8392e1ff7520f91f936d4e582a9b1dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8392e1ff7520f91f936d4e582a9b1dc">&#9670;&nbsp;</a></span>time_between_frames</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -373,7 +422,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::chrono::duration&lt;double&gt; AEFrame::time_between_frames</td>
+          <td class="memname"><a class="el" href="../../de/df7/typedefs_8hpp.html#a99209d01581670b5819588cc22eb58a7">tduration</a>&lt;double&gt; AEFrame::time_between_frames</td>
         </tr>
       </table>
   </td>
@@ -385,10 +434,12 @@ Private Attributes</h2></td></tr>
 
 <p>delay between seconds </p>
 
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00115">115</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
+
 </div>
 </div>
-<a id="a25edaa6c5aa968349b7bb74fe0aff998"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25edaa6c5aa968349b7bb74fe0aff998">&#9670;&nbsp;</a></span>tp</h2>
+<a id="a31062d08221373b4d22a21285d24938b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31062d08221373b4d22a21285d24938b">&#9670;&nbsp;</a></span>tp</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -397,7 +448,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::chrono::time_point&lt;std::chrono::system_clock, decltype(<a class="el" href="../../df/dd7/class_a_e_frame.html#aeb22b22a5eafedd29af0294164d9a543">time_between_frames</a>)&gt; AEFrame::tp</td>
+          <td class="memname"><a class="el" href="../../de/df7/typedefs_8hpp.html#a11fd5ba882ccf7e9382471a02fc4f194">timepoint</a>&lt;std::chrono::system_clock, decltype(<a class="el" href="../../df/dd7/class_a_e_frame.html#af8392e1ff7520f91f936d4e582a9b1dc">time_between_frames</a>)&gt; AEFrame::tp</td>
         </tr>
       </table>
   </td>
@@ -408,6 +459,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>the timepoint, that sets time when to wake up the thread </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
 
 </div>
 </div>
@@ -421,17 +474,19 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::string AEFrame::m_modulename</td>
+          <td class="memname">const std::string AEFrame::m_modulename = &quot;AEFrame&quot;</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>module name </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00119">119</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
 
 </div>
 </div>
@@ -456,6 +511,8 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>flag if we don't need the delay </p>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html#l00121">121</a> of file <a class="el" href="../../de/d72/_a_e_frame_8hpp_source.html">AEFrame.hpp</a>.</p>
 
 </div>
 </div>

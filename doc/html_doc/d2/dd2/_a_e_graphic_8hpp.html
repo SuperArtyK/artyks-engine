@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="../../logo.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ArtyK&#39;s Console Engine
-   &#160;<span id="projectnumber">v0.0.6</span>
+   &#160;<span id="projectnumber">v0.7.0</span>
    </div>
    <div id="projectbrief">The Console engine for apps and games</div>
   </td>
@@ -95,7 +95,10 @@ $(document).ready(function(){initNavTree('d2/dd2/_a_e_graphic_8hpp.html','../../
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">AEGraphic.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -104,6 +107,11 @@ $(document).ready(function(){initNavTree('d2/dd2/_a_e_graphic_8hpp.html','../../
 <p>This file contains the code for graphics engine.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d4/d7c/_a_e_base_class_8hpp_source.html">AEBaseClass.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d1/d57/_a_e_screen_8hpp_source.html">AEScreen.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d7/d36/custom__types_8hpp_source.html">custom_types.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../dc/d11/engine__math_8hpp_source.html">engine_math.hpp</a>&quot;</code><br />
+<code>#include &lt;array&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div>
 <p><a href="../../d2/dd2/_a_e_graphic_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -111,11 +119,114 @@ $(document).ready(function(){initNavTree('d2/dd2/_a_e_graphic_8hpp.html','../../
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html">AEGraphic</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:d9/d53/namespaceartyk"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html">artyk</a></td></tr>
+<tr class="memdesc:d9/d53/namespaceartyk"><td class="mdescLeft">&#160;</td><td class="mdescRight">This namespace contains all of things that any of the part of program can use, and is useful. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:df/d21/namespaceartyk_1_1utils"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d21/namespaceartyk_1_1utils.html">artyk::utils</a></td></tr>
+<tr class="memdesc:df/d21/namespaceartyk_1_1utils"><td class="mdescLeft">&#160;</td><td class="mdescRight">global useful functions <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:abe3fbb39717bf246aa3e9850d282c149"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dd2/_a_e_graphic_8hpp.html#abe3fbb39717bf246aa3e9850d282c149">PIXEL</a>(...)&#160;&#160;&#160;<a class="el" href="../../d2/dd2/_a_e_graphic_8hpp.html#a11c3300c6637c0c0edf819f80f8738d5">_PIXEL</a>(__VA_ARGS__)</td></tr>
+<tr class="memdesc:abe3fbb39717bf246aa3e9850d282c149"><td class="mdescLeft">&#160;</td><td class="mdescRight">create CHAR_INFO with given character and color  <a href="../../d2/dd2/_a_e_graphic_8hpp.html#abe3fbb39717bf246aa3e9850d282c149">More...</a><br /></td></tr>
+<tr class="separator:abe3fbb39717bf246aa3e9850d282c149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11c3300c6637c0c0edf819f80f8738d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dd2/_a_e_graphic_8hpp.html#a11c3300c6637c0c0edf819f80f8738d5">_PIXEL</a>(chr,  clr)&#160;&#160;&#160;CHAR_INFO{chr, clr}</td></tr>
+<tr class="memdesc:a11c3300c6637c0c0edf819f80f8738d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">techincal side of <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp.html#abe3fbb39717bf246aa3e9850d282c149" title="create CHAR_INFO with given character and color">PIXEL()</a>, so we get exactly 2 arguments  <a href="../../d2/dd2/_a_e_graphic_8hpp.html#a11c3300c6637c0c0edf819f80f8738d5">More...</a><br /></td></tr>
+<tr class="separator:a11c3300c6637c0c0edf819f80f8738d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2a255e4af7c4248bff2a54e87e3c26a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/dd2/_a_e_graphic_8hpp.html#ab2a255e4af7c4248bff2a54e87e3c26a">PIXELSIZE</a>&#160;&#160;&#160;sizeof(CHAR_INFO)</td></tr>
+<tr class="memdesc:ab2a255e4af7c4248bff2a54e87e3c26a"><td class="mdescLeft">&#160;</td><td class="mdescRight">(current) pixel size, in bytes  <a href="../../d2/dd2/_a_e_graphic_8hpp.html#ab2a255e4af7c4248bff2a54e87e3c26a">More...</a><br /></td></tr>
+<tr class="separator:ab2a255e4af7c4248bff2a54e87e3c26a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a027ee6d9820595a07856e2608dc66eaf"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d21/namespaceartyk_1_1utils.html#a027ee6d9820595a07856e2608dc66eaf">artyk::utils::getattrib</a> (<a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> bgr=color::DEF_BGR, <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> fgr=color::DEF_FGR)</td></tr>
+<tr class="memdesc:a027ee6d9820595a07856e2608dc66eaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns color attribute of the cell from given backround and foreground  <a href="../../df/d21/namespaceartyk_1_1utils.html#a027ee6d9820595a07856e2608dc66eaf">More...</a><br /></td></tr>
+<tr class="separator:a027ee6d9820595a07856e2608dc66eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file contains the code for graphics engine. </p>
+<p>Credits: Very big thanks to David "JavidX9" Barr, for helping write the code and for inspiration! Inspired by his olcConsoleGameEngine. <a href="https://github.com/OneLoneCoder/videos/blob/master/olcConsoleGameEngine.h">https://github.com/OneLoneCoder/videos/blob/master/olcConsoleGameEngine.h</a> Ravbug &ndash; for giving ideas and pointing out errors Check him out: <a href="https://www.ravbug.com/">https://www.ravbug.com/</a></p>
 <p>Should not cause everything to break. </p>
-</div></div><!-- contents -->
+
+<p class="definition">Definition in file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="abe3fbb39717bf246aa3e9850d282c149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe3fbb39717bf246aa3e9850d282c149">&#9670;&nbsp;</a></span>PIXEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIXEL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="../../d2/dd2/_a_e_graphic_8hpp.html#a11c3300c6637c0c0edf819f80f8738d5">_PIXEL</a>(__VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>create CHAR_INFO with given character and color </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00046">46</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a11c3300c6637c0c0edf819f80f8738d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11c3300c6637c0c0edf819f80f8738d5">&#9670;&nbsp;</a></span>_PIXEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _PIXEL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">chr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">clr&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;CHAR_INFO{chr, clr}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>techincal side of <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp.html#abe3fbb39717bf246aa3e9850d282c149" title="create CHAR_INFO with given character and color">PIXEL()</a>, so we get exactly 2 arguments </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00048">48</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab2a255e4af7c4248bff2a54e87e3c26a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2a255e4af7c4248bff2a54e87e3c26a">&#9670;&nbsp;</a></span>PIXELSIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIXELSIZE&#160;&#160;&#160;sizeof(CHAR_INFO)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>(current) pixel size, in bytes </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html#l00050">50</a> of file <a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

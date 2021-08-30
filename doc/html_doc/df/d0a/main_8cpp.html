@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="../../logo.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ArtyK&#39;s Console Engine
-   &#160;<span id="projectnumber">v0.0.6</span>
+   &#160;<span id="projectnumber">v0.7.0</span>
    </div>
    <div id="projectbrief">The Console engine for apps and games</div>
   </td>
@@ -95,28 +95,139 @@ $(document).ready(function(){initNavTree('df/d0a/main_8cpp.html','../../'); init
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">main.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This file is the main file of the engine, has <a class="el" href="../../df/d0a/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="our &quot;starting point&quot; of the program">main()</a>.  
+<p>This file is the main file of the engine, has <a class="el" href="../../d1/d2a/javidx9__fps_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a>.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d8/d29/include__engine_8hpp_source.html">include_engine.hpp</a>&quot;</code><br />
-</div><table class="memberdecls">
+<div class="textblock"><code>#include &quot;<a class="el" href="../../d6/dea/includeall_8hpp_source.html">includeall.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../d2/dd2/_a_e_graphic_8hpp_source.html">AEGraphic.hpp</a>&quot;</code><br />
+</div>
+<p><a href="../../df/d0a/main_8cpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a966cd377b9f3fdeb1432460c33352af1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/main_8cpp.html#a966cd377b9f3fdeb1432460c33352af1">WINVER</a>&#160;&#160;&#160;0x0601</td></tr>
+<tr class="separator:a966cd377b9f3fdeb1432460c33352af1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac50762666aa00bd3a4308158510f1748"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/main_8cpp.html#ac50762666aa00bd3a4308158510f1748">_WIN32_WINNT</a>&#160;&#160;&#160;0x0601</td></tr>
+<tr class="separator:ac50762666aa00bd3a4308158510f1748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e02ed81bf7ef02714b50a7f93e9e587"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/main_8cpp.html#a2e02ed81bf7ef02714b50a7f93e9e587">scrhalfx</a>&#160;&#160;&#160;(<a class="el" href="../../df/d0a/main_8cpp.html#a4e79f5ffb4acd6c66b320220d1df1945">screenx</a>/2)</td></tr>
+<tr class="separator:a2e02ed81bf7ef02714b50a7f93e9e587"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32ae00c6cf6ca42c497208c59e682413"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/main_8cpp.html#a32ae00c6cf6ca42c497208c59e682413">scrhalfy</a>&#160;&#160;&#160;(<a class="el" href="../../df/d0a/main_8cpp.html#a00739ffbb9bfbdd6f379c56f21ca9ed0">screeny</a>/2)</td></tr>
+<tr class="separator:a32ae00c6cf6ca42c497208c59e682413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbef686ac028072b9426b8aa967ab91c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/main_8cpp.html#acbef686ac028072b9426b8aa967ab91c">halfscreen</a>&#160;&#160;&#160;<a class="el" href="../../d1/d61/structvec2int.html">vec2int</a>{<a class="el" href="../../df/d0a/main_8cpp.html#a4e79f5ffb4acd6c66b320220d1df1945">screenx</a>/2,<a class="el" href="../../df/d0a/main_8cpp.html#a00739ffbb9bfbdd6f379c56f21ca9ed0">screeny</a>/2}</td></tr>
+<tr class="separator:acbef686ac028072b9426b8aa967ab91c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">our "starting point" of the program  <a href="../../df/d0a/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">More...</a><br /></td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a4e79f5ffb4acd6c66b320220d1df1945"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/main_8cpp.html#a4e79f5ffb4acd6c66b320220d1df1945">screenx</a> = 128</td></tr>
+<tr class="separator:a4e79f5ffb4acd6c66b320220d1df1945"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00739ffbb9bfbdd6f379c56f21ca9ed0"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/main_8cpp.html#a00739ffbb9bfbdd6f379c56f21ca9ed0">screeny</a> = 128</td></tr>
+<tr class="separator:a00739ffbb9bfbdd6f379c56f21ca9ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee968b083be5932f1cc7c98fdcd511be"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/main_8cpp.html#aee968b083be5932f1cc7c98fdcd511be">fontw</a> = 5</td></tr>
+<tr class="separator:aee968b083be5932f1cc7c98fdcd511be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b73df71442c8344ac0e0c6727ac9430"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d0a/main_8cpp.html#a8b73df71442c8344ac0e0c6727ac9430">fonth</a> = 5</td></tr>
+<tr class="separator:a8b73df71442c8344ac0e0c6727ac9430"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file is the main file of the engine, has <a class="el" href="../../df/d0a/main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="our &quot;starting point&quot; of the program">main()</a>. </p>
+<div class="textblock"><p>This file is the main file of the engine, has <a class="el" href="../../d1/d2a/javidx9__fps_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a>. </p>
 <p><br  />
  Should not cause everything to break. <br  />
  </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+
+<p class="definition">Definition in file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a966cd377b9f3fdeb1432460c33352af1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a966cd377b9f3fdeb1432460c33352af1">&#9670;&nbsp;</a></span>WINVER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define WINVER&#160;&#160;&#160;0x0601</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00025">25</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ac50762666aa00bd3a4308158510f1748"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac50762666aa00bd3a4308158510f1748">&#9670;&nbsp;</a></span>_WIN32_WINNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _WIN32_WINNT&#160;&#160;&#160;0x0601</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00026">26</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2e02ed81bf7ef02714b50a7f93e9e587"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e02ed81bf7ef02714b50a7f93e9e587">&#9670;&nbsp;</a></span>scrhalfx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define scrhalfx&#160;&#160;&#160;(<a class="el" href="../../df/d0a/main_8cpp.html#a4e79f5ffb4acd6c66b320220d1df1945">screenx</a>/2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00050">50</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a32ae00c6cf6ca42c497208c59e682413"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32ae00c6cf6ca42c497208c59e682413">&#9670;&nbsp;</a></span>scrhalfy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define scrhalfy&#160;&#160;&#160;(<a class="el" href="../../df/d0a/main_8cpp.html#a00739ffbb9bfbdd6f379c56f21ca9ed0">screeny</a>/2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00051">51</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="acbef686ac028072b9426b8aa967ab91c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbef686ac028072b9426b8aa967ab91c">&#9670;&nbsp;</a></span>halfscreen</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define halfscreen&#160;&#160;&#160;<a class="el" href="../../d1/d61/structvec2int.html">vec2int</a>{<a class="el" href="../../df/d0a/main_8cpp.html#a4e79f5ffb4acd6c66b320220d1df1945">screenx</a>/2,<a class="el" href="../../df/d0a/main_8cpp.html#a00739ffbb9bfbdd6f379c56f21ca9ed0">screeny</a>/2}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -132,7 +243,72 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>our "starting point" of the program </p>
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00057">57</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a4e79f5ffb4acd6c66b320220d1df1945"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e79f5ffb4acd6c66b320220d1df1945">&#9670;&nbsp;</a></span>screenx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short screenx = 128</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a00739ffbb9bfbdd6f379c56f21ca9ed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00739ffbb9bfbdd6f379c56f21ca9ed0">&#9670;&nbsp;</a></span>screeny</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short screeny = 128</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aee968b083be5932f1cc7c98fdcd511be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee968b083be5932f1cc7c98fdcd511be">&#9670;&nbsp;</a></span>fontw</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short fontw = 5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8b73df71442c8344ac0e0c6727ac9430"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b73df71442c8344ac0e0c6727ac9430">&#9670;&nbsp;</a></span>fonth</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short fonth = 5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
 
 </div>
 </div>

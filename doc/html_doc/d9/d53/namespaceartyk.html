@@ -32,7 +32,7 @@
   <td id="projectlogo"><img alt="Logo" src="../../logo.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ArtyK&#39;s Console Engine
-   &#160;<span id="projectnumber">v0.0.6</span>
+   &#160;<span id="projectnumber">v0.7.0</span>
    </div>
    <div id="projectbrief">The Console engine for apps and games</div>
   </td>
@@ -114,11 +114,17 @@ Namespaces</h2></td></tr>
 <tr class="memitem:d1/dd6/namespaceartyk_1_1exitcodes"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dd6/namespaceartyk_1_1exitcodes.html">exitcodes</a></td></tr>
 <tr class="memdesc:d1/dd6/namespaceartyk_1_1exitcodes"><td class="mdescLeft">&#160;</td><td class="mdescRight">list of the engine exit codes <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:d2/d5a/namespaceartyk_1_1gfx"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d5a/namespaceartyk_1_1gfx.html">gfx</a></td></tr>
+<tr class="memdesc:d2/d5a/namespaceartyk_1_1gfx"><td class="mdescLeft">&#160;</td><td class="mdescRight">this namespace contains predone characters/char cells used for drawing stuff with <a class="el" href="../../dc/d7e/class_a_e_graphic.html">AEGraphic</a> <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:d7/d6a/namespaceartyk_1_1math"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d6a/namespaceartyk_1_1math.html">math</a></td></tr>
 <tr class="memdesc:d7/d6a/namespaceartyk_1_1math"><td class="mdescLeft">&#160;</td><td class="mdescRight">contains mathematical functions <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:df/d21/namespaceartyk_1_1utils"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d21/namespaceartyk_1_1utils.html">utils</a></td></tr>
 <tr class="memdesc:df/d21/namespaceartyk_1_1utils"><td class="mdescLeft">&#160;</td><td class="mdescRight">global useful functions <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:db/da8/namespaceartyk_1_1version"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/da8/namespaceartyk_1_1version.html">version</a></td></tr>
+<tr class="memdesc:db/da8/namespaceartyk_1_1version"><td class="mdescLeft">&#160;</td><td class="mdescRight">has engine version stuff(ints) <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -135,23 +141,26 @@ Variables</h2></td></tr>
 <tr class="memitem:ad1b6eadcc3f06c974fe9ec7a9163754c"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#ad1b6eadcc3f06c974fe9ec7a9163754c">app_name</a></td></tr>
 <tr class="memdesc:ad1b6eadcc3f06c974fe9ec7a9163754c"><td class="mdescLeft">&#160;</td><td class="mdescRight">name of the app  <a href="../../d9/d53/namespaceartyk.html#ad1b6eadcc3f06c974fe9ec7a9163754c">More...</a><br /></td></tr>
 <tr class="separator:ad1b6eadcc3f06c974fe9ec7a9163754c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acafb72f10c21898c876448a2904489b8"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#acafb72f10c21898c876448a2904489b8">app_build</a> = 3635</td></tr>
-<tr class="memdesc:acafb72f10c21898c876448a2904489b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">build of app, how do you autoincrement these?  <a href="../../d9/d53/namespaceartyk.html#acafb72f10c21898c876448a2904489b8">More...</a><br /></td></tr>
-<tr class="separator:acafb72f10c21898c876448a2904489b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12b0879da633c41920969a5781f6dc88"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a12b0879da633c41920969a5781f6dc88">app_version</a> = &quot;v.0.0.6&quot;</td></tr>
+<tr class="memitem:a12b0879da633c41920969a5781f6dc88"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a12b0879da633c41920969a5781f6dc88">app_version</a> = &quot;v&quot;+to_string(<a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a16e365cd3f0eb854660e401e8227d28f">version::majorver</a>)+&quot;.&quot;+to_string(<a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a02efc0c7ec517f1972a361b771dbf0c5">version::minorver</a>)+&quot;.&quot;+to_string(<a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a20d2bd332938818e520c46b936d13c79">version::patchnum</a>)</td></tr>
 <tr class="memdesc:a12b0879da633c41920969a5781f6dc88"><td class="mdescLeft">&#160;</td><td class="mdescRight">version  <a href="../../d9/d53/namespaceartyk.html#a12b0879da633c41920969a5781f6dc88">More...</a><br /></td></tr>
 <tr class="separator:a12b0879da633c41920969a5781f6dc88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa955b3cc1feb9bcc4c3393bfbee21d0b"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#aa955b3cc1feb9bcc4c3393bfbee21d0b">app_name_full</a> = <a class="el" href="../../d9/d53/namespaceartyk.html#ad1b6eadcc3f06c974fe9ec7a9163754c">app_name</a> + &quot; &quot; + <a class="el" href="../../d9/d53/namespaceartyk.html#a12b0879da633c41920969a5781f6dc88">app_version</a> + &quot;:&quot;+to_string(<a class="el" href="../../d9/d53/namespaceartyk.html#acafb72f10c21898c876448a2904489b8">app_build</a>)</td></tr>
+<tr class="memitem:ad26ddd67e9d3a5e78255ef8692928913"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#ad26ddd67e9d3a5e78255ef8692928913">app_build</a> = to_string(<a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a9a64057b442be3a31a2f22970879f50e">version::buildnum</a>)</td></tr>
+<tr class="memdesc:ad26ddd67e9d3a5e78255ef8692928913"><td class="mdescLeft">&#160;</td><td class="mdescRight">build  <a href="../../d9/d53/namespaceartyk.html#ad26ddd67e9d3a5e78255ef8692928913">More...</a><br /></td></tr>
+<tr class="separator:ad26ddd67e9d3a5e78255ef8692928913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa955b3cc1feb9bcc4c3393bfbee21d0b"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#aa955b3cc1feb9bcc4c3393bfbee21d0b">app_name_full</a> = <a class="el" href="../../d9/d53/namespaceartyk.html#ad1b6eadcc3f06c974fe9ec7a9163754c">app_name</a> + &quot; &quot; + <a class="el" href="../../d9/d53/namespaceartyk.html#a12b0879da633c41920969a5781f6dc88">app_version</a> + &quot;:&quot; + <a class="el" href="../../d9/d53/namespaceartyk.html#ad26ddd67e9d3a5e78255ef8692928913">app_build</a></td></tr>
 <tr class="memdesc:aa955b3cc1feb9bcc4c3393bfbee21d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">full name of the app  <a href="../../d9/d53/namespaceartyk.html#aa955b3cc1feb9bcc4c3393bfbee21d0b">More...</a><br /></td></tr>
 <tr class="separator:aa955b3cc1feb9bcc4c3393bfbee21d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab04086ddb74d23868428f03caf756022"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#ab04086ddb74d23868428f03caf756022">app_startstatus</a> = 0</td></tr>
 <tr class="memdesc:ab04086ddb74d23868428f03caf756022"><td class="mdescLeft">&#160;</td><td class="mdescRight">status of starting up  <a href="../../d9/d53/namespaceartyk.html#ab04086ddb74d23868428f03caf756022">More...</a><br /></td></tr>
 <tr class="separator:ab04086ddb74d23868428f03caf756022"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02e5bcd6f413509a748b70ef67b7ff84"><td class="memItemLeft" align="right" valign="top">const HANDLE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a02e5bcd6f413509a748b70ef67b7ff84">g_output_handle</a> = GetStdHandle(STD_OUTPUT_HANDLE)</td></tr>
+<tr class="memdesc:a02e5bcd6f413509a748b70ef67b7ff84"><td class="mdescLeft">&#160;</td><td class="mdescRight">console output handle  <a href="../../d9/d53/namespaceartyk.html#a02e5bcd6f413509a748b70ef67b7ff84">More...</a><br /></td></tr>
 <tr class="separator:a02e5bcd6f413509a748b70ef67b7ff84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a853356cec684159f033d982dd69a7b59"><td class="memItemLeft" align="right" valign="top">const HANDLE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a853356cec684159f033d982dd69a7b59">g_input_handle</a> = GetStdHandle(STD_INPUT_HANDLE)</td></tr>
+<tr class="memdesc:a853356cec684159f033d982dd69a7b59"><td class="mdescLeft">&#160;</td><td class="mdescRight">console input handle  <a href="../../d9/d53/namespaceartyk.html#a853356cec684159f033d982dd69a7b59">More...</a><br /></td></tr>
 <tr class="separator:a853356cec684159f033d982dd69a7b59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ea01c4468455a4fc220c1b5fecaedf9"><td class="memItemLeft" align="right" valign="top">const HWND&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/d53/namespaceartyk.html#a5ea01c4468455a4fc220c1b5fecaedf9">g_console_hwnd</a> = GetConsoleWindow()</td></tr>
+<tr class="memdesc:a5ea01c4468455a4fc220c1b5fecaedf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">console window handle  <a href="../../d9/d53/namespaceartyk.html#a5ea01c4468455a4fc220c1b5fecaedf9">More...</a><br /></td></tr>
 <tr class="separator:a5ea01c4468455a4fc220c1b5fecaedf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -210,6 +219,8 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00283">283</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -235,6 +246,8 @@ Variables</h2></td></tr>
 
 <p>flag if app is being closed, 1 if it user closes app, more &ndash; modules are turning off still unsure how to implement that tho </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00093">93</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+
 </div>
 </div>
 <a id="ad1b6eadcc3f06c974fe9ec7a9163754c"></a>
@@ -248,38 +261,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div>
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line"> </div>
-<div class="line">        </div>
-<div class="line">        string(<span class="stringliteral">&quot;(DEBUG)&quot;</span>) + </div>
 <div class="line"> </div>
-<div class="line">        <span class="stringliteral">&quot;ArtyK&#39;s Console Engine Test&quot;</span></div>
+<div class="line">        string(<span class="stringliteral">&quot;(DEBUG)&quot;</span>) +</div>
+<div class="line"> </div>
+<div class="line">        <span class="stringliteral">&quot;Console Engine Test&quot;</span></div>
 </div><!-- fragment -->
 <p>name of the app </p>
 
-</div>
-</div>
-<a id="acafb72f10c21898c876448a2904489b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acafb72f10c21898c876448a2904489b8">&#9670;&nbsp;</a></span>app_build</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr int artyk::app_build = 3635</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>build of app, how do you autoincrement these? </p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -290,12 +281,32 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const string artyk::app_version = &quot;v.0.0.6&quot;</td>
+          <td class="memname">const string artyk::app_version = &quot;v&quot;+to_string(<a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a16e365cd3f0eb854660e401e8227d28f">version::majorver</a>)+&quot;.&quot;+to_string(<a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a02efc0c7ec517f1972a361b771dbf0c5">version::minorver</a>)+&quot;.&quot;+to_string(<a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a20d2bd332938818e520c46b936d13c79">version::patchnum</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>version </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00113">113</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad26ddd67e9d3a5e78255ef8692928913"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad26ddd67e9d3a5e78255ef8692928913">&#9670;&nbsp;</a></span>app_build</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string artyk::app_build = to_string(<a class="el" href="../../db/da8/namespaceartyk_1_1version.html#a9a64057b442be3a31a2f22970879f50e">version::buildnum</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>build </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00115">115</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -306,12 +317,14 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const string artyk::app_name_full = <a class="el" href="../../d9/d53/namespaceartyk.html#ad1b6eadcc3f06c974fe9ec7a9163754c">app_name</a> + &quot; &quot; + <a class="el" href="../../d9/d53/namespaceartyk.html#a12b0879da633c41920969a5781f6dc88">app_version</a> + &quot;:&quot;+to_string(<a class="el" href="../../d9/d53/namespaceartyk.html#acafb72f10c21898c876448a2904489b8">app_build</a>)</td>
+          <td class="memname">const string artyk::app_name_full = <a class="el" href="../../d9/d53/namespaceartyk.html#ad1b6eadcc3f06c974fe9ec7a9163754c">app_name</a> + &quot; &quot; + <a class="el" href="../../d9/d53/namespaceartyk.html#a12b0879da633c41920969a5781f6dc88">app_version</a> + &quot;:&quot; + <a class="el" href="../../d9/d53/namespaceartyk.html#ad26ddd67e9d3a5e78255ef8692928913">app_build</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>full name of the app </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -337,6 +350,8 @@ Variables</h2></td></tr>
 
 <p>status of starting up </p>
 
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00120">120</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a02e5bcd6f413509a748b70ef67b7ff84"></a>
@@ -350,6 +365,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>console output handle </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00123">123</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -365,6 +384,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>console input handle </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00125">125</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+
 </div>
 </div>
 <a id="a5ea01c4468455a4fc220c1b5fecaedf9"></a>
@@ -378,6 +401,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>console window handle </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00127">127</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>

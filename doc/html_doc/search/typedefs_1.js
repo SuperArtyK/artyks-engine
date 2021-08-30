@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['smallint_502',['smallint',['../de/df7/typedefs_8hpp.html#a154e7d1e11ba2baf40b0121ec0993fe7',1,'typedefs.hpp']]],
-  ['smalluint_503',['smalluint',['../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125',1,'typedefs.hpp']]]
+  ['bigint_755',['bigint',['../de/df7/typedefs_8hpp.html#ac5844c324d2e11302ca2902e4a6d7452',1,'typedefs.hpp']]],
+  ['biguint_756',['biguint',['../de/df7/typedefs_8hpp.html#a3d36c784f23265914e39e4477c74a5c5',1,'typedefs.hpp']]]
 ];
