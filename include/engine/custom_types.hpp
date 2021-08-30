@@ -29,10 +29,29 @@
 #define CUSTOM_TYPES_HPP
 
 #include "vectors.hpp"
+#include <cstring>
 
 ///data type to store keys and their data/state
 struct keystate
 {
+	constexpr static inline keystate zero() {
+		return keystate{ "",0,0,false,false,false,false };
+	}
+	inline bool operator==(const keystate& two) {
+		return
+			(strcmp(m_name, two.m_name) == 0)&&
+			(m_state == two.m_state)&&
+			(m_keyid == two.m_keyid)&&
+			(m_isPressed == m_isPressed)&&
+			(m_isReleased == m_isReleased)&&
+			(m_isHeld == m_isHeld)&&
+			(m_isUsed == m_isUsed);
+	}
+
+	inline bool operator!=(const keystate& two) {
+		return !(operator==(two));
+	}
+
 	///name of the key
 	const char* m_name;
 	///the GetAsyncKeyState() key state

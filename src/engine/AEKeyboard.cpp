@@ -143,7 +143,7 @@ void AEKeyboard::closetrd(void) {
 int AEKeyboard::GetKeyID(const char* keyname) {
 	artyk::utils::debug_log(m_logptr, "Getting key id for the key: " + string(keyname), LOG_INFO, m_modulename);
 
-	for (short i = 0; i < (sizeof(m_keys) / sizeof(m_keys[0])); i++) {
+	for (int i = 0; i < arrsize(m_keys); i++) {
 		if (strcmp(keyname, m_keys[i].m_name) == 0) {
 			return m_keys[i].m_keyid;
 		}
@@ -170,7 +170,7 @@ std::vector<AEKBKey> AEKeyboard::GetUsedKeys(){
 	//
 	// 		}
 	keystat.reserve(257);
-	for (short i = 0; i < (sizeof(m_keys) / sizeof(m_keys[0])); i++) {
+	for (int i = 0; i < arrsize(m_keys); i++) {
 		if (m_keys[i].m_isUsed) {
 			keystat.push_back(m_keys[i]);
 
@@ -256,20 +256,14 @@ void AEKeyboard::mainthread_keys(void) {
 #ifdef AE_KB_DELAY
 		m_fr.sleep();//sleep frame if we are not in focus
 #endif // AE_KB_DELAY
-		//std::cout << "kbtrd\n";
 		
 		while (artyk::g_console_hwnd == GetForegroundWindow())
 		{
-			//std::cout << "scanning\n";
 			//get keyboard state
 			for (int i = 0; i < 256; i++)
 			{
 
 				m_keys[i].m_state = GetAsyncKeyState(i);
-				
-
-				//m_kstKeys[i].m_name = GetKeyName(i);
-				//if (m_keys[i].m_state != m_keyOld[i])
 				{
 					if (m_keys[i].m_state != 0) {
 						if (m_keyOld[i] == 0) {
@@ -316,9 +310,9 @@ void AEKeyboard::mainthread_keys(void) {
 					ReadConsoleInput(
 						artyk::g_input_handle, m_event_buffer, 
 						(m_event_amt>
-							(sizeof(m_event_buffer)/ sizeof(m_event_buffer[0]))//doing this only for safety, if the input amt surpasses the size of the buffer
+							(arrsize(m_event_buffer))//doing this only for safety, if the input amt surpasses the size of the buffer
 						) 
-						?	(sizeof(m_event_buffer) / sizeof(m_event_buffer[0])) 
+						?	(arrsize(m_event_buffer))
 						: m_event_amt, &m_event_amt);
 					//we pass the even amount as for "lpNumberOfEventsRead" for 2 things: 1 saves space, we don't allocate temp stuff; 2 we can see how many we read.
 				}
@@ -357,7 +351,9 @@ void AEKeyboard::mainthread_keys(void) {
 }
 
 //big stuff
-const std::array<std::pair<const char*, const smalluint>, 173> AEKeyboard::m_keycodes = { {
+//I know this is a bad approach, but idk how else make it
+//and we do need names and id's
+const std::array<std::pair<const char*, const smalluint>, 173> AEKeyboard::m_keycodes{ {
 {"lbutton", 1},
 {"rbutton", 2},
 {"cancel", 3},

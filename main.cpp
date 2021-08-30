@@ -75,13 +75,11 @@ int main()
 	artyk::utils::waitfortick();
 	myscr.settitle("Done!");
 	Sleep(100);
+
+	std::array<AEKBKey, 256> usedkeys;
+
+
 	for (;;){
-
-
-
-
-
-
 
 		timeend = getsystime;
 		fElapsedTime = calculatetime(timestart,timeend);

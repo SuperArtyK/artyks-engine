@@ -67,7 +67,7 @@ public:
 	/// <summary>
 	/// Class constructor
 	/// </summary>
-	/// <param name="l_strPathtolog">path to the log file. The folder it is bound to is the folder of exe(you can't really go above), by default it's DEF_LOG_PATH</param>
+	/// <param name="l_strPathtolog">path to the log file, relative to the exe, by default it's DEF_LOG_PATH</param>
 	/// <param name="l_strLogName">name of the log file. The log file will be in format of [log_name]_[year-month-day].log. By default it's "LOG"</param>
 	AELog(const std::string& l_strPathtolog = DEF_LOG_PATH, const std::string& l_strLogName = "LOG");
 

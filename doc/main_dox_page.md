@@ -20,13 +20,11 @@ You will find a copy of it:
 @section ar_install Installation
 To install the engine code and be able to use it:
 
-**Template method:**
-
-1. download the template given in the release
-2. extract it
-3. open the .sln
-4. ???
-5. profit
+1. download the lastest release(stable) or clone dev branch(possibly not stable, but new features)
+2. extract it  
+3. open the .sln  
+4. ???  
+5. profit  
 
 **Code copy-paste method:**
 1. download code

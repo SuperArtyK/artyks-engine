@@ -20,19 +20,12 @@ You will find a copy of it:
 #### Installation
 To install the engine code and be able to use it:
 
-##### Template method:
-
-1. download the template given in the release  
+1. download the lastest release(stable) or clone dev branch(possibly not stable, but new features)
 2. extract it  
 3. open the .sln  
 4. ???  
 5. profit  
 
-##### Code copy-paste method:
-1. download code  
-2. add "include" directory to additional include dirs  
-3. add source files from "src" directory. Or if you are on linux, type out the/whole/path to all src files  
-4. profit  
 
 ### Documentation
 For engine documentation, visit <a href="https://consoleengine.artyk.repl.co/doc/html_doc/" target="_blank">this link</a>.  

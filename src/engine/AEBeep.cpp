@@ -39,7 +39,7 @@ AEBeep::AEBeep(bool enablelog, bool useGlobLog) :  __AEBaseClass("AEBeep",++m_gl
 			m_logptr = &global_logger;
 			artyk::utils::normal_log(m_logptr, "Using global logger", LOG_INFO, m_modulename);
 #else
-			m_logptr = new AELog(DEF_LOG_PATH, "SND");
+			m_logptr = new AELog(DEF_LOG_PATH, "BEP");
 			artyk::utils::debug_log(m_logptr, "You have set the useGlobLog flag on, but AE_GLOBALMODULE is not defined!", LOG_SWARN, m_modulename);
 			artyk::utils::debug_log(m_logptr, "Falling back to default:Not using global modules", LOG_SWARN, m_modulename);
 #endif

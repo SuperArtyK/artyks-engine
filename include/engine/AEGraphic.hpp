@@ -42,8 +42,11 @@
 #include <array>
 #include <vector>
 
-#define PIXEL(...) _PIXEL(__VA_ARGS__) 
+///create CHAR_INFO with given character and color
+#define PIXEL(...) _PIXEL(__VA_ARGS__)
+///techincal side of PIXEL(), so we get exactly 2 arguments
 #define _PIXEL(chr,clr) CHAR_INFO{chr, clr}
+///(current) pixel size, in bytes
 #define PIXELSIZE sizeof(CHAR_INFO)
 
 

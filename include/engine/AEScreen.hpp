@@ -87,11 +87,7 @@ public:
 
 	/// returns current app title
 	/// @bug There's a known bug, where if you feed GetAppTitle() into settitle() continuously, it will set title to what you previously set it to
-	static inline string GetAppTitle() {
-		char wnd_title[256];
-		GetWindowTextA(artyk::g_console_hwnd, wnd_title, sizeof(wnd_title));
-		return wnd_title;
-	}
+	static string GetAppTitle();
 
 #ifdef AE_EXPERIMENTAL
 	///UNDONE!!! **should** scroll the title
@@ -154,7 +150,6 @@ public:
 
 private:
 	///checks HANDLE's and HWND's being valid. if some fail the check, engine closes with error message and log entry, otherwise return true;
-	bool checkhandles(void);
 
 	///buffer info extended, used in setcolor_rgb() to set the color
 	static CONSOLE_SCREEN_BUFFER_INFOEX g_rgb_color;
@@ -175,8 +170,52 @@ private:
 
 	friend class AEGraphic;
 };
+
+namespace artyk::utils {
+
+	inline bool checkhandles(void) {
+
+#ifdef AE_GLOBALMODULE
+		AELog* m_logptr = &global_logger;
+#else
+		AELog mlog;
+		AELog* m_logptr = &mlog;
+#endif // AE_GLOBALMODULE
+
+
+		artyk::utils::debug_log(m_logptr, "Checking handles", LOG_INFO);
+
+		if (!IsWindow(g_console_hwnd)) {
+			artyk::utils::FError_log(m_logptr, "IsWindow(g_console)\n\"g_console\" is not a valid window handle!", DEF_MODULENAME, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
+			return false;
+		}
+
+
+		if (artyk::g_input_handle == INVALID_HANDLE_VALUE) {
+			artyk::utils::FError_log(m_logptr, "m_hStdIn is INVALID_HANDLE_VALUE!", DEF_MODULENAME, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
+			return false;
+		}
+		if (artyk::g_output_handle == INVALID_HANDLE_VALUE) {
+			artyk::utils::FError_log(m_logptr, "m_hStdOut is INVALID_HANDLE_VALUE!", DEF_MODULENAME, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
+			return false;
+		}
+
+
+
+		artyk::utils::debug_log(m_logptr, "These are some good handles", LOG_INFO, DEF_MODULENAME);
+
+
+		return true;
+	}
+
+}
+
+
+
+
 ///initialises screen module
 inline int __initengine_screen() {
+	artyk::utils::checkhandles();
 	///initialises screen module
 	AEScreen::g_cfi.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
 	AEScreen::g_rgb_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
@@ -201,5 +240,11 @@ const int __dummy_screen_initialisation = __initengine_screen();
 ///our global simple screen manager module
 inline AEScreen global_screen(true, true);
 #endif
+
+
+
+
+
+
 
 #endif // SCREEN_HPP

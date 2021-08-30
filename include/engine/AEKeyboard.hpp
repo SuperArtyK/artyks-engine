@@ -155,7 +155,7 @@ inline int __initengine_keyboard() {
 
 	for (short i = 0; i < 256; i++) {
 		AEKeyboard::m_keys[i].m_keyid = i;
-		for (short a = 0; a < (sizeof(AEKeyboard::m_keycodes) / sizeof(AEKeyboard::m_keycodes[0])); a++) {
+		for (int a = 0; a < arrsize(AEKeyboard::m_keycodes); a++) {
 			if (i == AEKeyboard::m_keycodes[a].second) {
 				AEKeyboard::m_keys[i].m_name = AEKeyboard::m_keycodes[a].first;
 			}

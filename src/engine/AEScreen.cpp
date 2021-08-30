@@ -42,7 +42,6 @@ SMALL_RECT AEScreen::g_rectWindow = { 0,0,0,0 };
 
 //constructors/destructors
 AEScreen::AEScreen(bool enablelog, bool useGlobLog) :__AEBaseClass("AEScreen",++m_globalmodulenum)
-//, interruptscroll(false)
 {
 #ifdef AE_LOG_ENABLE
 	if (enablelog) {
@@ -77,7 +76,7 @@ AEScreen::AEScreen(bool enablelog, bool useGlobLog) :__AEBaseClass("AEScreen",++
 		checkhandles();
 	}
 #else
-	checkhandles();
+	artyk::utils::checkhandles();
 #endif // AE_GLOBALMODULE
 
 	
@@ -312,6 +311,13 @@ void AEScreen::setcolor_con(const smalluint back, const smalluint fore) {//sets 
 
 }
 
+string AEScreen::GetAppTitle() {
+	artyk::utils::checkhandles();
+	char wnd_title[256];
+	GetWindowTextA(artyk::g_console_hwnd, wnd_title, sizeof(wnd_title));
+	return wnd_title;
+}
+
 
 #ifdef AE_EXPERIMENTAL
 void AEScreen::scrolltitle(const string& title, short delay, short scrolloffset) {
@@ -360,32 +366,5 @@ void AEScreen::setcolor_rgb(smalluint fred, smalluint fgreen, smalluint fblue) {
 }
 #endif
 
-bool AEScreen::checkhandles(void) {
-
-
-	artyk::utils::debug_log(m_logptr, "Checking handles", LOG_INFO, m_modulename);
-
-	if (!IsWindow(g_console_hwnd)) {
-		artyk::utils::FError_log(m_logptr, "IsWindow(g_console)\n\"g_console\" is not a valid window handle!", m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
-		return false;
-	}
-
-
-	if (artyk::g_input_handle == INVALID_HANDLE_VALUE) {
-		artyk::utils::FError_log(m_logptr, "m_hStdIn is INVALID_HANDLE_VALUE!", m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
-		return false;
-	}
-	if (artyk::g_output_handle == INVALID_HANDLE_VALUE) {
-		artyk::utils::FError_log(m_logptr, "m_hStdOut is INVALID_HANDLE_VALUE!", m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
-		return false;
-	}
-
-
-
-	artyk::utils::debug_log(m_logptr, "These are some good handles", LOG_INFO, m_modulename);
-
-
-	return true;
-}
 
 

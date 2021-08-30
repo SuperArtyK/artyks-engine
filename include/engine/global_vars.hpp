@@ -69,6 +69,7 @@ using std::to_string;
 
 ///default modulename for engine
 #define DEF_MNAME "Engine"
+#define DEF_MODULENAME "Engine"
 
 //END OF ENGINE DEFINES
 
@@ -296,8 +297,9 @@ namespace artyk {
 			if (noresize)
 				SetWindowLong(GetConsoleWindow(), GWL_STYLE, GetWindowLong(GetConsoleWindow(), GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
 
-			artyk::app_startstatus = SHRT_MAX;
 			//done intitializing
+			artyk::app_startstatus = SHRT_MAX;
+			
 		}
 	}
 
