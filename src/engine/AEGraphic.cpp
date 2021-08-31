@@ -44,6 +44,7 @@ atomic<int> AEGraphic::moduleamt = 0;
 atomic<bool> AEGraphic::m_settingscreen = false;
 bool AEGraphic::m_bstoptrd = false;
 std::thread AEGraphic::m_thread;
+_SMALL_RECT AEGraphic::m_rtwindow;
 bool AEGraphic::m_clrscr;
 AEScreen* AEGraphic::m_myscr = nullptr;
 AEFrame AEGraphic::m_fr(GAME_FPS);

@@ -326,7 +326,7 @@ private:
 	///thread object to create drawing thread
 	static std::thread m_thread;
 	///variable to store window size
-	_SMALL_RECT m_rtwindow;
+	static _SMALL_RECT m_rtwindow;
 	///variable to store the module index number
 	static atomic<biguint> m_globalmodulenum;
 	///the screen buffer that module draws

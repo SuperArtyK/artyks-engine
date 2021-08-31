@@ -99,7 +99,6 @@ $(document).ready(function(){initNavTree('dc/d7e/class_a_e_graphic.html','../../
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../d1/dc1/class_a_e_graphic-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -280,12 +279,6 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:a10fe7364a3bfbae7f4052d4381036110"><td class="mdescLeft">&#160;</td><td class="mdescRight">stops and closes the drawing thread  <a href="../../dc/d7e/class_a_e_graphic.html#a10fe7364a3bfbae7f4052d4381036110">More...</a><br /></td></tr>
 <tr class="separator:a10fe7364a3bfbae7f4052d4381036110"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
-<tr class="memitem:aa5c9855eabdca1b535c9a7f451360385"><td class="memItemLeft" align="right" valign="top">_SMALL_RECT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#aa5c9855eabdca1b535c9a7f451360385">m_rtwindow</a></td></tr>
-<tr class="memdesc:aa5c9855eabdca1b535c9a7f451360385"><td class="mdescLeft">&#160;</td><td class="mdescRight">variable to store window size  <a href="../../dc/d7e/class_a_e_graphic.html#aa5c9855eabdca1b535c9a7f451360385">More...</a><br /></td></tr>
-<tr class="separator:aa5c9855eabdca1b535c9a7f451360385"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a5659f2d6efc64247340dacc997a9edac"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d4/d17/class_a_e_screen.html">AEScreen</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a5659f2d6efc64247340dacc997a9edac">m_myscr</a> = nullptr</td></tr>
@@ -297,6 +290,9 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a4796af252a07797921b3fdaf013564e5"><td class="memItemLeft" align="right" valign="top">static std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a4796af252a07797921b3fdaf013564e5">m_thread</a></td></tr>
 <tr class="memdesc:a4796af252a07797921b3fdaf013564e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">thread object to create drawing thread  <a href="../../dc/d7e/class_a_e_graphic.html#a4796af252a07797921b3fdaf013564e5">More...</a><br /></td></tr>
 <tr class="separator:a4796af252a07797921b3fdaf013564e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5c9855eabdca1b535c9a7f451360385"><td class="memItemLeft" align="right" valign="top">static _SMALL_RECT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#aa5c9855eabdca1b535c9a7f451360385">m_rtwindow</a></td></tr>
+<tr class="memdesc:aa5c9855eabdca1b535c9a7f451360385"><td class="mdescLeft">&#160;</td><td class="mdescRight">variable to store window size  <a href="../../dc/d7e/class_a_e_graphic.html#aa5c9855eabdca1b535c9a7f451360385">More...</a><br /></td></tr>
+<tr class="separator:aa5c9855eabdca1b535c9a7f451360385"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a548b3ceab9f38db6bfefff7f6b3feeea"><td class="memItemLeft" align="right" valign="top">static atomic&lt; <a class="el" href="../../de/df7/typedefs_8hpp.html#a3d36c784f23265914e39e4477c74a5c5">biguint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d7e/class_a_e_graphic.html#a548b3ceab9f38db6bfefff7f6b3feeea">m_globalmodulenum</a></td></tr>
 <tr class="memdesc:a548b3ceab9f38db6bfefff7f6b3feeea"><td class="mdescLeft">&#160;</td><td class="mdescRight">variable to store the module index number  <a href="../../dc/d7e/class_a_e_graphic.html#a548b3ceab9f38db6bfefff7f6b3feeea">More...</a><br /></td></tr>
 <tr class="separator:a548b3ceab9f38db6bfefff7f6b3feeea"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -411,7 +407,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00054">54</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00055">55</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -438,7 +434,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00103">103</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00104">104</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -460,7 +456,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>draws the screen, using data from m_screendata </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00134">134</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00135">135</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -481,7 +477,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>draws the current selected buffer directly, without copying </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00143">143</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00144">144</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -502,7 +498,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>clears the m_screendata buffer(screen buffer) </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00152">152</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00153">153</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -523,7 +519,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>clears the current selected buffers(the one that setPixel() uses) </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00158">158</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00159">159</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -567,7 +563,7 @@ and if size is lower than current screen buffer size, what was in buffer out of 
 <dd>
 if nothing is passed, the m_currentbuffer will be copied to the drawing buffer </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00165">165</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00166">166</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -590,7 +586,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
 <p>Creates third buffer(second AEGraphic buffer) to create frames and feed them entirely to drawing thread. </p>
 <p>Helps to remove flickering </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00178">178</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00179">179</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -612,7 +608,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
 
 <p>removes third buffer and deallocates it(so be carefull with all those dangling pointers) </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00186">186</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00187">187</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -636,7 +632,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
 <p>If it doesnt, returns nullptr</p>
 <dl class="section warning"><dt>Warning</dt><dd>USE THIS WITH CARE! DON'T DELETE THE POINTER, OR GRAPHICS ENGINE WILL CRASH! </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00194">194</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00195">195</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -690,7 +686,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00201">201</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00202">202</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -729,7 +725,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00228">228</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00229">229</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -775,7 +771,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00225">225</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00226">226</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -821,7 +817,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00241">241</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00242">242</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -874,7 +870,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00251">251</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00252">252</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -920,7 +916,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00256">256</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00257">257</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -966,7 +962,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00275">275</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00276">276</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1019,7 +1015,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00331">331</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00332">332</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1072,7 +1068,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00335">335</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00336">336</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1132,7 +1128,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00341">341</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00342">342</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1178,7 +1174,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00345">345</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00346">346</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1231,7 +1227,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00355">355</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00356">356</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1284,7 +1280,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00359">359</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00360">360</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1344,7 +1340,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00385">385</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00386">386</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1390,7 +1386,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00389">389</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00390">390</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1443,7 +1439,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00460">460</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00461">461</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1512,7 +1508,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
 
 <p>returns pixel at given location </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00265">265</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00266">266</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1572,7 +1568,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
 
 <p>the graphics thread code </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00495">495</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00496">496</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1602,7 +1598,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
 
 <p>opens and starts the drawing thread </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00465">465</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00466">466</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -1632,7 +1628,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
 
 <p>stops and closes the drawing thread </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00481">481</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html#l00482">482</a> of file <a class="el" href="../../dd/d1b/_a_e_graphic_8cpp_source.html">AEGraphic.cpp</a>.</p>
 
 </div>
 </div>
@@ -2189,7 +2185,7 @@ if nothing is passed, the m_currentbuffer will be copied to the drawing buffer <
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
