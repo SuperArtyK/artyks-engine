@@ -1,7 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"de/d7e/license.html#autotoc_md12":[12],
-"de/d7e/license.html#autotoc_md13":[13],
 "de/d7e/license.html#autotoc_md14":[14],
 "de/d7e/license.html#autotoc_md15":[15],
 "de/d7e/license.html#autotoc_md16":[16],
@@ -20,6 +18,7 @@ var NAVTREEINDEX2 =
 "de/d7e/license.html#licence_terms":[4,2],
 "de/d92/class_a_e_keyboard.html":[7,0,6],
 "de/d92/class_a_e_keyboard.html#a0158b9dde3d5973375c4868fcc39c994":[7,0,6,25],
+"de/d92/class_a_e_keyboard.html#a0dd593d2b117ec49812819e41d6c0c0f":[7,0,6,32],
 "de/d92/class_a_e_keyboard.html#a0fee75bc4313b4b5f2df03263eac0b99":[7,0,6,9],
 "de/d92/class_a_e_keyboard.html#a101a245ee29be1c0244b13a3912ec3e1":[7,0,6,17],
 "de/d92/class_a_e_keyboard.html#a157a9c5e61406b97b9e538161edfb148":[7,0,6,5],

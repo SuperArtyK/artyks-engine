@@ -18,7 +18,6 @@ var global__vars_8hpp =
     [ "app_version", "d3/d97/global__vars_8hpp.html#a12b0879da633c41920969a5781f6dc88", null ],
     [ "app_build", "d3/d97/global__vars_8hpp.html#ad26ddd67e9d3a5e78255ef8692928913", null ],
     [ "app_name_full", "d3/d97/global__vars_8hpp.html#aa955b3cc1feb9bcc4c3393bfbee21d0b", null ],
-    [ "app_startstatus", "d3/d97/global__vars_8hpp.html#ab04086ddb74d23868428f03caf756022", null ],
     [ "g_output_handle", "d3/d97/global__vars_8hpp.html#a02e5bcd6f413509a748b70ef67b7ff84", null ],
     [ "g_input_handle", "d3/d97/global__vars_8hpp.html#a853356cec684159f033d982dd69a7b59", null ],
     [ "g_console_hwnd", "d3/d97/global__vars_8hpp.html#a5ea01c4468455a4fc220c1b5fecaedf9", null ],

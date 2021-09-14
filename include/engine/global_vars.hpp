@@ -116,9 +116,6 @@ namespace artyk {
 	///full name of the app
 	const string app_name_full = app_name + " " + app_version + ":" + app_build;
 
-	///status of starting up
-	inline short app_startstatus = 0;
-
 	///console output handle
 	const HANDLE g_output_handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	///console input handle
@@ -281,26 +278,23 @@ namespace artyk {
 	/// <param name="noresize">flag to disable window resize ability</param>
 	/// <returns></returns>
 	inline void init_main(bool high_priority = true, bool noscrollbar = false, bool noresize = false) {
-		if (artyk::app_startstatus != SHRT_MAX) {
-			srand(time(NULL));
-			SetConsoleActiveScreenBuffer(artyk::g_output_handle);
-			SetConsoleCP(CP_UTF8);
-			SetConsoleOutputCP(CP_UTF8);
-			std::locale loc("en_US.UTF8");
-			std::cout.imbue(loc);
-			std::locale::global(loc);
-			std::setlocale(LC_ALL, "en_US.UTF8");
-			if (high_priority)
-				SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
-			if (noscrollbar)
-				ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
-			if (noresize)
-				SetWindowLong(GetConsoleWindow(), GWL_STYLE, GetWindowLong(GetConsoleWindow(), GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
-
-			//done intitializing
-			artyk::app_startstatus = SHRT_MAX;
-			
-		}
+		
+		srand(time(NULL));
+		SetConsoleActiveScreenBuffer(artyk::g_output_handle);
+		SetConsoleCP(CP_UTF8);
+		SetConsoleOutputCP(CP_UTF8);
+		std::locale loc("en_US.UTF8");
+		std::cout.imbue(loc);
+		std::locale::global(loc);
+		std::setlocale(LC_ALL, "en_US.UTF8");
+		if (high_priority)
+			SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
+		if (noscrollbar)
+			ShowScrollBar(GetConsoleWindow(), SB_VERT, 0);
+		if (noresize)
+			SetWindowLong(GetConsoleWindow(), GWL_STYLE, GetWindowLong(GetConsoleWindow(), GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
+		//done initializing
+		
 	}
 
 }

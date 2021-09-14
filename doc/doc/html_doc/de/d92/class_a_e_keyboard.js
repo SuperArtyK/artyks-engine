@@ -31,5 +31,6 @@ var class_a_e_keyboard =
     [ "m_mousepos", "de/d92/class_a_e_keyboard.html#a80801bcde260087131e71565da4ebffc", null ],
     [ "m_threadon", "de/d92/class_a_e_keyboard.html#a7cf04983fa56d18cd2239ce125cff3be", null ],
     [ "m_bstoptrd", "de/d92/class_a_e_keyboard.html#a3beb5a56473b6327a7f0f4cd19f4c8f4", null ],
-    [ "m_enablemouse", "de/d92/class_a_e_keyboard.html#ac687b363d691941e3cab009acc2bf683", null ]
+    [ "m_enablemouse", "de/d92/class_a_e_keyboard.html#ac687b363d691941e3cab009acc2bf683", null ],
+    [ "__doneinit", "de/d92/class_a_e_keyboard.html#a0dd593d2b117ec49812819e41d6c0c0f", null ]
 ];

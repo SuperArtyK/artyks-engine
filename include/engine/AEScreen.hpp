@@ -230,7 +230,6 @@ inline int __initengine_screen() {
 	{
 		artyk::utils::FError("Error initialising screen", DEF_MNAME, GET_FULL_DBG_INFO, artyk::exitcodes::INIT_SC_ERROR);
 	}
-	artyk::app_startstatus = 2; //done with screen
 	return 0;
 }
 

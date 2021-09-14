@@ -38,7 +38,6 @@ bool AEKeyboard::m_enablemouse;
 bool AEKeyboard::m_bstoptrd = false;
 
 
-
 //constructors and destructors
 AEKeyboard::AEKeyboard(bool enablelog, bool useGlobLog, bool enablemouse) : __AEBaseClass("AEKeyboard",++m_globalmodulenum)
 {
@@ -247,7 +246,7 @@ void AEKeyboard::mainthread_keys(void) {
 	
 
 	artyk::utils::waitfortick();
-	while (artyk::app_startstatus < 1) {
+	while (!AEKeyboard::__doneinit) {
 		m_fr.sleep();
 	}
 	m_fr.setfps(GAME_FPS);

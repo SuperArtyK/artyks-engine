@@ -146,10 +146,12 @@ private:
 	static bool m_bstoptrd;
 	///is mouse enabled
 	static bool m_enablemouse;
+	///indicates if we done initialising the keyboard stuff,
+	///please don't change the code related to it, might break stuff
+	static inline bool __doneinit = false;
 };
 ///initialises keyboard module
 inline int __initengine_keyboard() {
-	artyk::app_startstatus = 0;
 	std::memset(AEKeyboard::m_keyOld, 0, 256 * sizeof(short));
 	std::memset(AEKeyboard::m_keys, 0, 256 * sizeof(AEKBKey));
 
@@ -164,8 +166,8 @@ inline int __initengine_keyboard() {
 			AEKeyboard::m_keys[i].m_name = "---";
 		}
 	}
-	//done with keyboard
-	artyk::app_startstatus = 1;
+	//done initializing
+	AEKeyboard::__doneinit = true;
 	return 0;
 }
 
