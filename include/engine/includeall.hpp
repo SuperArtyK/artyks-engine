@@ -38,7 +38,7 @@
 #include "typedefs.hpp"
 #include "global_vars.hpp"
 #include "AEFrame.hpp"
-#include "AEDelay.hpp"
+#include "AESleep.hpp"
 #include "AELog.hpp"
 #include "engine_messagebox.hpp"
 #include "func_utils.hpp"

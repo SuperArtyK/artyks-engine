@@ -86,14 +86,14 @@ public:
 	void setcolor_con(const smalluint back = DEF_BGR, const smalluint fore = DEF_FGR);//sets color of text out of 16 color pallete
 
 	/// returns current app title
-	/// @bug There's a known bug, where if you feed GetAppTitle() into settitle() continuously, it will set title to what you previously set it to
+	/// @bug There's a known bug, where if you feed GetAppTitle() into settitle() continuously, it will set title to what it was set before
 	static string GetAppTitle();
 
 #ifdef AE_EXPERIMENTAL
 	///UNDONE!!! **should** scroll the title
 	void scrolltitle(const string& title, short delay, short scrolloffset);//scrolls title
 	/// <summary>
-	/// changes the pallete to the rgb value, broken, dont use
+	/// changes the pallete to the rgb value, in progress, don't use yet
 	/// </summary>
 	/// <param name="fred">red</param>
 	/// <param name="fgreen">green</param>

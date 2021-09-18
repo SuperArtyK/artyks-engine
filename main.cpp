@@ -56,7 +56,7 @@ short screenx = 128, screeny = 128, fontw = 5, fonth = 5;
 
 int main()
 {
-	artyk::init_main(false, true, false);
+	artyk::init_main(true, true, true);
 //your code goes below...
 	int i = 0;
 	int previ = 0;
@@ -69,7 +69,7 @@ int main()
 	AEFrame myfr(100);
 	AEKeyboard mykb;
 	//AEGraphic mygx(screenx, screeny, fonth, fontw);
-	AEDelay myd;
+	AESleep myd;
 	smalluint color = 3;
 	myscr.settitle("Setting up...");
 	artyk::utils::waitfortick();

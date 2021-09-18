@@ -248,7 +248,7 @@
   <ItemGroup>
     <ClInclude Include="include\engine\AEBaseClass.hpp" />
     <ClInclude Include="include\engine\AEBeep.hpp" />
-    <ClInclude Include="include\engine\AEDelay.hpp" />
+    <ClInclude Include="include\engine\AESleep.hpp" />
     <ClInclude Include="include\engine\AEFrame.hpp" />
     <ClInclude Include="include\engine\AEGraphic.hpp" />
     <ClInclude Include="include\engine\AEKeyboard.hpp" />
