@@ -92,13 +92,7 @@ public:
 #ifdef AE_EXPERIMENTAL
 	///UNDONE!!! **should** scroll the title
 	void scrolltitle(const string& title, short delay, short scrolloffset);//scrolls title
-	/// <summary>
-	/// changes the pallete to the rgb value, in progress, don't use yet
-	/// </summary>
-	/// <param name="fred">red</param>
-	/// <param name="fgreen">green</param>
-	/// <param name="fblue">blue</param>
-	void setcolor_rgb(smalluint fred, smalluint fgreen, smalluint fblue);//doesnt really work, if you'll fork this engine, plz find a way to fix this
+
 #endif
 
 #ifdef AE_EXPERIMENTAL
@@ -118,9 +112,9 @@ public:
 #endif
 
 	///returns screen size/resolution, in character cells
-	static inline COORD GetScreenRes(void) { return AEScreen::g_csbi.dwSize; }
+	static inline COORD GetScreenRes(void) { return AEScreen::m_csbi.dwSize; }
 	///returns screen font size, in pixels(x,y)
-	static inline COORD GetFontSize(void) {return { g_cfi.dwFontSize.X, g_cfi.dwFontSize.Y};}
+	static inline COORD GetFontSize(void) {return { m_cfi.dwFontSize.X, m_cfi.dwFontSize.Y};}
 
 	///\brief console colors for the graphics engine
 	/// took them from the color namespace
@@ -149,16 +143,10 @@ public:
 		DEF_ATTR = artyk::color::DEF_BGR * 16 + artyk::color::DEF_FGR;
 
 private:
-	///checks HANDLE's and HWND's being valid. if some fail the check, engine closes with error message and log entry, otherwise return true;
-
-	///buffer info extended, used in setcolor_rgb() to set the color
-	static CONSOLE_SCREEN_BUFFER_INFOEX g_rgb_color;
-	///buffer info extended, was used in setcolor() to revert back the pallete to default
-	static CONSOLE_SCREEN_BUFFER_INFOEX g_normal_color;
 	///console font info extended, used to manage the font of console
-	static CONSOLE_FONT_INFOEX g_cfi;
+	static CONSOLE_FONT_INFOEX m_cfi;
 	///console buffer info, used to manage the screen
-	static CONSOLE_SCREEN_BUFFER_INFO g_csbi;
+	static CONSOLE_SCREEN_BUFFER_INFO m_csbi;
 	///temp variable to store window sizes
 	static SMALL_RECT g_rectWindow;
 	///variable to store the module index number
@@ -168,41 +156,25 @@ private:
 	// variable for the scrolltitle()
 	//bool interruptscroll;
 
-	friend class AEGraphic;
+	//friend class AEGraphic;
 };
 
 namespace artyk::utils {
-
+	///checks HANDLE's and HWND's being valid. if some fail the check, engine closes with error message and log entry, otherwise return true;
 	inline bool checkhandles(void) {
 
-#ifdef AE_GLOBALMODULE
-		AELog* m_logptr = &global_logger;
-#else
-		AELog mlog;
-		AELog* m_logptr = &mlog;
-#endif // AE_GLOBALMODULE
-
-
-		artyk::utils::debug_log(m_logptr, "Checking handles", LOG_INFO);
-
 		if (!IsWindow(g_console_hwnd)) {
-			artyk::utils::FError_log(m_logptr, "IsWindow(g_console)\n\"g_console\" is not a valid window handle!", DEF_MODULENAME, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
+			artyk::utils::FError("IsWindow(g_console)\n\"g_console\" is not a valid window handle!", DEF_MODULENAME, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
 			return false;
 		}
-
-
 		if (artyk::g_input_handle == INVALID_HANDLE_VALUE) {
-			artyk::utils::FError_log(m_logptr, "m_hStdIn is INVALID_HANDLE_VALUE!", DEF_MODULENAME, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
+			artyk::utils::FError("m_hStdIn is INVALID_HANDLE_VALUE!", DEF_MODULENAME, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
 			return false;
 		}
 		if (artyk::g_output_handle == INVALID_HANDLE_VALUE) {
-			artyk::utils::FError_log(m_logptr, "m_hStdOut is INVALID_HANDLE_VALUE!", DEF_MODULENAME, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
+			artyk::utils::FError("m_hStdOut is INVALID_HANDLE_VALUE!", DEF_MODULENAME, GET_FULL_DBG_INFO, artyk::exitcodes::BAD_SCREEN_HANDLE);
 			return false;
 		}
-
-
-
-		artyk::utils::debug_log(m_logptr, "These are some good handles", LOG_INFO, DEF_MODULENAME);
 
 
 		return true;
@@ -215,18 +187,10 @@ namespace artyk::utils {
 
 ///initialises screen module
 inline int __initengine_screen() {
-	artyk::utils::checkhandles();
 	///initialises screen module
-	AEScreen::g_cfi.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
-	AEScreen::g_rgb_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
-	AEScreen::g_normal_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
-
-	if (
-		GetConsoleScreenBufferInfoEx(artyk::g_output_handle, &AEScreen::g_normal_color) &&
-		GetConsoleScreenBufferInfoEx(artyk::g_output_handle, &AEScreen::g_rgb_color) &&
-		GetCurrentConsoleFontEx(artyk::g_output_handle, FALSE, &AEScreen::g_cfi) &&
-		GetConsoleScreenBufferInfo(artyk::g_output_handle, &AEScreen::g_csbi)
-		)
+	artyk::utils::checkhandles();
+	AEScreen::m_cfi.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
+	if (GetCurrentConsoleFontEx(artyk::g_output_handle, FALSE, &AEScreen::m_cfi))
 	{
 		artyk::utils::FError("Error initialising screen", DEF_MNAME, GET_FULL_DBG_INFO, artyk::exitcodes::INIT_SC_ERROR);
 	}

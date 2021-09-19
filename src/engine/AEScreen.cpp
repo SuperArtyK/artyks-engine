@@ -32,10 +32,8 @@ using namespace artyk;
 
 biguint AEScreen::m_globalmodulenum = 0;
 COORD AEScreen::m_screenres;//our screen resolution
-CONSOLE_SCREEN_BUFFER_INFOEX AEScreen::g_rgb_color;
-CONSOLE_SCREEN_BUFFER_INFOEX AEScreen::g_normal_color;
-CONSOLE_SCREEN_BUFFER_INFO AEScreen::g_csbi;
-CONSOLE_FONT_INFOEX AEScreen::g_cfi;
+CONSOLE_SCREEN_BUFFER_INFO AEScreen::m_csbi;
+CONSOLE_FONT_INFOEX AEScreen::m_cfi;
 SMALL_RECT AEScreen::g_rectWindow = { 0,0,0,0 };
 
 
@@ -65,8 +63,6 @@ AEScreen::AEScreen(bool enablelog, bool useGlobLog) :__AEBaseClass("AEScreen",++
 		
 		
 	}
-	artyk::utils::normal_log(m_logptr, "Started AEScreen module!", LOG_SUCCESS, m_modulename);
-
 #endif // AE_LOG_DISABLE
 
 
@@ -78,12 +74,10 @@ AEScreen::AEScreen(bool enablelog, bool useGlobLog) :__AEBaseClass("AEScreen",++
 #else
 	artyk::utils::checkhandles();
 #endif // AE_GLOBALMODULE
+	m_screenres = m_csbi.dwSize;
+	GetConsoleScreenBufferInfo(g_output_handle, &m_csbi);
 
-	
-	
-	m_screenres = g_csbi.dwSize;
-
-	//setcolor_con(AESColor::DEF_BGR, AESColor::DEF_FGR);
+	artyk::utils::normal_log(m_logptr, "Started AEScreen module!", LOG_SUCCESS, m_modulename);
 	
 }
 
@@ -104,7 +98,7 @@ AEScreen::~AEScreen() {
 
 void AEScreen::setcursor(short x, short y)
 {//sets the output cursor to x/y pos of the screen
-	m_screenres = g_csbi.dwSize;
+	m_screenres = m_csbi.dwSize;
 	if (y < 0) {
 		y = 0;
 	}
@@ -161,17 +155,17 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 	artyk::utils::debug_log(m_logptr, "Setting console font", LOG_INFO, m_modulename);
 
 	//set the font info
-	g_cfi.cbSize = sizeof(g_cfi);
-	g_cfi.nFont = 0;
-	g_cfi.dwFontSize.X = (fontw < 2) ? 2 : fontw;
-	g_cfi.dwFontSize.Y = (fonth < 2) ? 2 : fonth;
-	g_cfi.FontFamily = FF_DONTCARE;
-	g_cfi.FontWeight = FW_NORMAL;
+	m_cfi.cbSize = sizeof(m_cfi);
+	m_cfi.nFont = 0;
+	m_cfi.dwFontSize.X = (fontw < 2) ? 2 : fontw;
+	m_cfi.dwFontSize.Y = (fonth < 2) ? 2 : fonth;
+	m_cfi.FontFamily = FF_DONTCARE;
+	m_cfi.FontWeight = FW_NORMAL;
 
 	//set the name of font
-	wcscpy_s(g_cfi.FaceName, L"Lucida Console");
+	wcscpy_s(m_cfi.FaceName, L"Lucida Console");
 	//assign font info to console
-	if (!SetCurrentConsoleFontEx(g_output_handle, false, &g_cfi)) {
+	if (!SetCurrentConsoleFontEx(g_output_handle, false, &m_cfi)) {
 		artyk::utils::FError_log(m_logptr, "Could not SetCurrentConsoleFontEx!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
 	artyk::utils::debug_log(m_logptr, "Set console font to: Consolas " + to_string(fontw) + "x" + to_string(fonth), LOG_OK, m_modulename);
@@ -179,7 +173,7 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 	artyk::utils::debug_log(m_logptr, "Assigned the console font", LOG_OK, m_modulename);
 
 	//getting buffer info for further checking
-	if (!GetConsoleScreenBufferInfo(g_output_handle, &g_csbi)) {
+	if (!GetConsoleScreenBufferInfo(g_output_handle, &m_csbi)) {
 		artyk::utils::FError_log(m_logptr, "Could not GetConsoleScreenBufferInfo!\nFunction error code: " + to_string(GetLastError()), m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
 
@@ -187,31 +181,31 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 
 
 	//checking if asked console size is in max allowed range
-	if (sheight > g_csbi.dwMaximumWindowSize.Y) {//checking it first, as people mostly mess this one up more often
+	if (sheight > m_csbi.dwMaximumWindowSize.Y) {//checking it first, as people mostly mess this one up more often
 		artyk::utils::FError_log(m_logptr,
 			"Window size.\n"
 			"The console height you set is too big for this screen! Decrease it or something!\n"
 			"\nWith the font set: " + to_string(fontw) + "x" + to_string(fonth) +
-			"\nThe Allowed size is: " + to_string(g_csbi.dwMaximumWindowSize.X) + "x" + to_string(g_csbi.dwMaximumWindowSize.Y) +
+			"\nThe Allowed size is: " + to_string(m_csbi.dwMaximumWindowSize.X) + "x" + to_string(m_csbi.dwMaximumWindowSize.Y) +
 			"\nWhile Asked for: " + to_string(swidth) + "x" + to_string(sheight) +
 			"\nFunction error code : " + to_string(GetLastError()),
 			m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
 
-	artyk::utils::debug_log(m_logptr, "Asked height is in range of dwMaximumWindowSize.Y of: "+to_string(g_csbi.dwMaximumWindowSize.Y), LOG_INFO, m_modulename);
+	artyk::utils::debug_log(m_logptr, "Asked height is in range of dwMaximumWindowSize.Y of: "+to_string(m_csbi.dwMaximumWindowSize.Y), LOG_INFO, m_modulename);
 
-	if (swidth > g_csbi.dwMaximumWindowSize.X) {
+	if (swidth > m_csbi.dwMaximumWindowSize.X) {
 		artyk::utils::FError_log(m_logptr,
 			"Window size.\n"
 			"The console height you set is too big for this screen! Decrease it or something!\n"
 			"\nWith the font set: " + to_string(fontw) + "x" + to_string(fonth) +
-			"\nThe Allowed size is: " + to_string(g_csbi.dwMaximumWindowSize.X) + "x" + to_string(g_csbi.dwMaximumWindowSize.Y) +
+			"\nThe Allowed size is: " + to_string(m_csbi.dwMaximumWindowSize.X) + "x" + to_string(m_csbi.dwMaximumWindowSize.Y) +
 			"\nWhile Asked for: " + to_string(swidth) + "x" + to_string(sheight) +
 			"\nFunction error code : " + to_string(GetLastError()),
 			m_modulename, GET_FULL_DBG_INFO, artyk::exitcodes::ERROR_SETTING_SCREEN);
 	}
 
-	artyk::utils::debug_log(m_logptr, "Asked width is in range of dwMaximumWindowSize.X of: " + to_string(g_csbi.dwMaximumWindowSize.X), LOG_INFO, m_modulename);
+	artyk::utils::debug_log(m_logptr, "Asked width is in range of dwMaximumWindowSize.X of: " + to_string(m_csbi.dwMaximumWindowSize.X), LOG_INFO, m_modulename);
 	artyk::utils::debug_log(m_logptr, "Console screen resolution is in range", LOG_OK, m_modulename);
 
 
@@ -269,15 +263,15 @@ void AEScreen::settitle(const string& title) {//speaks for itself
 void AEScreen::setFont(short y, short x, const string& fontname) {//sets font size
 
 	//ZeroMemory(&m_cfi, sizeof(m_cfi));
-	g_cfi.cbSize = sizeof(g_cfi);
-	g_cfi.nFont = 0;
-	g_cfi.dwFontSize.X = (x<2)?2:x;                   // Width of each character in the font
-	g_cfi.dwFontSize.Y = (y < 2) ? 2 : y;                  // Height
-	g_cfi.FontFamily = FF_DONTCARE;
-	g_cfi.FontWeight = FW_NORMAL;
+	m_cfi.cbSize = sizeof(m_cfi);
+	m_cfi.nFont = 0;
+	m_cfi.dwFontSize.X = (x<2)?2:x;                   // Width of each character in the font
+	m_cfi.dwFontSize.Y = (y < 2) ? 2 : y;                  // Height
+	m_cfi.FontFamily = FF_DONTCARE;
+	m_cfi.FontWeight = FW_NORMAL;
 	
-	wcscpy_s(g_cfi.FaceName, artyk::utils::widen_str(fontname).c_str()); // Choose your font
-	SetCurrentConsoleFontEx(artyk::g_output_handle, true, &g_cfi);
+	wcscpy_s(m_cfi.FaceName, artyk::utils::widen_str(fontname).c_str()); // Choose your font
+	SetCurrentConsoleFontEx(artyk::g_output_handle, true, &m_cfi);
 
 	artyk::utils::debug_log(m_logptr, "Set font to: " + fontname +" " +to_string(y)+"x"+to_string(x), LOG_OK, m_modulename);
 
@@ -287,20 +281,22 @@ void AEScreen::clear(void) {//clears screen; much faster than system() but still
 
 	COORD topLeft = { 0, 0 };
 	DWORD written;
-
-	//GetConsoleScreenBufferInfo(artyk::screen::g_hStdOut, &g_csbi);
+	GetConsoleScreenBufferInfo(artyk::g_output_handle, &AEScreen::m_csbi);
 	FillConsoleOutputCharacter(
-		artyk::g_output_handle, ' ', g_csbi.dwSize.X * g_csbi.dwSize.Y, topLeft, &written
+		artyk::g_output_handle, '\0', m_csbi.dwSize.X * m_csbi.dwSize.Y, topLeft, &written
 	);
 	FillConsoleOutputAttribute(
 		artyk::g_output_handle, AEScreen::BLACK,
-		g_csbi.dwSize.X * g_csbi.dwSize.Y, topLeft, &written
+		m_csbi.dwSize.X * m_csbi.dwSize.Y, topLeft, &written
 	);
 	setcursor(0, 0);
 
 	artyk::utils::debug_log(m_logptr, "Cleared console screen", LOG_INFO, m_modulename);
 
 }
+
+
+
 
 void AEScreen::setcolor_con(const smalluint back, const smalluint fore) {//sets color of text out of 16 color pallete
 
@@ -342,26 +338,6 @@ void AEScreen::scrolltitle(const string& title, short delay, short scrolloffset)
 	//	i++;
 	//}
 
-
-}
-
-
-void AEScreen::setcolor_rgb(smalluint fred, smalluint fgreen, smalluint fblue) {
-	//doesnt work as I wanted it to(set rgb color to the chars separately, not limited by 16 color pallete)
-	//if you'll fork this engine, plz find a way to fix this
-	//it changes the whole pallete list for the console, kind of like CGA graphics
-	//so you cant have all different colors at the same time, only 16
-
-//  fred - foreground red
-//  fgreen - foreground green
-//  fblue - foreground blue
-
-	g_rgb_color.ColorTable[1] = RGB(fred, fgreen, fblue);
-
-	SetConsoleScreenBufferInfoEx(artyk::g_output_handle, &g_rgb_color);
-	SetConsoleTextAttribute(artyk::g_output_handle, 1);
-
-	artyk::utils::debug_log(m_logptr, "(rgb_pallete)Setting console color to:" + to_string(fred) + " " + to_string(fgreen) + " " + to_string(fblue), LOG_INFO, m_modulename);
 
 }
 #endif

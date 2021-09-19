@@ -54,9 +54,17 @@ using namespace std;
 
 short screenx = 128, screeny = 128, fontw = 5, fonth = 5;
 
+
+constexpr uint rgbtoint(const smalluint r, const smalluint g, const smalluint b) {
+	return uint(smalluint(r) | (smalluint(g) << 8) | (smalluint(b) << 16));
+}
+constexpr std::array<smalluint, 3> inttorgb(const uint rgbint) {
+	return std::array<smalluint, 3>{smalluint(rgbint), smalluint(rgbint >> 8), smalluint(rgbint >> 16)};
+}
+
 int main()
 {
-	artyk::init_main(true, true, true);
+	artyk::init_main(true, true, false);
 //your code goes below...
 	int i = 0;
 	int previ = 0;
@@ -78,7 +86,64 @@ int main()
 
 	std::array<AEKBKey, 256> usedkeys;
 
+	int s = int();
 
+	cout << RGB(1, 1, 1) << " " << rgbtoint(255, 255, 255)<<"  ";
+	for (int i = 0; i < 3; i++) {
+		cout << (int)inttorgb(rgbtoint(0, 0, 152))[i] << " ";
+	}
+	unsigned long colortable[16]{
+		//dark
+		0,
+		rgbtoint(0,0,152),
+		rgbtoint(0,128,0),
+		rgbtoint(0,128,128),
+		rgbtoint(128,0,0),
+		rgbtoint(128,0,128),
+		rgbtoint(192,152,0),
+		rgbtoint(192,192,192),
+		rgbtoint(128,128,128),
+		//light
+		rgbtoint(0,0,255),
+		rgbtoint(0,255,0),
+		rgbtoint(0,255,255),
+		rgbtoint(255,0,0),
+		rgbtoint(255,0,255),
+		rgbtoint(255,208,0),
+		rgbtoint(255,255,255),
+	};
+
+	CONSOLE_SCREEN_BUFFER_INFOEX g_normal_color;
+	g_normal_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
+	GetConsoleScreenBufferInfoEx(artyk::g_output_handle, &g_normal_color);
+
+	cout << "\n" << g_normal_color.dwSize.X << " " << g_normal_color.dwSize.Y << "\n";
+
+	for (int i = 0; i < 16; i++) {
+		myscr.setcolor_con(0, i);
+		cout << (int)((unsigned char*)&g_normal_color.ColorTable[i])[0] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[1] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[2] << " " << endl;
+	}
+	cin.get();
+	for (int i = 0; i < 16; i++) {
+		g_normal_color.ColorTable[i] = colortable[i];
+	}
+	SetConsoleScreenBufferInfoEx(artyk::g_output_handle, &g_normal_color);
+	myscr.clear();
+	for (int i = 0; i < 16; i++) {
+		myscr.setcolor_con(0, i);
+		cout << (int)((unsigned char*)&g_normal_color.ColorTable[i])[0] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[1] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[2] << " " << endl;
+	}
+
+	cin.get();
+	for (int i = 0; i < 16; i++) {
+		g_normal_color.ColorTable[i] = rgbtoint(255,255,255)-colortable[i];
+	}
+	SetConsoleScreenBufferInfoEx(artyk::g_output_handle, &g_normal_color);
+	myscr.clear();
+	for (int i = 0; i < 16; i++) {
+		myscr.setcolor_con(0, i);
+		cout << (int)((unsigned char*)&g_normal_color.ColorTable[i])[0] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[1] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[2] << " " << endl;
+	}
 	for (;;){
 
 		timeend = getsystime;
@@ -99,11 +164,7 @@ int main()
 	}
 
 	artyk::closing_app = 1;
-
-	if (artyk::closing_app) {
-		AELog mylog;
-		mylog.writetolog("Closed the \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + artyk::app_build, LOG_INFO);
-	}
+	
 	//cout << "\nPress enter to continue . . .\n";
 	std::cin.get();
 	//cout << "Exiting. . .\n";

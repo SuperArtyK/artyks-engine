@@ -67,9 +67,14 @@
 ///enable mouse scanning in the global_keyboard module
 #define AE_GLOBALKB_ENABLE_MOUSE
 
+///enables setpixel coordinate wrapping(if bigger than screen size)
 #define AE_GFX_ENABLE_WRAPPING
 
+///clears graphics buffer each time after drawing
 #define AE_GFX_ALWAYS_CLEAR_AFTER_DRAW
+
+///makes AELog to log system information on engine startup(or on first logger instance)
+#define AE_LOG_SYSTEM_INFO
 
 //undefine flags to turn them off
 
@@ -84,8 +89,9 @@
 //#undef AE_BP_DELAY
 //#undef AE_DETAILED_WINDOW_MESSAGES
 #undef AE_GLOBALKB_ENABLE_MOUSE
-//#undef AE_GFX_ENABLE_WRAPPING
+#undef AE_GFX_ENABLE_WRAPPING
 #undef AE_GFX_ALWAYS_CLEAR_AFTER_DRAW
+//#undef AE_LOG_SYSTEM_INFO
 
 //I know this is a crutch, but I don't want to add AE_DEBUG to the compiler settings, might break all of it
 #ifdef NDEBUG

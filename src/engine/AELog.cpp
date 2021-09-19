@@ -30,22 +30,16 @@
 #include <intrin.h>
 
 
-atomic<biguint> AELog::m_globalmodulenum;
-int AELog::m_staticObjSize = sizeof(atomic<biguint>) +
-sizeof(std::fstream) +
-sizeof(biguint) * 2 +
-(sizeof(std::string) * 1188) +
-sizeof(int) +
-sizeof(bool);
+atomic<biguint> AELog::m_globalmodulenum = 0;
 
 bool AELog::first_log_entry_done = false;//for marking the exe start in logs, inside filelog
 //important stuff
 AELog::AELog(const std::string& l_strPathtolog, const std::string& l_strLogName): 
 m_modulenum(++m_globalmodulenum),
-m_ullEntrycount(0),
+m_entrycount(0),
 m_modulename("AELog" + to_string(m_modulenum)),
 m_strLogpath(l_strPathtolog + '/'),
-m_strFilename(m_strLogpath + l_strLogName + "_" + logdate() + ".log")
+m_filename(m_strLogpath + l_strLogName + "_" + logdate() + ".log")
 
 {
 #ifdef AE_LOG_ENABLE
@@ -76,9 +70,9 @@ int AELog::writetolog(const std::string& l_strMessg, const smalluint l_iType, co
 		m_message = m_strLogpath + "LOG_" + logdate() + ".log";
 		std::fstream engstarted(m_message.c_str(), std::fstream::out | std::fstream::app);
 		m_message = "[ " + artyk::utils::currentDateTime() + " ] [" + checktype(LOG_SUCCESS) + "] [Engine]: " + "Started \"" + artyk::app_name + "\". Version: " + artyk::app_version + " Build: " + artyk::app_build + "\n";
-#ifdef AE_DEBUG
+#ifdef AE_LOG_SYSTEM_INFO
 		//https://stackoverflow.com/questions/850774/how-to-determine-the-hardware-cpu-and-ram-on-a-machine
-		//thanks bsruth
+		//thanks bsruth :)
 
 		SYSTEM_INFO sysinf;
 		GetSystemInfo(&sysinf);
@@ -106,12 +100,12 @@ int AELog::writetolog(const std::string& l_strMessg, const smalluint l_iType, co
 			break;
 		}
 		int CPUInfo[4] = { -1 };
-		unsigned int nExIds;
+		uint nExIds;
 		char CPUBrandString[0x40];
 		// Get the information associated with each extended ID.
 		__cpuid(CPUInfo, 0x80000000);
 		nExIds = CPUInfo[0];
-		for (unsigned int i = 0x80000000; i <= nExIds; ++i)
+		for (uint i = 0x80000000; i <= nExIds; ++i)
 		{
 			__cpuid(CPUInfo, i);
 			// Interpret CPU brand string
@@ -144,16 +138,16 @@ int AELog::writetolog(const std::string& l_strMessg, const smalluint l_iType, co
 		m_message.append("[" + artyk::utils::currentDateTime() + "][" + checktype(LOG_INFO) + "][Engine]: Maximum Application Address: " + artyk::utils::addrtostr(sysinf.lpMaximumApplicationAddress) + "\n");
 		m_message.append("[" + artyk::utils::currentDateTime() + "][" + checktype(LOG_INFO) + "][Engine]: OEM ID: " + to_string(sysinf.dwOemId) + "\n");
 		m_message.append("[" + artyk::utils::currentDateTime() + "][" + checktype(LOG_INFO) + "][Engine]: ----------END SYSTEM INFO----------\n");
-#endif // AE_DEBUG
+#endif // AE_LOG_SYSTEM_INFO
 		engstarted.write(m_message.c_str(), m_message.size());
 		engstarted.close();
-		m_ullEntrycount++;
+		m_entrycount++;
 	}
 
-	m_ullEntrycount++;
+	m_entrycount++;
 	
 	if (l_strMessg.empty()) {
-		m_message = "[ " + artyk::utils::currentDateTime() + " ] [" + checktype(LOG_INFO) + "] [" + m_modulename + "]: Sample entry. This logger object uses approx. " + std::to_string(m_staticObjSize + m_message.capacity()) + " bytes and has made " + std::to_string(m_ullEntrycount) + " log entries\n";
+		m_message = "[ " + artyk::utils::currentDateTime() + " ] [" + checktype(LOG_INFO) + "] [" + m_modulename + "]: Sample entry. This logger object has made " + std::to_string(m_entrycount) + " log entries\n";
 	}
 	else {
 		m_message = 
@@ -163,18 +157,17 @@ int AELog::writetolog(const std::string& l_strMessg, const smalluint l_iType, co
 			"]: "+ l_strMessg+
 			"\n";
 	}
-	m_fstFilestr.write(m_message.c_str(), m_message.length());
+	m_fileout.write(m_message.c_str(), m_message.length());
 	return 0;
 #endif // AE_LOG_DISABLE
 	
 }
 
 
-
 int AELog::stoplogging(void) {
 	//if (m_bDev_cout)std::cout << "LOGGER_MAIN:stopping writing thread" << std::endl;
 #ifdef AE_LOG_ENABLE
-	if (m_fstFilestr.is_open()) {
+	if (m_fileout.is_open()) {
 		writetolog("Closing current logging session...", LOG_WARN, m_modulename);
 		closefile();
 	}
@@ -205,8 +198,8 @@ std::string AELog::logdate(void) {
 
 int AELog::openfile(void) {
 #ifdef AE_LOG_ENABLE
-m_fstFilestr.open(m_strFilename.c_str(), std::fstream::out | std::fstream::app | std::fstream::binary);
-	if (m_fstFilestr.is_open()) {
+m_fileout.open(m_filename.c_str(), std::fstream::out | std::fstream::app | std::fstream::binary);
+	if (m_fileout.is_open()) {
 		return 0;
 	}
 #endif // AE_LOG_DISABLE
@@ -214,7 +207,7 @@ m_fstFilestr.open(m_strFilename.c_str(), std::fstream::out | std::fstream::app |
 	return 1;
 }
 int AELog::closefile(void) {
-	m_fstFilestr.close();
+	m_fileout.close();
 	return 0;
 }
 
@@ -257,29 +250,4 @@ const char* AELog::checktype(const smalluint l_type) {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//definitions of global functions
-//moved to func_utils.hpp
-//int movetoendSTR(std::string l_strarr[], int l_in, int l_ipos);
-//int movetoendINT(int l_iArr[], int l_iN, int l_iPos);
-//const char* BoolToString(bool b);
-
-
-///////////////////////////////////////////////////////////////
-//	Commented out code moved to logger_old_code.txt
-///////////////////////////////////////////////////////////////
-
-
-
 

@@ -123,11 +123,11 @@ namespace artyk {
 	///console window handle
 	const HWND g_console_hwnd = GetConsoleWindow();
 
-	///Screen colors for graphic engine and AEScreen.
-	///Prefix 'D' means "Dark" and 'B' meand "Bright".
+	///Screen color palette codes
+	///Prefix 'D' means "Dark" and 'B' means "Bright".
 	///Exceptions are black gray and white
 	namespace color {
-		//prefix 'D' means "Dark" and 'B' meand "Bright"
+		//prefix 'D' means "Dark" and 'B' means "Bright"
 		//exceptions are black gray and white
 		constexpr unsigned char
 

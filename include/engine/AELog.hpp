@@ -88,7 +88,7 @@ public:
 	///@see __AEBaseClass::getmodulenum()
 	inline biguint getmodulenum(void) const { return m_modulenum; }
 	///returns m_ullEntrycount of the module
-	inline biguint getentrycount(void)const { return m_ullEntrycount; }
+	inline biguint getentrycount(void)const { return m_entrycount; }
 #ifdef AE_EXPERIMENTAL
 	/// uses all utils for class
 	///@see __AEBaseClass::benchmark()
@@ -98,6 +98,9 @@ public:
 		getmodulenum();
 		getentrycount();
 	}
+
+
+
 #endif
 private:
 	/// retusn date for the log file, in string with format of "[year]-[month]-[day]"
@@ -114,7 +117,7 @@ private:
 	/// stops logging and closes file
 	int stoplogging(void);
 	///file stream variable for the current logfile
-	std::fstream m_fstFilestr;//file "editor"
+	std::fstream m_fileout;//file "editor"
 	/// number of the module, used for identification
 	biguint m_modulenum;
 	/// module name
@@ -122,13 +125,11 @@ private:
 	/// path to the log file
 	const std::string m_strLogpath;
 	/// log file name, includes the log path
-	const std::string m_strFilename;
+	const std::string m_filename;
 	///variable to store the module index number
 	static atomic<biguint> m_globalmodulenum;
 	/// number of entries this logger has made
-	biguint m_ullEntrycount;
-	/// object possible size
-	static int m_staticObjSize;
+	biguint m_entrycount;
 	/// flag to indicate if the first log entry is written, used to check if we need to write intro text to log file
 	static bool first_log_entry_done;
 };

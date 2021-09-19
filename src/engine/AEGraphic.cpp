@@ -96,8 +96,9 @@ AEGraphic::AEGraphic(short sizex, short sizey, short fonth, short fontw, int fps
 	
 	m_rtwindow = { 0, 0,
 		short(m_myscr->GetScreenRes().X-1), short(m_myscr->GetScreenRes().Y-1)};
-	artyk::utils::normal_log(m_logptr, "Started Graphics module!", LOG_SUCCESS, m_modulename);
 	startrd();
+	artyk::utils::normal_log(m_logptr, "Started Graphics module!", LOG_SUCCESS, m_modulename);
+	
 	
 } 
 
@@ -343,17 +344,17 @@ void AEGraphic::drawTriangle(const vec2int& myvec2_1, const vec2int& myvec2_2, c
 	drawTriangle(myvec2_1, myvec2_2, myvec2_3, PIXEL(mych, color));
 }
 
-void AEGraphic::drawPoly(const vec2int parr[], const unsigned int polyarrsize, const CHAR_INFO& mych){
+void AEGraphic::drawPoly(const vec2int parr[], const uint polyarrsize, const CHAR_INFO& mych){
         if(polyarrsize == 0 || parr == nullptr) return;
         vec2int prevpos{parr[0]};
-        for(unsigned int i = 1; i < polyarrsize; i++){
+        for(uint i = 1; i < polyarrsize; i++){
             drawLine(prevpos,parr[i],mych);
             prevpos = parr[i];
         }
 		drawLine(prevpos, parr[0]);
     }
 
-void AEGraphic::drawPoly(const vec2int parr[], const unsigned int polyarrsize, const wchar_t mych, const smalluint color) {
+void AEGraphic::drawPoly(const vec2int parr[], const uint polyarrsize, const wchar_t mych, const smalluint color) {
 	drawPoly(parr, polyarrsize, PIXEL(mych, color));
 }
 

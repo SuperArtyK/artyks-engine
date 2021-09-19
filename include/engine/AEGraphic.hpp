@@ -188,7 +188,7 @@ public:
 	/// <param name="parr">array of the vertices in 2d space</param>
 	/// <param name="polyarrsize">array size</param>
 	/// <param name="mych">CHAR_INFO to set</param>
-    void drawPoly(const vec2int parr[], const unsigned int polyarrsize, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
+    void drawPoly(const vec2int parr[], const uint polyarrsize, const CHAR_INFO& mych = artyk::gfx::PX_BLOCK);
     
 	/// <summary>
 	/// draws polygon from given vec2 array and size of array/amount of vertices and sets it to character and attribute you passed
@@ -197,7 +197,7 @@ public:
 	/// <param name="polyarrsize">array size/length</param>
 	/// <param name="mych">character to set</param>
 	/// <param name="color">color/attribute to set</param>
-	void drawPoly(const vec2int parr[], const unsigned int polyarrsize, const wchar_t mych, const smalluint color);
+	void drawPoly(const vec2int parr[], const uint polyarrsize, const wchar_t mych, const smalluint color);
 
 	/// <summary>
 	/// draws regular polygon from given radius, position(vec2), side amount and CHAR_INFO
