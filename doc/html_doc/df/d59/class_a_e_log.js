@@ -13,13 +13,12 @@ var class_a_e_log =
     [ "closefile", "df/d59/class_a_e_log.html#a0df07299cf433bb2644c796d78176708", null ],
     [ "startlogging", "df/d59/class_a_e_log.html#ae571df37ac256f3335647deffb194f2b", null ],
     [ "stoplogging", "df/d59/class_a_e_log.html#a249370a65f27c76eddc4d80c5018cddf", null ],
-    [ "m_fstFilestr", "df/d59/class_a_e_log.html#a6dae94bc17efe4a68071dd2e44e6c2c9", null ],
+    [ "m_fileout", "df/d59/class_a_e_log.html#acb9aeefb562644371795f4717edfb83a", null ],
     [ "m_modulenum", "df/d59/class_a_e_log.html#a780bc30ce2f3829428117157887d94c5", null ],
     [ "m_modulename", "df/d59/class_a_e_log.html#ae7a2e644b8f4600946e75b40d75c7fef", null ],
     [ "m_strLogpath", "df/d59/class_a_e_log.html#ad3b6965dacf661ebfdf03b8b36a47dad", null ],
-    [ "m_strFilename", "df/d59/class_a_e_log.html#a4c76930053b46043dae640f6d7a6ab2f", null ],
+    [ "m_filename", "df/d59/class_a_e_log.html#a2bfae605a750643851ab86a6cff12e01", null ],
     [ "m_globalmodulenum", "df/d59/class_a_e_log.html#aea1e24cedd7c4afc26916a7d3a958822", null ],
-    [ "m_ullEntrycount", "df/d59/class_a_e_log.html#a238c093d50deb2cfd3f0ecfb007806d7", null ],
-    [ "m_staticObjSize", "df/d59/class_a_e_log.html#a007f7e51a3a99e6268fc47555d3c2215", null ],
+    [ "m_entrycount", "df/d59/class_a_e_log.html#af66e3c3ce7706980e13bc2ebc1d81476", null ],
     [ "first_log_entry_done", "df/d59/class_a_e_log.html#a854fcd5f9540b4149b61ce82961a3387", null ]
 ];

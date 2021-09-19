@@ -12,5 +12,6 @@ var engine__flags_8hpp =
     [ "AE_DETAILED_WINDOW_MESSAGES", "d7/df5/engine__flags_8hpp.html#a08ffadb4c070d21b8f25de46a6cf37e5", null ],
     [ "AE_GLOBALKB_ENABLE_MOUSE", "d7/df5/engine__flags_8hpp.html#a4128e79a042de7300f033df27635bd45", null ],
     [ "AE_GFX_ENABLE_WRAPPING", "d7/df5/engine__flags_8hpp.html#a869c59e051270352eef335bbde106f75", null ],
-    [ "AE_GFX_ALWAYS_CLEAR_AFTER_DRAW", "d7/df5/engine__flags_8hpp.html#a8533c366b4500936eb917ae606e66384", null ]
+    [ "AE_GFX_ALWAYS_CLEAR_AFTER_DRAW", "d7/df5/engine__flags_8hpp.html#a8533c366b4500936eb917ae606e66384", null ],
+    [ "AE_LOG_SYSTEM_INFO", "d7/df5/engine__flags_8hpp.html#a80e473e66c9ca96cd2d863325515ada2", null ]
 ];

@@ -146,34 +146,37 @@ $(document).ready(function(){initNavTree('d7/df5/engine__flags_8hpp_source.html'
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d7/df5/engine__flags_8hpp.html#a4128e79a042de7300f033df27635bd45">   68</a></span>&#160;<span class="preprocessor">#define AE_GLOBALKB_ENABLE_MOUSE</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../d7/df5/engine__flags_8hpp.html#a869c59e051270352eef335bbde106f75">   70</a></span>&#160;<span class="preprocessor">#define AE_GFX_ENABLE_WRAPPING</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../d7/df5/engine__flags_8hpp.html#a8533c366b4500936eb917ae606e66384">   72</a></span>&#160;<span class="preprocessor">#define AE_GFX_ALWAYS_CLEAR_AFTER_DRAW</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">//undefine flags to turn them off</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d7/df5/engine__flags_8hpp.html#a869c59e051270352eef335bbde106f75">   71</a></span>&#160;<span class="preprocessor">#define AE_GFX_ENABLE_WRAPPING</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d7/df5/engine__flags_8hpp.html#a8533c366b4500936eb917ae606e66384">   74</a></span>&#160;<span class="preprocessor">#define AE_GFX_ALWAYS_CLEAR_AFTER_DRAW</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">//#undef AE_DEBUG</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#undef AE_GLOBALMODULE</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">//#undef AE_EXPERIMENTAL</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">//#undef AE_LOOKUP_TABLE</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">//#undef AE_LOG_ENABLE</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#undef AE_ADD_APP_TITLE</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">//#undef AE_ADD_APP_VERSION</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">//#undef AE_KB_DELAY</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">//#undef AE_BP_DELAY</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">//#undef AE_DETAILED_WINDOW_MESSAGES</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#undef AE_GLOBALKB_ENABLE_MOUSE</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">//#undef AE_GFX_ENABLE_WRAPPING</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#undef AE_GFX_ALWAYS_CLEAR_AFTER_DRAW</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//I know this is a crutch, but I don&#39;t want to add AE_DEBUG to the compiler settings, might break all of it</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#ifdef NDEBUG</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">//remove if you want to test debug features in Release mode</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#undef AE_DEBUG</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// NDEBUG</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// !ENGINE_FLAGS_HPP</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d7/df5/engine__flags_8hpp.html#a80e473e66c9ca96cd2d863325515ada2">   77</a></span>&#160;<span class="preprocessor">#define AE_LOG_SYSTEM_INFO</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">//undefine flags to turn them off</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">//#undef AE_DEBUG</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#undef AE_GLOBALMODULE</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">//#undef AE_EXPERIMENTAL</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">//#undef AE_LOOKUP_TABLE</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">//#undef AE_LOG_ENABLE</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#undef AE_ADD_APP_TITLE</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">//#undef AE_ADD_APP_VERSION</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">//#undef AE_KB_DELAY</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">//#undef AE_BP_DELAY</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//#undef AE_DETAILED_WINDOW_MESSAGES</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#undef AE_GLOBALKB_ENABLE_MOUSE</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">#undef AE_GFX_ENABLE_WRAPPING</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#undef AE_GFX_ALWAYS_CLEAR_AFTER_DRAW</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">//#undef AE_LOG_SYSTEM_INFO</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">//I know this is a crutch, but I don&#39;t want to add AE_DEBUG to the compiler settings, might break all of it</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#ifdef NDEBUG</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">//remove if you want to test debug features in Release mode</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#undef AE_DEBUG</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// NDEBUG</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// !ENGINE_FLAGS_HPP</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
