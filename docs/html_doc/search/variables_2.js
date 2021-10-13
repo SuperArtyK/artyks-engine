@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['b_5fblue_619',['B_BLUE',['../dc/d7e/class_a_e_graphic.html#a4db68f86746c44deda5e318acdd74822',1,'AEGraphic::B_BLUE()'],['../d4/d17/class_a_e_screen.html#a0deac1e678a3213b70684e15d7276bf7',1,'AEScreen::B_BLUE()'],['../da/d11/namespaceartyk_1_1color.html#aaf8aecd522ba0f3ebca9a8c44fd66559',1,'artyk::color::B_BLUE()']]],
-  ['b_5fcyan_620',['B_CYAN',['../dc/d7e/class_a_e_graphic.html#a2119de56d0d989cc28fbd008873697d6',1,'AEGraphic::B_CYAN()'],['../d4/d17/class_a_e_screen.html#a3a9dbbd6a6e4c2b9349b06cbefdf42e7',1,'AEScreen::B_CYAN()'],['../da/d11/namespaceartyk_1_1color.html#a170422dbb5bbfd3cfe1705bf12a5b7e3',1,'artyk::color::B_CYAN()']]],
-  ['b_5fgreen_621',['B_GREEN',['../dc/d7e/class_a_e_graphic.html#a9f208c828b85da9887ecc59e359d7fc0',1,'AEGraphic::B_GREEN()'],['../d4/d17/class_a_e_screen.html#ae7246dc9cc130155626cfb17d3d0703e',1,'AEScreen::B_GREEN()'],['../da/d11/namespaceartyk_1_1color.html#a6e086675460e87a09315ec151876535f',1,'artyk::color::B_GREEN()']]],
-  ['b_5fpurple_622',['B_PURPLE',['../dc/d7e/class_a_e_graphic.html#ab8f271bfc224c88ec8e74a8a2b5bca43',1,'AEGraphic::B_PURPLE()'],['../d4/d17/class_a_e_screen.html#a9bb243bad173e513f9f74a3cd11fd64d',1,'AEScreen::B_PURPLE()'],['../da/d11/namespaceartyk_1_1color.html#a7fd6facd54dfc1a10b691037cfa463ec',1,'artyk::color::B_PURPLE()']]],
-  ['b_5fred_623',['B_RED',['../dc/d7e/class_a_e_graphic.html#a5c445ceafcb7c59b38d127b39610aeff',1,'AEGraphic::B_RED()'],['../d4/d17/class_a_e_screen.html#a5a17ddfb455d61e97ea848ce336c521b',1,'AEScreen::B_RED()'],['../da/d11/namespaceartyk_1_1color.html#abbfaaee6e85d4dcd45441c9207cfd40f',1,'artyk::color::B_RED()']]],
-  ['b_5fyellow_624',['B_YELLOW',['../dc/d7e/class_a_e_graphic.html#af0e117a94e7360ae8b92615ef2e297c3',1,'AEGraphic::B_YELLOW()'],['../d4/d17/class_a_e_screen.html#a2e56decc808ba17982c1fdd29ef3c921',1,'AEScreen::B_YELLOW()'],['../da/d11/namespaceartyk_1_1color.html#a42fa3de33ab34e211b5e16610faadf18',1,'artyk::color::B_YELLOW()']]],
-  ['bad_5fscreen_5fhandle_625',['BAD_SCREEN_HANDLE',['../d1/dd6/namespaceartyk_1_1exitcodes.html#afff357297a4db7acac771f26df1bf489',1,'artyk::exitcodes']]],
-  ['black_626',['BLACK',['../dc/d7e/class_a_e_graphic.html#ae9049b79b52a7587824a368f36bd2ed4',1,'AEGraphic::BLACK()'],['../d4/d17/class_a_e_screen.html#a351f48e7b5f891a2bb4271cb564d12a6',1,'AEScreen::BLACK()'],['../da/d11/namespaceartyk_1_1color.html#a6e07ed4451ddb66e5e38985602a614bc',1,'artyk::color::BLACK()']]],
-  ['buildnum_627',['buildnum',['../db/da8/namespaceartyk_1_1version.html#a9a64057b442be3a31a2f22970879f50e',1,'artyk::version']]]
+  ['b_5fblue_634',['B_BLUE',['../da/d11/namespaceartyk_1_1color.html#aaf8aecd522ba0f3ebca9a8c44fd66559',1,'artyk::color']]],
+  ['b_5fcyan_635',['B_CYAN',['../da/d11/namespaceartyk_1_1color.html#a170422dbb5bbfd3cfe1705bf12a5b7e3',1,'artyk::color']]],
+  ['b_5fgreen_636',['B_GREEN',['../da/d11/namespaceartyk_1_1color.html#a6e086675460e87a09315ec151876535f',1,'artyk::color']]],
+  ['b_5fpurple_637',['B_PURPLE',['../da/d11/namespaceartyk_1_1color.html#a7fd6facd54dfc1a10b691037cfa463ec',1,'artyk::color']]],
+  ['b_5fred_638',['B_RED',['../da/d11/namespaceartyk_1_1color.html#abbfaaee6e85d4dcd45441c9207cfd40f',1,'artyk::color']]],
+  ['b_5fyellow_639',['B_YELLOW',['../da/d11/namespaceartyk_1_1color.html#a42fa3de33ab34e211b5e16610faadf18',1,'artyk::color']]],
+  ['bad_5fscreen_5fhandle_640',['BAD_SCREEN_HANDLE',['../d1/dd6/namespaceartyk_1_1exitcodes.html#afff357297a4db7acac771f26df1bf489',1,'artyk::exitcodes']]],
+  ['black_641',['BLACK',['../da/d11/namespaceartyk_1_1color.html#a6e07ed4451ddb66e5e38985602a614bc',1,'artyk::color']]],
+  ['buildnum_642',['buildnum',['../db/da8/namespaceartyk_1_1version.html#a9a64057b442be3a31a2f22970879f50e',1,'artyk::version']]]
 ];

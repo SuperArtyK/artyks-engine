@@ -9,6 +9,7 @@ var hierarchy =
     [ "AEDebugInfo", "de/d9b/struct_a_e_debug_info.html", null ],
     [ "AEFrame", "df/dd7/class_a_e_frame.html", null ],
     [ "AELog", "df/d59/class_a_e_log.html", null ],
+    [ "AEPalette", "db/d22/class_a_e_palette.html", null ],
     [ "AESleep", "d0/d3a/class_a_e_sleep.html", null ],
     [ "AETimer", "da/d62/class_a_e_timer.html", null ],
     [ "keystate", "d9/dd3/structkeystate.html", null ],

@@ -29,7 +29,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="../../logo.ico"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ArtyK&#39;s Console Engine
    &#160;<span id="projectnumber">v0.7.0</span>
@@ -95,15 +94,25 @@ $(document).ready(function(){initNavTree('da/d11/namespaceartyk_1_1color.html','
 
 <div class="header">
   <div class="summary">
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">artyk::color Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Screen color palette codes Prefix 'D' means "Dark" and 'B' means "Bright".  
+<p>Screen color palette codes.  
 <a href="../../da/d11/namespaceartyk_1_1color.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:af64c80c9083b988993afa745c546c805"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../de/df7/typedefs_8hpp.html#ad01f6eb44f4812ed05c900e25ea905ec">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d11/namespaceartyk_1_1color.html#af64c80c9083b988993afa745c546c805">rgbtoint</a> (const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> r, const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> g, const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a> b)</td></tr>
+<tr class="separator:af64c80c9083b988993afa745c546c805"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84c5ee580607b0431933f799829698d5"><td class="memItemLeft" align="right" valign="top">constexpr std::array&lt; <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a84c5ee580607b0431933f799829698d5">inttorgb</a> (const <a class="el" href="../../de/df7/typedefs_8hpp.html#ad01f6eb44f4812ed05c900e25ea905ec">uint</a> rgbint)</td></tr>
+<tr class="separator:a84c5ee580607b0431933f799829698d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea56ab0a1b7e0b4c66633aeb8d183fa2"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="../../de/df7/typedefs_8hpp.html#ad01f6eb44f4812ed05c900e25ea905ec">uint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d11/namespaceartyk_1_1color.html#aea56ab0a1b7e0b4c66633aeb8d183fa2">invertcolor</a> (const <a class="el" href="../../de/df7/typedefs_8hpp.html#ad01f6eb44f4812ed05c900e25ea905ec">uint</a> rgb)</td></tr>
+<tr class="separator:aea56ab0a1b7e0b4c66633aeb8d183fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a6e07ed4451ddb66e5e38985602a614bc"><td class="memItemLeft" align="right" valign="top">constexpr unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d11/namespaceartyk_1_1color.html#a6e07ed4451ddb66e5e38985602a614bc">BLACK</a> = 0</td></tr>
@@ -146,9 +155,110 @@ Variables</h2></td></tr>
 <tr class="separator:a458e6e60794fdde5b2275fc44a820605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Screen color palette codes Prefix 'D' means "Dark" and 'B' means "Bright". </p>
-<p>Exceptions are black gray and white </p>
-</div><h2 class="groupheader">Variable Documentation</h2>
+<div class="textblock"><p>Screen color palette codes. </p>
+<p>Prefix 'D' means "Dark" and 'B' means "Bright". Exceptions are black gray and white. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="af64c80c9083b988993afa745c546c805"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af64c80c9083b988993afa745c546c805">&#9670;&nbsp;</a></span>rgbtoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../de/df7/typedefs_8hpp.html#ad01f6eb44f4812ed05c900e25ea905ec">uint</a> artyk::color::rgbtoint </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00062">62</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a84c5ee580607b0431933f799829698d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84c5ee580607b0431933f799829698d5">&#9670;&nbsp;</a></span>inttorgb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::array&lt;<a class="el" href="../../de/df7/typedefs_8hpp.html#a0f523971a2213ff05d18e55b72c03125">smalluint</a>, 3&gt; artyk::color::inttorgb </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#ad01f6eb44f4812ed05c900e25ea905ec">uint</a>&#160;</td>
+          <td class="paramname"><em>rgbint</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00065">65</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aea56ab0a1b7e0b4c66633aeb8d183fa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea56ab0a1b7e0b4c66633aeb8d183fa2">&#9670;&nbsp;</a></span>invertcolor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="../../de/df7/typedefs_8hpp.html#ad01f6eb44f4812ed05c900e25ea905ec">uint</a> artyk::color::invertcolor </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../de/df7/typedefs_8hpp.html#ad01f6eb44f4812ed05c900e25ea905ec">uint</a>&#160;</td>
+          <td class="paramname"><em>rgb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="../../df/d0a/main_8cpp_source.html#l00069">69</a> of file <a class="el" href="../../df/d0a/main_8cpp_source.html">main.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
 <a id="a6e07ed4451ddb66e5e38985602a614bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6e07ed4451ddb66e5e38985602a614bc">&#9670;&nbsp;</a></span>BLACK</h2>
 
@@ -169,7 +279,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00134">134</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00132">132</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -185,7 +295,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00135">135</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00133">133</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -201,7 +311,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00136">136</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00134">134</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -217,7 +327,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00137">137</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00135">135</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -233,7 +343,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00136">136</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -249,7 +359,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00139">139</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00137">137</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -265,7 +375,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00140">140</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -281,7 +391,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00141">141</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00139">139</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -297,7 +407,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00142">142</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00140">140</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -313,7 +423,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00143">143</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00141">141</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -329,7 +439,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00144">144</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00142">142</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -345,7 +455,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00145">145</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00143">143</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -361,7 +471,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00146">146</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00144">144</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -377,7 +487,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00147">147</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00145">145</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -393,7 +503,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00148">148</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00146">146</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -409,7 +519,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00149">149</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00147">147</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -425,7 +535,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00152">152</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00150">150</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -441,7 +551,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00153">153</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00151">151</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>
@@ -457,7 +567,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00154">154</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d97/global__vars_8hpp_source.html#l00152">152</a> of file <a class="el" href="../../d3/d97/global__vars_8hpp_source.html">global_vars.hpp</a>.</p>
 
 </div>
 </div>

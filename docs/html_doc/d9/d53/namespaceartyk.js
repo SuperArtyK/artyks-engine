@@ -19,6 +19,9 @@ var namespaceartyk =
       [ "15. Disclaimer of Warranty.", "de/d7e/license.html#autotoc_md15", null ],
       [ "16. Limitation of Liability.", "de/d7e/license.html#autotoc_md16", null ],
       [ "17. Interpretation of Sections 15 and 16.", "de/d7e/license.html#autotoc_md17", null ],
+      [ "rgbtoint", "da/d11/namespaceartyk_1_1color.html#af64c80c9083b988993afa745c546c805", null ],
+      [ "inttorgb", "da/d11/namespaceartyk_1_1color.html#a84c5ee580607b0431933f799829698d5", null ],
+      [ "invertcolor", "da/d11/namespaceartyk_1_1color.html#aea56ab0a1b7e0b4c66633aeb8d183fa2", null ],
       [ "BLACK", "da/d11/namespaceartyk_1_1color.html#a6e07ed4451ddb66e5e38985602a614bc", null ],
       [ "D_BLUE", "da/d11/namespaceartyk_1_1color.html#a54b9c76dd509f6bed773ce9c2fab76dd", null ],
       [ "D_GREEN", "da/d11/namespaceartyk_1_1color.html#a8e4a2db94fb23eb993527ced8db132b4", null ],
@@ -122,8 +125,8 @@ var namespaceartyk =
       [ "timecounter", "df/d21/namespaceartyk_1_1utils.html#ad6227d56ff2f5c6754ff6c02caa5a4d5", null ]
     ] ],
     [ "version", "db/da8/namespaceartyk_1_1version.html", [
-      [ "majorver", "db/da8/namespaceartyk_1_1version.html#a16e365cd3f0eb854660e401e8227d28f", null ],
-      [ "minorver", "db/da8/namespaceartyk_1_1version.html#a02efc0c7ec517f1972a361b771dbf0c5", null ],
+      [ "majorversion", "db/da8/namespaceartyk_1_1version.html#ac624556f04d3d5ca1dcf0f116aae8887", null ],
+      [ "minorversion", "db/da8/namespaceartyk_1_1version.html#ab8e1443991b15cf601b5700458b9645b", null ],
       [ "patchnum", "db/da8/namespaceartyk_1_1version.html#a20d2bd332938818e520c46b936d13c79", null ],
       [ "buildnum", "db/da8/namespaceartyk_1_1version.html#a9a64057b442be3a31a2f22970879f50e", null ]
     ] ],

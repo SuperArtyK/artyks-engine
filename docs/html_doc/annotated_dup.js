@@ -7,6 +7,7 @@ var annotated_dup =
     [ "AEGraphic", "dc/d7e/class_a_e_graphic.html", "dc/d7e/class_a_e_graphic" ],
     [ "AEKeyboard", "de/d92/class_a_e_keyboard.html", "de/d92/class_a_e_keyboard" ],
     [ "AELog", "df/d59/class_a_e_log.html", "df/d59/class_a_e_log" ],
+    [ "AEPalette", "db/d22/class_a_e_palette.html", "db/d22/class_a_e_palette" ],
     [ "AEScreen", "d4/d17/class_a_e_screen.html", "d4/d17/class_a_e_screen" ],
     [ "AESleep", "d0/d3a/class_a_e_sleep.html", "d0/d3a/class_a_e_sleep" ],
     [ "AETimer", "da/d62/class_a_e_timer.html", "da/d62/class_a_e_timer" ],
