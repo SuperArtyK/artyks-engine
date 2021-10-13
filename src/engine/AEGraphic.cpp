@@ -164,16 +164,24 @@ void AEGraphic::clearbuffer() {
 	m_settingscreen = false;
 }
 
-void AEGraphic::copybuffer(const CHAR_INFO* mych, int buffsize) {
+void AEGraphic::copybuffer(const CHAR_INFO* mych, int buffsize, bool clearIfSmall) {
 	//check if our buffer is equals to our data buffer
 	//(if nothing was passed and m_currentbuffer is equals to m_screendata
-
 	if (mych == m_screendata) return;
+
 	m_settingscreen = true;//atomic bool, blocks the drawing thread untill false
-	if (buffsize > (m_screensize.X * m_screensize.Y)) {//precaution, if buffsize is more than screen size
-		buffsize = m_screensize.X * m_screensize.Y;
+	if (buffsize >= (m_screensize.X * m_screensize.Y)) {//precaution, if buffsize is more than screen size
+		memcpy(m_screendata, mych, (m_screensize.X * m_screensize.Y) * PIXELSIZE);//copying data...
 	}
-	memcpy(m_screendata, mych, buffsize * PIXELSIZE);//copying data...
+	else
+	{
+		memcpy(m_screendata, mych, buffsize * PIXELSIZE);//copying data...
+		if (clearIfSmall) {
+			memset(m_screendata + buffsize, 0, (m_screensize.X * m_screensize.Y - buffsize) * PIXELSIZE);
+		}
+	}
+	
+	
 	m_settingscreen = false;//removing blocking
 }
 
@@ -201,13 +209,11 @@ CHAR_INFO* AEGraphic::getTripleBufferPtr(void) {
 }
 
 void AEGraphic::setscreen(short swidth, short sheight, short fonth, short fontw) {
-	
-	
-	
+	//block the drawing thread
 	m_settingscreen = true;
-	m_myscr->setScreen(swidth, sheight, fonth, fontw);
-
 	if (swidth != m_screensize.X || sheight != m_screensize.Y) {
+		//if we need to reset screen
+		m_myscr->setScreen(swidth, sheight, fonth, fontw);
 		if (m_currentbuffer && m_currentbuffer != m_screendata) {
 			delete[] m_currentbuffer;
 			m_currentbuffer = new CHAR_INFO[swidth * sheight];
@@ -219,7 +225,12 @@ void AEGraphic::setscreen(short swidth, short sheight, short fonth, short fontw)
 		clearscreen();
 		clearbuffer();
 	}
-	
+	else {
+		//if we need just to redo the font size
+		if (fonth != m_myscr->GetFontSize().Y || fontw != m_myscr->GetFontSize().X) {
+			m_myscr->setFont(fonth, fontw);
+		}
+	}
 	m_settingscreen = false;
 
 }

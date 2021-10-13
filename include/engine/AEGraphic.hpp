@@ -61,16 +61,16 @@ public:
 	AEGraphic(short sizex = 128, short sizey = 128, short fonth = 5, short fontw = 5, int fpsdelay = GAME_FPS, bool enablelog = true, bool useGlobLog = false);
 	~AEGraphic() override;
 	
-	/// draws the screen, using data from m_screendata
+	/// draws the screen, using data from screen buffer
 	void drawscreen();
 	
 	/// draws the current selected buffer directly, without copying
 	void drawbuffer();
 	
-	/// clears the m_screendata buffer(screen buffer)
+	/// clears the screen buffer
 	void clearscreen();
 	
-	/// clears the current selected buffers(the one that setPixel() uses)
+	/// clears the current selected buffer
 	void clearbuffer();
 	
 	/// <summary>
@@ -78,22 +78,24 @@ public:
 	/// </summary>
 	/// <param name="mych">the buffer itself; default is m_currentbuffer</param>
 	/// <param name="buffsize">size of the buffer, in array members; default to m_screensize</param>
-	/// @note if size is bigger than current screen buffer size, it will be truncated; and if it's lower
-	/// @note and if size is lower than current screen buffer size, what was in buffer out of new buffer bounds will be left.
-	/// @note if nothing is passed, the m_currentbuffer will be copied to the drawing buffer
-	void copybuffer(const CHAR_INFO* mych = m_currentbuffer, int buffsize = m_screensize.X*m_screensize.Y);
+	/// <param name="clearIfSmall">flag to indicate whether to clear unfilled part of buffer, if size is lower than screen buffer</param>
+	/// @note if size is bigger than current screen buffer size, it will be truncated;
+	/// @note if size is lower than current screen buffer size, the unfilled pixels will be left or cleared, according to clearIfSmall.
+	/// @note if no buffer is passed, the current selected buffer(if different) will be copied to the screen buffer
+	void copybuffer(const CHAR_INFO* mych = m_currentbuffer, int buffsize = m_screensize.X*m_screensize.Y, bool clearIfSmall = false);
 	
 	/// Creates third buffer(second AEGraphic buffer) to create frames and feed them entirely to drawing thread.
 	/// Helps to remove flickering
 	void createTripleBuffering(void);
 
-	///removes third buffer and deallocates it(so be carefull with all those dangling pointers)
+	///removes third buffer and deallocates it(so be careful with all those dangling pointers)
 	void removeTripleBuffering(void);
 
 	/// <summary>
-	/// returns pointer to third pointer, if it exists. If it doesnt, returns nullptr
+	/// Returns pointer to third buffer created using createTripleBuffering() if it exists. 
+	/// If it doesn't, returns nullptr.
 	/// </summary>
-	/// @warning USE THIS WITH CARE! DON'T DELETE THE POINTER, OR GRAPHICS ENGINE WILL CRASH!
+	/// @warning USE WITH CARE! DON'T DELETE THE POINTER, OR GRAPHICS ENGINE WILL CRASH!
 	CHAR_INFO* getTripleBufferPtr(void);
 
 	/// <summary>
@@ -282,31 +284,6 @@ public:
 		return graph_fps;
 	}
 
-	///\brief console colors for the graphics engine
-	/// took them from the color namespace
-	/// @see artyk::color
-	static constexpr unsigned char
-		BLACK = artyk::color::BLACK,
-		D_BLUE = artyk::color::D_BLUE,    //DARK
-		D_GREEN = artyk::color::D_GREEN,   //DARK
-		D_CYAN = artyk::color::D_CYAN,    //DARK
-		D_RED = artyk::color::D_RED,     //DARK
-		D_MAGENTA = artyk::color::D_MAGENTA, //DARK
-		D_YELLOW = artyk::color::D_YELLOW,  //DARK
-		D_WHITE = artyk::color::D_WHITE,   //DARK
-		GRAY = artyk::color::GRAY,
-		B_BLUE = artyk::color::B_BLUE,    //BRIGHT
-		B_GREEN = artyk::color::B_GREEN,  //BRIGHT
-		B_CYAN = artyk::color::B_CYAN,   //BRIGHT
-		B_RED = artyk::color::B_RED,    //BRIGHT
-		B_PURPLE = artyk::color::B_PURPLE, //BRIGHT
-		B_YELLOW = artyk::color::B_YELLOW, //BRIGHT
-		WHITE = artyk::color::WHITE,
-
-		//default colors
-		DEF_BGR = artyk::color::DEF_BGR,
-		DEF_FGR = artyk::color::DEF_BGR,
-		DEF_ATTR = artyk::color::DEF_BGR * 16 + artyk::color::DEF_FGR;
     
 private:
 	

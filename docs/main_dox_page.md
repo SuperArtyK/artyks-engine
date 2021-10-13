@@ -1,14 +1,13 @@
 @mainpage ArtyK's Console Engine
 
 @section ae_abt What is the ArtyK's Console Engine?
-ArtyK's Console Engine is the open-source composition of code that make possible to create games in console.
+ArtyK's Console Engine is the open-source command line game engine that make possible to create games in console.
 
 @section ae_why Why to use this tool?
-Because it is simple to use, lightweight and consists only of the code files, so, no playing with linker necessary!  
-Also it is divided into modules that you can enable and disable when you need them, So you will get needed functionality when it is necessary.  
+Because it is lightweight, simple to use and has many tools to assist in your development.
 
-Basically console game engine for my console games and apps.  
-Currently will work for windows, but I'll try to port it to linux later. 
+Basically console game engine for console games and apps.  
+Currently will work for windows, but I'll try to port it to linux later(switching to console emulation most likely.  
 
 @section ae_license ArtyK's Console Engine License
 This engine is licensed under GNU GPL3.  

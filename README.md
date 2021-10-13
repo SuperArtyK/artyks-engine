@@ -1,11 +1,11 @@
 ### ArtyK's Console Engine
 
 #### What is the ArtyK's Console Engine?
-ArtyK's Console Engine is the open-source composition of code that make possible to create games in console.
+ArtyK's Console Engine is the open-source command line game engine that make possible to create games in console.
 
 #### Why to use this tool?
-Because it is simple to use, lightweight and consists only of the code files, so, no playing with linker necessary!  
-Also it is divided into modules that you can enable and disable when you need them, So you will get needed functionality when it is necessary.  
+Because it is simple to use, lightweight and utilises(currently) only WinAPI, so it is easy to set it up working.  
+It is divided into modules that you can enable and disable when you need them, So you will get needed functionality when it is necessary.  
 
 Basically console game engine for my console games and apps.  
 Currently will work for windows, but I'll try to port it to linux later. 
@@ -28,4 +28,4 @@ To install the engine code and be able to use it:
 
 
 ### Documentation
-For engine documentation, visit <a href="https://consoleengine.artyk.repl.co/doc/html_doc/" target="_blank">this link</a>.  
+For engine documentation, visit <a href="https://superartyk.github.io/console_engine" target="_blank">this link</a>.  

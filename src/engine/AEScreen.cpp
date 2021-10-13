@@ -286,7 +286,7 @@ void AEScreen::clear(void) {//clears screen; much faster than system() but still
 		artyk::g_output_handle, '\0', m_csbi.dwSize.X * m_csbi.dwSize.Y, topLeft, &written
 	);
 	FillConsoleOutputAttribute(
-		artyk::g_output_handle, AEScreen::BLACK,
+		artyk::g_output_handle, artyk::color::BLACK,
 		m_csbi.dwSize.X * m_csbi.dwSize.Y, topLeft, &written
 	);
 	setcursor(0, 0);

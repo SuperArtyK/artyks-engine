@@ -83,7 +83,7 @@ public:
 	void clear(void);
 
 	///sets the color of the future text(with printf/cout) out of 16color pallete. Colors are in the artyk::screen namespace
-	void setcolor_con(const smalluint back = DEF_BGR, const smalluint fore = DEF_FGR);//sets color of text out of 16 color pallete
+	void setcolor_con(const smalluint back = artyk::color::DEF_BGR, const smalluint fore = artyk::color::DEF_FGR);//sets color of text out of 16 color pallete
 
 	/// returns current app title
 	/// @bug There's a known bug, where if you feed GetAppTitle() into settitle() continuously, it will set title to what it was set before
@@ -115,32 +115,6 @@ public:
 	static inline COORD GetScreenRes(void) { return AEScreen::m_csbi.dwSize; }
 	///returns screen font size, in pixels(x,y)
 	static inline COORD GetFontSize(void) {return { m_cfi.dwFontSize.X, m_cfi.dwFontSize.Y};}
-
-	///\brief console colors for the graphics engine
-	/// took them from the color namespace
-	/// @see artyk::color
-	static constexpr unsigned char
-		BLACK = artyk::color::BLACK,
-		D_BLUE = artyk::color::D_BLUE,    //DARK
-		D_GREEN = artyk::color::D_GREEN,   //DARK
-		D_CYAN = artyk::color::D_CYAN,    //DARK
-		D_RED = artyk::color::D_RED,     //DARK
-		D_MAGENTA = artyk::color::D_MAGENTA, //DARK
-		D_YELLOW = artyk::color::D_YELLOW,  //DARK
-		D_WHITE = artyk::color::D_WHITE,   //DARK
-		GRAY = artyk::color::GRAY,
-		B_BLUE = artyk::color::B_BLUE,    //BRIGHT
-		B_GREEN = artyk::color::B_GREEN,  //BRIGHT
-		B_CYAN = artyk::color::B_CYAN,   //BRIGHT
-		B_RED = artyk::color::B_RED,    //BRIGHT
-		B_PURPLE = artyk::color::B_PURPLE, //BRIGHT
-		B_YELLOW = artyk::color::B_YELLOW, //BRIGHT
-		WHITE = artyk::color::WHITE,
-
-		//default colors
-		DEF_BGR = artyk::color::DEF_BGR,
-		DEF_FGR = artyk::color::DEF_BGR,
-		DEF_ATTR = artyk::color::DEF_BGR * 16 + artyk::color::DEF_FGR;
 
 private:
 	///console font info extended, used to manage the font of console

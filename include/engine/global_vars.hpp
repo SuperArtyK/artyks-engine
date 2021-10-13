@@ -100,17 +100,17 @@ namespace artyk {
 #endif // AE_DEBUG
 		"Console Engine Test";
 	
-	///has engine version stuff(ints)
+	///engine version
 	namespace version {
-		constexpr int majorver = 0;
-		constexpr int minorver = 7;
+		constexpr int majorversion = 0;
+		constexpr int minorversion = 7;
 		constexpr int patchnum = 0;
 		///build of app, how do you autoincrement these?
-		constexpr int buildnum = 3635;
+		constexpr int buildnum = 3817;
 	}
 
 	///version
-	const string app_version = "v"+to_string(version::majorver)+"."+to_string(version::minorver)+"."+to_string(version::patchnum);
+	const string app_version = "v"+to_string(version::majorversion)+"."+to_string(version::minorversion)+"."+to_string(version::patchnum);
 	///build
 	const string app_build = to_string(version::buildnum);
 	///full name of the app
@@ -123,12 +123,10 @@ namespace artyk {
 	///console window handle
 	const HWND g_console_hwnd = GetConsoleWindow();
 
-	///Screen color palette codes
+	///\brief Screen color palette codes.
 	///Prefix 'D' means "Dark" and 'B' means "Bright".
-	///Exceptions are black gray and white
+	///Exceptions are black gray and white.
 	namespace color {
-		//prefix 'D' means "Dark" and 'B' means "Bright"
-		//exceptions are black gray and white
 		constexpr unsigned char
 
 			BLACK = 0,
@@ -168,9 +166,9 @@ namespace artyk {
 			;
 	}
 
-	///\brief this namespace contains predone characters/char cells used for drawing stuff with AEGraphic
+	///\brief This namespace contains pre-done characters used for drawing stuff with AEGraphic
 	namespace gfx {
-		///characters
+		//characters
 		constexpr wchar_t
 			//no difference in visual, but a difference in processing, used this to indicate empty/transparent stuff
 			CH_EMPTY = L'\0',
