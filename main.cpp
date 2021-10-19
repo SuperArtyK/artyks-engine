@@ -76,80 +76,89 @@ class AEPalette {
 public:
 
 
-
-	AEPalette(const std::array<uint, 16>& palette) {
+	/// <summary>
+	/// Class constructor
+	/// </summary>
+	/// <param name="palette">Palette color array to set. Leave blank for default engine palette to be applied</param>
+	AEPalette(const std::array<uint, 16>& palette = cp_default) {
 		for (int i = 0; i < 16; i++) {
 			colorpal[i] = palette[i];
 		}
 	}
-
+	///returns rgb value of color from given color number in palette
 	uint getcolor(const smalluint colornum) const {
 		return colorpal[colornum];
 	}
 	
+	///sets color in palette to certain rgb value
 	void setcolor(const smalluint colornum, const uint col) {
 		colorpal[colornum] = col;
 	}
 
-	constexpr static uint rgbtoint_ae(const smalluint r, const smalluint g, const smalluint b) {
-		return uint(r | (g << 8) | (b << 16));
-	}
-	constexpr static std::array<smalluint, 3> inttorgb(const uint rgbint) {
-		return std::array<smalluint, 3>{smalluint(rgbint), smalluint(rgbint >> 8), smalluint(rgbint >> 16)};
-	}
+	std::array<uint, 16> getpalette(const smalluint tpe = 0) const {
+		switch (tpe)
+		{
+		case 1:
+			return cp_default;
+			break;
 
-	constexpr static inline uint invertcolor(const uint rgb) {
-		return (~rgb << 8) >> 8;
-	}
+		case 2:
+			return cp_conclassic;
+			break;
 
+		default:
+			return colorpal;
+			break;
+		}
+	}
+	
 
 private:
 	///default engine palette
-	constexpr static uint cp_default[16]{
+	constexpr static std::array<uint, 16> cp_default{
 		//dark
-		0,                      //black 
-		rgbtoint_ae(0,   0,   128),//blue  
-		rgbtoint_ae(0,   128, 0),  //green 
-		rgbtoint_ae(0,   128, 128),//cyan  
-		rgbtoint_ae(128, 0,   0),  //red   
-		rgbtoint_ae(128, 0,   128),//violet
-		rgbtoint_ae(128, 128, 0),  //yellow
-		rgbtoint_ae(172, 172, 172),//white 
+		artyk::color::rgbtoint(0,   0,   0),  //black 
+		artyk::color::rgbtoint(0,   0,   128),//blue  
+		artyk::color::rgbtoint(0,   128, 0),  //green 
+		artyk::color::rgbtoint(0,   128, 128),//cyan  
+		artyk::color::rgbtoint(128, 0,   0),  //red   
+		artyk::color::rgbtoint(128, 0,   128),//violet
+		artyk::color::rgbtoint(128, 128, 0),  //yellow
+		artyk::color::rgbtoint(172, 172, 172),//white 
 		//light
-		rgbtoint_ae(86,  86,  86), //black 
-		rgbtoint_ae(0,   0,   255),//blue  
-		rgbtoint_ae(0,   255, 0),  //green 
-		rgbtoint_ae(0,   255, 255),//cyan  
-		rgbtoint_ae(255, 0,   0),  //red   
-		rgbtoint_ae(255, 0,   255),//violet
-		rgbtoint_ae(255, 208, 0),  //yellow
-		rgbtoint_ae(255, 255, 255),//white 
+		artyk::color::rgbtoint(86,  86,  86), //black 
+		artyk::color::rgbtoint(0,   0,   255),//blue  
+		artyk::color::rgbtoint(0,   255, 0),  //green 
+		artyk::color::rgbtoint(0,   255, 255),//cyan  
+		artyk::color::rgbtoint(255, 0,   0),  //red   
+		artyk::color::rgbtoint(255, 0,   255),//violet
+		artyk::color::rgbtoint(255, 208, 0),  //yellow
+		artyk::color::rgbtoint(255, 255, 255),//white 
 	};
 	///classic console palette
-	constexpr static uint cp_conclassic[16]{
+	constexpr static std::array<uint, 16> cp_conclassic{
 		//dark
-		rgbtoint_ae(12,  12,  12), //black 
-		rgbtoint_ae(0,   55,  218),//blue  
-		rgbtoint_ae(19,  161, 14), //green 
-		rgbtoint_ae(58,  150, 221),//cyan  
-		rgbtoint_ae(197, 15,  31), //red   
-		rgbtoint_ae(136, 23,  152),//violet
-		rgbtoint_ae(193, 156, 0), 	//yellow
-		rgbtoint_ae(204, 204, 204),//white 
+		artyk::color::rgbtoint(12,  12,  12), //black 
+		artyk::color::rgbtoint(0,   55,  218),//blue  
+		artyk::color::rgbtoint(19,  161, 14), //green 
+		artyk::color::rgbtoint(58,  150, 221),//cyan  
+		artyk::color::rgbtoint(197, 15,  31), //red   
+		artyk::color::rgbtoint(136, 23,  152),//violet
+		artyk::color::rgbtoint(193, 156, 0),  //yellow
+		artyk::color::rgbtoint(204, 204, 204),//white 
 		//light
-		rgbtoint_ae(118, 118, 118),//black 
-		rgbtoint_ae(59,  120, 255),//blue  
-		rgbtoint_ae(22,  198, 12), //green 
-		rgbtoint_ae(97,  214, 214),//cyan  
-		rgbtoint_ae(231, 72,  86), //red   
-		rgbtoint_ae(180, 0,   158),//violet
-		rgbtoint_ae(249, 241, 165),//yellow
-		rgbtoint_ae(242, 242, 242),//white 
+		artyk::color::rgbtoint(118, 118, 118),//black 
+		artyk::color::rgbtoint(59,  120, 255),//blue  
+		artyk::color::rgbtoint(22,  198, 12), //green 
+		artyk::color::rgbtoint(97,  214, 214),//cyan  
+		artyk::color::rgbtoint(231, 72,  86), //red   
+		artyk::color::rgbtoint(180, 0,   158),//violet
+		artyk::color::rgbtoint(249, 241, 165),//yellow
+		artyk::color::rgbtoint(242, 242, 242),//white 
 	};
-	constexpr static uint test[2]{
-		1,2
-	};
-	uint colorpal[16];
+
+	///color pallete of 16 colors
+	std::array<uint, 16> colorpal;
 
 };
 
@@ -176,28 +185,6 @@ int main()
 	myscr.settitle("Done!");
 	Sleep(100);
 
-	unsigned long colortable[16]{
-		//dark
-		0,
-		rgbtoint(0,0,128),
-		rgbtoint(0,128,0),
-		rgbtoint(0,128,128),
-		rgbtoint(128,0,0),
-		rgbtoint(128,0,128),
-		rgbtoint(192,156,0),
-		rgbtoint(172,172,172),
-		//light
-		rgbtoint(86,86,86),
-		rgbtoint(0,0,255),
-		rgbtoint(0,255,0),
-		rgbtoint(0,255,255),
-		rgbtoint(255,0,0),
-		rgbtoint(255,0,255),
-		rgbtoint(255,208,0),
-		rgbtoint(255,255,255),
-	};
-
-	constexpr uint test[2] = { rgbtoint(0, 0, 128), rgbtoint(0, 0, 128) };
 
 	CONSOLE_SCREEN_BUFFER_INFOEX g_normal_color;
 	g_normal_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
@@ -209,18 +196,8 @@ int main()
 		myscr.setcolor_con(0, i);
 		cout << (int)((unsigned char*)&g_normal_color.ColorTable[i])[0] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[1] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[2] << " " << endl;
 	}
-	cin.get();
-	for (int a = 0; a < 16; a++) {
-		g_normal_color.ColorTable[a] = invertcolor( colortable[a]);
-	}
-
 	SetConsoleScreenBufferInfoEx(artyk::g_output_handle, &g_normal_color);
 
-	myscr.clear();
-	for (int i = 0; i < 16; i++) {
-		myscr.setcolor_con(i, i);
-		cout << (int)((unsigned char*)&g_normal_color.ColorTable[i])[0] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[1] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[2] << " " << endl;
-	}
 	for (;;){
 
 		timeend = getsystime;

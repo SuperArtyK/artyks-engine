@@ -213,5 +213,56 @@ inline bool comparevec(const A& _vec1, const B& _vec2, const int comptype, const
 	}
 }
 
+
+
+
+
+template<typename T, const unsigned int diramount>
+struct aevector{
+    
+    
+    
+	T dirs[diramount] {};
+	
+	
+	constexpr static aevector<T, diramount> zero(){
+	    return aevector<T, diramount>{};
+	}
+	
+	T operator[](const long long index){
+	    return dirs[
+	           #ifdef AE_WRAP_VECTOR_DIMENSIONS
+	               index%(sizeof(dirs)/sizeof(dirs[0]))
+	           #else
+	               index
+	           #endif
+	                ];
+	}
+
+	bool operator==(const aevector& another){
+		if( (sizeof(this->dirs)/sizeof(this->dirs[0])) 
+		        != 
+		    (sizeof(another.dirs)/sizeof(another.dirs[0]))
+		  ){
+		    return false;
+		    
+		}
+		for(size_t i = 0; i < (sizeof(this->dirs)/sizeof(this->dirs[0])); i++){
+		    if(this->dirs[i] != another.dirs[i]){
+		        return false;
+		    }
+		}
+        return true;
+	}
+    
+    bool operator!=(const aevector& another){
+		return !(operator==(another));
+	}
+    
+	
+};
+
+
+
 #endif // !VECTORS_HPP
 

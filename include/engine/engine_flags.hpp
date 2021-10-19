@@ -76,6 +76,9 @@
 ///makes AELog to log system information on engine startup(or on first logger instance)
 #define AE_LOG_SYSTEM_INFO
 
+///if the dimension requested is bigger than was set, it will wrap around
+#define AE_WRAP_VECTOR_DIMENSIONS
+
 //undefine flags to turn them off
 
 //#undef AE_DEBUG
@@ -92,9 +95,11 @@
 #undef AE_GFX_ENABLE_WRAPPING
 #undef AE_GFX_ALWAYS_CLEAR_AFTER_DRAW
 //#undef AE_LOG_SYSTEM_INFO
+#undef AE_WRAP_VECTOR_DIMENSIONS
 
-//I know this is a crutch, but I don't want to add AE_DEBUG to the compiler settings, might break all of it
-#ifdef NDEBUG
+
+//I know this is a crutch, but for the sake of simplicity and easyness, its better to do it here than in compiler settings
+#ifdef NDEBUG 
 //remove if you want to test debug features in Release mode
 #undef AE_DEBUG
 
