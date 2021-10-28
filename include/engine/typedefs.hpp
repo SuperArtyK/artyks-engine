@@ -104,14 +104,10 @@ typedef std::chrono::time_point<std::chrono::steady_clock> steadytime;
 
 //custom types
 
-///long name for vector 2(int)
-typedef vec2int Vector2_int;
-///long name for vector 2(float)
-typedef vec2 Vector2;
-///long name for vector 3(int)
-typedef vec3int Vector3_int;
-///long name for vector 3(float)
-typedef vec3 Vector3;
+typedef aevector<int, 2> vec2int;
+typedef aevector<int, 3> vec3int;
+typedef aevector<float, 2> vec2float;
+typedef aevector<float, 3> vec3float;
 ///another name for the keystate
 typedef keystate AEKBKey;
 

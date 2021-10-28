@@ -89,6 +89,16 @@ namespace artyk::math {
 		return (num - num2) < _epsilon &&
 			   -(num - num2) < _epsilon;
 	}
+	///checks if given 2 doubles are equal, using epsilon(must not go further than float epsilon)
+	constexpr inline bool dequals(const double num, const double num2, const double _epsilon = std::numeric_limits<double>::epsilon()) {
+		return (num - num2) < _epsilon &&
+			-(num - num2) < _epsilon;
+	}
+	///checks if given 2 long doubles are equal, using epsilon(must not go further than float epsilon)
+	constexpr inline bool ldequals(const long double num, const long double num2, const long double _epsilon = std::numeric_limits<long double>::epsilon()) {
+		return (num - num2) < _epsilon &&
+			-(num - num2) < _epsilon;
+	}
 
 	///another sqrt implementation, useful when you need calculate sqrt for constexpr
 	constexpr float fsqrt(const float num)
@@ -97,6 +107,27 @@ namespace artyk::math {
 		while (!fequals(val[0], val[1])) {
 			val[1] = val[0];
 			val[0] = 0.5f * (val[0] + num / val[0]);
+		}
+		return val[1];
+	}
+
+	///another sqrt implementation, useful when you need calculate sqrt for constexpr
+	constexpr double dsqrt(const double num)
+	{
+		double val[2] = { num,0 };
+		while (!dequals(val[0], val[1])) {
+			val[1] = val[0];
+			val[0] = 0.5 * (val[0] + num / val[0]);
+		}
+		return val[1];
+	}
+	///another sqrt implementation, useful when you need calculate sqrt for constexpr
+	constexpr long double ldsqrt(const long double num)
+	{
+		long double val[2] = { num,0 };
+		while (!ldequals(val[0], val[1])) {
+			val[1] = val[0];
+			val[0] = 0.5L * (val[0] + num / val[0]);
 		}
 		return val[1];
 	}

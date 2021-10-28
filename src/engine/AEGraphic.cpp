@@ -241,10 +241,10 @@ void AEGraphic::setPixel(const vec2int& myvec2, const wchar_t mych, const smallu
 void AEGraphic::setPixel(const vec2int& myvec2, const CHAR_INFO& mych) {
 
 #ifdef AE_GFX_ENABLE_WRAPPING
-	m_currentbuffer[m_screensize.X * abs(myvec2.y % m_screensize.Y) + abs(myvec2.x % m_screensize.X)] = mych;
+	m_currentbuffer[m_screensize.X * abs(myvec2[1] % m_screensize.Y) + abs(myvec2[0] % m_screensize.X)] = mych;
 #else
-	if (myvec2.x >= 0 && myvec2.x < m_screensize.X && myvec2.y >= 0 && myvec2.y < m_screensize.Y) {
-		m_currentbuffer[m_screensize.X * myvec2.y + myvec2.x] = mych;
+	if (myvec2[0] >= 0 && myvec2[0] < m_screensize.X && myvec2[1] >= 0 && myvec2[1] < m_screensize.Y) {
+		m_currentbuffer[m_screensize.X * myvec2[1] + myvec2[0]] = mych;
 	}
 #endif // !AE_GFX_ENABLE_WRAPPING
 	//drawscreen();
@@ -254,8 +254,8 @@ void AEGraphic::setPixel(const vec2int& myvec2, const CHAR_INFO& mych) {
 void AEGraphic::fill(const vec2int& myvec2_1, const vec2int& myvec2_2, const CHAR_INFO& mych) {
 
 
-	for (short y = myvec2_1.y; y < myvec2_2.y; y++) {
-		for (short x = myvec2_1.x; x < myvec2_2.x; x++) {
+	for (short y = myvec2_1[1]; y < myvec2_2[1]; y++) {
+		for (short x = myvec2_1[0]; x < myvec2_2[0]; x++) {
 			setPixel(vec2int{ x,y }, mych);
 		}
 	}
@@ -267,8 +267,8 @@ void AEGraphic::fill(const vec2int& myvec2_1, const vec2int& myvec2_2, const wch
 
 
 void AEGraphic::fillRandom(const vec2int& myvec2_1, const vec2int& myvec2_2, const wchar_t mych) {
-	for (short y = myvec2_1.y; y < myvec2_2.y; y++) {
-		for (short x = myvec2_1.x; x < myvec2_2.x; x++) {
+	for (short y = myvec2_1[1]; y < myvec2_2[1]; y++) {
+		for (short x = myvec2_1[0]; x < myvec2_2[0]; x++) {
 			setPixel(vec2int{ x,y }, mych,rand());
 		}
 	}
@@ -277,8 +277,8 @@ void AEGraphic::fillRandom(const vec2int& myvec2_1, const vec2int& myvec2_2, con
 
 CHAR_INFO AEGraphic::getpixel(const vec2int& myvec2) const {
 
-	if (m_screendata && myvec2.x > 0 && myvec2.x < m_screensize.X && myvec2.y > 0 && myvec2.y < m_screensize.Y) {
-		return m_screendata[m_screensize.X * myvec2.y + myvec2.x];
+	if (m_screendata && myvec2[0] > 0 && myvec2[0] < m_screensize.X && myvec2[1] > 0 && myvec2[1] < m_screensize.Y) {
+		return m_screendata[m_screensize.X * myvec2[1] + myvec2[0]];
 	}
 	return artyk::gfx::PX_EMPTY;
 }
@@ -287,55 +287,55 @@ CHAR_INFO AEGraphic::getpixel(const vec2int& myvec2) const {
 //added only the vertical, horisontal and diagonal(45deg) lines
 void AEGraphic::drawLine(const vec2int& myvec2_1, const vec2int& myvec2_2, const CHAR_INFO& mych) {
 	
-	if (myvec2_1.x == myvec2_2.x && myvec2_1.y == myvec2_2.y) {
+	if (myvec2_1[0] == myvec2_2[0] && myvec2_1[1] == myvec2_2[1]) {
 		setPixel(myvec2_1, mych);
 		return;
 	}
 
 	const int
-		deltaX = abs(myvec2_2.x - myvec2_1.x),
-		deltaY = abs(myvec2_2.y - myvec2_1.y),
-		signX = myvec2_1.x < myvec2_2.x ? 1 : -1,
-		signY = myvec2_1.y < myvec2_2.y ? 1 : -1;
+		deltaX = abs(myvec2_2[0] - myvec2_1[0]),
+		deltaY = abs(myvec2_2[1] - myvec2_1[1]),
+		signX = myvec2_1[0] < myvec2_2[0] ? 1 : -1,
+		signY = myvec2_1[1] < myvec2_2[1] ? 1 : -1;
 	vec2int temp = myvec2_1;
 	if (deltaX == 0) {
 		for (int i = 0; i <= deltaY; i++) {
 			setPixel(temp, mych);
-			temp.y += signY;
+			temp[1] += signY;
 		}
 		return;
 	}
 	if (deltaY == 0) {
 		for (int i = 0; i <= deltaX; i++) {
 			setPixel(temp, mych);
-			temp.x += signX;
+			temp[0] += signX;
 		}
 		return;
 	}
 	if (deltaY == deltaX) {
 		for (int i = 0; i <= deltaX; i++) {
 			setPixel(temp, mych);
-			temp.x += signX;
-			temp.y += signY;
+			temp[0] += signX;
+			temp[1] += signY;
 		}
 		return;
 	}
 
 	int error = deltaX - deltaY;
 	setPixel(myvec2_2, mych);
-	while (temp.x != myvec2_2.x || temp.y != myvec2_2.y)
+	while (temp[0] != myvec2_2[0] || temp[1] != myvec2_2[1])
 	{
 		setPixel(temp, mych);
 		int error2 = error * 2;
 		if (error2 > -deltaY)
 		{
 			error -= deltaY;
-			temp.x += signX;
+			temp[0] += signX;
 		}
 		if (error2 < deltaX)
 		{
 			error += deltaX;
-			temp.y += signY;
+			temp[1] += signY;
 		}
 	}
 	
@@ -377,18 +377,18 @@ void AEGraphic::drawRegPoly(const vec2int& myvec2, const int radius, const int s
 	}
 	//or its a line
 	if (sideamount < 3) {
-		drawLine(vec2int{ myvec2.x, myvec2.y - radius }, vec2int{ myvec2.x, myvec2.y + radius }, mych);
+		drawLine(vec2int{ myvec2[0], myvec2[1] - radius }, vec2int{ myvec2[0], myvec2[1] + radius }, mych);
 		return;
 	}
 	const float angleincrement = 360.0f / sideamount;
 	vec2int pointpos;
 	vec2int prevpos{
-		artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(-90) * radius),
-		artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(-90) * radius)
+		artyk::math::roundtoint(myvec2[0] + artyk::math::cosdeg(-90) * radius),
+		artyk::math::roundtoint(myvec2[1] + artyk::math::sindeg(-90) * radius)
 	};
 	for (float i = -90 + angleincrement; i < 360; i += angleincrement) {
-		pointpos.x = artyk::math::roundtoint(myvec2.x + artyk::math::cosdeg(i) * radius);
-		pointpos.y = artyk::math::roundtoint(myvec2.y + artyk::math::sindeg(i) * radius);
+		pointpos[0] = artyk::math::roundtoint(myvec2[0] + artyk::math::cosdeg(i) * radius);
+		pointpos[1] = artyk::math::roundtoint(myvec2[1] + artyk::math::sindeg(i) * radius);
 		drawLine(pointpos, prevpos, mych);
 		prevpos = pointpos;
 	}
@@ -411,31 +411,31 @@ void AEGraphic::drawCircle(const vec2int& myvec2, const int radius, const CHAR_I
 
 		//crosshair without middle dot
 	case 1:
-		setPixel({ myvec2.x - 1, myvec2.y }, mych);
-		setPixel({ myvec2.x + 1, myvec2.y }, mych);
-		setPixel({ myvec2.x, myvec2.y - 1 }, mych);
-		setPixel({ myvec2.x, myvec2.y + 1 }, mych);
+		setPixel({ myvec2[0] - 1, myvec2[1] }, mych);
+		setPixel({ myvec2[0] + 1, myvec2[1] }, mych);
+		setPixel({ myvec2[0], myvec2[1] - 1 }, mych);
+		setPixel({ myvec2[0], myvec2[1] + 1 }, mych);
 		return;
 		break;
 
 		//5x5 square without corner pixels
 	case 2:
 		//top line
-		setPixel({ myvec2.x - 1, myvec2.y - 2 }, mych);
-		setPixel({ myvec2.x, myvec2.y - 2 }, mych);
-		setPixel({ myvec2.x + 1, myvec2.y - 2 }, mych);
+		setPixel({ myvec2[0] - 1, myvec2[1] - 2 }, mych);
+		setPixel({ myvec2[0], myvec2[1] - 2 }, mych);
+		setPixel({ myvec2[0] + 1, myvec2[1] - 2 }, mych);
 		//bottom line
-		setPixel({ myvec2.x - 1, myvec2.y + 2 }, mych);
-		setPixel({ myvec2.x, myvec2.y + 2 }, mych);
-		setPixel({ myvec2.x + 1, myvec2.y + 2 }, mych);
+		setPixel({ myvec2[0] - 1, myvec2[1] + 2 }, mych);
+		setPixel({ myvec2[0], myvec2[1] + 2 }, mych);
+		setPixel({ myvec2[0] + 1, myvec2[1] + 2 }, mych);
 		//left line
-		setPixel({ myvec2.x - 2, myvec2.y - 1 }, mych);
-		setPixel({ myvec2.x - 2, myvec2.y}, mych);
-		setPixel({ myvec2.x - 2, myvec2.y + 1 }, mych);
+		setPixel({ myvec2[0] - 2, myvec2[1] - 1 }, mych);
+		setPixel({ myvec2[0] - 2, myvec2[1]}, mych);
+		setPixel({ myvec2[0] - 2, myvec2[1] + 1 }, mych);
 		//right line
-		setPixel({ myvec2.x + 2, myvec2.y - 1 }, mych);
-		setPixel({ myvec2.x + 2, myvec2.y }, mych);
-		setPixel({ myvec2.x + 2, myvec2.y + 1 }, mych);
+		setPixel({ myvec2[0] + 2, myvec2[1] - 1 }, mych);
+		setPixel({ myvec2[0] + 2, myvec2[1] }, mych);
+		setPixel({ myvec2[0] + 2, myvec2[1] + 1 }, mych);
 		return;
 		break;
 	default:
@@ -445,14 +445,14 @@ void AEGraphic::drawCircle(const vec2int& myvec2, const int radius, const CHAR_I
 		int error;
 
 		while (y >= x) {
-			setPixel({ myvec2.x + x, myvec2.y + y }, mych);
-			setPixel({ myvec2.x + x, myvec2.y - y }, mych);
-			setPixel({ myvec2.x - x, myvec2.y + y }, mych);
-			setPixel({ myvec2.x - x, myvec2.y - y }, mych);
-			setPixel({ myvec2.x + y, myvec2.y + x }, mych);
-			setPixel({ myvec2.x + y, myvec2.y - x }, mych);
-			setPixel({ myvec2.x - y, myvec2.y + x }, mych);
-			setPixel({ myvec2.x - y, myvec2.y - x }, mych);
+			setPixel({ myvec2[0] + x, myvec2[1] + y }, mych);
+			setPixel({ myvec2[0] + x, myvec2[1] - y }, mych);
+			setPixel({ myvec2[0] - x, myvec2[1] + y }, mych);
+			setPixel({ myvec2[0] - x, myvec2[1] - y }, mych);
+			setPixel({ myvec2[0] + y, myvec2[1] + x }, mych);
+			setPixel({ myvec2[0] + y, myvec2[1] - x }, mych);
+			setPixel({ myvec2[0] - y, myvec2[1] + x }, mych);
+			setPixel({ myvec2[0] - y, myvec2[1] - x }, mych);
 			error = 2 * (delta + y) - 1;
 			if ((delta < 0) && (error <= 0)) {
 				delta += 2 * ++x + 1;

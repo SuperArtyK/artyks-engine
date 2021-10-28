@@ -33,7 +33,7 @@
   ///enables the debug features
 #define AE_DEBUG
 
-///enables global modules
+///\brief enables global modules
 ///the global_timer and global_focusScanner don't apply to that
 #define AE_GLOBALMODULE
 
@@ -59,7 +59,7 @@
 ///AEFrame delay in AEBeep playing thread
 #define AE_BP_DELAY
 
-///utilises the AEDebugInfo, currently used in message functions
+///\brief utilises the AEDebugInfo, currently used in message functions
 ///good for debugging
 ///@see engine_messagebox.hpp
 #define AE_DETAILED_WINDOW_MESSAGES "\nLine: " + to_string(dbg.line) + "\nFile: " + dbg.currentfile + "\nCompile Date: " + dbg.compiledate + "\nCompile Time: " + dbg.compiletime + "\nFunction: " + dbg.compilefunc
@@ -77,7 +77,11 @@
 #define AE_LOG_SYSTEM_INFO
 
 ///if the dimension requested is bigger than was set, it will wrap around
-#define AE_WRAP_VECTOR_DIMENSIONS
+#define AE_VECTOR_WRAP_DIMENSIONS
+
+
+
+
 
 //undefine flags to turn them off
 
@@ -95,7 +99,7 @@
 #undef AE_GFX_ENABLE_WRAPPING
 #undef AE_GFX_ALWAYS_CLEAR_AFTER_DRAW
 //#undef AE_LOG_SYSTEM_INFO
-#undef AE_WRAP_VECTOR_DIMENSIONS
+#undef AE_VECTOR_WRAP_DIMENSIONS
 
 
 //I know this is a crutch, but for the sake of simplicity and easyness, its better to do it here than in compiler settings

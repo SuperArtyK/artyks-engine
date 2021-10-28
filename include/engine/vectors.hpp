@@ -28,239 +28,87 @@
 #ifndef VECTORS_HPP
 #define VECTORS_HPP
 
-#include <cmath>
-#include <limits>
-
- ///2d integer vector type
-struct vec2int
-{
-
-	int x;
-	int y;
-
-	///returns magnitude of a vector
-	inline float magnitude() const {
-		return sqrtf(x * x + y * y);
-	}
-
-	///returns zeroed vector
-	constexpr static inline vec2int zero() {
-		return { 0,0 };
-	}
-
-};
-
-
-///2d (float) vector type
-struct vec2
-{
-	float x;
-	float y;
-
-	///returns magnitude of a vector
-	inline float magnitude() const {
-		return sqrtf(x * x + y * y);
-	}
-
-	///returns zeroed vector
-	constexpr static inline vec2 zero() {
-		return { 0.0f,0.0f };
-	}
-};
-
-///3d integer vector type
-struct vec3int
-{
-	int x;
-	int y;
-	int z;
-
-	///returns magnitude of a vector
-	inline float magnitude() const {
-		return sqrtf(x * x + y * y + z * z);
-	}
-
-	///returns zeroed vector
-	constexpr static inline vec3int zero() {
-		return { 0,0,0 };
-	}
-};
-
-///3d (float) vector type
-struct vec3
-{
-	float x;
-	float y;
-	float z;
-
-
-	///returns magnitude of a vector
-	inline float magnitude() const {
-		return sqrtf(x * x + y * y + z * z);
-	}
-
-	///returns zeroed vector
-	constexpr static inline vec3 zero() {
-		return { 0.0f, 0.0f, 0.0f };
-	}
-};
-
-///converts given vec2 to vec2int(narrowing conversion)
-inline vec2int tovec2int(const vec2& val) {
-	return { (int)val.x, (int)val.y };
-}
-
-///converts given vec2int to vec2(narrowing conversion as well, due to float's mantissa)
-inline vec2 tovec2(const vec2int& val) {
-	return  { (float)val.x, (float)val.y };
-}
-
-///converts given vec3 to vec3int(narrowing conversion)
-inline vec3int tovec3int(const vec3& val) {
-	return { (int)val.x, (int)val.y, (int)val.z };
-}
-
-///converts given vec3int to vec3(narrowing conversion as well, due to float's mantissa)
-inline vec3 tovec3(const vec3int& val) {
-	return  { (float)val.x, (float)val.y, (float)val.z };
-}
-
-///converts given vec3 to vec2(z value is discared)
-inline vec2 vec3tovec2(const vec3& val) {
-	return { val.x,val.y };
-}
-
-///converts given vec2 to vec3(z value is zeroed)
-inline vec3 vec2tovec3(const vec2& val) {
-	return { val.x,val.y,0.0f };
-}
-
-///converts given vec3int to vec2int(z value is discared)
-inline vec2int vec3tovec2_int(const vec3int& val) {
-	return { val.x,val.y };
-}
-
-///converts given vec2int to vec3int(z value is zeroed)
-inline vec3int vec2tovec3_int(const vec2int& val) {
-	return { val.x,val.y,0 };
-}
-
-/// <summary>
-/// compares 2 vectors and returns bool as result
-/// </summary>
-/// @note the compiler will return an error if you will pass anything else than vectors in first 2 arguments
-/// <typeparam name="A">vector type of first vector</typeparam>
-/// <typeparam name="B">vector type of second vector</typeparam>
-/// <param name="_vec1">vector 1</param>
-/// <param name="_vec2">vector 2</param>
-/// <param name="comptype">compare type: 0 </param>
-/// <param name="_epsilon">epsilon to compare against, should not be bigger than float epsilon( std::numeric_limits<float>::epsilon() )</param>
-/// <returns></returns>
-template<typename A, typename B>
-inline bool comparevec(const A& _vec1, const B& _vec2, const int comptype, const float _epsilon = std::numeric_limits<float>::epsilon()) {
-	static_assert(
-		(std::is_same<A, vec2>::value || std::is_same<A, vec2int>::value) ||
-		(std::is_same<B, vec2>::value || std::is_same<B, vec2int>::value) ||
-		(std::is_same<A, vec3>::value || std::is_same<A, vec3int>::value) ||
-		(std::is_same<B, vec3>::value || std::is_same<B, vec3int>::value)
-		, "[engine]: comparevec: You cannot use non-vector here.");
-
-
-	const float diff1 = _vec1.x - _vec2.x;
-	const float diff2 = _vec1.y - _vec2.y;
-	float diff3;
-	if constexpr ((std::is_same<A, vec3>::value || std::is_same<A, vec3int>::value) && (std::is_same<B, vec3>::value || std::is_same<B, vec3int>::value)) {
-		diff3 = _vec1.z - _vec2.z;
-	}
-	else {
-		diff3 = diff2;
-	}
-	switch (comptype)
-	{
-		//equality
-	case 0:
-		return (diff1 < _epsilon && -diff1 < _epsilon) && (diff2 < _epsilon && -diff2 < _epsilon) && (diff3 < _epsilon && -diff3 < _epsilon);
-		break;
-
-		//not-equality
-	case 1:
-		return (diff1 > _epsilon || -diff1 > _epsilon) || (diff2 > _epsilon || -diff2 > _epsilon) || (diff3 > _epsilon || -diff3 > _epsilon);
-		break;
-
-		//less than
-	case 2:
-		return (diff1 < -_epsilon) || (diff2 < -_epsilon) || (diff3 < -_epsilon);
-		break;
-
-		//more than
-	case 3:
-		return (diff1 > _epsilon) || (diff2 > _epsilon) || (diff3 > _epsilon);
-		break;
-
-		//less than or equals to
-	case 4:
-		return (diff1 <= _epsilon) && (diff2 <= _epsilon) && (diff3 <= _epsilon);
-		break;
-
-		//more than
-	case 5:
-		return (diff1 >= 0) && (diff2 >= 0) && (diff3 >= 0);
-		break;
-
-	default:
-		return false;
-		break;
-	}
-}
-
-
-
+#include "engine_math.hpp"
 
 
 template<typename T, const unsigned int diramount>
+/// <summary>
+/// The Vector type for engine
+/// </summary>
+/// <typeparam name="T">data type used for the </typeparam>
 struct aevector{
     
     
-    
-	T dirs[diramount] {};
+    ///dimensions of a vector
+	T dims[diramount] {};
 	
-	
+	///returns zero'ed vector
 	constexpr static aevector<T, diramount> zero(){
 	    return aevector<T, diramount>{};
 	}
-	
-	T operator[](const long long index){
-	    return dirs[
-	           #ifdef AE_WRAP_VECTOR_DIMENSIONS
-	               index%(sizeof(dirs)/sizeof(dirs[0]))
+
+	///returns magnitude of a vector
+	constexpr long double magnitude() const {
+		long double	 temp = 0;
+		for (size_t i = 0; i < (sizeof(this->dims)/sizeof(this->dims[0]));i++) {
+			temp += this->dims[i] * this->dims[i];
+		}
+		
+		return artyk::math::ldsqrt(temp);
+	}
+
+	///\brief returns vector's dimension, non const accessor.
+	///It is more convenient to use that(sometimes) instead of the aevector::dims[]
+	constexpr T& operator[](const long long index){
+	    return this->dims[
+	           #ifdef AE_VECTOR_WRAP_DIMENSIONS
+	               index%(sizeof(dims)/sizeof(dims[0]))
 	           #else
 	               index
 	           #endif
 	                ];
 	}
 
-	bool operator==(const aevector& another){
-		if( (sizeof(this->dirs)/sizeof(this->dirs[0])) 
+	///\brief returns vector's dimension, const accessor.
+	///It is more convenient to use that(sometimes) instead of the aevector::dims[]
+	constexpr const T& operator[](const long long index) const {
+		return this->dims[
+#ifdef AE_VECTOR_WRAP_DIMENSIONS
+			index % (sizeof(dims) / sizeof(dims[0]))
+#else
+			index
+#endif
+		];
+	}
+
+	///checks if the vectors are equal
+	constexpr bool operator==(const aevector& another) const {
+		if( (sizeof(this->dims)/sizeof(this->dims[0])) 
 		        != 
-		    (sizeof(another.dirs)/sizeof(another.dirs[0]))
+		    (sizeof(another.dims)/sizeof(another.dims[0]))
 		  ){
 		    return false;
 		    
 		}
-		for(size_t i = 0; i < (sizeof(this->dirs)/sizeof(this->dirs[0])); i++){
-		    if(this->dirs[i] != another.dirs[i]){
+		for(size_t i = 0; i < (sizeof(this->dims)/sizeof(this->dims[0])); i++){
+		    if(this->dims[i] != another.dims[i]){
 		        return false;
 		    }
 		}
         return true;
 	}
     
-    bool operator!=(const aevector& another){
+	///checks if the vectors are not equal
+	constexpr bool operator!=(const aevector& another) const {
 		return !(operator==(another));
 	}
     
+
+
 	
 };
+
+
 
 
 

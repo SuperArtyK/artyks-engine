@@ -184,7 +184,10 @@ int main()
 	artyk::utils::waitfortick();
 	myscr.settitle("Done!");
 	Sleep(100);
-
+	constexpr aevector<int, 2> tmp = { 23,3 };
+	constexpr double temp2 = tmp.magnitude();
+	vector<int> a;
+	
 
 	CONSOLE_SCREEN_BUFFER_INFOEX g_normal_color;
 	g_normal_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
