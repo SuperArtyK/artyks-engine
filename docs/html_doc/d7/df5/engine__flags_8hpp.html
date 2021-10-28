@@ -135,7 +135,7 @@ Macros</h2></td></tr>
 <tr class="memdesc:af3211e085963198f30bdeba51c2df418"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../df/dd7/class_a_e_frame.html" title="This module is used for creating delays(in FPS format) in the engine.">AEFrame</a> delay in <a class="el" href="../../d1/d1e/class_a_e_beep.html" title="This module is for simple sine wave beeping.">AEBeep</a> playing thread.  <a href="../../d7/df5/engine__flags_8hpp.html#af3211e085963198f30bdeba51c2df418">More...</a><br /></td></tr>
 <tr class="separator:af3211e085963198f30bdeba51c2df418"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08ffadb4c070d21b8f25de46a6cf37e5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/df5/engine__flags_8hpp.html#a08ffadb4c070d21b8f25de46a6cf37e5">AE_DETAILED_WINDOW_MESSAGES</a>&#160;&#160;&#160;&quot;\nLine: &quot; + to_string(dbg.line) + &quot;\nFile: &quot; + dbg.currentfile + &quot;\nCompile Date: &quot; + dbg.compiledate + &quot;\nCompile Time: &quot; + dbg.compiletime + &quot;\nFunction: &quot; + dbg.compilefunc</td></tr>
-<tr class="memdesc:a08ffadb4c070d21b8f25de46a6cf37e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">utilises the <a class="el" href="../../de/d9b/struct_a_e_debug_info.html" title="This struct is used for collecting and using in-place debug info.">AEDebugInfo</a>, currently used in message functions good for debugging  <a href="../../d7/df5/engine__flags_8hpp.html#a08ffadb4c070d21b8f25de46a6cf37e5">More...</a><br /></td></tr>
+<tr class="memdesc:a08ffadb4c070d21b8f25de46a6cf37e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">utilises the <a class="el" href="../../de/d9b/struct_a_e_debug_info.html" title="This struct is used for collecting and using in-place debug info.">AEDebugInfo</a>, currently used in message functions.  <a href="../../d7/df5/engine__flags_8hpp.html#a08ffadb4c070d21b8f25de46a6cf37e5">More...</a><br /></td></tr>
 <tr class="separator:a08ffadb4c070d21b8f25de46a6cf37e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4128e79a042de7300f033df27635bd45"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/df5/engine__flags_8hpp.html#a4128e79a042de7300f033df27635bd45">AE_GLOBALKB_ENABLE_MOUSE</a></td></tr>
 <tr class="memdesc:a4128e79a042de7300f033df27635bd45"><td class="mdescLeft">&#160;</td><td class="mdescRight">enable mouse scanning in the global_keyboard module  <a href="../../d7/df5/engine__flags_8hpp.html#a4128e79a042de7300f033df27635bd45">More...</a><br /></td></tr>
@@ -149,6 +149,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a80e473e66c9ca96cd2d863325515ada2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/df5/engine__flags_8hpp.html#a80e473e66c9ca96cd2d863325515ada2">AE_LOG_SYSTEM_INFO</a></td></tr>
 <tr class="memdesc:a80e473e66c9ca96cd2d863325515ada2"><td class="mdescLeft">&#160;</td><td class="mdescRight">makes <a class="el" href="../../df/d59/class_a_e_log.html" title="This module implements logging as much as you will probably need.">AELog</a> to log system information on engine startup(or on first logger instance)  <a href="../../d7/df5/engine__flags_8hpp.html#a80e473e66c9ca96cd2d863325515ada2">More...</a><br /></td></tr>
 <tr class="separator:a80e473e66c9ca96cd2d863325515ada2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a383c9163e8e51886c16dba6217ca8932"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/df5/engine__flags_8hpp.html#a383c9163e8e51886c16dba6217ca8932">AE_VECTOR_WRAP_DIMENSIONS</a></td></tr>
+<tr class="memdesc:a383c9163e8e51886c16dba6217ca8932"><td class="mdescLeft">&#160;</td><td class="mdescRight">if the dimension requested is bigger than was set, it will wrap around  <a href="../../d7/df5/engine__flags_8hpp.html#a383c9163e8e51886c16dba6217ca8932">More...</a><br /></td></tr>
+<tr class="separator:a383c9163e8e51886c16dba6217ca8932"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file contains engine flags that are used to alter it's code and behaviour. </p>
@@ -330,8 +333,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>utilises the <a class="el" href="../../de/d9b/struct_a_e_debug_info.html" title="This struct is used for collecting and using in-place debug info.">AEDebugInfo</a>, currently used in message functions good for debugging </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d9/dbb/engine__messagebox_8hpp.html" title="This file contains functions for system message box creating.">engine_messagebox.hpp</a> </dd></dl>
+<p>utilises the <a class="el" href="../../de/d9b/struct_a_e_debug_info.html" title="This struct is used for collecting and using in-place debug info.">AEDebugInfo</a>, currently used in message functions. </p>
+<p>good for debugging </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="../../d9/dbb/engine__messagebox_8hpp.html" title="This file contains functions for system message box creating.">engine_messagebox.hpp</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="../../d7/df5/engine__flags_8hpp_source.html#l00065">65</a> of file <a class="el" href="../../d7/df5/engine__flags_8hpp_source.html">engine_flags.hpp</a>.</p>
 
@@ -406,6 +409,24 @@ Macros</h2></td></tr>
 <p>makes <a class="el" href="../../df/d59/class_a_e_log.html" title="This module implements logging as much as you will probably need.">AELog</a> to log system information on engine startup(or on first logger instance) </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d7/df5/engine__flags_8hpp_source.html#l00077">77</a> of file <a class="el" href="../../d7/df5/engine__flags_8hpp_source.html">engine_flags.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a383c9163e8e51886c16dba6217ca8932"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a383c9163e8e51886c16dba6217ca8932">&#9670;&nbsp;</a></span>AE_VECTOR_WRAP_DIMENSIONS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AE_VECTOR_WRAP_DIMENSIONS</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>if the dimension requested is bigger than was set, it will wrap around </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/df5/engine__flags_8hpp_source.html#l00080">80</a> of file <a class="el" href="../../d7/df5/engine__flags_8hpp_source.html">engine_flags.hpp</a>.</p>
 
 </div>
 </div>

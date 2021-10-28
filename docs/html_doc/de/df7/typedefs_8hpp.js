@@ -26,9 +26,9 @@ var typedefs_8hpp =
     [ "systime", "de/df7/typedefs_8hpp.html#aeac8b2d17bf802384a692730834be01c", null ],
     [ "highrestime", "de/df7/typedefs_8hpp.html#a71b2f25ee4702a7cabe99ef01bb24b79", null ],
     [ "steadytime", "de/df7/typedefs_8hpp.html#ab57fe1de92976c115f560283ace22d27", null ],
-    [ "Vector2_int", "de/df7/typedefs_8hpp.html#ad4748074c222f5852dca918e29792191", null ],
-    [ "Vector2", "de/df7/typedefs_8hpp.html#a06ee9703468d3e044a7ca289dfbbad35", null ],
-    [ "Vector3_int", "de/df7/typedefs_8hpp.html#adb9b10b984e95615c5af10edc9fa6974", null ],
-    [ "Vector3", "de/df7/typedefs_8hpp.html#a38f15714e63c0a43bb6921c6ef985525", null ],
+    [ "vec2int", "de/df7/typedefs_8hpp.html#aeaf2f57b8247843b5d75164bf7f004a6", null ],
+    [ "vec3int", "de/df7/typedefs_8hpp.html#a6346ff8a591910a1b432b024da963491", null ],
+    [ "vec2float", "de/df7/typedefs_8hpp.html#afc42c42399a46ca12bae0bba72a70e04", null ],
+    [ "vec3float", "de/df7/typedefs_8hpp.html#aa2f53fd100ab1152108d6cbccbb34c2d", null ],
     [ "AEKBKey", "de/df7/typedefs_8hpp.html#abe2e3cc701a704f4250d03f0a664e329", null ]
 ];

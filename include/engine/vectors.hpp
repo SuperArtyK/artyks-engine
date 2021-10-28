@@ -47,14 +47,20 @@ struct aevector{
 	    return aevector<T, diramount>{};
 	}
 
-	///returns magnitude of a vector
+	///\brief same as aevector::length(), but differently named.
+	///returns magnitude/length of a vector
 	constexpr long double magnitude() const {
-		long double	 temp = 0;
+		long double	temp = 0;
 		for (size_t i = 0; i < (sizeof(this->dims)/sizeof(this->dims[0]));i++) {
 			temp += this->dims[i] * this->dims[i];
 		}
 		
 		return artyk::math::ldsqrt(temp);
+	}
+	///\brief same as aevector::magnitude(), but differently named.
+	///returns magnitude/length of a vector
+	constexpr long double length() const {
+		return aevector::magnitude();
 	}
 
 	///\brief returns vector's dimension, non const accessor.

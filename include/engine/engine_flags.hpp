@@ -59,7 +59,7 @@
 ///AEFrame delay in AEBeep playing thread
 #define AE_BP_DELAY
 
-///\brief utilises the AEDebugInfo, currently used in message functions
+///\brief utilises the AEDebugInfo, currently used in message functions.
 ///good for debugging
 ///@see engine_messagebox.hpp
 #define AE_DETAILED_WINDOW_MESSAGES "\nLine: " + to_string(dbg.line) + "\nFile: " + dbg.currentfile + "\nCompile Date: " + dbg.compiledate + "\nCompile Time: " + dbg.compiletime + "\nFunction: " + dbg.compilefunc

@@ -12,9 +12,6 @@ var hierarchy =
     [ "AEPalette", "db/d22/class_a_e_palette.html", null ],
     [ "AESleep", "d0/d3a/class_a_e_sleep.html", null ],
     [ "AETimer", "da/d62/class_a_e_timer.html", null ],
-    [ "keystate", "d9/dd3/structkeystate.html", null ],
-    [ "vec2", "d4/df1/structvec2.html", null ],
-    [ "vec2int", "d1/d61/structvec2int.html", null ],
-    [ "vec3", "d9/de4/structvec3.html", null ],
-    [ "vec3int", "d3/d87/structvec3int.html", null ]
+    [ "aevector< T, diramount >", "da/dad/structaevector.html", null ],
+    [ "keystate", "d9/dd3/structkeystate.html", null ]
 ];

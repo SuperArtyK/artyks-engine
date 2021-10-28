@@ -29,5 +29,7 @@ var dir_b88c7ceb451bba20dc7216ca9e1270e9 =
     [ "includeall.hpp", "d6/dea/includeall_8hpp.html", null ],
     [ "trig_lookup.hpp", "d4/d95/trig__lookup_8hpp.html", null ],
     [ "typedefs.hpp", "de/df7/typedefs_8hpp.html", "de/df7/typedefs_8hpp" ],
-    [ "vectors.hpp", "d0/d80/vectors_8hpp.html", "d0/d80/vectors_8hpp" ]
+    [ "vectors.hpp", "d0/d80/vectors_8hpp.html", [
+      [ "aevector", "da/dad/structaevector.html", "da/dad/structaevector" ]
+    ] ]
 ];

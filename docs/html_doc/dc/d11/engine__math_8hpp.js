@@ -11,6 +11,10 @@ var engine__math_8hpp =
     [ "roundtobigint", "dc/d11/engine__math_8hpp.html#adea055c730c2fe4a58cd8afd97b1af6c", null ],
     [ "absval", "dc/d11/engine__math_8hpp.html#a861295e05311a31113391fbb19e9494c", null ],
     [ "fequals", "dc/d11/engine__math_8hpp.html#abbe339a1a8db9edcd4ba702786a90c6c", null ],
+    [ "dequals", "dc/d11/engine__math_8hpp.html#a7840ae33bfaf1f4457c1130115c243c1", null ],
+    [ "ldequals", "dc/d11/engine__math_8hpp.html#a367045615ca910f864d87a39e500a221", null ],
     [ "fsqrt", "dc/d11/engine__math_8hpp.html#ab9870ecda9eec21a87ac459841705d32", null ],
+    [ "dsqrt", "dc/d11/engine__math_8hpp.html#a0abcb002f7ef1b188c91fbb054ba9619", null ],
+    [ "ldsqrt", "dc/d11/engine__math_8hpp.html#a4b6fc34568f8212fbcb4982380587984", null ],
     [ "PI", "dc/d11/engine__math_8hpp.html#a1f9a9c45f48040f14b980699e45d8d05", null ]
 ];

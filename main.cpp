@@ -185,7 +185,7 @@ int main()
 	myscr.settitle("Done!");
 	Sleep(100);
 	constexpr aevector<int, 2> tmp = { 23,3 };
-	constexpr double temp2 = tmp.magnitude();
+	constexpr double temp2 = tmp.length();
 	vector<int> a;
 	
 
