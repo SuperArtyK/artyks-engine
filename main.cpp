@@ -18,8 +18,8 @@
 */
 
 /** @file main.cpp
- *  This file is the main file of the engine, has main().  
- *  Should not cause everything to break.  
+ *  This file is the main file of the engine, has main().
+ *  Should not cause everything to break.
  */
 
 #define WINVER 0x0601 
@@ -58,115 +58,13 @@ short screenx = 128, screeny = 128, fontw = 5, fonth = 5;
 
 
 
-namespace artyk::color {
-	constexpr uint rgbtoint(const smalluint r, const smalluint g, const smalluint b) {
-		return uint(r | (g << 8) | (b << 16));
-	}
-	constexpr std::array<smalluint, 3> inttorgb(const uint rgbint) {
-		return std::array<smalluint, 3>{smalluint(rgbint), smalluint(rgbint >> 8), smalluint(rgbint >> 16)};
-	}
 
-	constexpr uint invertcolor(const uint rgb) {
-		return (~rgb << 8) >> 8;
-	}
-}
-
-
-class AEPalette {
-public:
-
-
-	/// <summary>
-	/// Class constructor
-	/// </summary>
-	/// <param name="palette">Palette color array to set. Leave blank for default engine palette to be applied</param>
-	AEPalette(const std::array<uint, 16>& palette = cp_default) {
-		for (int i = 0; i < 16; i++) {
-			colorpal[i] = palette[i];
-		}
-	}
-	///returns rgb value of color from given color number in palette
-	uint getcolor(const smalluint colornum) const {
-		return colorpal[colornum];
-	}
-	
-	///sets color in palette to certain rgb value
-	void setcolor(const smalluint colornum, const uint col) {
-		colorpal[colornum] = col;
-	}
-
-	std::array<uint, 16> getpalette(const smalluint tpe = 0) const {
-		switch (tpe)
-		{
-		case 1:
-			return cp_default;
-			break;
-
-		case 2:
-			return cp_conclassic;
-			break;
-
-		default:
-			return colorpal;
-			break;
-		}
-	}
-	
-
-private:
-	///default engine palette
-	constexpr static std::array<uint, 16> cp_default{
-		//dark
-		artyk::color::rgbtoint(0,   0,   0),  //black 
-		artyk::color::rgbtoint(0,   0,   128),//blue  
-		artyk::color::rgbtoint(0,   128, 0),  //green 
-		artyk::color::rgbtoint(0,   128, 128),//cyan  
-		artyk::color::rgbtoint(128, 0,   0),  //red   
-		artyk::color::rgbtoint(128, 0,   128),//violet
-		artyk::color::rgbtoint(128, 128, 0),  //yellow
-		artyk::color::rgbtoint(172, 172, 172),//white 
-		//light
-		artyk::color::rgbtoint(86,  86,  86), //black 
-		artyk::color::rgbtoint(0,   0,   255),//blue  
-		artyk::color::rgbtoint(0,   255, 0),  //green 
-		artyk::color::rgbtoint(0,   255, 255),//cyan  
-		artyk::color::rgbtoint(255, 0,   0),  //red   
-		artyk::color::rgbtoint(255, 0,   255),//violet
-		artyk::color::rgbtoint(255, 208, 0),  //yellow
-		artyk::color::rgbtoint(255, 255, 255),//white 
-	};
-	///classic console palette
-	constexpr static std::array<uint, 16> cp_conclassic{
-		//dark
-		artyk::color::rgbtoint(12,  12,  12), //black 
-		artyk::color::rgbtoint(0,   55,  218),//blue  
-		artyk::color::rgbtoint(19,  161, 14), //green 
-		artyk::color::rgbtoint(58,  150, 221),//cyan  
-		artyk::color::rgbtoint(197, 15,  31), //red   
-		artyk::color::rgbtoint(136, 23,  152),//violet
-		artyk::color::rgbtoint(193, 156, 0),  //yellow
-		artyk::color::rgbtoint(204, 204, 204),//white 
-		//light
-		artyk::color::rgbtoint(118, 118, 118),//black 
-		artyk::color::rgbtoint(59,  120, 255),//blue  
-		artyk::color::rgbtoint(22,  198, 12), //green 
-		artyk::color::rgbtoint(97,  214, 214),//cyan  
-		artyk::color::rgbtoint(231, 72,  86), //red   
-		artyk::color::rgbtoint(180, 0,   158),//violet
-		artyk::color::rgbtoint(249, 241, 165),//yellow
-		artyk::color::rgbtoint(242, 242, 242),//white 
-	};
-
-	///color pallete of 16 colors
-	std::array<uint, 16> colorpal;
-
-};
 
 
 int main()
 {
 	artyk::init_main(true, true, false);
-//your code goes below...
+	//your code goes below...
 	int i = 0;
 	int previ = 0;
 	systime timestart = getsystime;
@@ -177,41 +75,57 @@ int main()
 	AEScreen myscr;
 	AEFrame myfr(100);
 	AEKeyboard mykb;
+	AEPalette mypl({
+		0,
+		artyk::color::rgbtoint(15,15,15),
+		artyk::color::rgbtoint(30,30,30),
+		artyk::color::rgbtoint(45,45,45),
+		artyk::color::rgbtoint(60,60,60),
+		artyk::color::rgbtoint(75,75,75),
+		artyk::color::rgbtoint(90,90,90),
+		artyk::color::rgbtoint(105,105,105),
+		artyk::color::rgbtoint(120,120,120),
+		artyk::color::rgbtoint(135,135,135),
+		artyk::color::rgbtoint(150,150,150),
+		artyk::color::rgbtoint(165,165,165),
+		artyk::color::rgbtoint(180,180,180),
+		artyk::color::rgbtoint(195,195,195),
+		artyk::color::rgbtoint(210,210,210),
+		artyk::color::rgbtoint(225,225,225),
+		});
 	//AEGraphic mygx(screenx, screeny, fonth, fontw);
 	AESleep myd;
-	smalluint color = 3;
-	myscr.settitle("Setting up...");
+	smalluint color = 0;
+	myscr.setTitle("Setting up...");
 	artyk::utils::waitfortick();
-	myscr.settitle("Done!");
+	myscr.setTitle("Done!");
 	Sleep(100);
-	constexpr aevector<int, 2> tmp = { 23,3 };
-	constexpr double temp2 = tmp.length();
-	vector<int> a;
-	
 
-	CONSOLE_SCREEN_BUFFER_INFOEX g_normal_color;
-	g_normal_color.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
-	GetConsoleScreenBufferInfoEx(artyk::g_output_handle, &g_normal_color);
 
-	cout << "\n" << g_normal_color.dwSize.X << " " << g_normal_color.dwSize.Y << "\n";
-
-	for (int i = 0; i < 16; i++) {
-		myscr.setcolor_con(0, i);
-		cout << (int)((unsigned char*)&g_normal_color.ColorTable[i])[0] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[1] << " " << (int)((unsigned char*)&g_normal_color.ColorTable[i])[2] << " " << endl;
+	char text[] = "Lorem ipsum sor sit amet...";
+	for (int a = 0; a < arrsize(text); a++) {
+		myscr.setColor(0, a & 0xF);
+		cout << text[a];
 	}
-	SetConsoleScreenBufferInfoEx(artyk::g_output_handle, &g_normal_color);
 
-	for (;;){
+	myscr.setColorPalette(mypl.getpalette(0));
+	for (;;) {
+
+
+
+		myd.sleep(100);
+
+
 
 		timeend = getsystime;
-		fElapsedTime = calculatetime(timestart,timeend);
+		fElapsedTime = calculatetime(timestart, timeend);
 		if (fElapsedTime > 1.0f) {
 			fps = i - previ;
 			previ = i;
 			timestart = timeend;
 
 			//mybp.makesound_async(660, 200);
-			myscr.settitle("GFX FPS: " + to_string(AEGraphic::getfps()) + "|GAME FPS: " + to_string(fps));
+			myscr.setTitle("GFX FPS: " + to_string(AEGraphic::getfps()) + "|GAME FPS: " + to_string(fps));
 
 
 		}
@@ -221,7 +135,7 @@ int main()
 	}
 
 	artyk::closing_app = 1;
-	
+
 	//cout << "\nPress enter to continue . . .\n";
 	std::cin.get();
 	//cout << "Exiting. . .\n";

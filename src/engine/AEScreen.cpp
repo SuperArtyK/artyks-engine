@@ -28,11 +28,12 @@
 using std::string;
 using std::atomic;
 using std::to_string;	
-using namespace artyk;
+
 
 biguint AEScreen::m_globalmodulenum = 0;
 COORD AEScreen::m_screenres;//our screen resolution
 CONSOLE_SCREEN_BUFFER_INFO AEScreen::m_csbi;
+CONSOLE_SCREEN_BUFFER_INFOEX AEScreen::m_palcsbi;
 CONSOLE_FONT_INFOEX AEScreen::m_cfi;
 SMALL_RECT AEScreen::g_rectWindow = { 0,0,0,0 };
 
@@ -75,8 +76,8 @@ AEScreen::AEScreen(bool enablelog, bool useGlobLog) :__AEBaseClass("AEScreen",++
 	artyk::utils::checkhandles();
 #endif // AE_GLOBALMODULE
 	m_screenres = m_csbi.dwSize;
-	GetConsoleScreenBufferInfo(g_output_handle, &m_csbi);
-
+	GetConsoleScreenBufferInfo(artyk::g_output_handle, &m_csbi);
+	GetConsoleScreenBufferInfoEx(artyk::g_output_handle, &m_palcsbi);
 	artyk::utils::normal_log(m_logptr, "Started AEScreen module!", LOG_SUCCESS, m_modulename);
 	
 }
@@ -96,7 +97,7 @@ AEScreen::~AEScreen() {
 
 //other stuff
 
-void AEScreen::setcursor(short x, short y)
+void AEScreen::setCursor(short x, short y) const
 {//sets the output cursor to x/y pos of the screen
 	m_screenres = m_csbi.dwSize;
 	if (y < 0) {
@@ -112,7 +113,7 @@ void AEScreen::setcursor(short x, short y)
 
 }
 
-void AEScreen::setBufferSize(short x, short y) {//sets console buffer size
+void AEScreen::setBufferSize(short x, short y) const {//sets console buffer size
 	//units are character cells
 
 	COORD coord = { x,y };
@@ -124,7 +125,7 @@ void AEScreen::setBufferSize(short x, short y) {//sets console buffer size
 	artyk::utils::debug_log(m_logptr, "Set console buffer size to: " + to_string(x) + "x" + to_string(y), LOG_INFO, m_modulename);
 }
 
-void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
+void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw) const
 {
 	using namespace artyk;
 	m_screenres = {swidth, sheight};
@@ -233,8 +234,8 @@ void AEScreen::setScreen(short swidth, short sheight, short fonth , short fontw)
 	
 }
 
-void AEScreen::settitle(const string& title) {//speaks for itself
-		//sets app title
+void AEScreen::setTitle(const string& title) const {//speaks for itself
+	//sets app title
 	using namespace artyk::utils;
 	SetConsoleTitleA((
 #ifdef AE_ADD_APP_TITLE
@@ -260,7 +261,7 @@ void AEScreen::settitle(const string& title) {//speaks for itself
 	
 }
 
-void AEScreen::setFont(short y, short x, const string& fontname) {//sets font size
+void AEScreen::setFont(short y, short x, const string& fontname) const {//sets font size
 
 	//ZeroMemory(&m_cfi, sizeof(m_cfi));
 	m_cfi.cbSize = sizeof(m_cfi);
@@ -277,7 +278,7 @@ void AEScreen::setFont(short y, short x, const string& fontname) {//sets font si
 
 }
 
-void AEScreen::clear(void) {//clears screen; much faster than system() but still slow for "draw frame, clear, draw again" scheme
+void AEScreen::clear(void) const {//clears screen; much faster than system() but still slow for "draw frame, clear, draw again" scheme
 
 	COORD topLeft = { 0, 0 };
 	DWORD written;
@@ -289,7 +290,7 @@ void AEScreen::clear(void) {//clears screen; much faster than system() but still
 		artyk::g_output_handle, artyk::color::BLACK,
 		m_csbi.dwSize.X * m_csbi.dwSize.Y, topLeft, &written
 	);
-	setcursor(0, 0);
+	setCursor(0, 0);
 
 	artyk::utils::debug_log(m_logptr, "Cleared console screen", LOG_INFO, m_modulename);
 
@@ -298,7 +299,7 @@ void AEScreen::clear(void) {//clears screen; much faster than system() but still
 
 
 
-void AEScreen::setcolor_con(const smalluint back, const smalluint fore) {//sets color of text out of 16 color pallete
+void AEScreen::setColor(const smalluint back, const smalluint fore) const {//sets color of text out of 16 color pallete
 
 
 	//SetConsoleScreenBufferInfoEx(artyk::screen::g_hStdOut, &g_normal_color); // this is for setcolor_rgb() but completely breaks the pallete

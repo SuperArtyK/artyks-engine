@@ -29,6 +29,7 @@
 #ifndef SCREEN_HPP
 #define SCREEN_HPP
 
+#include "AEPalette.hpp"
 #include "AEBaseClass.hpp"
 #include "func_utils.hpp"
 #include "engine_messagebox.hpp"
@@ -52,7 +53,7 @@ public:
 	~AEScreen() override;
 
 	/// sets the output cursor to the given x/y pos of the screen
-	void setcursor(short x, short y);
+	void setCursor(short x, short y) const;
 
 	/// <summary>
 	/// sets the console screen to given dimensions if possible, otherwise throws Fatal error
@@ -62,14 +63,14 @@ public:
 	/// <param name="fonth">character font height, in pixels, doesnt't go less than 2</param>
 	/// <param name="fontw">character font width, in pixels, doesnt't go less than 2</param>
 	/// @warning DON'T USE THIS FUNCTION IF YOU ARE USING THE AEGraphic MODULE! Use the AEGraphic's version instead
-	void setScreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7);//sets console size
+	void setScreen(short swidth = 128, short sheight = 128, short fonth = 14, short fontw = 7) const;
 
 	///sets console buffer size to the dimensions given, units are character cells
 	/// @warning DON'T USE THIS FUNCTION IF YOU ARE USING THE AEGraphic MODULE! Use the AEGraphic's version instead
-	void setBufferSize(short x, short y);
+	void setBufferSize(short x, short y) const;
 	///sets the app title
-	///@note if the AE_ADD_APP_TITLE flag is defined, it will append artyk::app_name_full to
-	void settitle(const string& title);//sets app title
+	///@note if the AE_ADD_APP_TITLE flag is defined, it will append artyk::app_name_full to the given title
+	void setTitle(const string& title) const;
 
 	/// <summary>
 	/// sets the font setting to provided ones
@@ -77,13 +78,13 @@ public:
 	/// <param name="y">height of the font</param>
 	/// <param name="x">width of the font</param>
 	/// <param name="fontname">font name</param>
-	void setFont(short y, short x, const string& fontname = "Lucida Console");//sets font size
+	void setFont(short y, short x, const string& fontname = "Lucida Console") const;
 
 	///clears the console screen; faster than using system(cls), but still slow for "draw frame, clear, draw again" scheme
-	void clear(void);
+	void clear(void) const;
 
 	///sets the color of the future text(with printf/cout) out of 16color pallete. Colors are in the artyk::screen namespace
-	void setcolor_con(const smalluint back = artyk::color::DEF_BGR, const smalluint fore = artyk::color::DEF_FGR);//sets color of text out of 16 color pallete
+	void setColor(const smalluint back = artyk::color::DEF_BGR, const smalluint fore = artyk::color::DEF_FGR) const;
 
 	/// returns current app title
 	/// @bug There's a known bug, where if you feed GetAppTitle() into settitle() continuously, it will set title to what it was set before
@@ -105,7 +106,7 @@ public:
 		setBufferSize(128, 20);
 		setFont(14, 7);
 		GetAppTitle();
-		setcolor_con(DEF_BGR, DEF_FGR);
+		setColor(DEF_BGR, DEF_FGR);
 		getmodulename();
 		getmodulenum();
 	}
@@ -116,11 +117,22 @@ public:
 	///returns screen font size, in pixels(x,y)
 	static inline COORD GetFontSize(void) {return { m_cfi.dwFontSize.X, m_cfi.dwFontSize.Y};}
 
+
+	void setColorPalette(const AEPalette& two) {
+		GetConsoleScreenBufferInfoEx(artyk::g_output_handle, &m_palcsbi);
+		for (int i = 0 ; i<16; i++){
+			m_palcsbi.ColorTable[i] = two.getcolor(i);
+		}
+		SetConsoleScreenBufferInfoEx(artyk::g_output_handle, &m_palcsbi);
+	}
+
 private:
 	///console font info extended, used to manage the font of console
 	static CONSOLE_FONT_INFOEX m_cfi;
 	///console buffer info, used to manage the screen
 	static CONSOLE_SCREEN_BUFFER_INFO m_csbi;
+	///console buffer info, used to change the color palette
+	static CONSOLE_SCREEN_BUFFER_INFOEX m_palcsbi;
 	///temp variable to store window sizes
 	static SMALL_RECT g_rectWindow;
 	///variable to store the module index number
@@ -163,8 +175,9 @@ namespace artyk::utils {
 inline int __initengine_screen() {
 	///initialises screen module
 	artyk::utils::checkhandles();
-	AEScreen::m_cfi.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
-	if (GetCurrentConsoleFontEx(artyk::g_output_handle, FALSE, &AEScreen::m_cfi))
+	AEScreen::m_cfi.cbSize = sizeof(CONSOLE_FONT_INFOEX);
+	AEScreen::m_palcsbi.cbSize = sizeof(CONSOLE_SCREEN_BUFFER_INFOEX);
+	if (!GetCurrentConsoleFontEx(artyk::g_output_handle, FALSE, &AEScreen::m_cfi))
 	{
 		artyk::utils::FError("Error initialising screen", DEF_MNAME, GET_FULL_DBG_INFO, artyk::exitcodes::INIT_SC_ERROR);
 	}

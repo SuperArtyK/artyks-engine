@@ -36,6 +36,7 @@
 #include "trig_lookup.hpp"
 #include "custom_types.hpp"
 #include "typedefs.hpp"
+#include "AEPalette.hpp"
 #include "global_vars.hpp"
 #include "AEFrame.hpp"
 #include "AESleep.hpp"

@@ -504,6 +504,9 @@
     <ClInclude Include="include\engine\AESleep.hpp">
       <Filter>Header Files\include\engine</Filter>
     </ClInclude>
+    <ClInclude Include="include\engine\AEPalette.hpp">
+      <Filter>Header Files\include\engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="include\engine\bits\basic_ios.tcc">
